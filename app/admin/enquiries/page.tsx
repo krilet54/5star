@@ -3,6 +3,7 @@ import { createAdminClient } from '@/lib/supabase-server'
 export const dynamic = 'force-dynamic'
 import { formatDate } from '@/lib/utils'
 import EnquiryStatusToggle from './EnquiryStatusToggle'
+import EnquiryActions from './EnquiryActions'
 
 export const metadata = { title: 'Enquiries' }
 
@@ -56,6 +57,9 @@ export default async function AdminEnquiriesPage() {
             {enquiries?.length ?? 0} total · <span className="text-green-600 font-medium">{newCount} new</span>
           </p>
         </div>
+        <div>
+          <a href="/api/admin/enquiries/export" className="btn btn-outline" style={{ marginLeft: 8 }}>Export CSV</a>
+        </div>
       </div>
 
       {/* Stats bar */}
@@ -85,6 +89,7 @@ export default async function AdminEnquiriesPage() {
               <th className="text-left px-4 py-3 font-semibold hidden lg:table-cell">Country</th>
               <th className="text-left px-4 py-3 font-semibold">Date</th>
               <th className="text-left px-5 py-3 font-semibold">Status</th>
+              <th className="text-left px-5 py-3 font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y" style={{ borderColor: '#f0f0ec' }}>
@@ -127,10 +132,13 @@ export default async function AdminEnquiriesPage() {
                 <td className="px-5 py-4">
                   <EnquiryStatusToggle id={enq.id} status={enq.status} />
                 </td>
+                <td className="px-4 py-4">
+                  <EnquiryActions id={enq.id} />
+                </td>
               </tr>
             )) : (
               <tr>
-                <td colSpan={6} className="px-5 py-16 text-center text-gray-400">
+                <td colSpan={7} className="px-5 py-16 text-center text-gray-400">
                   No enquiries received yet. They will appear here when clients submit the contact form.
                 </td>
               </tr>

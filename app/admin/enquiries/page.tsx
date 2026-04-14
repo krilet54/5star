@@ -4,6 +4,19 @@ import EnquiryStatusToggle from './EnquiryStatusToggle'
 
 export const metadata = { title: 'Enquiries' }
 
+type Enquiry = {
+  id: string
+  first_name: string
+  last_name?: string
+  email: string
+  phone?: string
+  service?: string
+  country?: string
+  message?: string
+  status: string
+  created_at: string
+}
+
 export default async function AdminEnquiriesPage() {
   const supabase = createAdminClient()
   const { data: enquiries } = await supabase
@@ -11,7 +24,7 @@ export default async function AdminEnquiriesPage() {
     .select('*')
     .order('created_at', { ascending: false })
 
-  const newCount = enquiries?.filter(e => e.status === 'new').length ?? 0
+  const newCount = enquiries?.filter((e: Enquiry) => e.status === 'new').length ?? 0
 
   return (
     <div className="p-8">
@@ -26,10 +39,10 @@ export default async function AdminEnquiriesPage() {
 
       {/* Stats bar */}
       <div className="grid grid-cols-3 gap-4 mb-6">
-        {[
-          { label: 'New', count: enquiries?.filter(e => e.status === 'new').length ?? 0, color: '#22c55e', bg: '#f0fdf4' },
-          { label: 'Contacted', count: enquiries?.filter(e => e.status === 'contacted').length ?? 0, color: '#f59e0b', bg: '#fffbeb' },
-          { label: 'Closed', count: enquiries?.filter(e => e.status === 'closed').length ?? 0, color: '#6b7280', bg: '#f9fafb' },
+          {[
+          { label: 'New', count: enquiries?.filter((e: Enquiry) => e.status === 'new').length ?? 0, color: '#22c55e', bg: '#f0fdf4' },
+          { label: 'Contacted', count: enquiries?.filter((e: Enquiry) => e.status === 'contacted').length ?? 0, color: '#f59e0b', bg: '#fffbeb' },
+          { label: 'Closed', count: enquiries?.filter((e: Enquiry) => e.status === 'closed').length ?? 0, color: '#6b7280', bg: '#f9fafb' },
         ].map(s => (
           <div key={s.label} className="admin-card flex items-center gap-3">
             <div className="w-3 h-3 rounded-full" style={{ background: s.color }} />

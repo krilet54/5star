@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Star One — Business Setup & Advisory, Dubai UAE</title>
+<meta name="description" content="Star One helps entrepreneurs and business owners set up companies in the UAE legally. From company formation to visas, compliance, accounting, and more."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A060;--gold-light:#E8C87A;--gold-dark:#A07840;--gold-dim:rgba(201,160,96,0.12);
+  --dark:#080808;--dark-2:#0F0F0F;--dark-3:#161616;--dark-4:#1E1E1E;--dark-5:#282828;
+  --border:#262626;--border-gold:rgba(201,160,96,0.28);
+  --text:#EDE8DF;--text-muted:#8A8070;--text-dim:#484038;
+  --green:#25D366;--ff-display:'Playfair Display',serif;--ff-body:'Plus Jakarta Sans',sans-serif;
+  --max:1280px;--nav-h:80px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--gold);color:#000}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:2px}
+
+/* ── UTILS ── */
+.container{max-width:var(--max);margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 20px}}
+.gold{color:var(--gold)}
+.serif{font-family:var(--ff-display)}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.tag::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:2px;font-family:var(--ff-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .3s;border:none}
+.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,160,96,.25)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--border-gold)}.btn-outline:hover{background:var(--gold-dim);border-color:var(--gold)}
+.btn-dark{background:var(--dark-3);color:var(--text);border:1px solid var(--border)}.btn-dark:hover{border-color:var(--gold);color:var(--gold)}
+.section{padding:120px 0}
+@media(max-width:768px){.section{padding:72px 0}}
+.section-title{font-family:var(--ff-display);font-size:clamp(32px,4vw,54px);font-weight:500;line-height:1.12;margin-bottom:18px}
+.section-sub{color:var(--text-muted);font-size:15px;max-width:500px;line-height:1.85}
+.divider{width:48px;height:1px;background:var(--gold);margin:24px 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.visible{opacity:1;transform:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);transition:all .4s}
+nav.scrolled{background:rgba(8,8,8,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
+.logo-mark{width:40px;height:40px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:18px;font-weight:700;color:#000;letter-spacing:-1px;flex-shrink:0}
+.logo-text{font-family:var(--ff-display);font-size:20px;font-weight:600;color:var(--text);letter-spacing:.02em}
+.logo-text span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;cursor:pointer}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--text);transition:all .3s}
+@media(max-width:960px){.nav-links{display:none}.hamburger{display:flex}.nav-cta .btn{display:none}}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--dark-2);z-index:899;flex-direction:column;padding:40px 24px;gap:4px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--text-muted);text-decoration:none;font-family:var(--ff-display);font-size:26px;padding:14px 0;border-bottom:1px solid var(--border);transition:color .2s;cursor:pointer}
+.mobile-menu a:hover{color:var(--gold)}
+.mob-sub{padding:8px 0 8px 16px!important;font-size:16px!important;border-bottom:1px solid var(--border)!important;color:var(--text-dim)!important}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:72px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand p{font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:14px;max-width:260px}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s;cursor:pointer}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:var(--text-dim)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:12px;color:var(--text-dim);text-decoration:none;cursor:pointer;transition:color .2s}
+.footer-legal a:hover{color:var(--gold)}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:800;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.4);text-decoration:none;transition:all .3s}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.5)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none}.page.active{display:block}
+
+/* ═══════════════════════════════════════════
+   HOME PAGE
+════════════════════════════════════════════ */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:var(--nav-h)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(201,160,96,.07) 1px,transparent 0);background-size:44px 44px;z-index:1}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:60%;height:140%;background:radial-gradient(ellipse,rgba(201,160,96,.04) 0%,transparent 65%);z-index:1}
+.hero-line{position:absolute;top:0;right:30%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--border-gold),transparent);z-index:2}
+.hero-content{position:relative;z-index:3;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;border:1px solid var(--border-gold);border-radius:50px;font-size:11px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px;animation:fadeUp .8s ease both}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-family:var(--ff-display);font-size:clamp(44px,6.5vw,90px);font-weight:500;line-height:1.07;margin-bottom:24px;animation:fadeUp .8s .1s ease both}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:17px;color:var(--text-muted);max-width:500px;line-height:1.85;margin-bottom:44px;animation:fadeUp .8s .2s ease both}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:fadeUp .8s .3s ease both}
+.hero-stats{display:flex;align-items:center;gap:52px;margin-top:72px;padding-top:44px;border-top:1px solid var(--border);animation:fadeUp .8s .45s ease both;flex-wrap:wrap;gap:32px}
+.hero-stat-num{font-family:var(--ff-display);font-size:40px;font-weight:500;color:var(--gold);line-height:1}
+.hero-stat-label{font-size:12px;color:var(--text-muted);margin-top:5px;letter-spacing:.04em}
+.hero-right{position:absolute;right:0;top:50%;transform:translateY(-50%);width:32%;z-index:3;display:flex;flex-direction:column;gap:14px;padding-right:48px}
+@media(max-width:1100px){.hero-right{display:none}}
+.hero-card{background:var(--dark-3);border:1px solid var(--border);border-left:2px solid var(--gold);padding:22px 26px;transform:translateX(20px);opacity:0;transition:all .6s ease}
+.hero-card.visible{transform:translateX(0);opacity:1}
+.hero-card-label{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.hero-card-val{font-family:var(--ff-display);font-size:24px;color:var(--text)}
+.hero-card-sub{font-size:12px;color:var(--text-muted);margin-top:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* marquee */
+.marquee-bar{padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--dark-2)}
+.marquee-track{display:flex;gap:56px;animation:marquee 32s linear infinite;white-space:nowrap}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);display:flex;align-items:center;gap:20px}
+.marquee-item::after{content:'✦';color:var(--gold);font-size:9px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* services grid */
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+@media(max-width:768px){.services-header{grid-template-columns:1fr}}
+.service-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:36px}
+.service-tab{padding:9px 18px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--ff-body);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s}
+.service-tab.active,.service-tab:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr}}
+.service-card{background:var(--dark-2);padding:36px 30px;position:relative;overflow:hidden;cursor:pointer;transition:all .3s;border:1px solid transparent}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{background:var(--dark-3);border-color:var(--border-gold);transform:translateY(-4px)}
+.service-card:hover::after{transform:scaleX(1)}
+.svc-icon{width:46px;height:46px;background:var(--gold-dim);border:1px solid var(--border-gold);border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:19px;transition:all .3s}
+.service-card:hover .svc-icon{background:var(--gold);border-color:var(--gold)}
+.service-card h3{font-family:var(--ff-display);font-size:19px;font-weight:500;margin-bottom:10px}
+.service-card p{font-size:13px;color:var(--text-muted);line-height:1.75}
+.service-card ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:5px}
+.service-card ul li{font-size:12px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px}
+.service-card ul li::before{content:'—';color:var(--gold);flex-shrink:0}
+.svc-arrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:20px;opacity:0;transform:translateX(-8px);transition:all .3s}
+.service-card:hover .svc-arrow{opacity:1;transform:none}
+
+/* why section */
+.why-section{background:var(--dark-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr}}
+.why-content{padding:100px 80px 100px 0}
+@media(max-width:1100px){.why-content{padding:80px 48px 80px 0}}
+@media(max-width:900px){.why-content{padding:56px 0}}
+.why-features{display:flex;flex-direction:column;gap:28px;margin-top:40px}
+.why-feature{display:flex;gap:18px;align-items:flex-start}
+.why-num{font-family:var(--ff-display);font-size:28px;font-weight:500;color:var(--border);line-height:1;flex-shrink:0;width:42px;transition:color .3s}
+.why-feature:hover .why-num{color:var(--gold)}
+.why-feature h4{font-size:14px;font-weight:600;margin-bottom:5px}
+.why-feature p{font-size:13px;color:var(--text-muted)}
+.why-visual{background:var(--dark-3);border-left:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;align-content:center;padding:64px;gap:2px}
+@media(max-width:900px){.why-visual{border-left:none;border-top:1px solid var(--border);padding:48px 0;grid-template-columns:1fr 1fr}}
+.why-stat{padding:32px;text-align:center;border:1px solid transparent;transition:border-color .3s;cursor:default}
+.why-stat:hover{border-color:var(--border-gold)}
+.why-stat-num{font-family:var(--ff-display);font-size:52px;font-weight:500;color:var(--gold);line-height:1;display:block}
+.why-stat-label{font-size:12px;color:var(--text-muted);margin-top:8px;letter-spacing:.04em}
+
+/* process */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px}
+@media(max-width:900px){.process-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.process-steps{grid-template-columns:1fr}}
+.process-step{padding:44px 32px;border-left:1px solid var(--border);position:relative;transition:background .3s}
+.process-step:first-child{border-left:none}
+.process-step:hover{background:var(--dark-2)}
+.step-num{font-family:var(--ff-display);font-size:72px;font-weight:500;color:var(--dark-4);line-height:1;margin-bottom:20px;transition:color .3s}
+.process-step:hover .step-num{color:rgba(201,160,96,.12)}
+.process-step h3{font-family:var(--ff-display);font-size:18px;font-weight:500;margin-bottom:10px}
+.process-step p{font-size:13px;color:var(--text-muted);line-height:1.75}
+@media(max-width:900px){.process-step:nth-child(2){border-left:1px solid var(--border)}.process-step:nth-child(3){border-left:none}}
+
+/* articles preview */
+.articles-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;flex-wrap:wrap;gap:16px}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.articles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.articles-grid{grid-template-columns:1fr}}
+.article-card{background:var(--dark-2);border:1px solid transparent;transition:all .3s;text-decoration:none;display:flex;flex-direction:column;overflow:hidden;cursor:pointer}
+.article-card:hover{border-color:var(--border-gold);transform:translateY(-4px)}
+.article-img{height:180px;background:var(--dark-4);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.article-cat-badge{position:absolute;top:14px;left:14px;padding:4px 10px;background:var(--gold);color:#000;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.article-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.article-date{font-size:10px;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.article-card h3{font-family:var(--ff-display);font-size:17px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.35;flex:1}
+.article-card p{font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px}
+.article-readmore{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px;margin-top:auto}
+.article-readmore::after{content:'→';transition:transform .2s}
+.article-card:hover .article-readmore::after{transform:translateX(4px)}
+
+/* contact section (home) */
+.contact-strip{background:var(--dark-2);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:44px}}
+.contact-info{display:flex;flex-direction:column;gap:28px}
+.contact-item{display:flex;gap:18px;align-items:flex-start}
+.contact-icon{width:46px;height:46px;background:var(--gold-dim);border:1px solid var(--border-gold);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.contact-item h4{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px}
+.contact-item a,.contact-item p{font-size:15px;color:var(--text);text-decoration:none;transition:color .2s}
+.contact-item a:hover{color:var(--gold)}
+.wa-block{display:flex;align-items:center;gap:14px;padding:18px 22px;background:rgba(37,211,102,.04);border:1px solid rgba(37,211,102,.18);border-radius:2px;margin-top:8px;text-decoration:none;transition:all .3s}
+.wa-block:hover{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.35)}
+.wa-icon{width:42px;height:42px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.wa-block h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.wa-block p{font-size:12px;color:var(--text-muted)}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+.form-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.form-input,.form-select,.form-textarea{background:var(--dark-3);border:1px solid var(--border);color:var(--text);font-family:var(--ff-body);font-size:14px;padding:13px 16px;border-radius:2px;width:100%;transition:border-color .2s;outline:none;-webkit-appearance:none}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-dim)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold)}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C9A060' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer}
+.form-select option{background:var(--dark-3)}
+.form-textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.form-success{display:none;text-align:center;padding:48px 24px}
+.form-success-icon{font-size:48px;margin-bottom:16px}
+.form-success h3{font-family:var(--ff-display);font-size:26px;color:var(--gold);margin-bottom:10px}
+.form-success p{color:var(--text-muted);font-size:14px}
+
+/* ═══════════════════════════════════════════
+   SERVICES PAGE
+════════════════════════════════════════════ */
+.page-hero{padding:160px 0 80px;position:relative;overflow:hidden;background:var(--dark-2);border-bottom:1px solid var(--border)}
+.page-hero-bg{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(201,160,96,.06) 1px,transparent 0);background-size:40px 40px}
+.page-hero-glow{position:absolute;bottom:-30%;left:50%;transform:translateX(-50%);width:80%;height:60%;background:radial-gradient(ellipse,rgba(201,160,96,.04),transparent 70%)}
+.page-hero h1{font-family:var(--ff-display);font-size:clamp(40px,5vw,72px);font-weight:500;line-height:1.1;position:relative;z-index:1}
+.page-hero p{font-size:16px;color:var(--text-muted);max-width:560px;line-height:1.85;margin-top:16px;position:relative;z-index:1}
+.breadcrumb{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px;position:relative;z-index:1}
+.breadcrumb a{color:var(--gold);text-decoration:none;cursor:pointer}.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{color:var(--text-dim)}
+
+.svc-category{margin-bottom:72px}
+.svc-category-title{font-family:var(--ff-display);font-size:28px;font-weight:500;margin-bottom:8px}
+.svc-category-sub{font-size:14px;color:var(--text-muted);margin-bottom:32px;max-width:480px}
+.svc-list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.svc-list-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.svc-list-grid{grid-template-columns:1fr}}
+.svc-list-card{background:var(--dark-2);padding:32px 28px;border:1px solid transparent;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.svc-list-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.svc-list-card:hover{background:var(--dark-3);border-color:var(--border-gold)}.svc-list-card:hover::before{transform:scaleX(1)}
+.svc-list-card h3{font-family:var(--ff-display);font-size:17px;margin-bottom:8px;transition:color .2s}
+.svc-list-card:hover h3{color:var(--gold)}
+.svc-list-card p{font-size:12px;color:var(--text-muted);line-height:1.7}
+.svc-list-card .svc-link{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-top:16px}
+
+/* ═══════════════════════════════════════════
+   SERVICE DETAIL PAGE
+════════════════════════════════════════════ */
+.svc-detail-hero{padding:160px 0 80px;background:var(--dark-2);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.svc-detail-body{padding:80px 0}
+.svc-detail-layout{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start}
+@media(max-width:960px){.svc-detail-layout{grid-template-columns:1fr}}
+.svc-detail-main h2{font-family:var(--ff-display);font-size:28px;font-weight:500;margin:40px 0 16px}
+.svc-detail-main h2:first-child{margin-top:0}
+.svc-detail-main p{color:var(--text-muted);font-size:14px;line-height:1.9;margin-bottom:16px}
+.svc-detail-main ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.svc-detail-main ul li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--text-muted)}
+.svc-detail-main ul li::before{content:'✦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
+.svc-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:24px 0}
+@media(max-width:640px){.svc-features-grid{grid-template-columns:1fr}}
+.svc-feature-item{background:var(--dark-2);padding:28px 24px;border:1px solid transparent;transition:border-color .3s}
+.svc-feature-item:hover{border-color:var(--border-gold)}
+.svc-feature-item h4{font-size:14px;font-weight:600;margin-bottom:6px}
+.svc-feature-item p{font-size:12px;color:var(--text-muted);line-height:1.7}
+.svc-sidebar-card{background:var(--dark-2);border:1px solid var(--border);padding:32px;margin-bottom:16px;position:sticky;top:100px}
+.svc-sidebar-card h4{font-family:var(--ff-display);font-size:18px;margin-bottom:6px}
+.svc-sidebar-card p{font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7}
+.svc-other-list{list-style:none;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.svc-other-list li a{font-size:12px;color:var(--text-muted);text-decoration:none;cursor:pointer;transition:color .2s;display:flex;align-items:center;gap:8px}
+.svc-other-list li a::before{content:'→';color:var(--gold);font-size:11px}
+.svc-other-list li a:hover{color:var(--gold)}
+.faq-item{border-top:1px solid var(--border);padding:20px 0}
+.faq-q{font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.faq-q::after{content:'+';color:var(--gold);font-size:20px;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:13px;color:var(--text-muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding-top:12px}
+
+/* ═══════════════════════════════════════════
+   ABOUT PAGE
+════════════════════════════════════════════ */
+.about-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:900px){.about-intro-grid{grid-template-columns:1fr;gap:48px}}
+.about-visual{background:var(--dark-3);border:1px solid var(--border);padding:0;position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.about-visual-inner{text-align:center;padding:60px}
+.about-visual h2{font-family:var(--ff-display);font-size:56px;font-weight:500;color:var(--gold);opacity:.15;line-height:1}
+.about-visual::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(201,160,96,.08) 1px,transparent 0);background-size:32px 32px}
+.about-big-quote{font-family:var(--ff-display);font-size:clamp(22px,3vw,36px);font-style:italic;line-height:1.4;color:var(--text);position:relative;z-index:1}
+.about-big-quote em{color:var(--gold);font-style:italic}
+.about-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+@media(max-width:768px){.about-values-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.about-values-grid{grid-template-columns:1fr}}
+.value-card{background:var(--dark-2);padding:40px 32px;border-top:2px solid transparent;transition:border-color .3s}
+.value-card:hover{border-top-color:var(--gold)}
+.value-icon{font-size:28px;margin-bottom:16px}
+.value-card h3{font-family:var(--ff-display);font-size:18px;font-weight:500;margin-bottom:10px}
+.value-card p{font-size:13px;color:var(--text-muted);line-height:1.75}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.team-grid{grid-template-columns:1fr}}
+.team-card{background:var(--dark-2);padding:36px 28px;text-align:center;border:1px solid transparent;transition:border-color .3s}
+.team-card:hover{border-color:var(--border-gold)}
+.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 20px;background:var(--gold-dim);border:2px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:28px;color:var(--gold)}
+.team-card h3{font-family:var(--ff-display);font-size:18px;font-weight:500;margin-bottom:4px}
+.team-card p{font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}
+.team-card .team-bio{font-size:12px;color:var(--text-muted);line-height:1.7;margin-top:12px}
+
+/* ═══════════════════════════════════════════
+   CONTACT PAGE (full)
+════════════════════════════════════════════ */
+.contact-page-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;padding:80px 0}
+@media(max-width:960px){.contact-page-grid{grid-template-columns:1fr;gap:48px}}
+.contact-page-left{position:sticky;top:100px}
+.contact-page-info{display:flex;flex-direction:column;gap:24px;margin-top:32px}
+.contact-page-item{display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--dark-2);border:1px solid var(--border);transition:border-color .3s}
+.contact-page-item:hover{border-color:var(--border-gold)}
+.contact-page-item .ci-icon{width:42px;height:42px;background:var(--gold-dim);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px}
+.contact-page-item h4{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.contact-page-item a,.contact-page-item p{font-size:14px;color:var(--text);text-decoration:none;transition:color .2s}
+.contact-page-item a:hover{color:var(--gold)}
+.contact-form-card{background:var(--dark-2);border:1px solid var(--border);padding:48px}
+@media(max-width:560px){.contact-form-card{padding:28px}}
+
+/* ═══════════════════════════════════════════
+   INSIGHTS PAGE
+════════════════════════════════════════════ */
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.insights-grid{grid-template-columns:1fr}}
+.insights-featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:0;background:var(--dark-2);border:1px solid var(--border-gold);margin-bottom:2px;cursor:pointer;transition:all .3s}
+.insights-featured:hover{border-color:var(--gold)}
+@media(max-width:768px){.insights-featured{grid-template-columns:1fr}}
+.feat-img{background:var(--dark-4);position:relative;min-height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.feat-body{padding:48px}
+.feat-body .featured-badge{display:inline-block;padding:4px 12px;background:var(--gold);color:#000;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.feat-body h2{font-family:var(--ff-display);font-size:clamp(22px,2.5vw,32px);font-weight:500;line-height:1.25;margin-bottom:14px}
+.feat-body p{font-size:13px;color:var(--text-muted);line-height:1.8;margin-bottom:24px}
+.insights-filter{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:32px}
+
+/* ═══════════════════════════════════════════
+   ARTICLE DETAIL PAGE
+════════════════════════════════════════════ */
+.article-layout{display:grid;grid-template-columns:1fr 320px;gap:64px;padding:80px 0;align-items:start}
+@media(max-width:960px){.article-layout{grid-template-columns:1fr}}
+.article-content{max-width:720px}
+.article-content h2{font-family:var(--ff-display);font-size:28px;font-weight:500;margin:40px 0 14px}
+.article-content h3{font-family:var(--ff-display);font-size:20px;font-weight:500;margin:28px 0 10px;color:var(--gold)}
+.article-content p{font-size:15px;color:var(--text-muted);line-height:1.9;margin-bottom:16px}
+.article-content ul,.article-content ol{padding-left:20px;margin-bottom:16px;display:flex;flex-direction:column;gap:8px}
+.article-content li{font-size:14px;color:var(--text-muted);line-height:1.7}
+.article-content blockquote{border-left:3px solid var(--gold);padding:16px 24px;background:var(--dark-2);margin:24px 0;font-family:var(--ff-display);font-style:italic;font-size:16px;color:var(--text)}
+.article-sidebar-card{background:var(--dark-2);border:1px solid var(--border);padding:28px;margin-bottom:12px;position:sticky;top:100px}
+.article-sidebar-card h4{font-family:var(--ff-display);font-size:16px;margin-bottom:12px}
+.related-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.related-list li{padding-bottom:12px;border-bottom:1px solid var(--border)}
+.related-list li:last-child{border-bottom:none}
+.related-list li a{font-size:12px;color:var(--text-muted);cursor:pointer;line-height:1.5;transition:color .2s;display:block}
+.related-list li a:hover{color:var(--gold)}
+
+/* ═══════════════════════════════════════════
+   LEGAL PAGES
+════════════════════════════════════════════ */
+.legal-content{max-width:800px;padding:80px 0}
+.legal-content h2{font-family:var(--ff-display);font-size:24px;font-weight:500;margin:36px 0 12px;color:var(--gold)}
+.legal-content h3{font-size:16px;font-weight:600;margin:24px 0 8px}
+.legal-content p{font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:12px}
+.legal-content ul{padding-left:20px;margin-bottom:12px;display:flex;flex-direction:column;gap:6px}
+.legal-content li{font-size:14px;color:var(--text-muted);line-height:1.7}
+
+/* ═══════════════════════════════════════════
+   ADMIN PORTAL
+════════════════════════════════════════════ */
+.admin-login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--dark);padding:40px 20px}
+.admin-login-card{background:var(--dark-2);border:1px solid var(--border);padding:56px 48px;width:100%;max-width:440px;text-align:center}
+@media(max-width:480px){.admin-login-card{padding:36px 24px}}
+.admin-login-card h2{font-family:var(--ff-display);font-size:30px;margin-bottom:6px}
+.admin-login-card p{font-size:13px;color:var(--text-muted);margin-bottom:36px}
+.admin-error{color:#ff6b6b;font-size:12px;margin-top:8px;display:none}
+
+.admin-layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+@media(max-width:900px){.admin-layout{grid-template-columns:1fr}}
+.admin-sidebar{background:var(--dark-2);border-right:1px solid var(--border);padding:0;position:sticky;top:0;height:100vh;overflow-y:auto}
+@media(max-width:900px){.admin-sidebar{display:none}}
+.admin-sidebar-header{padding:24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.admin-sidebar-logo{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:16px;font-weight:700;color:#000;flex-shrink:0}
+.admin-nav{padding:16px 0}
+.admin-nav a{display:flex;align-items:center;gap:12px;padding:12px 24px;font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:all .2s;cursor:pointer;border-left:2px solid transparent}
+.admin-nav a:hover,.admin-nav a.active{color:var(--text);background:var(--dark-3);border-left-color:var(--gold)}
+.admin-nav .nav-icon{font-size:16px;width:20px;flex-shrink:0}
+.admin-main{background:var(--dark);padding:0;overflow-y:auto}
+.admin-topbar{background:var(--dark-2);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.admin-topbar h1{font-family:var(--ff-display);font-size:20px;font-weight:500}
+.admin-content{padding:32px}
+@media(max-width:768px){.admin-content{padding:20px}}
+.admin-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+@media(max-width:900px){.admin-stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.admin-stats-grid{grid-template-columns:1fr 1fr}}
+.admin-stat-card{background:var(--dark-2);border:1px solid var(--border);padding:24px;transition:border-color .3s}
+.admin-stat-card:hover{border-color:var(--border-gold)}
+.admin-stat-card h4{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.admin-stat-card .stat-val{font-family:var(--ff-display);font-size:36px;font-weight:500;color:var(--gold);line-height:1}
+.admin-stat-card p{font-size:11px;color:var(--text-dim);margin-top:6px}
+.admin-card{background:var(--dark-2);border:1px solid var(--border);margin-bottom:24px}
+.admin-card-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.admin-card-header h3{font-family:var(--ff-display);font-size:16px;font-weight:500}
+.admin-card-body{padding:24px}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);padding:10px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.admin-table td{font-size:13px;color:var(--text-muted);padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table tr:hover td{color:var(--text);background:var(--dark-3)}
+.admin-badge{display:inline-flex;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:50px}
+.badge-published{background:rgba(37,211,102,.1);color:#25D366;border:1px solid rgba(37,211,102,.3)}
+.badge-draft{background:rgba(201,160,96,.1);color:var(--gold);border:1px solid var(--border-gold)}
+.admin-actions{display:flex;gap:8px}
+.admin-action-btn{padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .2s;border-radius:2px}
+.admin-action-btn:hover{border-color:var(--gold);color:var(--gold)}
+.admin-action-btn.danger:hover{border-color:#ff6b6b;color:#ff6b6b}
+
+/* Article editor */
+.editor-form{display:flex;flex-direction:column;gap:20px}
+.editor-toolbar{display:flex;gap:4px;padding:8px;background:var(--dark-3);border:1px solid var(--border);border-bottom:none;flex-wrap:wrap}
+.editor-toolbar button{padding:5px 10px;font-size:11px;font-weight:600;background:transparent;border:1px solid var(--border);color:var(--text-muted);cursor:pointer;border-radius:2px;transition:all .2s}
+.editor-toolbar button:hover{border-color:var(--gold);color:var(--gold)}
+.editor-textarea{background:var(--dark-3);border:1px solid var(--border);color:var(--text);font-family:var(--ff-body);font-size:14px;padding:16px;border-radius:0 0 2px 2px;width:100%;resize:vertical;min-height:280px;outline:none;line-height:1.8}
+.editor-textarea:focus{border-color:var(--gold)}
+.switch-label{display:flex;align-items:center;gap:12px;cursor:pointer}
+.switch{position:relative;width:44px;height:24px}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:var(--dark-4);border:1px solid var(--border);border-radius:24px;transition:.3s}
+.slider::before{content:'';position:absolute;width:18px;height:18px;left:2px;bottom:2px;background:var(--text-dim);border-radius:50%;transition:.3s}
+input:checked+.slider{background:var(--gold);border-color:var(--gold)}
+input:checked+.slider::before{transform:translateX(20px);background:#000}
+.tag-input{display:flex;gap:8px;flex-wrap:wrap;background:var(--dark-3);border:1px solid var(--border);padding:8px;border-radius:2px;cursor:text;min-height:46px;align-items:center}
+.tag-pill{display:flex;align-items:center;gap:6px;padding:4px 10px;background:var(--gold-dim);border:1px solid var(--border-gold);border-radius:50px;font-size:11px;color:var(--gold)}
+.tag-pill button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:14px;line-height:1;padding:0}
+.tag-input input{background:transparent;border:none;outline:none;color:var(--text);font-size:13px;flex:1;min-width:80px}
+
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal-backdrop.hidden{display:none}
+.modal{background:var(--dark-2);border:1px solid var(--border);width:100%;max-width:800px;max-height:90vh;overflow-y:auto}
+.modal-header{padding:24px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--dark-2);z-index:1}
+.modal-header h3{font-family:var(--ff-display);font-size:20px;font-weight:500}
+.modal-close{background:none;border:1px solid var(--border);color:var(--text-muted);width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;border-radius:2px;flex-shrink:0}
+.modal-close:hover{border-color:var(--gold);color:var(--gold)}
+.modal-body{padding:28px}
+.modal-footer{padding:20px 28px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:12px;position:sticky;bottom:0;background:var(--dark-2)}
+
+/* Enquiry table */
+.enq-card{background:var(--dark-2);border:1px solid var(--border);padding:20px;margin-bottom:8px;cursor:pointer;transition:border-color .3s}
+.enq-card:hover{border-color:var(--border-gold)}
+.enq-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.enq-name{font-size:14px;font-weight:600}
+.enq-meta{font-size:11px;color:var(--text-dim);margin-top:3px}
+.enq-service{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.enq-msg{font-size:13px;color:var(--text-muted);margin-top:10px;line-height:1.65;display:none}
+.enq-card.open .enq-msg{display:block}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark-3);border:1px solid var(--border-gold);color:var(--text);padding:12px 24px;font-size:13px;font-weight:500;z-index:3000;transition:transform .3s ease;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast-icon{color:var(--gold)}
+
+/* Notification dot */
+.notif-dot{display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;margin-left:6px;vertical-align:middle;animation:blink 2s infinite}
+
+/* Responsive helpers */
+@media(max-width:768px){
+  .hero h1{font-size:clamp(38px,10vw,60px)}
+  .hero-stats{gap:24px}
+  .hero-stat-num{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="logo" onclick="navigate('home')">
+        <div class="logo-mark">S1</div>
+        <div class="logo-text">Star <span>One</span></div>
+      </div>
+      <div class="nav-links">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('services')">Services</a>
+        <a onclick="navigate('about')">About</a>
+        <a onclick="navigate('insights')">Insights</a>
+        <a onclick="navigate('contact')">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-gold" onclick="navigate('contact')" style="cursor:pointer">Get Started</a>
+        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════ MOBILE MENU ════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="navigate('home');closeMenu()">Home</a>
+  <a onclick="navigate('services');closeMenu()">Services</a>
+  <a class="mob-sub" onclick="navigate('service','business-setup');closeMenu()">→ Business Setup</a>
+  <a class="mob-sub" onclick="navigate('service','compliance');closeMenu()">→ Compliance</a>
+  <a class="mob-sub" onclick="navigate('service','corporate');closeMenu()">→ Corporate Services</a>
+  <a class="mob-sub" onclick="navigate('service','ancillary');closeMenu()">→ Ancillary Services</a>
+  <a onclick="navigate('about');closeMenu()">About</a>
+  <a onclick="navigate('insights');closeMenu()">Insights</a>
+  <a onclick="navigate('contact');closeMenu()">Contact</a>
+</div>
+
+<!-- ════════ WHATSAPP FLOAT ════════ -->
+<a class="wa-float" href="https://wa.me/971502165471" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ════════════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-dots"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-line"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Trusted Business Setup Advisors — Dubai, UAE</div>
+        <h1>Your Business,<br/><em>Legally Established</em><br/>in the UAE</h1>
+        <p class="hero-sub">From company formation to visas, compliance, and beyond — Star One guides entrepreneurs and business owners through every step of setting up in Dubai.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" onclick="navigate('contact')" style="cursor:pointer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.01 4 2 2 0 012 2h3a2 2 0 012 1.72 13 13 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 13 13 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Book Free Consultation
+          </a>
+          <a class="btn btn-outline" onclick="navigate('services')" style="cursor:pointer">Explore Services →</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-num" data-count="500" id="hstat1">0+</div><div class="hero-stat-label">Businesses Formed</div></div>
+          <div style="width:1px;height:40px;background:var(--border);flex-shrink:0"></div>
+          <div><div class="hero-stat-num" data-count="12" id="hstat2">0+</div><div class="hero-stat-label">Years Experience</div></div>
+          <div style="width:1px;height:40px;background:var(--border);flex-shrink:0"></div>
+          <div><div class="hero-stat-num" data-count="98" id="hstat3">0%</div><div class="hero-stat-label">Client Satisfaction</div></div>
+          <div style="width:1px;height:40px;background:var(--border);flex-shrink:0"></div>
+          <div><div class="hero-stat-num" data-count="25" id="hstat4">0+</div><div class="hero-stat-label">Countries Served</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card" id="hc1">
+        <div class="hero-card-label">Latest Setup</div>
+        <div class="hero-card-val">LLC Formation</div>
+        <div class="hero-card-sub">Dubai Mainland · 3 days</div>
+      </div>
+      <div class="hero-card" id="hc2">
+        <div class="hero-card-label">Processing Time</div>
+        <div class="hero-card-val">7–14 Days</div>
+        <div class="hero-card-sub">Average for full setup</div>
+      </div>
+      <div class="hero-card" id="hc3">
+        <div class="hero-card-label">Global Clients</div>
+        <div class="hero-card-val">UK · US · SA</div>
+        <div class="hero-card-sub">Top source markets</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span class="marquee-item">Business Setup</span><span class="marquee-item">Company Formation</span><span class="marquee-item">Employment Visa</span><span class="marquee-item">Golden Visa</span><span class="marquee-item">VAT & Corporate Tax</span><span class="marquee-item">Accounting & Bookkeeping</span><span class="marquee-item">Bank Account Opening</span><span class="marquee-item">Trademark Registration</span><span class="marquee-item">Document Attestation</span><span class="marquee-item">Payroll Management</span><span class="marquee-item">HR Services</span><span class="marquee-item">Legal Translation</span>
+      <span class="marquee-item">Business Setup</span><span class="marquee-item">Company Formation</span><span class="marquee-item">Employment Visa</span><span class="marquee-item">Golden Visa</span><span class="marquee-item">VAT & Corporate Tax</span><span class="marquee-item">Accounting & Bookkeeping</span><span class="marquee-item">Bank Account Opening</span><span class="marquee-item">Trademark Registration</span><span class="marquee-item">Document Attestation</span><span class="marquee-item">Payroll Management</span><span class="marquee-item">HR Services</span><span class="marquee-item">Legal Translation</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="services-header">
+        <div class="reveal-left">
+          <div class="tag">What We Do</div>
+          <h2 class="section-title">Complete Business<br/>Setup Solutions</h2>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <p class="section-sub">From the moment you decide to set up in the UAE, to the day your business is fully operational — we handle everything.</p>
+          <div style="margin-top:24px"><a class="btn btn-outline" onclick="navigate('services')" style="cursor:pointer">All Services →</a></div>
+        </div>
+      </div>
+      <div class="service-tabs">
+        <button class="service-tab active" onclick="filterServices('all',this)">All</button>
+        <button class="service-tab" onclick="filterServices('setup',this)">Business Setup</button>
+        <button class="service-tab" onclick="filterServices('compliance',this)">Compliance</button>
+        <button class="service-tab" onclick="filterServices('corporate',this)">Corporate</button>
+        <button class="service-tab" onclick="filterServices('ancillary',this)">Ancillary</button>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+        <div class="service-card reveal" data-cat="setup" onclick="navigate('service','business-setup')">
+          <div class="svc-icon">🏢</div>
+          <h3>Business Setup & Formation</h3>
+          <p>Full company formation services across Dubai Mainland, Free Zones, and Offshore — with government approvals handled.</p>
+          <ul><li>LLC & Sole Establishment</li><li>Free Zone Company</li><li>Branch Office Setup</li><li>Government Approvals</li></ul>
+          <div class="svc-arrow">Learn More →</div>
+        </div>
+        <div class="service-card reveal" data-cat="compliance" onclick="navigate('service','compliance')" style="transition-delay:.05s">
+          <div class="svc-icon">📊</div>
+          <h3>Compliance Services</h3>
+          <p>Stay fully compliant with UAE regulations — accounting, auditing, VAT, and AML requirements all managed for you.</p>
+          <ul><li>Accounting & Bookkeeping</li><li>Audit Services</li><li>VAT & Corporate Tax</li><li>ESR, UBO & AML</li></ul>
+          <div class="svc-arrow">Learn More →</div>
+        </div>
+        <div class="service-card reveal" data-cat="corporate" onclick="navigate('service','corporate')" style="transition-delay:.1s">
+          <div class="svc-icon">🛂</div>
+          <h3>Corporate Services</h3>
+          <p>Immigration, banking, legal documentation, and more — all the essential corporate services your business needs.</p>
+          <ul><li>Employment & Labour Visas</li><li>Bank Account Opening</li><li>Legal Translation</li><li>Notary & Will Services</li></ul>
+          <div class="svc-arrow">Learn More →</div>
+        </div>
+        <div class="service-card reveal" data-cat="corporate" onclick="navigate('service','corporate')" style="transition-delay:.15s">
+          <div class="svc-icon">⭐</div>
+          <h3>Golden Visa</h3>
+          <p>Secure UAE long-term residency with our end-to-end Golden Visa application support for investors, professionals & families.</p>
+          <ul><li>10-Year Residency</li><li>Investor Visas</li><li>Specialist Visas</li><li>Family Sponsorship</li></ul>
+          <div class="svc-arrow">Learn More →</div>
+        </div>
+        <div class="service-card reveal" data-cat="ancillary" onclick="navigate('service','ancillary')" style="transition-delay:.2s">
+          <div class="svc-icon">💼</div>
+          <h3>HR & Payroll</h3>
+          <p>Comprehensive human resource and payroll management services to keep your team and business fully compliant.</p>
+          <ul><li>Payroll Processing</li><li>WPS Compliance</li><li>HR Strategy</li><li>Recruitment Support</li></ul>
+          <div class="svc-arrow">Learn More →</div>
+        </div>
+        <div class="service-card reveal" data-cat="ancillary" onclick="navigate('service','ancillary')" style="transition-delay:.25s">
+          <div class="svc-icon">🔖</div>
+          <h3>Trademark & Legal</h3>
+          <p>Protect your brand and legal interests with trademark registration, business plan drafting, and attestation services.</p>
+          <ul><li>Trademark Registration</li><li>Document Attestation</li><li>Business Plan Drafting</li><li>Strategy Consulting</li></ul>
+          <div class="svc-arrow">Learn More →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY STAR ONE -->
+  <section class="why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content reveal-left">
+          <div class="tag">Why Star One</div>
+          <h2 class="section-title">The UAE Expert<br/>You Can Trust</h2>
+          <div class="divider"></div>
+          <p class="section-sub">We understand that setting up a business is one of the most important decisions of your life. That's why we offer a concierge-level service that takes every burden off your plate.</p>
+          <div class="why-features">
+            <div class="why-feature">
+              <div class="why-num">01</div>
+              <div><h4>End-to-End Handling</h4><p>From first consultation to final approval — we manage the entire process so you can focus on your business vision.</p></div>
+            </div>
+            <div class="why-feature">
+              <div class="why-num">02</div>
+              <div><h4>UAE Regulatory Expertise</h4><p>Deep knowledge of Dubai Mainland, all major Free Zones, and Offshore structures — ensuring the best fit for your goals.</p></div>
+            </div>
+            <div class="why-feature">
+              <div class="why-num">03</div>
+              <div><h4>Global Client Base</h4><p>Trusted by entrepreneurs from the UK, US, South Africa, and 25+ countries to establish and grow businesses in the UAE.</p></div>
+            </div>
+            <div class="why-feature">
+              <div class="why-num">04</div>
+              <div><h4>Post-Setup Continuity</h4><p>Our relationship doesn't end at setup. We provide ongoing compliance, HR, and advisory services as your business grows.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="why-visual reveal" style="transition-delay:.2s">
+          <div class="why-stat"><span class="why-stat-num" data-count="500">0</span><span class="why-stat-num" style="font-size:32px;color:var(--gold)">+</span><div class="why-stat-label">Businesses Formed</div></div>
+          <div class="why-stat"><span class="why-stat-num" data-count="12">0</span><span class="why-stat-num" style="font-size:32px;color:var(--gold)">+</span><div class="why-stat-label">Years in Business</div></div>
+          <div class="why-stat"><span class="why-stat-num" data-count="25">0</span><span class="why-stat-num" style="font-size:32px;color:var(--gold)">+</span><div class="why-stat-label">Countries Served</div></div>
+          <div class="why-stat"><span class="why-stat-num" data-count="98">0</span><span class="why-stat-num" style="font-size:32px;color:var(--gold)">%</span><div class="why-stat-label">Client Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 0">
+        <div class="tag" style="justify-content:center">How It Works</div>
+        <h2 class="section-title" style="text-align:center">From Idea to <em style="font-style:italic;color:var(--gold)">Operating Business</em></h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <div style="font-size:28px;margin-bottom:14px">💬</div>
+          <h3>Free Consultation</h3>
+          <p>Tell us about your business vision, budget, and timeline. We'll map the ideal setup structure for you.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.1s">
+          <div class="step-num">02</div>
+          <div style="font-size:28px;margin-bottom:14px">📋</div>
+          <h3>Proposal & Plan</h3>
+          <p>We present a detailed roadmap — license type, jurisdiction, timeline, and all-inclusive cost breakdown.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.2s">
+          <div class="step-num">03</div>
+          <div style="font-size:28px;margin-bottom:14px">⚙️</div>
+          <h3>We Handle Everything</h3>
+          <p>Document preparation, government submissions, approvals — every step managed by our specialists.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay:.3s">
+          <div class="step-num">04</div>
+          <div style="font-size:28px;margin-bottom:14px">🚀</div>
+          <h3>Launch & Ongoing Support</h3>
+          <p>Receive your trade license and begin operations. We stay on as your ongoing compliance and advisory partner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES PREVIEW -->
+  <section class="section" style="background:var(--dark-2);border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="articles-header reveal">
+        <div>
+          <div class="tag">Knowledge Hub</div>
+          <h2 class="section-title">Business Insights &<br/>UAE Market News</h2>
+        </div>
+        <a class="btn btn-outline" onclick="navigate('insights')" style="cursor:pointer">View All Articles →</a>
+      </div>
+      <div class="articles-grid" id="homeArticlesGrid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section style="padding:80px 0;background:linear-gradient(135deg,var(--dark-3) 0%,var(--dark-4) 100%);border-top:1px solid var(--border-gold);border-bottom:1px solid var(--border-gold)">
+    <div class="container" style="text-align:center">
+      <div class="reveal">
+        <div class="tag" style="justify-content:center">Ready to Start?</div>
+        <h2 class="section-title" style="max-width:600px;margin:0 auto 20px">Set Up Your UAE Business<br/>with <em style="font-style:italic;color:var(--gold)">Complete Confidence</em></h2>
+        <p style="color:var(--text-muted);max-width:420px;margin:0 auto 36px;font-size:15px">Book a free consultation today — no obligations, just expert advice tailored to your goals.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-gold" onclick="navigate('contact')" style="cursor:pointer">Book Free Consultation</a>
+          <a class="btn btn-outline" href="https://wa.me/971502165471" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="contact-strip section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <div class="tag">Quick Enquiry</div>
+          <h2 class="section-title">Let's Talk<br/><em style="font-style:italic;color:var(--gold)">Business</em></h2>
+          <div class="divider"></div>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div><h4>Phone</h4><a href="tel:+971502165471">+971 50 216 5471</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div><h4>Email</h4><a href="mailto:fiona13693@gmail.com">fiona13693@gmail.com</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div><h4>Location</h4><p>Dubai, United Arab Emirates</p></div>
+            </div>
+            <a class="wa-block" href="https://wa.me/971502165471" target="_blank">
+              <div class="wa-icon">💬</div>
+              <div><h4>WhatsApp — Fastest Response</h4><p>Message us anytime, we respond quickly</p></div>
+            </a>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <div id="homeContactForm">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="hfname" placeholder="John"/></div>
+              <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="hlname" placeholder="Smith"/></div>
+            </div>
+            <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="hfemail" type="email" placeholder="john@company.com"/></div>
+            <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" id="hfphone" placeholder="+44 20 1234 5678"/></div>
+            <div class="form-group"><label class="form-label">Service Interest</label>
+              <select class="form-select" id="hfservice">
+                <option value="">Select a service…</option>
+                <option>Business Setup & Company Formation</option>
+                <option>Employment Visa</option>
+                <option>Golden Visa</option>
+                <option>Accounting & Bookkeeping</option>
+                <option>VAT & Corporate Tax</option>
+                <option>Compliance Services</option>
+                <option>Bank Account Opening</option>
+                <option>Trademark Registration</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" id="hfmsg" placeholder="Tell us about your business and what you're looking to set up…"></textarea></div>
+            <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="submitHomeForm()">Send Enquiry →</button>
+          </div>
+          <div class="form-success" id="homeFormSuccess">
+            <div class="form-success-icon">✅</div>
+            <h3>Enquiry Received</h3>
+            <p>Thank you! A member of our team will be in touch within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-home"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: SERVICES
+════════════════════════════════════════════ -->
+<div id="page-services" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span>›</span><span>Services</span></div>
+      <div class="tag">What We Offer</div>
+      <h1>Complete UAE Business<br/><em style="font-style:italic;color:var(--gold)">Services</em></h1>
+      <p>Whatever your business needs — from the first license to ongoing compliance — Star One has the expertise to get it done right.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+
+      <!-- Business Setup -->
+      <div class="svc-category reveal">
+        <div class="tag">Category 01</div>
+        <h2 class="svc-category-title">Business Setup Services</h2>
+        <p class="svc-category-sub">Everything you need to legally establish your company in the UAE, from license selection to government approvals.</p>
+        <div class="svc-list-grid">
+          <div class="svc-list-card" onclick="navigate('service','business-setup')"><div style="font-size:24px;margin-bottom:14px">🏢</div><h3>Company Formation</h3><p>LLC, Sole Establishment, Civil Company — mainland and free zone options across all jurisdictions.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','business-setup')"><div style="font-size:24px;margin-bottom:14px">🏝️</div><h3>Free Zone Setup</h3><p>100% ownership in 40+ UAE Free Zones. We identify the best zone for your industry and budget.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','business-setup')"><div style="font-size:24px;margin-bottom:14px">🏛️</div><h3>Government Approvals</h3><p>Full government liaison — DED, MOHRE, ICA, and all relevant regulatory bodies handled for you.</p><div class="svc-link">Learn More →</div></div>
+        </div>
+      </div>
+
+      <!-- Compliance -->
+      <div class="svc-category reveal" style="transition-delay:.1s">
+        <div class="tag">Category 02</div>
+        <h2 class="svc-category-title">Compliance Services</h2>
+        <p class="svc-category-sub">Stay ahead of UAE regulatory requirements with our expert compliance and financial services.</p>
+        <div class="svc-list-grid">
+          <div class="svc-list-card" onclick="navigate('service','compliance')"><div style="font-size:24px;margin-bottom:14px">📒</div><h3>Accounting & Bookkeeping</h3><p>Professional financial record management, monthly reporting, and bank reconciliation.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','compliance')"><div style="font-size:24px;margin-bottom:14px">🔍</div><h3>Audit Services</h3><p>Statutory audits, internal audits, and compliance reviews by licensed UAE auditors.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','compliance')"><div style="font-size:24px;margin-bottom:14px">💹</div><h3>VAT & Corporate Tax</h3><p>Registration, filing, and advisory for UAE VAT (5%) and Corporate Tax (9%) compliance.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','compliance')"><div style="font-size:24px;margin-bottom:14px">🛡️</div><h3>ESR, AML & UBO</h3><p>Economic Substance Regulations, Anti-Money Laundering compliance, and UBO registration.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','compliance')"><div style="font-size:24px;margin-bottom:14px">📊</div><h3>KYC Compliance</h3><p>Know Your Customer due diligence, customer risk assessment, and ongoing monitoring.</p><div class="svc-link">Learn More →</div></div>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="svc-category reveal" style="transition-delay:.15s">
+        <div class="tag">Category 03</div>
+        <h2 class="svc-category-title">Corporate Services</h2>
+        <p class="svc-category-sub">Essential post-setup corporate services to keep your business running smoothly.</p>
+        <div class="svc-list-grid">
+          <div class="svc-list-card" onclick="navigate('service','corporate')"><div style="font-size:24px;margin-bottom:14px">🛂</div><h3>Employment Visa</h3><p>End-to-end employee visa processing including labour approvals, entry permits, and Emirates ID.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','corporate')"><div style="font-size:24px;margin-bottom:14px">⭐</div><h3>Golden Visa</h3><p>10-year UAE residency for investors, entrepreneurs, and specialised talent.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','corporate')"><div style="font-size:24px;margin-bottom:14px">👨‍👩‍👧‍👦</div><h3>Family Visa</h3><p>Sponsor your spouse, children, and dependents for UAE residency with full support.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','corporate')"><div style="font-size:24px;margin-bottom:14px">🏦</div><h3>Bank Account Opening</h3><p>Corporate bank account setup across leading UAE banks — we prepare and submit all documentation.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','corporate')"><div style="font-size:24px;margin-bottom:14px">📜</div><h3>Legal Translation & Attestation</h3><p>Certified translation and official attestation of documents for UAE government use.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','corporate')"><div style="font-size:24px;margin-bottom:14px">✍️</div><h3>Notary & Will Services</h3><p>Official notarisation and DIFC will registration for expats living in the UAE.</p><div class="svc-link">Learn More →</div></div>
+        </div>
+      </div>
+
+      <!-- Ancillary -->
+      <div class="svc-category reveal" style="transition-delay:.2s">
+        <div class="tag">Category 04</div>
+        <h2 class="svc-category-title">Ancillary Services</h2>
+        <p class="svc-category-sub">Value-added services to help your business grow, protect your brand, and build a strong team.</p>
+        <div class="svc-list-grid">
+          <div class="svc-list-card" onclick="navigate('service','ancillary')"><div style="font-size:24px;margin-bottom:14px">💼</div><h3>Payroll Management</h3><p>Full payroll processing, WPS (Wages Protection System) registration and compliance.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','ancillary')"><div style="font-size:24px;margin-bottom:14px">🔖</div><h3>Trademark Registration</h3><p>UAE and international trademark filing to protect your brand identity and intellectual property.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','ancillary')"><div style="font-size:24px;margin-bottom:14px">📱</div><h3>Marketing Services</h3><p>Website design, marketing materials, and social media management to grow your brand.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','ancillary')"><div style="font-size:24px;margin-bottom:14px">📋</div><h3>Business Plan Drafting</h3><p>Professional business plans for bank submissions, investor presentations, and visa applications.</p><div class="svc-link">Learn More →</div></div>
+          <div class="svc-list-card" onclick="navigate('service','ancillary')"><div style="font-size:24px;margin-bottom:14px">🎯</div><h3>Strategy & Training</h3><p>Business strategy building, implementation support, and staff training programs.</p><div class="svc-link">Learn More →</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div id="footer-services"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: SERVICE DETAIL (dynamic)
+════════════════════════════════════════════ -->
+<div id="page-service" class="page">
+  <div class="svc-detail-hero" id="svcDetailHero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="breadcrumb" id="svcBreadcrumb"></div>
+      <div class="tag" id="svcTag"></div>
+      <h1 id="svcTitle" style="font-family:var(--ff-display);font-size:clamp(36px,5vw,68px);font-weight:500;line-height:1.1;position:relative;z-index:1"></h1>
+      <p id="svcSubtitle" style="font-size:16px;color:var(--text-muted);max-width:560px;line-height:1.85;margin-top:16px;position:relative;z-index:1"></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="svc-detail-body">
+      <div class="svc-detail-layout">
+        <div class="svc-detail-main" id="svcDetailMain"></div>
+        <div>
+          <div class="svc-sidebar-card">
+            <h4>Get a Free Quote</h4>
+            <p>Speak to our experts and get a tailored proposal for your specific requirements.</p>
+            <button class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:10px" onclick="navigate('contact')">Book Consultation</button>
+            <a href="https://wa.me/971502165471" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center">WhatsApp Us</a>
+            <ul class="svc-other-list" id="svcOtherList"></ul>
+          </div>
+          <div class="svc-sidebar-card">
+            <h4 style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Contact</h4>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+              <a href="tel:+971502165471" style="font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">📞 +971 50 216 5471</a>
+              <a href="mailto:fiona13693@gmail.com" style="font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">✉️ fiona13693@gmail.com</a>
+              <a href="https://wa.me/971502165471" target="_blank" style="font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">💬 WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-service"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: ABOUT
+════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span>›</span><span>About</span></div>
+      <div class="tag">Our Story</div>
+      <h1>Who We Are &<br/><em style="font-style:italic;color:var(--gold)">Why It Matters</em></h1>
+      <p>A team of passionate UAE business experts committed to making every entrepreneur's Dubai dream a reality.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="about-intro-grid">
+        <div class="reveal-left">
+          <div class="tag">Our Mission</div>
+          <h2 class="section-title">Making UAE Business<br/>Setup <em style="font-style:italic;color:var(--gold)">Effortless</em></h2>
+          <div class="divider"></div>
+          <p style="color:var(--text-muted);font-size:15px;line-height:1.9;margin-bottom:18px">Star One was founded with a clear purpose: to remove the complexity and uncertainty from setting up a business in the UAE. We know how overwhelming the process can feel — the paperwork, the regulations, the different authorities. We take all of that off your hands.</p>
+          <p style="color:var(--text-muted);font-size:15px;line-height:1.9;margin-bottom:28px">Whether you're an entrepreneur from the UK looking to expand into the Middle East, or a South African business owner wanting to establish a presence in Dubai, we provide the same concierge-level experience: expert, personal, and fully managed.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn btn-gold" onclick="navigate('contact')" style="cursor:pointer">Work With Us</a>
+            <a class="btn btn-outline" onclick="navigate('services')" style="cursor:pointer">Our Services</a>
+          </div>
+        </div>
+        <div class="about-visual reveal" style="transition-delay:.2s">
+          <div class="about-visual-inner">
+            <div class="about-big-quote">"Every great business starts with a single, <em>bold decision</em> to begin."</div>
+            <p style="font-size:12px;color:var(--text-dim);margin-top:20px;letter-spacing:.1em;text-transform:uppercase">— Star One Philosophy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--dark-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 0">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:48px">
+        <div class="tag" style="justify-content:center">What We Stand For</div>
+        <h2 class="section-title" style="text-align:center">Our Core Values</h2>
+      </div>
+      <div class="about-values-grid">
+        <div class="value-card reveal"><div class="value-icon">🤝</div><h3>Client-First Always</h3><p>Your success is our success. Every decision we make is guided by what's best for your business and your future.</p></div>
+        <div class="value-card reveal" style="transition-delay:.1s"><div class="value-icon">⚖️</div><h3>Integrity & Transparency</h3><p>No hidden fees, no surprises. We give you clear, honest advice and a complete picture before you commit to anything.</p></div>
+        <div class="value-card reveal" style="transition-delay:.2s"><div class="value-icon">🎯</div><h3>Precision & Excellence</h3><p>The details matter in business setup. We pursue perfection in every document, approval, and process we handle.</p></div>
+        <div class="value-card reveal" style="transition-delay:.25s"><div class="value-icon">⚡</div><h3>Speed & Efficiency</h3><p>Time is money. We've refined our processes to move quickly — without sacrificing quality or compliance.</p></div>
+        <div class="value-card reveal" style="transition-delay:.3s"><div class="value-icon">🌍</div><h3>Global Perspective</h3><p>We understand international clients. Our team speaks your language — literally and culturally.</p></div>
+        <div class="value-card reveal" style="transition-delay:.35s"><div class="value-icon">🔄</div><h3>Long-Term Partnership</h3><p>We're not a one-time service. We grow with your business — from day one to year ten and beyond.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:16px">
+        <div class="tag" style="justify-content:center">The Team</div>
+        <h2 class="section-title" style="text-align:center">Expert Advisors,<br/>Real Results</h2>
+        <p style="color:var(--text-muted);max-width:420px;margin:16px auto 0;font-size:14px">Our team combines decades of UAE regulatory, legal, and financial expertise.</p>
+      </div>
+      <div class="team-grid reveal" style="transition-delay:.1s">
+        <div class="team-card"><div class="team-avatar">F</div><h3>Fiona</h3><p>Founder & CEO</p><p class="team-bio">Business formation specialist with 10+ years guiding international entrepreneurs through UAE setup.</p></div>
+        <div class="team-card"><div class="team-avatar">V</div><h3>Vipul Aggarwal</h3><p>Head of Corporate Services</p><p class="team-bio">Expert in immigration, compliance, and corporate structuring for multinationals and SMEs in the UAE.</p></div>
+        <div class="team-card"><div class="team-avatar">S</div><h3>Senior Advisor</h3><p>Compliance & Tax</p><p class="team-bio">VAT, Corporate Tax, and regulatory compliance specialist with deep knowledge of UAE FTA requirements.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UAE facts band -->
+  <section style="background:var(--dark-2);border-top:1px solid var(--border);padding:72px 0">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:48px">
+        <div class="tag" style="justify-content:center">Why the UAE</div>
+        <h2 class="section-title" style="text-align:center">The World's Most Business-<em style="font-style:italic;color:var(--gold)">Friendly</em> Environment</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:900px;margin:0 auto" class="reveal" style="transition-delay:.1s">
+        <div style="background:var(--dark-3);padding:36px 28px;text-align:center;border:1px solid var(--border)"><div style="font-family:var(--ff-display);font-size:48px;color:var(--gold);font-weight:500">0%</div><div style="font-size:12px;color:var(--text-muted);margin-top:8px">Personal Income Tax</div></div>
+        <div style="background:var(--dark-3);padding:36px 28px;text-align:center;border:1px solid var(--border)"><div style="font-family:var(--ff-display);font-size:48px;color:var(--gold);font-weight:500">100%</div><div style="font-size:12px;color:var(--text-muted);margin-top:8px">Foreign Ownership (Free Zones)</div></div>
+        <div style="background:var(--dark-3);padding:36px 28px;text-align:center;border:1px solid var(--border)"><div style="font-family:var(--ff-display);font-size:48px;color:var(--gold);font-weight:500">40+</div><div style="font-size:12px;color:var(--text-muted);margin-top:8px">Free Zones Available</div></div>
+        <div style="background:var(--dark-3);padding:36px 28px;text-align:center;border:1px solid var(--border)"><div style="font-family:var(--ff-display);font-size:48px;color:var(--gold);font-weight:500">Top 3</div><div style="font-size:12px;color:var(--text-muted);margin-top:8px">Global Logistics Hub</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-about"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: CONTACT
+════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span>›</span><span>Contact</span></div>
+      <div class="tag">Get in Touch</div>
+      <h1>Start Your UAE<br/><em style="font-style:italic;color:var(--gold)">Journey Today</em></h1>
+      <p>Book a free consultation or send us an enquiry. Our team responds within 24 hours.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="contact-page-grid">
+      <div class="contact-page-left reveal-left">
+        <div class="tag">Reach Us</div>
+        <h2 class="section-title">We're Here<br/>to Help</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-muted);font-size:14px;line-height:1.9;margin-bottom:8px">Whether you have a specific service in mind or just want to explore your options — reach out and we'll guide you.</p>
+        <div class="contact-page-info">
+          <div class="contact-page-item">
+            <div class="ci-icon">📞</div>
+            <div><h4>Phone</h4><a href="tel:+971502165471">+971 50 216 5471</a></div>
+          </div>
+          <div class="contact-page-item">
+            <div class="ci-icon">✉️</div>
+            <div><h4>Email</h4><a href="mailto:fiona13693@gmail.com">fiona13693@gmail.com</a></div>
+          </div>
+          <div class="contact-page-item">
+            <div class="ci-icon">📍</div>
+            <div><h4>Office</h4><p>Dubai, United Arab Emirates</p></div>
+          </div>
+          <div class="contact-page-item">
+            <div class="ci-icon">🕐</div>
+            <div><h4>Business Hours</h4><p>Mon–Fri: 9:00 AM – 6:00 PM GST<br/>Sat: 10:00 AM – 2:00 PM GST</p></div>
+          </div>
+        </div>
+        <a href="https://wa.me/971502165471" target="_blank" class="wa-block" style="margin-top:24px">
+          <div class="wa-icon">💬</div>
+          <div><h4>WhatsApp for Fastest Response</h4><p>Available during business hours. Quick replies guaranteed.</p></div>
+        </a>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="contact-form-card">
+          <div id="contactPageForm">
+            <h3 style="font-family:var(--ff-display);font-size:24px;margin-bottom:6px">Send an Enquiry</h3>
+            <p style="color:var(--text-muted);font-size:13px;margin-bottom:28px">Fill out the form below and we'll be in touch within 24 hours.</p>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">First Name *</label><input class="form-input" id="cpfname" placeholder="John"/></div>
+              <div class="form-group"><label class="form-label">Last Name *</label><input class="form-input" id="cplname" placeholder="Smith"/></div>
+            </div>
+            <div class="form-group"><label class="form-label">Email *</label><input class="form-input" id="cpemail" type="email" placeholder="john@company.com"/></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="cpphone" placeholder="+44 20 1234 5678"/></div>
+              <div class="form-group"><label class="form-label">Country</label><input class="form-input" id="cpcountry" placeholder="United Kingdom"/></div>
+            </div>
+            <div class="form-group"><label class="form-label">Service Interested In</label>
+              <select class="form-select" id="cpservice">
+                <option value="">Select a service…</option>
+                <option>Business Setup & Company Formation</option>
+                <option>Employment Visa</option>
+                <option>Golden Visa</option>
+                <option>Family Visa</option>
+                <option>Accounting & Bookkeeping</option>
+                <option>Audit Services</option>
+                <option>VAT & Corporate Tax</option>
+                <option>ESR / AML / UBO Compliance</option>
+                <option>Bank Account Opening</option>
+                <option>Trademark Registration</option>
+                <option>Payroll Management</option>
+                <option>Document Attestation</option>
+                <option>Business Plan Drafting</option>
+                <option>Marketing Services</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">How Did You Hear About Us?</label>
+              <select class="form-select" id="cpsource">
+                <option value="">Select…</option>
+                <option>Google Search</option>
+                <option>Social Media</option>
+                <option>Referral / Word of Mouth</option>
+                <option>Online Advertisement</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" id="cpmsg" placeholder="Tell us about your business and what you're looking to set up in the UAE…"></textarea></div>
+            <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="submitContactPage()">Submit Enquiry →</button>
+          </div>
+          <div class="form-success" id="contactPageSuccess">
+            <div class="form-success-icon">✅</div>
+            <h3>Enquiry Received!</h3>
+            <p>Thank you for reaching out. One of our consultants will contact you within 24 hours.<br/><br/>In the meantime, feel free to WhatsApp us for a faster response.</p>
+            <a href="https://wa.me/971502165471" target="_blank" class="btn btn-gold" style="margin-top:20px">Open WhatsApp →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-contact"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: INSIGHTS
+════════════════════════════════════════════ -->
+<div id="page-insights" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span>›</span><span>Insights</span></div>
+      <div class="tag">Knowledge Hub</div>
+      <h1>Business Insights &<br/><em style="font-style:italic;color:var(--gold)">UAE Market News</em></h1>
+      <p>Expert guidance, regulatory updates, and business tips to help you succeed in the UAE.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="insights-filter" id="insightsFilter">
+        <button class="service-tab active" onclick="filterInsights('all',this)">All</button>
+        <button class="service-tab" onclick="filterInsights('setup',this)">Business Setup</button>
+        <button class="service-tab" onclick="filterInsights('tax',this)">Tax & Compliance</button>
+        <button class="service-tab" onclick="filterInsights('visa',this)">Visa & Immigration</button>
+        <button class="service-tab" onclick="filterInsights('market',this)">Market Insights</button>
+      </div>
+      <div id="insightsGrid" class="insights-grid"></div>
+    </div>
+  </section>
+  <div id="footer-insights"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: ARTICLE DETAIL
+════════════════════════════════════════════ -->
+<div id="page-article" class="page">
+  <div class="page-hero" id="articleHero">
+    <div class="page-hero-bg"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="breadcrumb" id="articleBreadcrumb"></div>
+      <div class="tag" id="articleCatTag"></div>
+      <h1 id="articleTitle" style="font-family:var(--ff-display);font-size:clamp(32px,5vw,60px);font-weight:500;line-height:1.15;max-width:740px"></h1>
+      <div id="articleMeta" style="margin-top:16px;font-size:13px;color:var(--text-muted)"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="article-layout">
+      <article class="article-content" id="articleBody"></article>
+      <aside>
+        <div class="article-sidebar-card">
+          <h4>Free Consultation</h4>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7">Ready to set up your business in the UAE? Get expert advice.</p>
+          <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="navigate('contact')">Book Now →</button>
+        </div>
+        <div class="article-sidebar-card">
+          <h4>Related Articles</h4>
+          <ul class="related-list" id="relatedArticles"></ul>
+        </div>
+        <div class="article-sidebar-card">
+          <h4 style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Share This</h4>
+          <div style="display:flex;gap:8px">
+            <button onclick="navigator.clipboard.writeText(window.location.href);showToast('Link copied!')" class="btn btn-dark" style="padding:8px 14px;font-size:11px">Copy Link</button>
+            <a href="https://wa.me/?text=Check out this article from Star One" target="_blank" class="btn btn-outline" style="padding:8px 14px;font-size:11px">WhatsApp</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div id="footer-article"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: PRIVACY POLICY
+════════════════════════════════════════════ -->
+<div id="page-privacy" class="page">
+  <div class="page-hero" style="padding:140px 0 64px">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span>›</span><span>Privacy Policy</span></div>
+      <h1 style="font-family:var(--ff-display);font-size:clamp(36px,4.5vw,64px);font-weight:500;position:relative;z-index:1">Privacy Policy</h1>
+      <p style="color:var(--text-muted);margin-top:12px;position:relative;z-index:1">Last updated: January 2025</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal-content">
+      <h2>Introduction</h2>
+      <p>Star One Business Consultancy ("Star One", "we", "us", "our") is committed to protecting the privacy of our clients and website visitors. This Privacy Policy explains how we collect, use, and protect your personal information.</p>
+      <h2>Information We Collect</h2>
+      <h3>Personal Information</h3>
+      <p>We may collect the following personal information when you interact with us:</p>
+      <ul><li>Name and contact details (email, phone number)</li><li>Business information (company name, business type, industry)</li><li>Financial information necessary for business setup services</li><li>Passport and identity documents for visa processing</li><li>Communication records and enquiry details</li></ul>
+      <h3>Technical Information</h3>
+      <p>When you visit our website, we may automatically collect:</p>
+      <ul><li>IP address and browser information</li><li>Pages visited and time spent on the website</li><li>Referring website and search terms</li></ul>
+      <h2>How We Use Your Information</h2>
+      <p>We use your personal information to:</p>
+      <ul><li>Provide business setup and advisory services</li><li>Process visa and government applications on your behalf</li><li>Communicate with you about your case and services</li><li>Send you relevant business insights and market updates (with your consent)</li><li>Improve our services and website experience</li><li>Comply with UAE legal and regulatory requirements</li></ul>
+      <h2>Data Security</h2>
+      <p>We implement industry-standard security measures to protect your personal information, including encrypted data transmission, secure document storage, and restricted access controls. However, no method of electronic transmission is 100% secure.</p>
+      <h2>Data Sharing</h2>
+      <p>We do not sell or rent your personal information. We may share your data with:</p>
+      <ul><li>UAE government authorities as required for business formation and visa processing</li><li>Trusted service providers (banks, auditors, legal translators) necessary to fulfil your service</li><li>Our professional advisors (lawyers, accountants) for compliance purposes</li></ul>
+      <h2>Data Retention</h2>
+      <p>We retain your personal information for as long as necessary to fulfil the services you engaged us for and to comply with UAE legal requirements (typically 5–7 years for business records).</p>
+      <h2>Your Rights</h2>
+      <p>You have the right to access, correct, or request deletion of your personal information (subject to legal obligations). To exercise these rights, contact us at fiona13693@gmail.com.</p>
+      <h2>Contact Us</h2>
+      <p>For any privacy-related questions, please contact Star One Business Consultancy, Dubai, UAE. Email: fiona13693@gmail.com | Phone: +971 50 216 5471</p>
+    </div>
+  </div>
+  <div id="footer-privacy"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: TERMS
+════════════════════════════════════════════ -->
+<div id="page-terms" class="page">
+  <div class="page-hero" style="padding:140px 0 64px">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="navigate('home')">Home</a><span>›</span><span>Terms & Conditions</span></div>
+      <h1 style="font-family:var(--ff-display);font-size:clamp(36px,4.5vw,64px);font-weight:500;position:relative;z-index:1">Terms & Conditions</h1>
+      <p style="color:var(--text-muted);margin-top:12px;position:relative;z-index:1">Last updated: January 2025</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal-content">
+      <h2>Agreement to Terms</h2>
+      <p>By engaging Star One Business Consultancy for services or accessing our website, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use our services.</p>
+      <h2>Services</h2>
+      <p>Star One provides business consultancy and advisory services including but not limited to: company formation, visa processing, compliance services, and ancillary business support in the UAE. The scope of services is defined in individual service agreements or proposals issued to each client.</p>
+      <h2>Client Responsibilities</h2>
+      <p>Clients are responsible for:</p>
+      <ul><li>Providing accurate and complete information and documentation</li><li>Responding to requests for information in a timely manner</li><li>Notifying us of any changes to their circumstances that may affect the service</li><li>Payment of fees as agreed in the service proposal</li></ul>
+      <h2>Fees and Payment</h2>
+      <p>Service fees are outlined in individual proposals or engagement letters. Government fees (DED, MOHRE, ICA, etc.) are payable in addition to our service fees and are subject to change by the relevant authorities. Star One reserves the right to adjust pricing for government fee changes beyond our control.</p>
+      <h2>Timelines</h2>
+      <p>Processing timelines are estimates based on typical government processing times and are not guaranteed. Star One is not liable for delays caused by government authorities, incomplete client documentation, or circumstances beyond our control.</p>
+      <h2>Confidentiality</h2>
+      <p>Both parties agree to maintain confidentiality regarding information shared during the engagement. Star One will not disclose client information to third parties except as required to fulfil the service or comply with UAE law.</p>
+      <h2>Limitation of Liability</h2>
+      <p>Star One's liability for any claim arising from our services is limited to the fees paid for the specific service in question. We are not liable for indirect, consequential, or special damages, or for losses arising from government decisions or regulatory changes.</p>
+      <h2>Intellectual Property</h2>
+      <p>All content on this website, including text, graphics, and branding, is the property of Star One Business Consultancy and may not be reproduced without written permission.</p>
+      <h2>Governing Law</h2>
+      <p>These Terms & Conditions are governed by the laws of the United Arab Emirates. Any disputes shall be subject to the exclusive jurisdiction of the courts of Dubai, UAE.</p>
+      <h2>Contact</h2>
+      <p>Star One Business Consultancy, Dubai, UAE. Email: fiona13693@gmail.com | Phone: +971 50 216 5471</p>
+    </div>
+  </div>
+  <div id="footer-terms"></div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: ADMIN LOGIN
+════════════════════════════════════════════ -->
+<div id="page-admin-login" class="page">
+  <div class="admin-login">
+    <div class="admin-login-card">
+      <div style="width:52px;height:52px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:24px;font-weight:700;color:#000;margin:0 auto 20px">S1</div>
+      <h2>Admin Portal</h2>
+      <p>Star One Business Consultancy</p>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="adminEmail" type="email" placeholder="admin@starone.ae" value="admin@starone.ae"/></div>
+      <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="adminPass" type="password" placeholder="••••••••" value="starone2025"/></div>
+      <div class="admin-error" id="adminLoginError">Incorrect email or password. Please try again.</div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px" onclick="adminLogin()">Sign In →</button>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:20px">Demo: admin@starone.ae / starone2025</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE: ADMIN DASHBOARD
+════════════════════════════════════════════ -->
+<div id="page-admin" class="page">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="admin-sidebar-logo">S1</div>
+        <div>
+          <div style="font-family:var(--ff-display);font-size:15px;font-weight:500">Star One</div>
+          <div style="font-size:10px;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;margin-top:1px">Admin Portal</div>
+        </div>
+      </div>
+      <nav class="admin-nav">
+        <a onclick="showAdminTab('dashboard')" id="anav-dashboard" class="active"><span class="nav-icon">📊</span>Dashboard</a>
+        <a onclick="showAdminTab('articles')" id="anav-articles"><span class="nav-icon">📝</span>Articles</a>
+        <a onclick="showAdminTab('enquiries')" id="anav-enquiries"><span class="nav-icon">📬</span>Enquiries <span class="notif-dot" id="enqDot"></span></a>
+        <a onclick="showAdminTab('settings')" id="anav-settings"><span class="nav-icon">⚙️</span>Settings</a>
+        <a onclick="adminLogout()" style="margin-top:auto;border-top:1px solid var(--border);padding-top:16px"><span class="nav-icon">🚪</span>Sign Out</a>
+      </nav>
+    </div>
+
+    <!-- Main -->
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1 id="adminPageTitle">Dashboard</h1>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="btn btn-outline" style="padding:8px 16px;font-size:11px" onclick="navigate('home')">← View Site</button>
+          <button class="btn btn-gold" style="padding:8px 16px;font-size:11px" onclick="openArticleEditor()">+ New Article</button>
+        </div>
+      </div>
+      <div class="admin-content">
+
+        <!-- DASHBOARD TAB -->
+        <div id="tab-dashboard">
+          <div class="admin-stats-grid">
+            <div class="admin-stat-card"><h4>Total Articles</h4><div class="stat-val" id="stat-articles">0</div><p>Published & Draft</p></div>
+            <div class="admin-stat-card"><h4>Enquiries</h4><div class="stat-val" id="stat-enquiries">0</div><p>Total received</p></div>
+            <div class="admin-stat-card"><h4>Published</h4><div class="stat-val" id="stat-published">0</div><p>Live articles</p></div>
+            <div class="admin-stat-card"><h4>Draft</h4><div class="stat-val" id="stat-drafts">0</div><p>Unpublished</p></div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>Recent Articles</h3><button class="btn btn-outline" style="padding:6px 14px;font-size:11px" onclick="showAdminTab('articles')">View All</button></div>
+            <div class="admin-card-body"><div id="dashRecentArticles"></div></div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>Recent Enquiries</h3><button class="btn btn-outline" style="padding:6px 14px;font-size:11px" onclick="showAdminTab('enquiries')">View All</button></div>
+            <div class="admin-card-body"><div id="dashRecentEnquiries"></div></div>
+          </div>
+        </div>
+
+        <!-- ARTICLES TAB -->
+        <div id="tab-articles" style="display:none">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+            <h2 style="font-family:var(--ff-display);font-size:22px">Articles</h2>
+            <button class="btn btn-gold" style="padding:10px 20px" onclick="openArticleEditor()">+ New Article</button>
+          </div>
+          <div id="articlesTableWrap"></div>
+        </div>
+
+        <!-- ENQUIRIES TAB -->
+        <div id="tab-enquiries" style="display:none">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+            <h2 style="font-family:var(--ff-display);font-size:22px">Enquiries</h2>
+            <button class="btn btn-dark" style="padding:8px 16px;font-size:11px" onclick="clearEnquiries()">Clear All</button>
+          </div>
+          <div id="enquiriesWrap"></div>
+        </div>
+
+        <!-- SETTINGS TAB -->
+        <div id="tab-settings" style="display:none">
+          <h2 style="font-family:var(--ff-display);font-size:22px;margin-bottom:24px">Settings</h2>
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>Business Details</h3></div>
+            <div class="admin-card-body" style="display:flex;flex-direction:column;gap:16px;max-width:560px">
+              <div class="form-group" style="margin:0"><label class="form-label">Business Name</label><input class="form-input" value="Star One Business Consultancy"/></div>
+              <div class="form-group" style="margin:0"><label class="form-label">Phone</label><input class="form-input" value="+971 50 216 5471"/></div>
+              <div class="form-group" style="margin:0"><label class="form-label">Email</label><input class="form-input" value="fiona13693@gmail.com"/></div>
+              <div class="form-group" style="margin:0"><label class="form-label">WhatsApp Number</label><input class="form-input" value="971502165471"/></div>
+              <button class="btn btn-gold" style="align-self:flex-start" onclick="showToast('Settings saved ✓')">Save Changes</button>
+            </div>
+          </div>
+          <div class="admin-card" style="margin-top:16px">
+            <div class="admin-card-header"><h3>Change Password</h3></div>
+            <div class="admin-card-body" style="display:flex;flex-direction:column;gap:16px;max-width:380px">
+              <div class="form-group" style="margin:0"><label class="form-label">Current Password</label><input class="form-input" type="password" placeholder="••••••••"/></div>
+              <div class="form-group" style="margin:0"><label class="form-label">New Password</label><input class="form-input" type="password" placeholder="••••••••"/></div>
+              <button class="btn btn-gold" style="align-self:flex-start" onclick="showToast('Password updated ✓')">Update Password</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ARTICLE EDITOR MODAL
+════════════════════════════════════════════ -->
+<div id="articleModal" class="modal-backdrop hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">New Article</h3>
+      <button class="modal-close" onclick="closeModal('articleModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editArticleId"/>
+      <div class="editor-form">
+        <div class="form-group" style="margin:0"><label class="form-label">Article Title *</label><input class="form-input" id="artTitle" placeholder="Enter a compelling title…"/></div>
+        <div class="form-row">
+          <div class="form-group" style="margin:0"><label class="form-label">Category</label>
+            <select class="form-select" id="artCategory">
+              <option value="setup">Business Setup</option>
+              <option value="tax">Tax & Compliance</option>
+              <option value="visa">Visa & Immigration</option>
+              <option value="market">Market Insights</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0"><label class="form-label">Read Time</label><input class="form-input" id="artReadTime" placeholder="e.g. 5 min read"/></div>
+        </div>
+        <div class="form-group" style="margin:0"><label class="form-label">Excerpt / Summary *</label><textarea class="form-textarea" id="artExcerpt" style="min-height:80px" placeholder="Brief summary shown in article cards (2-3 sentences)…"></textarea></div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Article Content (HTML supported)</label>
+          <div class="editor-toolbar">
+            <button onclick="insertFormat('<h2>','</h2>','artBody')">H2</button>
+            <button onclick="insertFormat('<h3>','</h3>','artBody')">H3</button>
+            <button onclick="insertFormat('<p>','</p>','artBody')">P</button>
+            <button onclick="insertFormat('<strong>','</strong>','artBody')"><b>B</b></button>
+            <button onclick="insertFormat('<em>','</em>','artBody')"><i>I</i></button>
+            <button onclick="insertFormat('<ul>\n<li>','</li>\n</ul>','artBody')">List</button>
+            <button onclick="insertFormat('<blockquote>','</blockquote>','artBody')">Quote</button>
+          </div>
+          <textarea class="editor-textarea" id="artBody" placeholder="Write your full article here. You can use HTML tags for formatting."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">Author Name</label>
+            <input class="form-input" id="artAuthor" placeholder="Fiona" value="Fiona"/>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">Meta Title (SEO)</label>
+            <input class="form-input" id="artMetaTitle" placeholder="Auto-filled if blank"/>
+          </div>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Meta Description (SEO)</label>
+          <input class="form-input" id="artMetaDesc" placeholder="155 characters max for search engines…"/>
+        </div>
+        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+          <label class="switch-label">
+            <label class="switch"><input type="checkbox" id="artPublished" checked/><span class="slider"></span></label>
+            <span style="font-size:13px;font-weight:500">Publish immediately</span>
+          </label>
+          <label class="switch-label">
+            <label class="switch"><input type="checkbox" id="artFeatured"/><span class="slider"></span></label>
+            <span style="font-size:13px;font-weight:500">Feature on homepage</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-dark" onclick="closeModal('articleModal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveArticle()">Save Article →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FOOTER TEMPLATE (injected via JS)
+════════════════════════════════════════════ -->
+<template id="footerTemplate">
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" onclick="navigate('home')" style="margin-bottom:12px">
+            <div class="logo-mark">S1</div>
+            <div class="logo-text">Star <span>One</span></div>
+          </div>
+          <p>Dubai's trusted partner for business setup, compliance, and corporate services. Helping entrepreneurs worldwide establish their UAE presence.</p>
+          <div style="display:flex;gap:12px;margin-top:20px">
+            <a href="https://wa.me/971502165471" target="_blank" style="width:36px;height:36px;background:var(--dark-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;border-radius:2px;text-decoration:none;transition:border-color .2s;font-size:16px" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">💬</a>
+            <a href="tel:+971502165471" style="width:36px;height:36px;background:var(--dark-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;border-radius:2px;text-decoration:none;transition:border-color .2s;font-size:16px" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">📞</a>
+            <a href="mailto:fiona13693@gmail.com" style="width:36px;height:36px;background:var(--dark-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;border-radius:2px;text-decoration:none;transition:border-color .2s;font-size:16px" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">✉️</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a onclick="navigate('service','business-setup')">Business Setup</a></li>
+            <li><a onclick="navigate('service','compliance')">Compliance</a></li>
+            <li><a onclick="navigate('service','corporate')">Corporate Services</a></li>
+            <li><a onclick="navigate('service','ancillary')">Ancillary Services</a></li>
+            <li><a onclick="navigate('service','corporate')">Golden Visa</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a onclick="navigate('about')">About Star One</a></li>
+            <li><a onclick="navigate('insights')">Insights</a></li>
+            <li><a onclick="navigate('contact')">Contact Us</a></li>
+            <li><a onclick="navigate('admin-login')">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+971502165471">+971 50 216 5471</a></li>
+            <li><a href="mailto:fiona13693@gmail.com">fiona13693@gmail.com</a></li>
+            <li><a>Dubai, UAE</a></li>
+            <li><a href="https://wa.me/971502165471" target="_blank">WhatsApp Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Star One Business Consultancy. All rights reserved.</p>
+        <div class="footer-legal">
+          <a onclick="navigate('privacy')">Privacy Policy</a>
+          <a onclick="navigate('terms')">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-icon">✦</span><span id="toastMsg"></span></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA STORE (localStorage with fallback)
+════════════════════════════════════════════ */
+const KEYS = {articles:'s1_articles', enquiries:'s1_enquiries', adminAuth:'s1_auth'};
+
+function getData(key){ try{return JSON.parse(localStorage.getItem(key)||'null')}catch{return null} }
+function setData(key,val){ try{localStorage.setItem(key,JSON.stringify(val))}catch{} }
+
+/* ── DEFAULT ARTICLES ── */
+const defaultArticles = [
+  {
+    id:'a1', title:'How to Set Up an LLC in Dubai: The Complete 2025 Guide',
+    category:'setup', excerpt:'Setting up a Limited Liability Company (LLC) in Dubai remains one of the most popular routes for foreign entrepreneurs. Here\'s everything you need to know for 2025.',
+    body:`<h2>Why Choose an LLC in Dubai?</h2><p>A Limited Liability Company (LLC) is the most popular business structure on the Dubai Mainland. It offers full access to the UAE market, the ability to bid for government contracts, and the flexibility to operate across all Emirates.</p><h2>Ownership Structure</h2><p>Since the 2021 Commercial Companies Law amendment, foreign investors can now hold 100% ownership in most business activities on the Dubai Mainland — a significant change from the previous 49% cap.</p><h2>Step-by-Step Process</h2><ul><li>Choose your business activity and trade name</li><li>Get initial approval from the Department of Economic Development (DED)</li><li>Secure a physical office address (Ejari tenancy contract)</li><li>Submit the Memorandum of Association (MOA)</li><li>Pay license fees and collect your trade license</li><li>Register with MOHRE and apply for establishment card</li></ul><h2>Costs to Expect</h2><p>Total setup costs typically range from AED 15,000 to AED 25,000 depending on your business activity, office location, and the number of visa allocations required.</p><blockquote>Star One can complete your LLC formation in as little as 7 working days, including all government approvals.</blockquote><h2>Next Steps</h2><p>Once your license is issued, you'll need to open a corporate bank account, register for VAT (if applicable), and begin your visa quota applications for any employees.</p>`,
+    author:'Fiona', readTime:'7 min read', published:true, featured:true,
+    metaTitle:'How to Set Up an LLC in Dubai 2025 | Star One', metaDesc:'Complete guide to LLC company formation in Dubai. Learn costs, timeline, and the step-by-step process for 2025.',
+    date:'15 Jan 2025', timestamp:Date.now()-7*86400000
+  },
+  {
+    id:'a2', title:'UAE Corporate Tax 2025: What Every Business Owner Must Know',
+    category:'tax', excerpt:'The UAE Corporate Tax regime, effective June 2023, has changed the compliance landscape. Here\'s a clear breakdown of what applies to your business.',
+    body:`<h2>Overview of UAE Corporate Tax</h2><p>The UAE introduced Corporate Tax at a rate of 9% on taxable income exceeding AED 375,000. Businesses with revenue below this threshold benefit from a 0% rate.</p><h2>Who is Affected?</h2><ul><li>All UAE mainland businesses</li><li>Free Zone entities earning income from UAE mainland sources</li><li>Foreign entities with a permanent establishment in the UAE</li></ul><h2>Qualifying Free Zone Persons</h2><p>Free Zone companies can maintain a 0% rate on their qualifying income, provided they meet the substance requirements and do not conduct business with UAE mainland entities.</p><h2>Registration Requirements</h2><p>All UAE entities must register for Corporate Tax with the Federal Tax Authority (FTA), regardless of whether they are liable to pay. Failure to register carries penalties.</p><blockquote>Star One's tax team handles all Corporate Tax registration, compliance, and annual return filing for UAE businesses.</blockquote>`,
+    author:'Vipul Aggarwal', readTime:'6 min read', published:true, featured:false,
+    metaTitle:'UAE Corporate Tax 2025 Guide | Star One', metaDesc:'Everything UAE businesses need to know about Corporate Tax — rates, registration, and compliance requirements.',
+    date:'22 Jan 2025', timestamp:Date.now()-5*86400000
+  },
+  {
+    id:'a3', title:'Golden Visa UAE: Who Qualifies and How to Apply',
+    category:'visa', excerpt:'The UAE Golden Visa offers 10-year residency to investors, entrepreneurs, and skilled professionals. Find out if you qualify and how Star One can help.',
+    body:`<h2>What is the UAE Golden Visa?</h2><p>The UAE Golden Visa is a long-term residence permit granting holders 10-year renewable residency, with the ability to sponsor family members and household staff.</p><h2>Who Qualifies?</h2><ul><li><strong>Investors:</strong> Real estate investors with property valued at AED 2 million+</li><li><strong>Entrepreneurs:</strong> Founders of established startups with minimum AED 500K capital</li><li><strong>Specialised Talent:</strong> Doctors, scientists, engineers, and artists with recognised achievements</li><li><strong>Outstanding Students:</strong> High-achieving graduates from top UAE and international universities</li></ul><h2>Key Benefits</h2><ul><li>10-year renewable residency (no sponsor required)</li><li>Sponsor unlimited family members</li><li>No requirement to be in the UAE for 6+ months</li><li>Multiple entry visa with no restrictions</li></ul><h2>The Application Process</h2><p>The process typically takes 3–6 weeks from document submission. Star One manages the entire application, from eligibility assessment to final visa stamping.</p>`,
+    author:'Fiona', readTime:'5 min read', published:true, featured:false,
+    metaTitle:'UAE Golden Visa 2025: Eligibility & Application | Star One', metaDesc:'Find out who qualifies for the UAE Golden Visa and how to apply. Complete eligibility guide from Star One.',
+    date:'28 Jan 2025', timestamp:Date.now()-3*86400000
+  },
+  {
+    id:'a4', title:'Dubai Free Zone vs Mainland: Which is Right for Your Business?',
+    category:'setup', excerpt:'One of the first decisions entrepreneurs face is choosing between a Free Zone and a Mainland setup. Each has unique advantages depending on your business model.',
+    body:`<h2>The Key Differences</h2><p>The choice between Free Zone and Mainland depends on your target market, business activity, and long-term goals. There is no one-size-fits-all answer.</p><h2>Dubai Mainland Advantages</h2><ul><li>Trade directly with UAE market (no agent required)</li><li>No restriction on number of visa quotas</li><li>Access to government contracts</li><li>Can operate from any location in UAE</li></ul><h2>Free Zone Advantages</h2><ul><li>100% foreign ownership (pre-dating 2021 mainland reform)</li><li>0% import/export duties within the free zone</li><li>Quick and streamlined setup process</li><li>Sector-specific zones (DMCC for commodities, DIFC for finance, etc.)</li></ul><h2>Which Should You Choose?</h2><p>If your primary market is the UAE and GCC, Mainland is generally recommended. If you're primarily importing/exporting or focusing on international clients, a Free Zone may offer cost advantages.</p><blockquote>Book a free consultation with Star One — we'll analyse your business model and recommend the optimal structure.</blockquote>`,
+    author:'Vipul Aggarwal', readTime:'8 min read', published:true, featured:false,
+    metaTitle:'Dubai Free Zone vs Mainland 2025 | Star One', metaDesc:'Compare Free Zone and Mainland company setup in Dubai. Understand the key differences and choose the right structure.',
+    date:'5 Feb 2025', timestamp:Date.now()-1*86400000
+  }
+];
+
+function initData(){
+  if(!getData(KEYS.articles)) setData(KEYS.articles, defaultArticles);
+}
+initData();
+
+function getArticles(){ return getData(KEYS.articles)||[]; }
+function getEnquiries(){ return getData(KEYS.enquiries)||[]; }
+
+/* ═══════════════════════════════════════════
+   ROUTER
+════════════════════════════════════════════ */
+let currentPage = 'home';
+let currentServiceSlug = null;
+let currentArticleId = null;
+
+function navigate(page, param){
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  
+  // Close mobile menu
+  document.getElementById('mobileMenu').classList.remove('open');
+  
+  // Update admin routes (no nav/footer)
+  const adminPages = ['admin','admin-login'];
+  const showNav = !adminPages.includes(page);
+  document.querySelector('nav').style.display = showNav ? '' : 'none';
+  document.querySelector('.wa-float').style.display = showNav ? '' : 'none';
+  
+  if(page === 'home'){
+    document.getElementById('page-home').classList.add('active');
+    renderFooter('footer-home');
+    renderHomeArticles();
+  } else if(page === 'services'){
+    document.getElementById('page-services').classList.add('active');
+    renderFooter('footer-services');
+  } else if(page === 'service'){
+    currentServiceSlug = param;
+    renderServiceDetail(param);
+    document.getElementById('page-service').classList.add('active');
+    renderFooter('footer-service');
+  } else if(page === 'about'){
+    document.getElementById('page-about').classList.add('active');
+    renderFooter('footer-about');
+  } else if(page === 'contact'){
+    document.getElementById('page-contact').classList.add('active');
+    renderFooter('footer-contact');
+  } else if(page === 'insights'){
+    document.getElementById('page-insights').classList.add('active');
+    renderFooter('footer-insights');
+    renderInsights('all');
+  } else if(page === 'article'){
+    currentArticleId = param;
+    renderArticleDetail(param);
+    document.getElementById('page-article').classList.add('active');
+    renderFooter('footer-article');
+  } else if(page === 'privacy'){
+    document.getElementById('page-privacy').classList.add('active');
+    renderFooter('footer-privacy');
+  } else if(page === 'terms'){
+    document.getElementById('page-terms').classList.add('active');
+    renderFooter('footer-terms');
+  } else if(page === 'admin-login'){
+    document.getElementById('page-admin-login').classList.add('active');
+  } else if(page === 'admin'){
+    if(!getData(KEYS.adminAuth)){navigate('admin-login');return;}
+    document.getElementById('page-admin').classList.add('active');
+    refreshAdminStats();
+    renderAdminArticles();
+    renderAdminEnquiries();
+  }
+  
+  currentPage = page;
+  window.scrollTo({top:0,behavior:'smooth'});
+  initReveal();
+  initCounters();
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER INJECTION
+════════════════════════════════════════════ */
+function renderFooter(targetId){
+  const el = document.getElementById(targetId);
+  if(!el || el.innerHTML.trim()) return;
+  const tpl = document.getElementById('footerTemplate');
+  el.innerHTML = tpl.innerHTML;
+}
+
+/* ═══════════════════════════════════════════
+   ARTICLE HELPERS
+════════════════════════════════════════════ */
+const catLabels = {setup:'Business Setup', tax:'Tax & Compliance', visa:'Visa & Immigration', market:'Market Insights'};
+const catIcons = {setup:'🏢', tax:'📊', visa:'🛂', market:'🌐'};
+const artBgColors = ['#1A1610','#101A14','#101218','#1A1218'];
+
+function articleCardHTML(art, full=false){
+  const bg = artBgColors[['setup','tax','visa','market'].indexOf(art.category)%4] || '#181818';
+  return `<div class="article-card" onclick="navigate('article','${art.id}')">
+    <div class="article-img" style="background:${bg}">
+      <div style="font-size:52px;opacity:.3">${catIcons[art.category]||'📰'}</div>
+      <div class="article-cat-badge">${catLabels[art.category]||art.category}</div>
+    </div>
+    <div class="article-body">
+      <div class="article-date">${art.date || 'Star One Insights'} · ${art.readTime||'5 min read'}</div>
+      <h3>${art.title}</h3>
+      <p>${art.excerpt}</p>
+      <div class="article-readmore">Read Article</div>
+    </div>
+  </div>`;
+}
+
+function renderHomeArticles(){
+  const grid = document.getElementById('homeArticlesGrid');
+  if(!grid) return;
+  const arts = getArticles().filter(a=>a.published).slice(0,3);
+  grid.innerHTML = arts.map(a=>articleCardHTML(a)).join('');
+}
+
+function renderInsights(cat){
+  const grid = document.getElementById('insightsGrid');
+  if(!grid) return;
+  let arts = getArticles().filter(a=>a.published);
+  if(cat && cat!=='all') arts = arts.filter(a=>a.category===cat);
+  
+  // Featured article first
+  const featured = arts.find(a=>a.featured);
+  const rest = arts.filter(a=>!a.featured || cat!=='all');
+  
+  let html = '';
+  if(cat==='all' && featured){
+    const bg = artBgColors[['setup','tax','visa','market'].indexOf(featured.category)%4]||'#181818';
+    html += `<div class="insights-featured" onclick="navigate('article','${featured.id}')">
+      <div class="feat-img" style="background:${bg}">
+        <div style="font-size:80px;opacity:.2">${catIcons[featured.category]||'📰'}</div>
+      </div>
+      <div class="feat-body">
+        <span class="featured-badge">Featured</span>
+        <div class="article-date">${featured.date} · ${featured.readTime||'5 min'}</div>
+        <h2>${featured.title}</h2>
+        <p>${featured.excerpt}</p>
+        <div class="svc-link" style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px">Read Article →</div>
+      </div>
+    </div>`;
+    arts.filter(a=>!a.featured).forEach(a=>{html+=articleCardHTML(a)});
+  } else {
+    arts.forEach(a=>{html+=articleCardHTML(a)});
+  }
+  
+  if(!arts.length) html = `<div style="grid-column:1/-1;text-align:center;padding:80px;color:var(--text-muted)"><div style="font-size:48px;margin-bottom:16px">📝</div><p>No articles in this category yet.</p></div>`;
+  grid.innerHTML = html;
+}
+
+function filterInsights(cat, btn){
+  document.querySelectorAll('#insightsFilter .service-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderInsights(cat);
+}
+
+/* ═══════════════════════════════════════════
+   ARTICLE DETAIL
+════════════════════════════════════════════ */
+function renderArticleDetail(id){
+  const arts = getArticles();
+  const art = arts.find(a=>a.id===id);
+  if(!art){navigate('insights');return;}
+  
+  document.getElementById('articleTitle').textContent = art.title;
+  document.getElementById('articleCatTag').textContent = catLabels[art.category]||art.category;
+  document.getElementById('articleMeta').innerHTML = `<span>${art.date}</span> &nbsp;·&nbsp; <span>${art.author}</span> &nbsp;·&nbsp; <span>${art.readTime}</span>`;
+  document.getElementById('articleBreadcrumb').innerHTML = `<a onclick="navigate('home')">Home</a><span>›</span><a onclick="navigate('insights')">Insights</a><span>›</span><span>${catLabels[art.category]}</span>`;
+  document.getElementById('articleBody').innerHTML = art.body || '<p>Full article content coming soon.</p>';
+  
+  // Related articles
+  const related = arts.filter(a=>a.published && a.id!==id && a.category===art.category).slice(0,4);
+  document.getElementById('relatedArticles').innerHTML = related.length
+    ? related.map(r=>`<li><a onclick="navigate('article','${r.id}')">${r.title}</a></li>`).join('')
+    : '<li><a onclick="navigate(\'insights\')">View all articles →</a></li>';
+}
+
+/* ═══════════════════════════════════════════
+   SERVICE DETAIL DATA
+════════════════════════════════════════════ */
+const serviceData = {
+  'business-setup': {
+    tag:'Business Setup',
+    title:'Business Setup &\nCompany Formation',
+    subtitle:'End-to-end company formation across Dubai Mainland, Free Zones, and Offshore — all government approvals handled.',
+    main:`
+      <h2>Full-Service Company Formation in the UAE</h2>
+      <p>Setting up a business in the UAE involves navigating multiple government entities, choosing the right legal structure, and ensuring all approvals are in place. Star One handles every step — so you can focus on your business from day one.</p>
+      <p>We specialise in Dubai Mainland, all major Free Zones (DMCC, DIFC, ADGM, JAFZA, DAFZA, DSO, and more), as well as Offshore structures in Ras Al Khaimah and Jebel Ali.</p>
+      <h2>Business Structures We Handle</h2>
+      <div class="svc-features-grid">
+        <div class="svc-feature-item"><h4>LLC (Limited Liability Company)</h4><p>Most popular mainland structure. 100% foreign ownership available for most activities since 2021 amendments.</p></div>
+        <div class="svc-feature-item"><h4>Sole Establishment</h4><p>Ideal for individual professionals. Full ownership and simple structure for service-based businesses.</p></div>
+        <div class="svc-feature-item"><h4>Free Zone Company (FZC/FZE)</h4><p>100% foreign ownership, tax benefits, and industry-specific zones across the UAE.</p></div>
+        <div class="svc-feature-item"><h4>Branch Office</h4><p>Extend your existing company into the UAE. Full support for international companies expanding into the UAE market.</p></div>
+        <div class="svc-feature-item"><h4>Civil Company</h4><p>For professionals (doctors, lawyers, engineers). Practice under your own name with full professional licensing.</p></div>
+        <div class="svc-feature-item"><h4>Offshore Company</h4><p>Asset holding, international trade, and wealth structuring. RAK and Jebel Ali offshore options available.</p></div>
+      </div>
+      <h2>Our Setup Process</h2>
+      <ul>
+        <li>Initial consultation and business activity classification</li>
+        <li>Trade name reservation and initial DED approval</li>
+        <li>Memorandum of Association (MOA) drafting and notarisation</li>
+        <li>Office address procurement (Ejari tenancy or flexi-desk)</li>
+        <li>License issuance and establishment card</li>
+        <li>MOHRE registration and visa quota activation</li>
+      </ul>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does company formation take?</div><div class="faq-a">Most LLC formations are completed in 7–14 working days. Free Zone setups can be as fast as 3–5 days. Timeline depends on activity type and document readiness.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be physically present in the UAE?</div><div class="faq-a">In many cases, no. We can handle much of the process remotely with properly attested documents. Some Free Zones do require a one-time visit for visa purposes.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the minimum capital requirement?</div><div class="faq-a">There is no minimum capital requirement for most business activities. Certain financial and regulated activities have specific requirements set by regulators.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I have multiple business activities on one license?</div><div class="faq-a">Yes, DED allows multiple related activities on a single trade license. We advise on grouping activities to minimise license fees.</div></div>
+    `,
+    others: ['Compliance Services','Corporate Services','Ancillary Services'],
+    othersLinks: ['compliance','corporate','ancillary']
+  },
+  'compliance': {
+    tag:'Compliance',
+    title:'Compliance &\nFinancial Services',
+    subtitle:'Stay fully compliant with UAE regulations — accounting, auditing, VAT, Corporate Tax, and AML requirements managed for you.',
+    main:`
+      <h2>UAE Regulatory Compliance Made Simple</h2>
+      <p>Since 2023, the UAE regulatory landscape has become significantly more complex — with Corporate Tax, ESR, AML, and UBO requirements all in effect. Non-compliance carries serious penalties. Star One keeps your business fully compliant, year-round.</p>
+      <h2>Our Compliance Services</h2>
+      <div class="svc-features-grid">
+        <div class="svc-feature-item"><h4>Accounting & Bookkeeping</h4><p>Monthly management accounts, bank reconciliation, accounts payable/receivable, and financial reporting to IFRS standards.</p></div>
+        <div class="svc-feature-item"><h4>Statutory Audit</h4><p>Annual audits by FTA-registered auditors. Required for Free Zone license renewals and bank account maintenance.</p></div>
+        <div class="svc-feature-item"><h4>VAT Compliance</h4><p>VAT registration, quarterly returns, voluntary disclosures, and FTA correspondence handling.</p></div>
+        <div class="svc-feature-item"><h4>Corporate Tax</h4><p>CT registration, transfer pricing documentation, tax group applications, and annual CT return filing.</p></div>
+        <div class="svc-feature-item"><h4>ESR Filing</h4><p>Economic Substance Regulations notification and report filing — essential for certain business activities.</p></div>
+        <div class="svc-feature-item"><h4>AML & UBO</h4><div><p>Anti-Money Laundering policies, Ultimate Beneficial Owner registration, and ongoing compliance monitoring.</p></div></div>
+      </div>
+      <h2>Why Compliance Matters More Now</h2>
+      <ul>
+        <li>UAE Corporate Tax: 9% on taxable income above AED 375,000</li>
+        <li>VAT penalties: AED 1,000–50,000 for late filing</li>
+        <li>UBO non-compliance: AED 100,000+ fines</li>
+        <li>AML violations: Criminal prosecution risk</li>
+        <li>Free Zone license renewal: Requires clean audit</li>
+      </ul>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do Free Zone companies need to pay Corporate Tax?</div><div class="faq-a">Qualifying Free Zone Persons (QFZPs) can benefit from a 0% rate on qualifying income. However, all entities must register for CT and meet substance requirements. We assess your eligibility and manage the process.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When do I need to register for VAT?</div><div class="faq-a">UAE VAT registration is mandatory once your taxable supplies exceed AED 375,000 in 12 months. Voluntary registration is possible from AED 187,500. We handle registration and all ongoing returns.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Who needs an ESR filing?</div><div class="faq-a">Companies conducting "relevant activities" (banking, insurance, investment fund management, holding company business, intellectual property, shipping, headquarters, distribution and service centres) must file ESR notifications and reports.</div></div>
+    `,
+    others:['Business Setup','Corporate Services','Ancillary Services'],
+    othersLinks:['business-setup','corporate','ancillary']
+  },
+  'corporate': {
+    tag:'Corporate Services',
+    title:'Corporate Services &\nImmigration',
+    subtitle:'Visas, banking, legal documentation, and the full suite of corporate services your UAE business needs to operate and grow.',
+    main:`
+      <h2>Complete Corporate Support Services</h2>
+      <p>Running a business in the UAE involves ongoing corporate maintenance — from employee visas to bank accounts and legal documents. Star One provides all of this under one roof, with a dedicated case manager for every client.</p>
+      <h2>Immigration & Visa Services</h2>
+      <div class="svc-features-grid">
+        <div class="svc-feature-item"><h4>Employment Visa</h4><p>Full employment visa processing — labour approval, entry permit, status change, medical, Emirates ID, and visa stamping.</p></div>
+        <div class="svc-feature-item"><h4>Golden Visa</h4><p>10-year UAE residency for investors, entrepreneurs, and specialised talent. Full eligibility assessment and application management.</p></div>
+        <div class="svc-feature-item"><h4>Family / Dependent Visa</h4><p>Sponsor your spouse, children, and parents for UAE residency with full documentation support.</p></div>
+        <div class="svc-feature-item"><h4>National ID (Emirates ID)</h4><p>Emirates ID applications and renewals for all visa holders, handled alongside the visa process.</p></div>
+      </div>
+      <h2>Banking & Legal</h2>
+      <div class="svc-features-grid">
+        <div class="svc-feature-item"><h4>Bank Account Opening</h4><p>Corporate account setup with leading UAE banks. We prepare all documents and manage the submission process.</p></div>
+        <div class="svc-feature-item"><h4>Business Plan Drafting</h4><p>Bank-ready business plans prepared by our team for account opening, investment, and visa applications.</p></div>
+        <div class="svc-feature-item"><h4>Legal Translation</h4><p>Certified Arabic-English document translation by UAE Ministry of Justice approved translators.</p></div>
+        <div class="svc-feature-item"><h4>Notary & Will Services</h4><p>Document notarisation and DIFC registered wills for expats — protect your UAE and global assets.</p></div>
+      </div>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How many visas can my UAE company sponsor?</div><div class="faq-a">Visa quotas depend on your office space size. A standard flexi-desk typically allows 3 visas. Larger offices can support significantly more. We advise on the right office setup for your visa requirements.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does a UAE employment visa take?</div><div class="faq-a">The full employment visa process typically takes 2–4 weeks from MOHRE approval submission to final visa stamping, depending on the applicant's nationality and any additional approvals required.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which UAE bank is easiest to open an account with?</div><div class="faq-a">Eligibility varies by company structure, nationality of shareholders, and business activity. We assess your profile and approach the most suitable bank to maximise approval chances.</div></div>
+    `,
+    others:['Business Setup','Compliance Services','Ancillary Services'],
+    othersLinks:['business-setup','compliance','ancillary']
+  },
+  'ancillary': {
+    tag:'Ancillary Services',
+    title:'Ancillary Business\nServices',
+    subtitle:'Value-added services to help your business grow — payroll, trademark, marketing, and strategic consultancy.',
+    main:`
+      <h2>Supporting Your Business Growth</h2>
+      <p>Beyond setup and compliance, Star One offers a range of services to help your business thrive in the UAE market — protecting your brand, managing your team, and building your strategy.</p>
+      <h2>Our Ancillary Services</h2>
+      <div class="svc-features-grid">
+        <div class="svc-feature-item"><h4>Payroll Management</h4><p>Monthly payroll processing, WPS (Wages Protection System) registration and monthly transfers, and MOHRE compliance.</p></div>
+        <div class="svc-feature-item"><h4>Trademark Registration</h4><p>UAE trademark filing with MOEIC, GCC trademark, and international Madrid Protocol applications.</p></div>
+        <div class="svc-feature-item"><h4>Marketing Services</h4><p>Website design, marketing collateral, social media management — everything to establish your brand in the UAE market.</p></div>
+        <div class="svc-feature-item"><h4>Business Plan Drafting</h4><p>Investor-ready and bank-ready business plans, financial projections, and market analysis tailored to UAE and GCC markets.</p></div>
+        <div class="svc-feature-item"><h4>Strategy Consulting</h4><p>Business strategy building, market entry planning, competitive analysis, and go-to-market execution support.</p></div>
+        <div class="svc-feature-item"><h4>Training & Recruitment</h4><p>Staff training programs for UAE regulatory compliance, and recruitment support to find the right talent for your UAE operations.</p></div>
+      </div>
+      <h2>WPS & Payroll Compliance</h2>
+      <p>The UAE Wages Protection System (WPS) is a mandatory electronic salary transfer system requiring all employers to pay salaries via approved bank channels. Non-compliance results in the freezing of labour services. Star One manages your monthly WPS transfers and maintains full compliance.</p>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is WPS mandatory for all UAE businesses?</div><div class="faq-a">Yes. The WPS is mandatory for all private sector employers in the UAE mainland and most Free Zones. Employers who fail to comply face suspension of MOHRE services and potential fines.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does UAE trademark registration take?</div><div class="faq-a">The UAE trademark registration process typically takes 6–12 months. We file your application, manage any office actions from the trademark office, and handle the full process to grant.</div></div>
+    `,
+    others:['Business Setup','Compliance Services','Corporate Services'],
+    othersLinks:['business-setup','compliance','corporate']
+  }
+};
+
+function renderServiceDetail(slug){
+  const data = serviceData[slug];
+  if(!data){navigate('services');return;}
+  
+  document.getElementById('svcTag').textContent = data.tag;
+  document.getElementById('svcTitle').innerHTML = data.title.replace('\n','<br/>');
+  document.getElementById('svcSubtitle').textContent = data.subtitle;
+  document.getElementById('svcBreadcrumb').innerHTML = `<a onclick="navigate('home')">Home</a><span>›</span><a onclick="navigate('services')">Services</a><span>›</span><span>${data.tag}</span>`;
+  document.getElementById('svcDetailMain').innerHTML = data.main;
+  document.getElementById('svcOtherList').innerHTML = data.others.map((name,i)=>`<li><a onclick="navigate('service','${data.othersLinks[i]}')">${name}</a></li>`).join('');
+}
+
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+
+/* ═══════════════════════════════════════════
+   FORMS
+════════════════════════════════════════════ */
+function saveEnquiry(data){
+  const enqs = getEnquiries();
+  enqs.unshift({...data, id:'e'+Date.now(), timestamp:Date.now()});
+  setData(KEYS.enquiries, enqs);
+}
+
+function submitHomeForm(){
+  const fname=document.getElementById('hfname').value.trim();
+  const email=document.getElementById('hfemail').value.trim();
+  if(!fname||!email){showToast('Please fill in name and email ✗');return;}
+  saveEnquiry({name:fname+' '+(document.getElementById('hlname').value.trim()), email, phone:document.getElementById('hfphone').value, service:document.getElementById('hfservice').value, message:document.getElementById('hfmsg').value, source:'Home Page'});
+  document.getElementById('homeContactForm').style.display='none';
+  document.getElementById('homeFormSuccess').style.display='block';
+}
+
+function submitContactPage(){
+  const fname=document.getElementById('cpfname').value.trim();
+  const email=document.getElementById('cpemail').value.trim();
+  const msg=document.getElementById('cpmsg').value.trim();
+  if(!fname||!email||!msg){showToast('Please fill required fields ✗');return;}
+  saveEnquiry({name:fname+' '+(document.getElementById('cplname').value.trim()), email, phone:document.getElementById('cpphone').value, country:document.getElementById('cpcountry').value, service:document.getElementById('cpservice').value, source:document.getElementById('cpsource').value, message:msg, page:'Contact Page'});
+  document.getElementById('contactPageForm').style.display='none';
+  document.getElementById('contactPageSuccess').style.display='block';
+}
+
+/* ═══════════════════════════════════════════
+   ADMIN
+════════════════════════════════════════════ */
+function adminLogin(){
+  const email = document.getElementById('adminEmail').value;
+  const pass = document.getElementById('adminPass').value;
+  if(email==='admin@starone.ae' && pass==='starone2025'){
+    setData(KEYS.adminAuth, {email, loginTime:Date.now()});
+    document.getElementById('adminLoginError').style.display='none';
+    navigate('admin');
+  } else {
+    document.getElementById('adminLoginError').style.display='block';
+  }
+}
+
+function adminLogout(){
+  setData(KEYS.adminAuth, null);
+  navigate('home');
+}
+
+function showAdminTab(tab){
+  ['dashboard','articles','enquiries','settings'].forEach(t=>{
+    const el=document.getElementById('tab-'+t);
+    if(el) el.style.display = t===tab ? '' : 'none';
+    const nav=document.getElementById('anav-'+t);
+    if(nav) nav.classList.toggle('active', t===tab);
+  });
+  const titles={dashboard:'Dashboard',articles:'Articles',enquiries:'Enquiries',settings:'Settings'};
+  document.getElementById('adminPageTitle').textContent = titles[tab]||tab;
+  if(tab==='articles') renderAdminArticles();
+  if(tab==='enquiries') renderAdminEnquiries();
+  if(tab==='dashboard') renderDashboard();
+}
+
+function refreshAdminStats(){
+  const arts = getArticles();
+  const enqs = getEnquiries();
+  document.getElementById('stat-articles').textContent = arts.length;
+  document.getElementById('stat-enquiries').textContent = enqs.length;
+  document.getElementById('stat-published').textContent = arts.filter(a=>a.published).length;
+  document.getElementById('stat-drafts').textContent = arts.filter(a=>!a.published).length;
+  document.getElementById('enqDot').style.display = enqs.length ? '' : 'none';
+}
+
+function renderDashboard(){
+  refreshAdminStats();
+  const arts = getArticles().slice(0,5);
+  document.getElementById('dashRecentArticles').innerHTML = arts.length
+    ? `<table class="admin-table"><thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Date</th></tr></thead><tbody>`
+      +arts.map(a=>`<tr><td><b>${a.title}</b></td><td>${catLabels[a.category]||a.category}</td><td><span class="admin-badge ${a.published?'badge-published':'badge-draft'}">${a.published?'Published':'Draft'}</span></td><td>${a.date||'—'}</td></tr>`).join('')
+      +`</tbody></table>`
+    : '<p style="color:var(--text-muted);font-size:14px">No articles yet. Create your first one!</p>';
+  
+  const enqs = getEnquiries().slice(0,5);
+  document.getElementById('dashRecentEnquiries').innerHTML = enqs.length
+    ? enqs.map(e=>`<div style="padding:14px 0;border-bottom:1px solid var(--border)"><div style="font-weight:600;font-size:14px">${e.name}</div><div style="font-size:12px;color:var(--text-muted);margin-top:3px">${e.email} · ${e.service||'General Enquiry'}</div></div>`).join('')
+    : '<p style="color:var(--text-muted);font-size:14px">No enquiries yet.</p>';
+}
+
+function renderAdminArticles(){
+  const arts = getArticles();
+  const el = document.getElementById('articlesTableWrap');
+  if(!el) return;
+  if(!arts.length){el.innerHTML='<p style="color:var(--text-muted)">No articles yet.</p>';return;}
+  el.innerHTML = `<table class="admin-table" style="width:100%">
+    <thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Featured</th><th>Date</th><th>Actions</th></tr></thead>
+    <tbody>`+arts.map(a=>`<tr>
+      <td><b style="font-size:13px">${a.title}</b></td>
+      <td>${catLabels[a.category]||a.category}</td>
+      <td><span class="admin-badge ${a.published?'badge-published':'badge-draft'}">${a.published?'Published':'Draft'}</span></td>
+      <td>${a.featured?'<span style="color:var(--gold)">⭐</span>':'—'}</td>
+      <td>${a.date||'—'}</td>
+      <td><div class="admin-actions">
+        <button class="admin-action-btn" onclick="editArticle('${a.id}')">Edit</button>
+        <button class="admin-action-btn" onclick="togglePublish('${a.id}')">${a.published?'Unpublish':'Publish'}</button>
+        <button class="admin-action-btn danger" onclick="deleteArticle('${a.id}')">Delete</button>
+      </div></td>
+    </tr>`).join('')+`</tbody></table>`;
+}
+
+function renderAdminEnquiries(){
+  const enqs = getEnquiries();
+  const el = document.getElementById('enquiriesWrap');
+  if(!el) return;
+  if(!enqs.length){el.innerHTML='<p style="color:var(--text-muted)">No enquiries yet.</p>';return;}
+  el.innerHTML = enqs.map(e=>`<div class="enq-card" onclick="this.classList.toggle('open')">
+    <div class="enq-card-header">
+      <div>
+        <div class="enq-name">${e.name}</div>
+        <div class="enq-meta">${e.email} · ${e.phone||'No phone'} · ${e.country||'UAE'}</div>
+      </div>
+      <div class="enq-service">${e.service||'General'}</div>
+    </div>
+    <div class="enq-msg"><strong>Message:</strong><br/>${e.message||'No message provided.'}<br/><br/><span style="font-size:11px;color:var(--text-dim)">Source: ${e.page||e.source||'Website'} · ${new Date(e.timestamp).toLocaleDateString()}</span></div>
+  </div>`).join('');
+  refreshAdminStats();
+}
+
+function clearEnquiries(){
+  if(confirm('Delete all enquiries? This cannot be undone.')){
+    setData(KEYS.enquiries,[]);
+    renderAdminEnquiries();
+    showToast('Enquiries cleared');
+  }
+}
+
+function togglePublish(id){
+  const arts = getArticles();
+  const art = arts.find(a=>a.id===id);
+  if(art){art.published=!art.published;setData(KEYS.articles,arts);renderAdminArticles();refreshAdminStats();showToast(art.published?'Article published ✓':'Article unpublished');}
+}
+
+function deleteArticle(id){
+  if(!confirm('Delete this article?')) return;
+  const arts = getArticles().filter(a=>a.id!==id);
+  setData(KEYS.articles,arts);
+  renderAdminArticles();
+  refreshAdminStats();
+  showToast('Article deleted');
+}
+
+function openArticleEditor(id){
+  document.getElementById('editArticleId').value = '';
+  document.getElementById('artTitle').value='';
+  document.getElementById('artExcerpt').value='';
+  document.getElementById('artBody').value='';
+  document.getElementById('artAuthor').value='Fiona';
+  document.getElementById('artReadTime').value='5 min read';
+  document.getElementById('artMetaTitle').value='';
+  document.getElementById('artMetaDesc').value='';
+  document.getElementById('artPublished').checked=true;
+  document.getElementById('artFeatured').checked=false;
+  document.getElementById('artCategory').value='setup';
+  document.getElementById('modalTitle').textContent='New Article';
+  document.getElementById('articleModal').classList.remove('hidden');
+}
+
+function editArticle(id){
+  const art = getArticles().find(a=>a.id===id);
+  if(!art) return;
+  document.getElementById('editArticleId').value=id;
+  document.getElementById('artTitle').value=art.title;
+  document.getElementById('artExcerpt').value=art.excerpt;
+  document.getElementById('artBody').value=art.body||'';
+  document.getElementById('artAuthor').value=art.author||'';
+  document.getElementById('artReadTime').value=art.readTime||'';
+  document.getElementById('artMetaTitle').value=art.metaTitle||'';
+  document.getElementById('artMetaDesc').value=art.metaDesc||'';
+  document.getElementById('artPublished').checked=!!art.published;
+  document.getElementById('artFeatured').checked=!!art.featured;
+  document.getElementById('artCategory').value=art.category||'setup';
+  document.getElementById('modalTitle').textContent='Edit Article';
+  document.getElementById('articleModal').classList.remove('hidden');
+}
+
+function saveArticle(){
+  const title=document.getElementById('artTitle').value.trim();
+  const excerpt=document.getElementById('artExcerpt').value.trim();
+  if(!title||!excerpt){showToast('Title and excerpt are required ✗');return;}
+  
+  const arts = getArticles();
+  const editId = document.getElementById('editArticleId').value;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  
+  if(editId){
+    const idx = arts.findIndex(a=>a.id===editId);
+    if(idx>-1){
+      arts[idx]={...arts[idx],
+        title, excerpt,
+        body:document.getElementById('artBody').value,
+        author:document.getElementById('artAuthor').value,
+        readTime:document.getElementById('artReadTime').value,
+        category:document.getElementById('artCategory').value,
+        published:document.getElementById('artPublished').checked,
+        featured:document.getElementById('artFeatured').checked,
+        metaTitle:document.getElementById('artMetaTitle').value,
+        metaDesc:document.getElementById('artMetaDesc').value,
+      };
+    }
+  } else {
+    arts.unshift({
+      id:'a'+Date.now(), title, excerpt,
+      body:document.getElementById('artBody').value,
+      author:document.getElementById('artAuthor').value,
+      readTime:document.getElementById('artReadTime').value,
+      category:document.getElementById('artCategory').value,
+      published:document.getElementById('artPublished').checked,
+      featured:document.getElementById('artFeatured').checked,
+      metaTitle:document.getElementById('artMetaTitle').value,
+      metaDesc:document.getElementById('artMetaDesc').value,
+      date:dateStr, timestamp:Date.now()
+    });
+  }
+  setData(KEYS.articles,arts);
+  closeModal('articleModal');
+  renderAdminArticles();
+  refreshAdminStats();
+  showToast(editId?'Article updated ✓':'Article created ✓');
+}
+
+function insertFormat(before,after,id){
+  const ta=document.getElementById(id);
+  const start=ta.selectionStart, end=ta.selectionEnd;
+  const sel=ta.value.substring(start,end)||'text here';
+  ta.value=ta.value.substring(0,start)+before+sel+after+ta.value.substring(end);
+  ta.focus();
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.add('hidden');
+}
+
+/* ═══════════════════════════════════════════
+   MISC UI
+════════════════════════════════════════════ */
+function filterServices(cat, btn){
+  document.querySelectorAll('.service-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.service-card').forEach(card=>{
+    card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
+  });
+}
+
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// NAV scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// Hero cards
+setTimeout(()=>{['hc1','hc2','hc3'].forEach((id,i)=>{
+  setTimeout(()=>{ const el=document.getElementById(id); if(el)el.classList.add('visible'); },500+i*200);
+})},300);
+
+// Scroll reveal
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+
+function initReveal(){
+  document.querySelectorAll('.reveal,.reveal-left').forEach(el=>{
+    el.classList.remove('visible');
+    revealObs.observe(el);
+  });
+}
+initReveal();
+
+// Counters
+function animateCounter(el, target, suffix){
+  let start=0; const dur=1800; const step=target/60;
+  const timer=setInterval(()=>{
+    start+=step; if(start>=target){start=target;clearInterval(timer);}
+    el.textContent=Math.round(start)+(suffix||'');
+  },dur/60);
+}
+const cntObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.animated){
+      e.target.dataset.animated='true';
+      const target=parseInt(e.target.dataset.count);
+      const orig=e.target.textContent;
+      const suffix=orig.replace(/[0-9]/g,'').trim();
+      animateCounter(e.target,target,suffix);
+    }
+  });
+},{threshold:0.5});
+function initCounters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    el.dataset.animated='';
+    cntObs.observe(el);
+  });
+}
+initCounters();
+
+// Toast
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+// Close modal on backdrop click
+document.getElementById('articleModal').addEventListener('click',function(e){
+  if(e.target===this) closeModal('articleModal');
+});
+
+// Initial render
+renderFooter('footer-home');
+renderHomeArticles();
+
+// Keyboard shortcuts
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-backdrop').forEach(m=>m.classList.add('hidden'));
+});
+</script>
+</body>
+</html>

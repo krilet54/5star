@@ -19,15 +19,34 @@ type Enquiry = {
 
 export default async function AdminEnquiriesPage() {
   const supabase = createAdminClient()
-  const { data: enquiries } = await supabase
-    .from('enquiries')
-    .select('*')
-    .order('created_at', { ascending: false })
+  let enquiries: any[] | null = null
+  let fetchError: string | null = null
+
+  try {
+    const { data, error } = await supabase
+      .from('enquiries')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+    enquiries = data
+  } catch (err: any) {
+    // Surface helpful error to the admin UI and log server-side
+    fetchError = err?.message || String(err)
+    console.error('Failed to fetch enquiries:', err)
+    enquiries = []
+  }
 
   const newCount = enquiries?.filter((e: Enquiry) => e.status === 'new').length ?? 0
 
   return (
     <div className="p-8">
+      {fetchError && (
+        <div className="mb-6 p-4 rounded-md" style={{ background: '#fff5f5', border: '1px solid #fee2e2', color: '#b91c1c' }}>
+          <strong>Unable to load enquiries:</strong> {fetchError}
+          <div className="text-xs mt-1">Verify `SUPABASE_SERVICE_ROLE_KEY` and `NEXT_PUBLIC_SUPABASE_URL` are set for your deployment.</div>
+        </div>
+      )}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Enquiries</h1>

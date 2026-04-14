@@ -121,6 +121,10 @@ body {
 .services-grid .service-card{display:flex;flex-direction:column;flex:1;height:100%}
 .service-card .svc-arrow{margin-top:auto}
 
+/* ─── INSIGHTS TABS ─── */
+.insights-tab{padding:10px 16px;border:1px solid var(--border);background:transparent;color:var(--ink-dim);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .15s;margin-right:6px}
+.insights-tab.active,.insights-tab:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+
 /* ─── CARDS ─── */
 .card {
   background: var(--dark-2);

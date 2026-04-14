@@ -21,11 +21,9 @@ export default async function HomePage() {
     .from('articles')
     .select('*')
     .eq('published', true)
+    .order('featured', { ascending: false })
     .order('created_at', { ascending: false })
-    .limit(4)
-
-  const featured = articles?.find(a => a.featured)
-  const regular = articles?.filter(a => !a.featured).slice(0, 3) ?? []
+    .limit(3)
 
   return (
     <>
@@ -404,7 +402,7 @@ export default async function HomePage() {
       </section>
 
       {/* ─── ARTICLES ─── */}
-      {(featured || regular.length > 0) && (
+      {(articles && articles.length > 0) && (
         <section className="section border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
           <div className="max-w-[1280px] mx-auto px-8">
             <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
@@ -415,29 +413,21 @@ export default async function HomePage() {
               <Link href="/insights" className="btn btn-outline">All Articles →</Link>
             </div>
 
-            {featured && (
-              <Link href={`/insights/${featured.slug}`} className="grid lg:grid-cols-2 gap-0 mb-0.5 border border-gold-border group" style={{ textDecoration: 'none', borderColor: 'var(--gold-border)' }}>
-                <div className="min-h-[280px] flex items-center justify-center relative" style={{ background: 'var(--dark-4)' }}>
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #1a1200 0%, #2a1800 100%)' }} />
-                  <div className="absolute top-4 left-4 px-3 py-1 text-xs font-bold tracking-widest uppercase" style={{ background: 'var(--gold)', color: '#000' }}>Featured</div>
-                  <span className="relative z-10 text-6xl opacity-20">✦</span>
-                </div>
-                <div className="p-10" style={{ background: 'var(--dark-3)' }}>
-                  <div className="text-xs uppercase tracking-widest mb-3" style={{ color: 'var(--ink-dim)' }}>
-                    {formatDate(featured.created_at)} · {featured.read_time} min read
-                  </div>
-                  <h3 className="font-display text-2xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>{featured.title}</h3>
-                  <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--ink-muted)' }}>{featured.excerpt}</p>
-                  <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--gold)' }}>Read Full Guide →</span>
-                </div>
-              </Link>
-            )}
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0.5 mt-0.5">
-              {regular.map((article: Article) => (
+              {articles.map((article: Article) => (
                 <Link key={article.id} href={`/insights/${article.slug}`} className="card p-6" style={{ textDecoration: 'none' }}>
                   <div className="h-48 flex items-center justify-center relative overflow-hidden" style={{ background: 'var(--dark-4)' }}>
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--dark-4), var(--dark-5))' }} />
+                    {article.cover_image ? (
+                      <>
+                        <img src={article.cover_image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.18), rgba(0,0,0,0.33))' }} />
+                      </>
+                    ) : (
+                      <>
+                        <img src={`https://source.unsplash.com/800x600/?${encodeURIComponent(article.category || article.title.split(' ').slice(0,3).join(' '))}`} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--dark-4), var(--dark-5))' }} />
+                      </>
+                    )}
                     <div className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold tracking-wider" style={{ background: 'var(--gold)', color: '#000' }}>
                       {article.category}
                     </div>

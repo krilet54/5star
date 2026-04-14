@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase-server'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
+import InsightsFilter from '@/components/InsightsFilter'
 
 export const metadata: Metadata = {
   title: 'Insights & Guides — UAE Business Setup Knowledge Hub',
@@ -47,13 +48,15 @@ export default async function InsightsPage() {
             {categories.map(cat => (
               <span
                 key={cat}
-                className="px-4 py-2 text-xs font-semibold tracking-widest uppercase border rounded-sm cursor-pointer transition-all"
-                style={{ borderColor: cat === 'All' ? 'var(--gold)' : 'var(--border)', color: cat === 'All' ? 'var(--gold)' : 'var(--ink-dim)', background: cat === 'All' ? 'var(--gold-muted)' : 'transparent' }}
+                className={`insights-tab ${cat === 'All' ? 'active' : ''}`}
+                role="button"
               >
                 {cat}
               </span>
             ))}
           </div>
+
+          <InsightsFilter />
         </div>
       </section>
 
@@ -67,6 +70,7 @@ export default async function InsightsPage() {
                 href={`/insights/${featured.slug}`}
                 className="grid lg:grid-cols-2 gap-0 border border-gold-border group"
                 style={{ textDecoration: 'none', borderColor: 'var(--gold-border)' }}
+                data-insight-cat={featured.category}
               >
                 <div className="min-h-[360px] flex items-center justify-center relative overflow-hidden" style={{ background: 'var(--dark-4)' }}>
                   {featured.cover_image ? (
@@ -107,6 +111,7 @@ export default async function InsightsPage() {
                   href={`/insights/${article.slug}`}
                   className="card p-7"
                   style={{ textDecoration: 'none' }}
+                  data-insight-cat={article.category}
                 >
                   <div className="h-52 flex items-center justify-center relative overflow-hidden" style={{ background: 'var(--dark-4)' }}>
                     {article.cover_image ? (

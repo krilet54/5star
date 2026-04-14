@@ -17,12 +17,42 @@ export async function POST(request: Request) {
     const body = await request.json()
     const data = schema.parse(body)
 
-    const supabase = createAdminClient()
-    const { error } = await supabase.from('enquiries').insert([data])
+    // Helpful runtime info (will appear in server logs)
+    try {
+      console.info('Enquiry submit — SUPABASE_URL present:', !!process.env.NEXT_PUBLIC_SUPABASE_URL, 'SERVICE_ROLE present:', !!process.env.SUPABASE_SERVICE_ROLE_KEY, 'ANON_KEY present:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    } catch {}
 
-    if (error) throw error
+    // Primary: try service-role client first (admin access)
+    try {
+      const supabase = createAdminClient()
+      const { data: inserted, error } = await supabase.from('enquiries').insert([data])
+      if (!error) {
+        console.info('Enquiry inserted (service role)', inserted?.[0]?.id)
+        return NextResponse.json({ success: true }, { status: 201 })
+      }
+      console.warn('Service-role insert error:', error.message)
+    } catch (e: any) {
+      console.warn('Service-role insert failed:', e?.message ?? String(e))
+    }
 
-    return NextResponse.json({ success: true }, { status: 201 })
+    // Fallback: try anon client if available (useful when service role key missing on server)
+    try {
+      const { createClient } = require('@supabase/supabase-js')
+      if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        throw new Error('Anon fallback missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY')
+      }
+      const anon = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+      const { data: fallbackInserted, error: fallbackError } = await anon.from('enquiries').insert([data])
+      if (fallbackError) {
+        console.error('Anon fallback insert error:', fallbackError)
+        throw fallbackError
+      }
+      console.info('Enquiry inserted (anon fallback)', fallbackInserted?.[0]?.id)
+      return NextResponse.json({ success: true, fallback: true }, { status: 201 })
+    } catch (e: any) {
+      console.error('Enquiry insert failed (all attempts):', e?.message ?? String(e))
+      throw e
+    }
   } catch (err) {
     console.error('Enquiry error:', err)
     if (err instanceof z.ZodError) {

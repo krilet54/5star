@@ -132,12 +132,6 @@ export default async function HomePage() {
                 Full-Spectrum<br />Business Services
               </h2>
             </div>
-            <div>
-              <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--ink-muted)' }}>
-                From your first question to your first hire and beyond — we provide everything an entrepreneur needs to thrive in the UAE market.
-              </p>
-              <Link href="/services" className="btn btn-outline">View All Services →</Link>
-            </div>
           </div>
 
           <div className="service-tabs">
@@ -348,14 +342,14 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="border-t lg:border-t-0 lg:border-l pt-12 lg:pt-0 lg:pl-20 grid grid-cols-2 content-center gap-0" style={{ borderColor: 'var(--border)' }}>
+            <div className="border-t lg:border-t-0 lg:border-l pt-12 lg:pt-0 lg:pl-20 metrics-grid" style={{ borderColor: 'var(--border)' }}>
               {[
                 { value: 500, suffix: '+', label: 'Companies Formed' },
                 { value: 98, suffix: '%', label: 'Client Satisfaction' },
                 { value: 30, suffix: '+', label: 'Countries Served' },
                 { value: 12, suffix: '+', label: 'Years in Dubai' },
               ].map((s, i) => (
-                <div key={i} className="p-8 text-center border-r border-b last:border-r-0" style={{ borderColor: 'var(--border)' }}>
+                <div key={i} className="metric p-8 text-center">
                   <div className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: 'var(--gold)', lineHeight: 1 }}>
                     <AnimatedCounter target={s.value} suffix={s.suffix} />
                   </div>
@@ -376,7 +370,7 @@ export default async function HomePage() {
               From Idea to <em style={{ color: 'var(--gold)' }}>Licensed Business</em>
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 process-grid">
             {[
               { n: '01', title: 'Free Consultation', desc: "Book a 30-minute strategy session. We'll understand your goals, recommend the right structure, and map out the journey." },
               { n: '02', title: 'Documentation', desc: 'We collect and prepare all required documents — business plan, MoA, passport copies, and government forms.' },

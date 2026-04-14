@@ -15,13 +15,6 @@ const team = [
     bio: 'With over a decade of experience in UAE business formation, Fiona has helped hundreds of entrepreneurs from the UK, US, and South Africa establish thriving businesses in Dubai.',
     initials: 'FI',
   },
-  {
-    name: 'Vipul Aggarwal',
-    role: 'Head of Corporate Services',
-    contact: '+971 50 850 1608',
-    bio: 'Vipul leads our corporate services division, specialising in business consultancy, compliance, and government approvals across all UAE jurisdictions.',
-    initials: 'VA',
-  },
 ]
 
 const values = [

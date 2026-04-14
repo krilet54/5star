@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     description: 'Your trusted partner for UAE business setup, visas, compliance, and corporate services.',
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   const { password } = await request.json()
-  const secret = process.env.ADMIN_SECRET || 'starone-admin-2025'
+  const secret = process.env.ADMIN_SECRET
 
-  if (password !== secret) {
+  if (!secret || password !== secret) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 })
   }
 

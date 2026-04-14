@@ -118,7 +118,14 @@ export default function Footer() {
           <p className="text-xs" style={{ color: 'var(--ink-dim)' }}>
             © {new Date().getFullYear()} Star One Business Consultancy. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-6 items-center">
+            <p className="text-xs" style={{ color: 'var(--ink-dim)' }}>
+              Built by{' '}
+              <a href="https://micro-site.studio" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none' }}>
+                Microsite Studio
+              </a>
+            </p>
+
             {[
               { href: '/privacy-policy', label: 'Privacy Policy' },
               { href: '/terms-conditions', label: 'Terms' },

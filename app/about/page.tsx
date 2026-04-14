@@ -8,7 +8,15 @@ export const metadata: Metadata = {
   description: 'Learn about Star One, Dubai\'s trusted business setup and advisory firm helping entrepreneurs from the UK, US, South Africa and beyond establish their presence in the UAE.',
 }
 
-const team = [
+type TeamMember = {
+  name: string
+  role: string
+  bio: string
+  initials: string
+  contact?: string
+}
+
+const team: TeamMember[] = [
   {
     name: 'Fiona',
     role: 'Founder & Principal Consultant',

@@ -29,6 +29,14 @@ export default async function HomePage() {
     <>
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-20" style={{ background: 'var(--dark)' }}>
+        {/* Hero background image (served from /public) */}
+        <div className="absolute inset-0 hero-image" style={{
+          backgroundImage: "url('/hero-image.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          filter: 'brightness(0.32) saturate(0.7)',
+        }} />
         {/* Background pattern */}
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.07) 1px, transparent 0)',

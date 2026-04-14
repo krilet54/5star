@@ -25,9 +25,9 @@ export async function POST(request: Request) {
     // Primary: try service-role client first (admin access)
     try {
       const supabase = createAdminClient()
-      const { data: inserted, error } = await supabase.from('enquiries').insert([data])
+      const { data: inserted, error } = await supabase.from('enquiries').insert([data]).select()
       if (!error) {
-        console.info('Enquiry inserted (service role)', inserted?.[0]?.id)
+        console.info('Enquiry inserted (service role)', inserted)
         return NextResponse.json({ success: true }, { status: 201 })
       }
       console.warn('Service-role insert error:', error.message)
@@ -42,12 +42,12 @@ export async function POST(request: Request) {
         throw new Error('Anon fallback missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY')
       }
       const anon = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
-      const { data: fallbackInserted, error: fallbackError } = await anon.from('enquiries').insert([data])
+      const { data: fallbackInserted, error: fallbackError } = await anon.from('enquiries').insert([data]).select()
       if (fallbackError) {
         console.error('Anon fallback insert error:', fallbackError)
         throw fallbackError
       }
-      console.info('Enquiry inserted (anon fallback)', fallbackInserted?.[0]?.id)
+      console.info('Enquiry inserted (anon fallback)', fallbackInserted)
       return NextResponse.json({ success: true, fallback: true }, { status: 201 })
     } catch (e: any) {
       console.error('Enquiry insert failed (all attempts):', e?.message ?? String(e))

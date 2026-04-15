@@ -33,13 +33,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: [
-      { url: '/starone-icon-mark.svg', type: 'image/svg+xml' },
-      { url: '/starone-logo-dark.png', type: 'image/png', sizes: '192x192' },
-      { url: '/starone-logo-dark.jpg', type: 'image/jpeg', sizes: '192x192' },
-    ],
-    apple: '/starone-logo-dark.png',
-    shortcut: '/starone-logo-dark.png',
+    icon: '/starone-icon-mark.svg',
+    apple: '/starone-icon-mark.svg',
+    shortcut: '/starone-icon-mark.svg',
   },
 }
 

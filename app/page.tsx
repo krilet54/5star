@@ -78,7 +78,7 @@ export default async function HomePage() {
               </div>
 
               {/* Stats */}
-              <div className="flex flex-wrap items-center gap-10 mt-16 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
+              <div className="hero-stats flex flex-wrap items-center gap-10 mt-16 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
                 {[
                   { value: 500, suffix: '+', label: 'Businesses Setup' },
                   { value: 12, suffix: '+', label: 'Years Experience' },

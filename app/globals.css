@@ -448,6 +448,22 @@ body {
   .metrics-grid > .metric:last-child { border-bottom: 0; }
 }
 
+/* Center the third stat (e.g., "30+ Countries Served") on small screens */
+@media (max-width: 640px) {
+  .hero-stats { justify-content: center; }
+  .hero-stats > div {
+    /* make two items sit side-by-side, and the third take a full row */
+    flex: 0 0 50%;
+    text-align: center;
+    padding-left: 0 !important;
+    border-left: none !important;
+  }
+  .hero-stats > div:nth-child(3) {
+    flex-basis: 100%;
+    order: 3;
+  }
+}
+
 /* ─── ADMIN MOBILE LAYOUT ─── */
 @media (max-width: 768px) {
   .admin-body { flex-direction: column; }

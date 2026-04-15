@@ -38,6 +38,7 @@ export default async function ServicePage({ params }: Props) {
         }} />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,160,96,0.05) 0%, transparent 70%)' }} />
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+          <div className="decor-vertical" />
           <div className="flex items-center gap-2 text-xs mb-6" style={{ color: 'var(--ink-dim)' }}>
             <Link href="/" style={{ color: 'var(--ink-dim)' }}>Home</Link>
             <span>/</span>

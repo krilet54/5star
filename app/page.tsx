@@ -45,9 +45,8 @@ export default async function HomePage() {
         <div className="absolute inset-0" style={{
           background: 'radial-gradient(ellipse 70% 60% at 65% 50%, rgba(201,160,96,0.06) 0%, transparent 70%)',
         }} />
-        <div className="absolute top-0 right-1/3 w-px h-full" style={{ background: 'linear-gradient(to bottom, transparent, rgba(201,160,96,0.15), transparent)' }} />
-
         <div className="max-w-[1280px] mx-auto px-8 w-full relative z-10">
+          <div className="decor-vertical" />
           <div className="grid lg:grid-cols-[1fr_380px] gap-16 items-center py-20">
             <div>
               <div

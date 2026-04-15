@@ -18,6 +18,7 @@ export default function ServicesPage() {
           backgroundSize: '40px 40px',
         }} />
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+          <div className="decor-vertical" />
           <div className="tag">Services</div>
           <h1 className="font-display mb-6" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: 500, lineHeight: 1.1 }}>
             Complete UAE Business<br /><em style={{ color: 'var(--gold)' }}>Services</em>

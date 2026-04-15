@@ -35,6 +35,7 @@ export default async function InsightsPage() {
           backgroundSize: '40px 40px',
         }} />
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+          <div className="decor-vertical" />
           <div className="tag">Insights</div>
           <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1 }}>
             UAE Business Setup<br /><em style={{ color: 'var(--gold)' }}>Knowledge Hub</em>

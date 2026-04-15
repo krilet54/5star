@@ -45,6 +45,7 @@ export default function AboutPage() {
         }} />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 60% at 30% 50%, rgba(201,160,96,0.05) 0%, transparent 70%)' }} />
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+          <div className="decor-vertical" />
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <div className="tag">About Us</div>

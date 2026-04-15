@@ -17,6 +17,7 @@ export default function ContactPage() {
           backgroundSize: '40px 40px',
         }} />
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+          <div className="decor-vertical" />
           <div className="tag">Contact</div>
           <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1 }}>
             Let's Build Your<br /><em style={{ color: 'var(--gold)' }}>Business Together</em>

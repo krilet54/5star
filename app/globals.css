@@ -112,7 +112,7 @@ body {
 .service-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:40px}
 .service-tab{padding:10px 20px;border:1px solid var(--border);background:transparent;color:var(--ink-dim);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s}
 .service-tab.active,.service-tab:hover{background:var(--gold);color:#000;border-color:var(--gold)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;align-items:stretch}
 @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.services-grid{grid-template-columns:1fr}}
 
@@ -135,6 +135,14 @@ body {
 .card:hover {
   border-color: var(--gold-border);
   transform: translateY(-4px);
+}
+
+/* Make cards use a column flex layout so their content can stretch
+   and match heights when placed inside grids or reveal wrappers. */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* Hover variant for elements that are initially transparent but should lift on hover */
@@ -251,6 +259,18 @@ body {
 .stagger-2 { transition-delay: 0.2s; }
 .stagger-3 { transition-delay: 0.3s; }
 .stagger-4 { transition-delay: 0.4s; }
+
+/* Ensure any Reveal wrapper that is a direct child of a grid stretches
+   to allow inner cards to fill the available height, keeping boxes uniform. */
+.grid > .reveal { display: flex; }
+.reveal > .card,
+.reveal > .service-card,
+.reveal > .hover-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
 
 /* Ensure Process (How It Works) steps are equal height and outlined */
 .process-grid > .reveal { display: flex; }
@@ -403,6 +423,19 @@ body {
 }
 @media (max-width: 768px) {
   .hero-image { background-position: 50% 30%; filter: brightness(0.38) saturate(0.6); }
+}
+/* ─── HERO VERTICAL ACCENT ───
+   Standard decorative vertical accent for hero sections. Placed inside
+   the page container (`max-w-[1280px] mx-auto px-8 relative`) as
+   a simple, non-interactive visual separator. */
+.decor-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 33.3333%;
+  width: 1px;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom, rgba(201,160,96,0.06) 0%, rgba(201,160,96,0.06) 12%, transparent 70%);
 }
 /* ─── METRICS GRID (Why Star One numbers) ─── */
 .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }

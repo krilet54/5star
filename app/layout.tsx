@@ -35,10 +35,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/starone-icon-mark.svg', type: 'image/svg+xml' },
+      { url: '/starone-logo-dark.png', type: 'image/png', sizes: '192x192' },
       { url: '/starone-logo-dark.jpg', type: 'image/jpeg', sizes: '192x192' },
     ],
-    apple: '/starone-logo-dark.jpg',
-    shortcut: '/starone-logo-dark.jpg',
+    apple: '/starone-logo-dark.png',
+    shortcut: '/starone-logo-dark.png',
   },
 }
 

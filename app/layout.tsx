@@ -33,7 +33,12 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: '/starone-icon-mark.svg',
+    icon: [
+      { url: '/starone-icon-mark.svg', type: 'image/svg+xml' },
+      { url: '/starone-logo-dark.jpg', type: 'image/jpeg', sizes: '192x192' },
+    ],
+    apple: '/starone-logo-dark.jpg',
+    shortcut: '/starone-logo-dark.jpg',
   },
 }
 

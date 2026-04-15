@@ -26,7 +26,7 @@ export default function AdminSidebar() {
       {/* Logo */}
       <div className="px-5 py-5 border-b" style={{ borderColor: '#e5e5e0' }}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 flex items-center justify-center text-sm font-bold text-black rounded-sm" style={{ background: '#C9A060' }}>S1</div>
+          <img src="/starone-icon-mark.svg" alt="Star One" className="w-8 h-8" />
           <div className="font-semibold text-sm">Star One Admin</div>
         </div>
       </div>

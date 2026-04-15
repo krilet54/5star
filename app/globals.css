@@ -447,3 +447,54 @@ body {
   .metrics-grid > .metric { border-right: 0; border-bottom: 1px solid var(--border); }
   .metrics-grid > .metric:last-child { border-bottom: 0; }
 }
+
+/* ─── ADMIN MOBILE LAYOUT ─── */
+@media (max-width: 768px) {
+  .admin-body { flex-direction: column; }
+  .admin-sidebar {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e0;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    padding: 0;
+  }
+  .admin-sidebar > div:first-child {
+    padding: 0.5rem 1rem;
+    border-bottom: none;
+    border-right: 1px solid #e5e5e0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+  }
+  .admin-sidebar nav {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    padding: 0.5rem;
+    align-items: center;
+    flex: 1 0 auto;
+  }
+  .admin-sidebar nav .admin-nav-link {
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+  .admin-sidebar > div:last-child {
+    border-top: none;
+    border-left: 1px solid #e5e5e0;
+    padding: 0.5rem 1rem;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+  .admin-sidebar .admin-nav-link { font-size: 13px; }
+  .admin-sidebar .admin-nav-link.active { background: #f5f5f0; color: #111; }
+  .admin-body main { min-height: auto; }
+  .admin-body main > * { padding-left: 1rem; padding-right: 1rem; }
+  .admin-card { padding: 12px; }
+  .admin-btn { padding: 8px 12px; font-size: 12px; }
+}

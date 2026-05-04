@@ -35,6 +35,20 @@ create table if not exists enquiries (
   created_at timestamp with time zone default now()
 );
 
+-- CALCULATOR LEADS TABLE
+create table if not exists calculator_leads (
+  id uuid default gen_random_uuid() primary key,
+  email text not null,
+  company_type text not null,
+  activity text,
+  visas integer default 0,
+  office text,
+  services text,
+  estimated_cost integer,
+  status text default 'new',
+  created_at timestamp with time zone default now()
+);
+
 -- AUTO-UPDATE updated_at
 create or replace function update_updated_at()
 returns trigger as $$
@@ -51,6 +65,7 @@ create trigger articles_updated_at
 -- ROW LEVEL SECURITY
 alter table articles enable row level security;
 alter table enquiries enable row level security;
+alter table calculator_leads enable row level security;
 
 -- PUBLIC: anyone can read published articles
 create policy "published articles are public" on articles
@@ -60,11 +75,18 @@ create policy "published articles are public" on articles
 create policy "anyone can insert enquiry" on enquiries
   for insert with check (true);
 
+-- PUBLIC: anyone can submit calculator lead
+create policy "anyone can insert calculator_leads" on calculator_leads
+  for insert with check (true);
+
 -- SERVICE ROLE: full access (used by admin API routes)
 create policy "service role full access articles" on articles
   using (auth.role() = 'service_role');
 
 create policy "service role full access enquiries" on enquiries
+  using (auth.role() = 'service_role');
+
+create policy "service role full access calculator_leads" on calculator_leads
   using (auth.role() = 'service_role');
 
 -- SEED SAMPLE ARTICLES

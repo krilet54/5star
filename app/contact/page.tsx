@@ -16,7 +16,7 @@ export default function ContactPage() {
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
         }} />
-        <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
           <div className="tag">Contact</div>
           <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1 }}>
@@ -30,7 +30,7 @@ export default function ContactPage() {
 
       {/* MAIN */}
       <section className="pb-24">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_540px] gap-16 items-start">
             {/* LEFT: Contact info */}
             <div>

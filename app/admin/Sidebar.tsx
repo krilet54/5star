@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutDashboard, FileText, Plus, Inbox, LogOut, ExternalLink } from 'lucide-react'
+import { LayoutDashboard, FileText, Plus, Inbox, Calculator, LogOut, ExternalLink } from 'lucide-react'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/articles', label: 'Articles', icon: FileText },
   { href: '/admin/articles/new', label: 'New Article', icon: Plus },
   { href: '/admin/enquiries', label: 'Enquiries', icon: Inbox },
+  { href: '/admin/calculator-leads', label: 'Calculator Leads', icon: Calculator },
 ]
 
 export default function AdminSidebar() {

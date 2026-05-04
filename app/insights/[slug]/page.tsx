@@ -78,7 +78,7 @@ export default async function ArticlePage({ params }: Props) {
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.05) 1px, transparent 0)',
           backgroundSize: '40px 40px',
         }} />
-        <div className="max-w-[1280px] mx-auto px-8 relative z-10 max-w-4xl">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10 max-w-4xl">
           <div className="max-w-4xl">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs mb-8" style={{ color: 'var(--ink-dim)' }}>
@@ -118,7 +118,7 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* CONTENT */}
       <section className="pb-24">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_340px] gap-20 items-start">
             {/* Article content */}
             <div>

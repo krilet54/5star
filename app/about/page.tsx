@@ -44,7 +44,7 @@ export default function AboutPage() {
           backgroundSize: '40px 40px',
         }} />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 60% at 30% 50%, rgba(201,160,96,0.05) 0%, transparent 70%)' }} />
-        <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
@@ -80,7 +80,7 @@ export default function AboutPage() {
 
       {/* STORY */}
       <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_480px] gap-20 items-start">
             <Reveal>
               <div className="tag">Our Story</div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
 
       {/* VALUES */}
       <section className="section">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="tag justify-center">Our Values</div>
             <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)' }}>
@@ -160,7 +160,7 @@ export default function AboutPage() {
 
       {/* TEAM */}
       <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">Leadership</div>
           <h2 className="font-display text-4xl font-medium mb-14" style={{ fontFamily: 'var(--font-display)' }}>Meet the Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0.5 max-w-3xl">
@@ -186,7 +186,7 @@ export default function AboutPage() {
 
       {/* TARGET MARKETS */}
       <section className="section">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <Reveal>
               <div className="tag">Who We Serve</div>
@@ -224,7 +224,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="py-24 border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8 text-center">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>Ready to Work Together?</h2>
           <p className="text-base mb-8 max-w-md mx-auto" style={{ color: 'var(--ink-muted)' }}>
             Book a free consultation with our team and let's map out your UAE business journey.

@@ -1,6 +1,6 @@
 import { createAdminClient } from '@/lib/supabase-server'
 import Link from 'next/link'
-import { FileText, Inbox, Plus, TrendingUp } from 'lucide-react'
+import { FileText, Inbox, Plus, TrendingUp, Calculator } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 
 export const metadata = { title: 'Dashboard' }
@@ -10,9 +10,10 @@ export const dynamic = 'force-dynamic'
 export default async function AdminDashboardPage() {
   const supabase = createAdminClient()
 
-  const [{ count: articleCount }, { count: enquiryCount }, { data: recentEnquiries }, { data: recentArticles }] = await Promise.all([
+  const [{ count: articleCount }, { count: enquiryCount }, { count: calcLeadsCount }, { data: recentEnquiries }, { data: recentArticles }] = await Promise.all([
     supabase.from('articles').select('*', { count: 'exact', head: true }),
     supabase.from('enquiries').select('*', { count: 'exact', head: true }),
+    supabase.from('calculator_leads').select('*', { count: 'exact', head: true }),
     supabase.from('enquiries').select('*').order('created_at', { ascending: false }).limit(5),
     supabase.from('articles').select('id, title, slug, published, featured, created_at').order('created_at', { ascending: false }).limit(5),
   ])
@@ -27,12 +28,13 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
         {[
           { label: 'Total Articles', value: articleCount ?? 0, icon: FileText, color: '#C9A060', href: '/admin/articles' },
           { label: 'Total Enquiries', value: enquiryCount ?? 0, icon: Inbox, color: '#3b82f6', href: '/admin/enquiries' },
+          { label: 'Calculator Leads', value: calcLeadsCount ?? 0, icon: Calculator, color: '#8b5cf6', href: '/admin/calculator-leads' },
           { label: 'New Enquiries', value: newEnquiries ?? 0, icon: TrendingUp, color: '#22c55e', href: '/admin/enquiries' },
-          { label: 'Quick Actions', value: '+', icon: Plus, color: '#8b5cf6', href: '/admin/articles/new' },
+          { label: 'Quick Actions', value: '+', icon: Plus, color: '#f59e0b', href: '/admin/articles/new' },
         ].map(stat => (
           <Link key={stat.label} href={stat.href} className="admin-card flex items-center gap-4 no-underline" style={{ textDecoration: 'none' }}>
             <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: stat.color + '15' }}>

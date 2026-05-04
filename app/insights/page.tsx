@@ -34,7 +34,7 @@ export default async function InsightsPage() {
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
         }} />
-        <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
           <div className="tag">Insights</div>
           <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1 }}>
@@ -63,7 +63,7 @@ export default async function InsightsPage() {
 
       {/* ARTICLES */}
       <section className="pb-24">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           {/* Featured */}
           {featured && (
             <div className="mb-1">
@@ -158,7 +158,7 @@ export default async function InsightsPage() {
 
       {/* CTA */}
       <section className="py-20 border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8 text-center">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>Have a Specific Question?</h2>
           <p className="mb-6" style={{ color: 'var(--ink-muted)' }}>Our experts are ready to give you personalised guidance on your UAE business setup journey.</p>
           <Link href="/contact" className="btn btn-gold">Book Free Consultation →</Link>

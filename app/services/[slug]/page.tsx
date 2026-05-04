@@ -37,7 +37,7 @@ export default async function ServicePage({ params }: Props) {
           backgroundSize: '40px 40px',
         }} />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,160,96,0.05) 0%, transparent 70%)' }} />
-        <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
           <div className="flex items-center gap-2 text-xs mb-6" style={{ color: 'var(--ink-dim)' }}>
             <Link href="/" style={{ color: 'var(--ink-dim)' }}>Home</Link>
@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* FEATURES */}
       <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">What's Included</div>
           <h2 className="font-display text-4xl font-medium mb-14" style={{ fontFamily: 'var(--font-display)' }}>Service Features</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0.5">
@@ -101,7 +101,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* BENEFITS */}
       <section className="section">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <Reveal>
               <div className="tag">Benefits</div>
@@ -127,7 +127,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* PROCESS */}
       <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="tag justify-center">Process</div>
             <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)' }}>How We Work</h2>
@@ -148,7 +148,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* FAQ */}
       <section className="section">
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[340px_1fr] gap-20">
             <div>
               <div className="tag">FAQ</div>
@@ -167,7 +167,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* RELATED SERVICES */}
       <section className="section border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-8">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">Related</div>
           <h2 className="font-display text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)' }}>Other Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0.5">

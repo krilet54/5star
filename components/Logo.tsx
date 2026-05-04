@@ -7,7 +7,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         src="/starone-logo-dark.png"
         alt="Star One"
         className="block"
-        style={{ width: 'auto', height: '84px' }}
+        style={{ width: 'auto', height: '64px' }}
         onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/starone-logo-dark.jpg' }}
       />
     </Link>

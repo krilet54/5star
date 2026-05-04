@@ -4,11 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from '@/components/Logo'
 import { services } from '@/lib/services-data'
-import { X, Menu } from 'lucide-react'
+import { X, Menu, ChevronDown } from 'lucide-react'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -22,29 +23,71 @@ export default function Nav() {
   const isAdmin = pathname.startsWith('/admin')
   if (isAdmin) return null
 
+  // Group services by category
+  const servicesByCategory = {
+    'Business Setup': services.filter(s => s.slug === 'business-setup'),
+    'Visa & Residency': services.filter(s => ['golden-visa', 'employment-visa', 'dependent-visa', 'visit-visa'].includes(s.slug)),
+    'Tax & Compliance': services.filter(s => ['corporate-tax', 'vat', 'audit', 'esr', 'aml', 'kyc', 'ubo'].includes(s.slug)),
+    'Banking': services.filter(s => ['personal-banking', 'corporate-banking'].includes(s.slug)),
+    'Accounting': services.filter(s => s.slug === 'accounting-bookkeeping'),
+    'Ancillary': services.filter(s => ['hr-payroll', 'marketing-branding', 'trademark-strategy', 'will-services', 'document-attestation'].includes(s.slug)),
+  }
+
   return (
     <>
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          height: 76,
+          height: 72,
           background: scrolled ? 'rgba(8,8,8,0.97)' : 'transparent',
           borderBottom: scrolled ? '1px solid var(--border)' : 'none',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
         }}
       >
-        <div className="max-w-[1280px] mx-auto px-8 h-full flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-full flex items-center justify-between">
           <Logo />
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-8">
-            <NavLink href="/" label="Home" />
+            <NavLink href="/services/business-setup" label="Setup Your Company" />
+            
+            {/* Services dropdown */}
+            <div className="relative group">
+              <button className="nav-link relative text-xs font-semibold tracking-wider uppercase transition-colors flex items-center gap-2" style={{ letterSpacing: '0.08em' }}>
+                Our Services
+                <ChevronDown size={14} />
+              </button>
+              <div className="absolute left-0 top-full pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all z-50" style={{ minWidth: 500 }}>
+                <div style={{ background: 'var(--dark)', border: '1px solid var(--border)', borderRadius: 8, padding: 24 }}>
+                  <div className="grid grid-cols-2 gap-8">
+                    {Object.entries(servicesByCategory).map(([category, catServices]) => (
+                      <div key={category}>
+                        <h4 className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: 'var(--ink-muted)' }}>
+                          {category}
+                        </h4>
+                        <ul className="flex flex-col gap-2">
+                          {catServices.map(s => (
+                            <li key={s.slug}>
+                              <Link href={`/services/${s.slug}`} className="text-sm transition-colors" style={{ color: 'var(--ink-dim)' }}
+                                onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
+                                onMouseLeave={e => (e.currentTarget.style.color = 'var(--ink-dim)')}
+                              >
+                                {s.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <NavLink href="/services" label="Services" />
-
-            <NavLink href="/about" label="About" />
-            <NavLink href="/insights" label="Insights" />
-            <NavLink href="/contact" label="Contact" />
+            <NavLink href="/insights" label="Blogs" />
+            <NavLink href="/about" label="About Us" />
+            <NavLink href="/faqs" label="FAQs" />
+            <NavLink href="/contact" label="Contact Us" />
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -52,7 +95,7 @@ export default function Nav() {
               +971 50 216 5471
             </a>
             <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 22px' }}>
-              Free Consultation
+              Get Started
             </Link>
           </div>
 
@@ -74,24 +117,44 @@ export default function Nav() {
           style={{ background: 'var(--dark-2)', top: 76 }}
         >
           <MobileLink href="/" label="Home" />
+          <MobileLink href="/services/business-setup" label="Setup Your Company" />
+          
           <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 8, marginBottom: 4 }}>
-            <div className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--ink-dim)' }}>Services</div>
-            {services.map(s => (
-              <Link
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className="flex items-center gap-2 py-2"
-                style={{ color: 'var(--ink-muted)', fontSize: 14 }}
-              >
-                <span>{s.icon}</span> {s.title}
-              </Link>
-            ))}
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="text-xs font-semibold tracking-widest uppercase mb-2 w-full text-left flex items-center justify-between"
+              style={{ color: 'var(--ink-dim)' }}
+            >
+              Our Services
+              <ChevronDown size={16} style={{ transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
+            </button>
+            {servicesOpen && (
+              <div className="flex flex-col gap-2 ml-4 mt-2">
+                {Object.entries(servicesByCategory).map(([category, catServices]) => (
+                  <div key={category}>
+                    <div className="text-xs font-semibold mb-1" style={{ color: 'var(--ink-muted)' }}>{category}</div>
+                    {catServices.map(s => (
+                      <Link
+                        key={s.slug}
+                        href={`/services/${s.slug}`}
+                        className="flex items-center gap-2 py-1 pl-2"
+                        style={{ color: 'var(--ink-muted)', fontSize: 13 }}
+                      >
+                        <span>{s.icon}</span> {s.title}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+          
+          <MobileLink href="/insights" label="Blogs" />
           <MobileLink href="/about" label="About Us" />
-          <MobileLink href="/insights" label="Insights" />
-          <MobileLink href="/contact" label="Contact" />
+          <MobileLink href="/faqs" label="FAQs" />
+          <MobileLink href="/contact" label="Contact Us" />
           <Link href="/contact" className="btn btn-gold mt-4" style={{ justifyContent: 'center' }}>
-            Book Free Consultation →
+            Get Started →
           </Link>
         </div>
       )}

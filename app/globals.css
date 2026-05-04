@@ -110,7 +110,50 @@ body {
 /* ─── SECTION ─── */
 .section { padding: 112px 0; }
 @media (max-width: 768px) { .section { padding: 72px 0; } }
-.theme-light {
+
+/* THEME: Dark (default, core brand) */
+.theme-dark {
+  background:
+    radial-gradient(ellipse 70% 60% at 65% 50%, rgba(201,160,96,0.04) 0%, transparent 70%),
+    var(--dark);
+  color: var(--ink);
+}
+
+/* THEME: Maroon (secondary emphasis) */
+.theme-maroon {
+  --dark-2: #321116;
+  --dark-3: #42171D;
+  --dark-4: #5B171C;
+  --dark-5: #7A262D;
+  --border: rgba(232, 200, 122, 0.2);
+  --ink: #FFF8EC;
+  --ink-muted: #CDB9A5;
+  --ink-dim: #9F8170;
+  background:
+    radial-gradient(ellipse 70% 100% at 100% 0%, rgba(201,160,96,0.08), transparent 58%),
+    linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon) 100%);
+  color: var(--ink);
+}
+
+/* THEME: Maroon Light (maroon with reduced contrast) */
+.theme-maroon-light {
+  --dark: #3D1419;
+  --dark-2: #4A1A21;
+  --dark-3: #5B171C;
+  --dark-4: #6B2128;
+  --dark-5: #7A262D;
+  --border: rgba(232, 200, 122, 0.18);
+  --ink: #F5E8DC;
+  --ink-muted: #D4B5A0;
+  --ink-dim: #A89080;
+  background:
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,160,96,0.06), transparent 65%),
+    linear-gradient(135deg, #3D1419 0%, #4A1A21 100%);
+  color: var(--ink);
+}
+
+/* THEME: Warm (CTAs, forms, highlights - use sparingly) */
+.theme-warm {
   --dark: #F7F0E6;
   --dark-2: #FFF9F0;
   --dark-3: #EFE3D3;
@@ -127,28 +170,25 @@ body {
     var(--warm);
   color: var(--ink);
 }
-.theme-light .btn-outline {
+.theme-warm .btn-outline {
   color: var(--maroon);
   border-color: rgba(91, 23, 28, 0.24);
 }
-.theme-light .btn-outline:hover {
+.theme-warm .btn-outline:hover {
   background: rgba(91, 23, 28, 0.08);
   border-color: var(--maroon);
 }
-.theme-maroon {
-  --dark-2: #321116;
-  --dark-3: #42171D;
-  --dark-4: #5B171C;
-  --dark-5: #7A262D;
-  --border: rgba(232, 200, 122, 0.2);
-  --ink: #FFF8EC;
-  --ink-muted: #CDB9A5;
-  --ink-dim: #9F8170;
+
+/* THEME: Dark Gradient (authority/process sections) */
+.theme-dark-gradient {
   background:
-    radial-gradient(ellipse 70% 100% at 100% 0%, rgba(201,160,96,0.14), transparent 58%),
-    linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon) 100%);
+    radial-gradient(ellipse 70% 100% at 100% 0%, rgba(201,160,96,0.06), transparent 58%),
+    linear-gradient(135deg, #0A0A0A 0%, var(--dark) 100%);
   color: var(--ink);
 }
+
+/* Legacy aliases for compatibility */
+.theme-light { @extend .theme-warm; }
 
 /* ─── SERVICES HEADER & TABS (Star One) ─── */
 .services-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:64px}

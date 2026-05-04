@@ -20,6 +20,9 @@ export default function Nav() {
 
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
+  // Check if current page has warm hero that needs dark navbar text
+  const isWarmHeroPage = pathname === '/contact'
+
   const isAdmin = pathname.startsWith('/admin')
   if (isAdmin) return null
 
@@ -39,9 +42,10 @@ export default function Nav() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           height: 72,
-          background: scrolled ? 'rgba(8,8,8,0.97)' : 'transparent',
-          borderBottom: scrolled ? '1px solid var(--border)' : 'none',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          background: scrolled ? 'rgba(8,8,8,0.97)' : isWarmHeroPage ? 'rgba(8,8,8,0.9)' : 'transparent',
+          borderBottom: scrolled ? '1px solid var(--border)' : isWarmHeroPage ? '1px solid var(--border)' : 'none',
+          backdropFilter: scrolled ? 'blur(12px)' : isWarmHeroPage ? 'blur(8px)' : 'none',
+          color: scrolled ? 'inherit' : isWarmHeroPage ? 'var(--ink)' : 'inherit',
         }}
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-full flex items-center justify-between">
@@ -91,7 +95,12 @@ export default function Nav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+971502165471" className="text-xs font-medium tracking-wider" style={{ color: 'var(--ink-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            <a href="tel:+971502165471" className="text-xs font-medium tracking-wider" style={{ 
+              color: 'var(--ink-muted)', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.06em',
+              transition: 'color 0.3s'
+            }}>
               +971 50 216 5471
             </a>
             <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 22px' }}>
@@ -165,11 +174,14 @@ export default function Nav() {
 function NavLink({ href, label }: { href: string; label: string }) {
   const pathname = usePathname()
   const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
+  
   return (
     <Link
       href={href}
       className={`nav-link relative text-xs font-semibold tracking-wider uppercase transition-colors ${active ? 'active' : ''}`}
-      style={{ letterSpacing: '0.08em' }}
+      style={{ 
+        letterSpacing: '0.08em'
+      }}
     >
       {label}
     </Link>

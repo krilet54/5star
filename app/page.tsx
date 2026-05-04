@@ -134,7 +134,7 @@ export default async function HomePage() {
       </div>
 
       {/* ─── 3-STEP PROCESS ─── */}
-      <section className="section border-b theme-light" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-b theme-dark-gradient" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="tag justify-center">How It Works</div>
@@ -214,7 +214,7 @@ export default async function HomePage() {
       </section>
 
       {/* ─── SERVICES OVERVIEW ─── */}
-      <section className="section border-b theme-light" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-b theme-dark" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="services-header services-header-centered">
             <div>
@@ -366,7 +366,7 @@ export default async function HomePage() {
 
       {/* ─── ARTICLES ─── */}
       {(articles && articles.length > 0) && (
-        <section className="section border-t theme-light" style={{ borderColor: 'var(--border)' }}>
+        <section className="section border-t theme-warm" style={{ borderColor: 'var(--border)' }}>
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
             <div className="section-title-row mb-12 flex-wrap">
               <div>

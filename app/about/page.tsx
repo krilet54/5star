@@ -82,15 +82,18 @@ export default function AboutPage() {
       </section>
 
       {/* STORY */}
-      <section className="section border-y theme-light" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-y theme-dark" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[1fr_480px] gap-20 items-start">
-            <Reveal>
-              <div className="tag">Our Story</div>
-              <h2 className="font-display text-4xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-                Built for International<br />Entrepreneurs
-              </h2>
-              <div className="gold-divider" />
+          <Reveal>
+            <div className="tag">Our Story</div>
+            <h2 className="font-display text-4xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+              Built for International<br />Entrepreneurs
+            </h2>
+            <div className="gold-divider" />
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-12">
+            <Reveal delay={100}>
               <div className="flex flex-col gap-5 text-base leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
                 <p>
                   Star One was born from a simple observation: international entrepreneurs wanting to set up in Dubai were constantly let down — by fragmented advice, hidden fees, slow processes, and advisors who disappeared after the license was issued.
@@ -98,6 +101,11 @@ export default function AboutPage() {
                 <p>
                   We built Star One to be different. We believe the best business relationships are long-term ones. So from day one, we've focused on being the firm that stays with you — through your first license, your first hire, your first audit, and your first expansion.
                 </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className="flex flex-col gap-5 text-base leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
                 <p>
                   Our clients come primarily from the UK, United States, and South Africa — entrepreneurs, investors, and professionals who see the UAE as the platform for their global ambitions. We understand their world, their expectations, and their timeline.
                 </p>
@@ -107,31 +115,25 @@ export default function AboutPage() {
               </div>
             </Reveal>
 
-            <Reveal delay={100}>
-              <div className="section-image mb-4" style={{ backgroundImage: `url('${pageHeroImages.about}')` }} />
-              <div className="border p-10 rounded-sm" style={{ background: 'var(--dark-3)', borderColor: 'var(--border)' }}>
-                <h3 className="font-display text-2xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>What We Offer</h3>
-                <ul className="flex flex-col gap-3">
-                  {[
-                    'Business Setup (Mainland & Free Zone)',
-                    'Employment & Golden Visa Processing',
-                    'Accounting & Bookkeeping',
-                    'VAT & Corporate Tax Filing',
-                    'Compliance (UBO, ESR, AML, KYC)',
-                    'Corporate Services & Bank Account Opening',
-                    'HR & Payroll Management (WPS)',
-                    'Trademark Registration',
-                    'Business Strategy & Planning',
-                    'Legal Translation & Document Attestation',
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm" style={{ color: 'var(--ink-muted)' }}>
-                      <span style={{ color: 'var(--gold)', flexShrink: 0 }}>—</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 pt-6 border-t" style={{ borderColor: 'var(--border)' }}>
-                  <Link href="/services" className="btn btn-gold w-full justify-center">View All Services →</Link>
+            <Reveal delay={200}>
+              <div>
+                <div className="section-image mb-6" style={{ backgroundImage: `url('${pageHeroImages.about}')` }} />
+                <div className="border p-8 rounded-sm" style={{ background: 'var(--dark-3)', borderColor: 'var(--border)' }}>
+                  <h3 className="font-display text-lg font-medium mb-5" style={{ fontFamily: 'var(--font-display)' }}>What We Offer</h3>
+                  <ul className="flex flex-col gap-3">
+                    {[
+                      'Business Setup (Mainland & Free Zone)',
+                      'Employment & Golden Visa Processing',
+                      'Accounting & Bookkeeping',
+                      'VAT & Corporate Tax Filing',
+                      'Compliance (UBO, ESR, AML, KYC)',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm" style={{ color: 'var(--ink-muted)' }}>
+                        <span style={{ color: 'var(--gold)', flexShrink: 0 }}>—</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </Reveal>
@@ -140,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section className="section theme-light">
+      <section className="section theme-maroon-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="tag justify-center">Our Values</div>
@@ -189,39 +191,40 @@ export default function AboutPage() {
       </section>
 
       {/* TARGET MARKETS */}
-      <section className="section theme-light">
+      <section className="section theme-warm">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <Reveal>
-              <div className="tag">Who We Serve</div>
-              <h2 className="font-display text-4xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-                Specialists for<br />International Founders
-              </h2>
-              <div className="gold-divider" />
-              <p className="text-base leading-relaxed mb-8" style={{ color: 'var(--ink-muted)' }}>
-                We serve entrepreneurs, investors, and business owners from around the world — with particular expertise in supporting clients from the UK, United States, and South Africa navigating the UAE business landscape.
-              </p>
-              <Link href="/contact" className="btn btn-gold">Book Your Free Consultation →</Link>
-            </Reveal>
+          <Reveal>
+            <div className="tag">Who We Serve</div>
+            <h2 className="font-display text-4xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+              Specialists for<br />International Founders
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-base leading-relaxed mb-10" style={{ color: 'var(--ink-muted)', maxWidth: 800 }}>
+              We serve entrepreneurs, investors, and business owners from around the world — with particular expertise in supporting clients from the UK, United States, and South Africa navigating the UAE business landscape.
+            </p>
+          </Reveal>
 
-            <Reveal delay={100}>
-              <div className="flex flex-col gap-4">
-                {[
-                  { flag: '🇬🇧', country: 'United Kingdom', desc: 'UK entrepreneurs benefit from the UAE\'s zero personal tax, global connectivity, and proximity to European markets.' },
-                  { flag: '🇺🇸', country: 'United States', desc: 'US founders use Dubai as their MENA and South Asian headquarters, taking advantage of free trade agreements.' },
-                  { flag: '🇿🇦', country: 'South Africa', desc: 'South African professionals and businesses find the UAE an ideal, stable base for African continent operations.' },
-                  { flag: '🌍', country: 'Rest of World', desc: 'Entrepreneurs from India, Pakistan, Europe, and beyond — if you want to operate from Dubai, we can help.' },
-                ].map((m, i) => (
-                  <div key={i} className="flex gap-4 items-start p-5 border rounded-sm" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-                    <span className="text-2xl flex-shrink-0">{m.flag}</span>
-                    <div>
-                      <div className="font-medium text-sm mb-1" style={{ color: 'var(--ink)' }}>{m.country}</div>
-                      <div className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>{m.desc}</div>
-                    </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { flag: '🇬🇧', country: 'United Kingdom', desc: 'UK entrepreneurs benefit from the UAE\'s zero personal tax, global connectivity, and proximity to European markets.' },
+              { flag: '🇺🇸', country: 'United States', desc: 'US founders use Dubai as their MENA and South Asian headquarters, taking advantage of free trade agreements.' },
+              { flag: '🇿🇦', country: 'South Africa', desc: 'South African professionals and businesses find the UAE an ideal, stable base for African continent operations.' },
+              { flag: '🌍', country: 'Rest of World', desc: 'Entrepreneurs from India, Pakistan, Europe, and beyond — if you want to operate from Dubai, we can help.' },
+            ].map((m, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div className="flex gap-4 items-start p-6 border rounded-sm h-full" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+                  <span className="text-3xl flex-shrink-0">{m.flag}</span>
+                  <div>
+                    <div className="font-medium text-base mb-2" style={{ color: 'var(--ink)' }}>{m.country}</div>
+                    <div className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>{m.desc}</div>
                   </div>
-                ))}
-              </div>
-            </Reveal>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/contact" className="btn btn-gold">Book Your Free Consultation →</Link>
           </div>
         </div>
       </section>

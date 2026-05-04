@@ -8,9 +8,9 @@ export default function Footer() {
     {
       title: 'Setup',
       links: [
-        { label: 'Business Setup', href: '/services/business-setup' },
-        { label: 'Free Zone Setup', href: '/services/business-setup' },
-        { label: 'Offshore Setup', href: '/services/business-setup' },
+        { label: 'Business Setup', href: '/services/business-setup', id: 'setup-1' },
+        { label: 'Free Zone Setup', href: '/services/business-setup', id: 'setup-2' },
+        { label: 'Offshore Setup', href: '/services/business-setup', id: 'setup-3' },
       ]
     },
     {
@@ -116,8 +116,8 @@ export default function Footer() {
                     {group.title}
                   </h4>
                   <ul className="flex flex-col gap-2.5">
-                    {group.links.map(link => (
-                      <li key={link.href}>
+                    {group.links.map((link, idx) => (
+                      <li key={link.id || `${group.title}-${idx}`}>
                         <Link 
                           href={link.href} 
                           className="text-sm transition-colors" 

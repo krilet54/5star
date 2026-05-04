@@ -83,7 +83,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* FEATURES */}
-      <section className="section border-y theme-light" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-y theme-dark" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">What's Included</div>
           <h2 className="font-display text-4xl font-medium mb-14" style={{ fontFamily: 'var(--font-display)' }}>Service Features</h2>
@@ -104,18 +104,22 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* BENEFITS */}
-      <section className="section theme-light">
+      <section className="section theme-maroon-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <Reveal>
-              <div className="tag">Benefits</div>
-              <h2 className="font-display text-4xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>Why This Matters<br />for Your Business</h2>
-              <div className="gold-divider" />
-              <p className="text-base leading-relaxed" style={{ color: 'var(--ink-muted)', maxWidth: 440 }}>
-                Every service we offer is designed with one goal: helping your UAE business succeed faster, with less friction and total compliance.
-              </p>
-              <div className="section-image mt-10" style={{ backgroundImage: `url('${serviceImage}')` }} />
+          <Reveal>
+            <div className="tag">Benefits</div>
+            <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>Why This Matters<br />for Your Business</h2>
+            <div className="gold-divider" />
+            <p className="text-base leading-relaxed mb-10" style={{ color: 'var(--ink-muted)', maxWidth: 800 }}>
+              Every service we offer is designed with one goal: helping your UAE business succeed faster, with less friction and total compliance.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <Reveal delay={80}>
+              <div className="section-image" style={{ backgroundImage: `url('${serviceImage}')` }} />
             </Reveal>
+            
             <Reveal delay={100}>
               <ul className="flex flex-col gap-4">
                 {service.benefits.map((b, i) => (
@@ -171,7 +175,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* RELATED SERVICES */}
-      <section className="section border-t theme-light" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-t theme-warm" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">Related</div>
           <h2 className="font-display text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)' }}>Other Services</h2>

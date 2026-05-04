@@ -43,7 +43,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ALL SERVICES */}
-      <section className="pb-24 theme-light">
+      <section className="pb-24 theme-dark">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           {Object.entries(servicesByCategory).map(([ category, categoryServices ], catIdx) => (
             categoryServices.length > 0 && (

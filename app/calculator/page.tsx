@@ -129,7 +129,7 @@ export default function CalculatorPage() {
       </section>
 
       {/* Calculator */}
-      <section className="py-20" style={{ background: 'var(--dark-2)' }}>
+      <section className="py-20 theme-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
@@ -359,7 +359,7 @@ export default function CalculatorPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting || !email}
-                      className="btn btn-gold block w-full text-center"
+                      className="btn btn-gold button-full"
                       style={{ opacity: isSubmitting || !email ? 0.6 : 1, cursor: isSubmitting || !email ? 'not-allowed' : 'pointer' }}
                     >
                       {isSubmitting ? 'Sending...' : 'Get Exact Quote'}
@@ -381,7 +381,7 @@ export default function CalculatorPage() {
                     href="https://wa.me/971502165471"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline block text-center"
+                    className="btn btn-outline button-full"
                     style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}
                   >
                     WhatsApp Us

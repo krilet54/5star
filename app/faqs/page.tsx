@@ -40,7 +40,7 @@ export default function FAQsPage() {
       <FAQsContent />
 
       {/* CTA */}
-      <section className="py-16" style={{ background: 'var(--dark)' }}>
+      <section className="py-16 theme-maroon">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
           <Reveal>
             <h2 className="text-3xl font-display font-bold mb-4" style={{ color: 'var(--ink)' }}>

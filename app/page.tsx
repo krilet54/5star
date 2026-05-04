@@ -134,7 +134,7 @@ export default async function HomePage() {
       </div>
 
       {/* ─── 3-STEP PROCESS ─── */}
-      <section className="section border-b" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-b theme-light" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="tag justify-center">How It Works</div>
@@ -164,7 +164,7 @@ export default async function HomePage() {
       </section>
 
       {/* ─── WHY STAR ONE ─── */}
-      <section className="section border-b" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-b theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-0 items-stretch">
             <div className="pr-0 lg:pr-20 pb-12 lg:pb-0">
@@ -214,9 +214,9 @@ export default async function HomePage() {
       </section>
 
       {/* ─── SERVICES OVERVIEW ─── */}
-      <section className="section border-b" style={{ borderColor: 'var(--border)' }}>
+      <section className="section border-b theme-light" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="services-header">
+          <div className="services-header services-header-centered">
             <div>
               <div className="tag">Our Services</div>
               <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1 }}>
@@ -251,7 +251,7 @@ export default async function HomePage() {
       </section>
 
       {/* ─── PACKAGES ─── */}
-      <section className="section border-b" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="section border-b theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="tag justify-center">Pricing Plans</div>
@@ -345,7 +345,7 @@ export default async function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/calculator" className={`block py-3 px-4 text-center rounded font-medium transition ${
+                  <Link href="/calculator" className={`button-full py-3 px-4 rounded font-medium transition ${
                     pkg.highlighted ? 'btn btn-gold' : 'btn btn-outline'
                   }`}>
                     Learn More & Calculate
@@ -366,9 +366,9 @@ export default async function HomePage() {
 
       {/* ─── ARTICLES ─── */}
       {(articles && articles.length > 0) && (
-        <section className="section border-t" style={{ borderColor: 'var(--border)' }}>
+        <section className="section border-t theme-light" style={{ borderColor: 'var(--border)' }}>
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-            <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div className="section-title-row mb-12 flex-wrap">
               <div>
                 <div className="tag">Insights & Guides</div>
                 <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)' }}>Business Setup<br />Knowledge Hub</h2>
@@ -412,7 +412,7 @@ export default async function HomePage() {
       )}
 
       {/* ─── CTA BANNER ─── */}
-      <section className="py-32 relative overflow-hidden border-t" style={{ borderColor: 'var(--border)' }}>
+      <section className="py-32 relative overflow-hidden border-t theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(201,160,96,0.06) 0%, transparent 70%)' }} />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="tag justify-center">Ready to Launch?</div>

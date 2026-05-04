@@ -120,7 +120,7 @@ export default function FAQsContent() {
   const [openFAQ, setOpenFAQ] = useState<{ [key: number]: number }>({ 0: 0 })
 
   return (
-    <section className="py-20" style={{ background: 'var(--dark-2)' }}>
+    <section className="py-20 theme-light">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-[300px_1fr] gap-12">
           {/* Category sidebar */}

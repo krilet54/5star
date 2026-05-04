@@ -32,7 +32,7 @@ export default function ContactPage() {
       </section>
 
       {/* MAIN */}
-      <section className="pb-24">
+      <section className="pb-24 theme-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_540px] gap-16 items-start">
             {/* LEFT: Contact info */}
@@ -136,7 +136,7 @@ export default function ContactPage() {
       </section>
 
       {/* MAP PLACEHOLDER */}
-      <div className="border-t" style={{ borderColor: 'var(--border)', background: 'var(--dark-2)' }}>
+      <div className="border-t theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="h-64 flex items-center justify-center" style={{ background: 'var(--dark-3)' }}>
           <div className="text-center">
             <div className="text-4xl mb-3">📍</div>

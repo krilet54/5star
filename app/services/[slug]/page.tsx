@@ -83,7 +83,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* FEATURES */}
-      <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="section border-y theme-light" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">What's Included</div>
           <h2 className="font-display text-4xl font-medium mb-14" style={{ fontFamily: 'var(--font-display)' }}>Service Features</h2>
@@ -104,7 +104,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* BENEFITS */}
-      <section className="section">
+      <section className="section theme-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <Reveal>
@@ -131,7 +131,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* PROCESS */}
-      <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="section border-y theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="tag justify-center">Process</div>
@@ -171,7 +171,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* RELATED SERVICES */}
-      <section className="section border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="section border-t theme-light" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">Related</div>
           <h2 className="font-display text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)' }}>Other Services</h2>

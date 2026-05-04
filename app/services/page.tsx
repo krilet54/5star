@@ -43,7 +43,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ALL SERVICES */}
-      <section className="pb-24">
+      <section className="pb-24 theme-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           {Object.entries(servicesByCategory).map(([ category, categoryServices ], catIdx) => (
             categoryServices.length > 0 && (
@@ -115,7 +115,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="py-24 border-t theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>Not Sure Where to Start?</h2>
           <p className="text-base mb-8 max-w-md mx-auto" style={{ color: 'var(--ink-muted)' }}>

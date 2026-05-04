@@ -82,7 +82,7 @@ export default function AboutPage() {
       </section>
 
       {/* STORY */}
-      <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="section border-y theme-light" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_480px] gap-20 items-start">
             <Reveal>
@@ -140,7 +140,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section className="section">
+      <section className="section theme-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="tag justify-center">Our Values</div>
@@ -163,7 +163,7 @@ export default function AboutPage() {
       </section>
 
       {/* TEAM */}
-      <section className="section border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="section border-y theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="tag">Leadership</div>
           <h2 className="font-display text-4xl font-medium mb-14" style={{ fontFamily: 'var(--font-display)' }}>Meet the Team</h2>
@@ -189,7 +189,7 @@ export default function AboutPage() {
       </section>
 
       {/* TARGET MARKETS */}
-      <section className="section">
+      <section className="section theme-light">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <Reveal>
@@ -227,7 +227,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 border-t" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+      <section className="py-24 border-t theme-maroon" style={{ borderColor: 'var(--border)' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>Ready to Work Together?</h2>
           <p className="text-base mb-8 max-w-md mx-auto" style={{ color: 'var(--ink-muted)' }}>

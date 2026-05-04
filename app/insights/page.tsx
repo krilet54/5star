@@ -4,6 +4,8 @@ import { createClient } from '@/lib/supabase-server'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
 import InsightsFilter from '@/components/InsightsFilter'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { getArticleFallbackImage, pageHeroImages } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'Insights & Guides — UAE Business Setup Knowledge Hub',
@@ -30,6 +32,7 @@ export default async function InsightsPage() {
     <>
       {/* HERO */}
       <section className="pt-40 pb-20 relative overflow-hidden" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={pageHeroImages.insights} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -81,7 +84,7 @@ export default async function InsightsPage() {
                     </>
                   ) : (
                     <>
-                      <img src={`https://source.unsplash.com/1600x900/?${encodeURIComponent(featured.category || featured.title.split(' ').slice(0,3).join(' '))}`} alt={featured.title} className="absolute inset-0 w-full h-full object-cover" />
+                      <img src={getArticleFallbackImage(featured.category)} alt={featured.title} className="absolute inset-0 w-full h-full object-cover" />
                       <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #1a1200 0%, #2a1800 100%)' }} />
                     </>
                   )}
@@ -122,7 +125,7 @@ export default async function InsightsPage() {
                       </>
                     ) : (
                       <>
-                        <img src={`https://source.unsplash.com/800x600/?${encodeURIComponent(article.category || article.title.split(' ').slice(0,3).join(' '))}`} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
+                        <img src={getArticleFallbackImage(article.category)} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
                         <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--dark-4), var(--dark-5))' }} />
                       </>
                     )}

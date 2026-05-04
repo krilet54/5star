@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { pageHeroImages } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'Contact Us — Book a Free Consultation',
@@ -12,6 +14,7 @@ export default function ContactPage() {
     <>
       {/* HERO */}
       <section className="pt-40 pb-20 relative overflow-hidden" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={pageHeroImages.contact} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -34,6 +37,9 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-[1fr_540px] gap-16 items-start">
             {/* LEFT: Contact info */}
             <div>
+              <Reveal>
+                <div className="section-image mb-10" style={{ backgroundImage: `url('${pageHeroImages.contact}')` }} />
+              </Reveal>
               <div className="flex flex-col gap-6 mb-10">
                 {[
                   {

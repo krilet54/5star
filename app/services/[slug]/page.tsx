@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { getServiceBySlug, services } from '@/lib/services-data'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { getServiceImage } from '@/lib/site-images'
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -27,11 +29,13 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound()
 
   const related = services.filter(s => s.slug !== slug).slice(0, 3)
+  const serviceImage = getServiceImage(service.slug)
 
   return (
     <>
       {/* HERO */}
       <section className="pt-40 pb-24 relative overflow-hidden" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={serviceImage} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -110,6 +114,7 @@ export default async function ServicePage({ params }: Props) {
               <p className="text-base leading-relaxed" style={{ color: 'var(--ink-muted)', maxWidth: 440 }}>
                 Every service we offer is designed with one goal: helping your UAE business succeed faster, with less friction and total compliance.
               </p>
+              <div className="section-image mt-10" style={{ backgroundImage: `url('${serviceImage}')` }} />
             </Reveal>
             <Reveal delay={100}>
               <ul className="flex flex-col gap-4">
@@ -173,6 +178,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0.5">
             {related.map(r => (
               <Link key={r.slug} href={`/services/${r.slug}`} className="card p-8" style={{ background: 'var(--dark-3)', textDecoration: 'none' }}>
+                <div className="service-card-image" style={{ backgroundImage: `url('${getServiceImage(r.slug)}')` }} />
                 <div className="text-2xl mb-3">{r.icon}</div>
                 <h3 className="font-display text-lg font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>{r.title}</h3>
                 <p className="text-xs mb-4" style={{ color: 'var(--ink-muted)' }}>{r.tagline}</p>

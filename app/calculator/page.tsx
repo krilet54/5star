@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Reveal from '@/components/Reveal'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { pageHeroImages } from '@/lib/site-images'
 
 export default function CalculatorPage() {
   const [companyType, setCompanyType] = useState<'mainland' | 'freezone' | 'offshore'>('freezone')
@@ -105,6 +107,7 @@ export default function CalculatorPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-96 flex items-center overflow-hidden pt-20" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={pageHeroImages.calculator} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.07) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -131,6 +134,9 @@ export default function CalculatorPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <div className="space-y-12">
+              <Reveal>
+                <div className="section-image" style={{ backgroundImage: `url('${pageHeroImages.calculator}')` }} />
+              </Reveal>
               {/* Step 1: Company Type */}
               <div>
                 <h3 className="text-xl font-semibold mb-6" style={{ color: 'var(--ink)' }}>

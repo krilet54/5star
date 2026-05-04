@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import FAQsContent from '@/components/FAQsContent'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { pageHeroImages } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'FAQs — Star One Business Consultancy',
@@ -13,6 +15,7 @@ export default function FAQsPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-96 flex items-center overflow-hidden pt-20" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={pageHeroImages.faqs} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.07) 1px, transparent 0)',
           backgroundSize: '40px 40px',

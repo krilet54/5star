@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { services } from '@/lib/services-data'
 import Reveal from '@/components/Reveal'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { getServiceImage, pageHeroImages } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'Our 20 Services — Business Setup to Compliance & Beyond',
@@ -23,6 +25,7 @@ export default function ServicesPage() {
     <>
       {/* PAGE HERO */}
       <section className="pt-40 pb-20 relative overflow-hidden" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={pageHeroImages.services} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -60,6 +63,7 @@ export default function ServicesPage() {
                         className="card p-8 h-full hover:shadow-lg transition-all duration-300"
                         style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}
                       >
+                        <div className="service-card-image" style={{ backgroundImage: `url('${getServiceImage(service.slug)}')` }} />
                         <div className="text-4xl mb-4">{service.icon}</div>
                         <h3 className="font-display text-lg font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>
                           {service.title}

@@ -7,6 +7,7 @@ import Reveal from '@/components/Reveal'
 import ServicesFilter from '@/components/ServicesFilter'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
+import { getArticleFallbackImage } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'Star One — Business Setup & Advisory Dubai, UAE',
@@ -386,7 +387,7 @@ export default async function HomePage() {
                       </>
                     ) : (
                       <>
-                        <img src={`https://source.unsplash.com/800x600/?${encodeURIComponent(article.category || article.title.split(' ').slice(0,3).join(' '))}`} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
+                        <img src={getArticleFallbackImage(article.category)} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
                         <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--dark-4), var(--dark-5))' }} />
                       </>
                     )}

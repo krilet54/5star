@@ -421,8 +421,49 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.site-image-backdrop {
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  filter: brightness(0.62) saturate(0.78);
+}
+.site-image-scrim {
+  background:
+    linear-gradient(90deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.82) 42%, rgba(8,8,8,0.42) 100%),
+    linear-gradient(180deg, rgba(8,8,8,0.56) 0%, rgba(8,8,8,0.18) 46%, rgba(8,8,8,0.86) 100%);
+}
+.section-image {
+  min-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+}
+.section-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8,8,8,0.1), rgba(8,8,8,0.62));
+}
+.service-card-image {
+  height: 150px;
+  margin: -32px -32px 28px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.service-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8,8,8,0.16), rgba(8,8,8,0.72));
+}
 @media (max-width: 768px) {
   .hero-image { background-position: 50% 30%; filter: brightness(0.38) saturate(0.6); }
+  .site-image-backdrop { background-position: center !important; opacity: 0.42; }
+  .section-image { min-height: 260px; }
 }
 /* ─── HERO VERTICAL ACCENT ───
    Standard decorative vertical accent for hero sections. Placed inside

@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import Reveal from '@/components/Reveal'
+import ImageBackdrop from '@/components/ImageBackdrop'
+import { pageHeroImages } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'About Star One — Dubai Business Setup Experts',
@@ -39,6 +41,7 @@ export default function AboutPage() {
     <>
       {/* HERO */}
       <section className="pt-40 pb-24 relative overflow-hidden" style={{ background: 'var(--dark)' }}>
+        <ImageBackdrop src={pageHeroImages.about} position="center right" />
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -105,6 +108,7 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={100}>
+              <div className="section-image mb-4" style={{ backgroundImage: `url('${pageHeroImages.about}')` }} />
               <div className="border p-10 rounded-sm" style={{ background: 'var(--dark-3)', borderColor: 'var(--border)' }}>
                 <h3 className="font-display text-2xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)' }}>What We Offer</h3>
                 <ul className="flex flex-col gap-3">

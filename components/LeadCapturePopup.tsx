@@ -1,8 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { X } from 'lucide-react'
 
 export default function LeadCapturePopup() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [hasShown, setHasShown] = useState(false)
   const [formData, setFormData] = useState({
@@ -14,8 +16,11 @@ export default function LeadCapturePopup() {
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const isAdminRoute = pathname?.startsWith('/admin')
 
   useEffect(() => {
+    if (isAdminRoute) return
+
     // Check if popup has been shown in this session
     const popupShown = sessionStorage.getItem('leadPopupShown')
     if (!popupShown) {
@@ -28,11 +33,11 @@ export default function LeadCapturePopup() {
 
       return () => clearTimeout(timer)
     }
-  }, [])
+  }, [isAdminRoute])
 
   // Exit intent - show popup when user moves mouse towards closing
   useEffect(() => {
-    if (hasShown) return
+    if (isAdminRoute || hasShown) return
 
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
@@ -44,7 +49,7 @@ export default function LeadCapturePopup() {
 
     document.addEventListener('mouseleave', handleMouseLeave)
     return () => document.removeEventListener('mouseleave', handleMouseLeave)
-  }, [hasShown])
+  }, [hasShown, isAdminRoute])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -79,7 +84,7 @@ export default function LeadCapturePopup() {
     }
   }
 
-  if (!isOpen) return null
+  if (isAdminRoute || !isOpen) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(10,10,10,0.52)', backdropFilter: 'blur(4px)' }}>

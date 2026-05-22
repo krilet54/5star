@@ -5,7 +5,10 @@ import AnimatedCounter from '@/components/AnimatedCounter'
 import Reveal from '@/components/Reveal'
 import ServicesFilter from '@/components/ServicesFilter'
 import HoverButton from '@/components/HoverButton'
+import ArticleCoverImage from '@/components/ArticleCoverImage'
 import { formatDate } from '@/lib/utils'
+import { getArticleImage } from '@/lib/article-images'
+import { getArticleFallbackImage } from '@/lib/site-images'
 import type { Article } from '@/types'
 
 export const metadata: Metadata = {
@@ -509,6 +512,13 @@ export default async function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none" />
 
                   <div className="h-48 flex items-center justify-center relative overflow-hidden rounded" style={{ background: '#F5F5F5' }}>
+                    <ArticleCoverImage
+                      src={getArticleImage(article)}
+                      fallbackSrc={getArticleFallbackImage(article.category)}
+                      alt={article.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-black/40 pointer-events-none" />
                     <div className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold tracking-wider rounded" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
                       {article.category}
                     </div>
@@ -533,17 +543,7 @@ export default async function HomePage() {
       )}
 
       {/* ─── CTA BANNER ─── */}
-      <section className="py-32 relative overflow-hidden border-t section-corner-accent-lg" style={{ background: '#0A0A0A', borderColor: '#555555' }}>
-        {/* Decorative grid pattern */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: `
-            linear-gradient(0deg, transparent 24%, rgba(201, 168, 76, 0.1) 25%, rgba(201, 168, 76, 0.1) 26%, transparent 27%, transparent 74%, rgba(201, 168, 76, 0.1) 75%, rgba(201, 168, 76, 0.1) 76%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, rgba(201, 168, 76, 0.1) 25%, rgba(201, 168, 76, 0.1) 26%, transparent 27%, transparent 74%, rgba(201, 168, 76, 0.1) 75%, rgba(201, 168, 76, 0.1) 76%, transparent 77%, transparent)
-          `,
-          backgroundSize: '60px 60px',
-          pointerEvents: 'none',
-        }} />
-
+      <section className="home-cta-clean py-32 relative overflow-hidden border-t" style={{ background: '#0A0A0A', borderColor: '#555555' }}>
         {/* Corner accents */}
         <div className="absolute top-0 left-0 w-96 h-96 pointer-events-none opacity-8" style={{
           background: 'radial-gradient(circle at bottom-right, #C9A84C 0%, transparent 70%)',
@@ -552,16 +552,6 @@ export default async function HomePage() {
         <div className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none opacity-8" style={{
           background: 'radial-gradient(circle at top-left, #C9A84C 0%, transparent 70%)',
           borderRadius: '50%',
-        }} />
-
-        {/* Decorative top line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5" style={{
-          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent)',
-        }} />
-        
-        {/* Decorative bottom line */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5" style={{
-          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent)',
         }} />
 
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center relative z-10">

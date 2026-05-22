@@ -1,6 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import type { Article } from '@/types'
 
 const CATEGORIES = ['Business Setup', 'Visa', 'Tax', 'Compliance', 'Accounting', 'HR', 'Corporate', 'General']
@@ -12,6 +14,7 @@ interface Props {
 
 export default function ArticleEditor({ article, mode }: Props) {
   const router = useRouter()
+  const contentRef = useRef<HTMLTextAreaElement>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [preview, setPreview] = useState(false)
@@ -33,6 +36,44 @@ export default function ArticleEditor({ article, mode }: Props) {
 
   function update(key: string, val: string | boolean | number) {
     setForm(prev => ({ ...prev, [key]: val }))
+  }
+
+  function insertMarkdown(before: string, after = '', placeholder = 'Text') {
+    const textarea = contentRef.current
+    const content = form.content
+    const start = textarea?.selectionStart ?? content.length
+    const end = textarea?.selectionEnd ?? content.length
+    const selected = content.slice(start, end) || placeholder
+    const nextContent = `${content.slice(0, start)}${before}${selected}${after}${content.slice(end)}`
+
+    update('content', nextContent)
+    window.requestAnimationFrame(() => {
+      textarea?.focus()
+      const cursorStart = start + before.length
+      const cursorEnd = cursorStart + selected.length
+      textarea?.setSelectionRange(cursorStart, cursorEnd)
+    })
+  }
+
+  function insertLinePrefix(prefix: string, placeholder = 'List item') {
+    const textarea = contentRef.current
+    const content = form.content
+    const start = textarea?.selectionStart ?? content.length
+    const end = textarea?.selectionEnd ?? content.length
+    const selected = content.slice(start, end) || placeholder
+    const prefixed = selected
+      .split('\n')
+      .map(line => `${prefix}${line}`)
+      .join('\n')
+    const needsLeadingBreak = start > 0 && content[start - 1] !== '\n'
+    const needsTrailingBreak = end < content.length && content[end] !== '\n'
+    const nextContent = `${content.slice(0, start)}${needsLeadingBreak ? '\n' : ''}${prefixed}${needsTrailingBreak ? '\n' : ''}${content.slice(end)}`
+
+    update('content', nextContent)
+    window.requestAnimationFrame(() => {
+      textarea?.focus()
+      textarea?.setSelectionRange(start + (needsLeadingBreak ? 1 : 0), start + (needsLeadingBreak ? 1 : 0) + prefixed.length)
+    })
   }
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -131,17 +172,34 @@ export default function ArticleEditor({ article, mode }: Props) {
           <div className="admin-card">
             <div className="flex items-center justify-between mb-2">
               <label className="admin-label" style={{ marginBottom: 0 }}>Content (Markdown) *</label>
-              <span className="text-xs text-gray-400">Supports **bold**, ## headings, - lists, [links](url)</span>
+              <span className="text-xs text-gray-400">Formatting below is saved and shown on article pages</span>
+            </div>
+            <div className="admin-editor-toolbar">
+              <button type="button" className="admin-editor-btn" onClick={() => insertLinePrefix('## ', 'Section heading')}>H2</button>
+              <button type="button" className="admin-editor-btn" onClick={() => insertLinePrefix('### ', 'Subheading')}>H3</button>
+              <button type="button" className="admin-editor-btn" onClick={() => insertMarkdown('**', '**', 'Bold text')}>B</button>
+              <button type="button" className="admin-editor-btn italic" onClick={() => insertMarkdown('_', '_', 'Italic text')}>I</button>
+              <button type="button" className="admin-editor-btn" onClick={() => insertLinePrefix('- ', 'List item')}>Bullets</button>
+              <button type="button" className="admin-editor-btn" onClick={() => insertLinePrefix('1. ', 'List item')}>Numbered</button>
+              <button type="button" className="admin-editor-btn" onClick={() => insertLinePrefix('> ', 'Quote')}>Quote</button>
+              <button type="button" className="admin-editor-btn" onClick={() => insertMarkdown('[', '](https://example.com)', 'Link text')}>Link</button>
             </div>
             {preview ? (
               <div
-                className="min-h-[400px] p-4 rounded border text-sm leading-relaxed"
-                style={{ background: '#f9f9f7', borderColor: '#e5e5e0', whiteSpace: 'pre-wrap', color: '#333' }}
+                className="min-h-[400px] p-5 rounded border text-sm leading-relaxed prose-gold admin-markdown-preview"
+                style={{ background: '#f9f9f7', borderColor: '#e5e5e0', color: '#333' }}
               >
-                {form.content || <span className="text-gray-400">Nothing to preview yet.</span>}
+                {form.content ? (
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {form.content}
+                  </ReactMarkdown>
+                ) : (
+                  <span className="text-gray-400">Nothing to preview yet.</span>
+                )}
               </div>
             ) : (
               <textarea
+                ref={contentRef}
                 value={form.content}
                 onChange={e => update('content', e.target.value)}
                 className="admin-textarea"

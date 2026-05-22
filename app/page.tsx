@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase-server'
-import { services } from '@/lib/services-data'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import Reveal from '@/components/Reveal'
 import ServicesFilter from '@/components/ServicesFilter'
+import HoverButton from '@/components/HoverButton'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
-import { getArticleFallbackImage } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'Star One — Business Setup & Advisory Dubai, UAE',
@@ -15,6 +14,51 @@ export const metadata: Metadata = {
 }
 
 export const revalidate = 3600
+
+const coreServiceBlocks = [
+  {
+    title: 'Business Setup & Company Formation',
+    icon: '🏢',
+    desc: 'Mainland, Free Zone, and Offshore structures built for the right launch path.',
+    details: 'Mainland · Free Zone · Offshore',
+    href: '/services/business-setup',
+  },
+  {
+    title: 'Visa & Residency',
+    icon: '⭐',
+    desc: 'Golden, employment, dependent, and visit visa support under one roof.',
+    details: 'Golden Visa · Employment · Dependent · Visit',
+    href: '/services#visa-residency',
+  },
+  {
+    title: 'Compliance & Tax',
+    icon: '📊',
+    desc: 'Corporate tax, VAT, audit, ESR, AML, KYC, and UBO compliance support.',
+    details: 'Tax · VAT · Audit · ESR · AML · KYC · UBO',
+    href: '/services#compliance-tax',
+  },
+  {
+    title: 'Banking & Finance',
+    icon: '🏦',
+    desc: 'Corporate and personal banking plus accounting and bookkeeping support.',
+    details: 'Banking · Accounting · Bookkeeping',
+    href: '/services#banking-finance',
+  },
+  {
+    title: 'HR & Operations',
+    icon: '👥',
+    desc: 'HR, payroll, and operational support that keeps the business moving.',
+    details: 'HR · Payroll · Operations',
+    href: '/services#hr-operations',
+  },
+  {
+    title: 'IP & Ancillary',
+    icon: '⚖️',
+    desc: 'Trademark, branding, attestation, and other supporting business services.',
+    details: 'Trademark · Branding · Attestation · Wills',
+    href: '/services#ip-ancillary',
+  },
+]
 
 export default async function HomePage() {
   const supabase = await createClient()
@@ -29,104 +73,77 @@ export default async function HomePage() {
   return (
     <>
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden pt-20" style={{ background: 'var(--dark)' }}>
-        {/* Hero background image (served from /public) */}
-        <div className="absolute inset-0 hero-image" style={{
-          backgroundImage: "url('/hero-image.jpg')",
+      <section className="home-hero-clean relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-32" style={{ width: '100%' }}>
+        {/* Background image placed behind hero content. */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: "url('/images/hero-bg.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.32) saturate(0.7)',
+          zIndex: 0,
         }} />
-        {/* Background pattern */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.07) 1px, transparent 0)',
-          backgroundSize: '40px 40px',
+
+        {/* Optional subtle dark overlay for text contrast */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'linear-gradient(rgba(10,10,10,0.45), rgba(10,10,10,0.35))',
+          zIndex: 1,
         }} />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 70% 60% at 65% 50%, rgba(201,160,96,0.06) 0%, transparent 70%)',
-        }} />
+
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full relative z-10">
-          <div className="decor-vertical" />
-          <div className="grid lg:grid-cols-[1fr_380px] gap-16 items-center py-20">
+          <div className="grid grid-cols-1 gap-12 items-center py-12 lg:py-20">
+            {/* Left column */}
             <div>
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-10 border"
-                style={{ borderColor: 'var(--gold-border)', color: 'var(--gold)' }}
-              >
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--gold)' }} />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-8 border" style={{ borderColor: 'rgba(201,168,76,0.6)', color: '#C9A84C' }}>
+                <span className="w-2 h-2 rounded-full" style={{ background: '#C9A84C' }} />
                 Dubai's Trusted Business Setup Advisors
               </div>
 
-              <h1 className="font-display mb-6 leading-tight" style={{
+              <h1 className="font-display mb-8 leading-tight" style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(44px, 6vw, 84px)',
-                fontWeight: 500,
-                lineHeight: 1.08,
+                fontSize: 'clamp(44px, 7vw, 88px)',
+                fontWeight: 600,
+                lineHeight: 1.05,
+                color: '#FAFAFA',
               }}>
                 Build. Launch.<br />
-                <em style={{ color: 'var(--gold)' }}>Grow.</em>
+                <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Grow.</em>
               </h1>
 
-              <p className="text-lg mb-6 max-w-lg font-medium" style={{ color: 'var(--ink)', lineHeight: 1.8 }}>
+              <p className="text-base mb-6 max-w-xl font-normal" style={{ color: '#E8E8E8', lineHeight: 1.8 }}>
                 Your business in the UAE — set up simply, properly, and built to last.
               </p>
 
-              <p className="text-base mb-10 max-w-lg" style={{ color: 'var(--ink-muted)', lineHeight: 1.8 }}>
+              <p className="text-sm mb-10 max-w-xl" style={{ color: '#AAAAAA', lineHeight: 1.8 }}>
                 From company formation and licensing to visas, compliance, and banking — Star One is your one-stop partner for everything you need to start and grow your business in Dubai.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <Link href="/contact" className="btn btn-gold">Get Started →</Link>
-                <Link href="/services" className="btn btn-outline">Explore Services</Link>
-              </div>
-
-              {/* Stats */}
-              <div className="hero-stats flex flex-wrap items-center gap-10 mt-16 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
-                {[
-                  { value: 500, suffix: '+', label: 'Companies Formed' },
-                  { value: 12, suffix: '+', label: 'Years in Dubai' },
-                  { value: 30, suffix: '+', label: 'Countries Served' },
-                ].map((s, i) => (
-                  <div key={i} className={i > 0 ? 'pl-10 border-l' : ''} style={{ borderColor: 'var(--border)' }}>
-                    <div className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: 'var(--gold)', lineHeight: 1 }}>
-                      <AnimatedCounter target={s.value} suffix={s.suffix} />
-                    </div>
-                    <div className="text-xs mt-2 tracking-wide uppercase" style={{ color: 'var(--ink-muted)' }}>{s.label}</div>
-                  </div>
-                ))}
+                <Link href="/services" className="btn btn-outline" style={{ color: '#FAFAFA', borderColor: '#FAFAFA' }}>Explore Services →</Link>
               </div>
             </div>
 
-            {/* Hero cards */}
-            <div className="hidden lg:flex flex-col gap-4">
-              {[
-                { label: 'Business Setup', value: '3–5 Days', sub: 'Average company formation time' },
-                { label: 'Free Consultation', value: '30 Minutes', sub: 'No-obligation strategy call' },
-                { label: 'Global Reach', value: 'UK · US · ZA', sub: 'International founder specialists' },
-              ].map((c, i) => (
-                <div
-                  key={i}
-                  className="border-l-[3px] px-6 py-5 rounded-sm"
-                  style={{ background: 'var(--dark-3)', borderColor: 'var(--border)', borderLeftColor: 'var(--gold)', borderTopWidth: '1px solid var(--border)', borderBottom: '1px solid var(--border)', borderRight: '1px solid var(--border)' }}
-                >
-                  <div className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>✦ {c.label}</div>
-                  <div className="font-display text-2xl" style={{ fontFamily: 'var(--font-display)' }}>{c.value}</div>
-                  <div className="text-xs mt-1" style={{ color: 'var(--ink-muted)' }}>{c.sub}</div>
-                </div>
-              ))}
-            </div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center" style={{ color: 'rgba(201,168,76,0.5)' }}>
+            <div className="text-xs font-semibold tracking-widest uppercase mb-3">Scroll to explore</div>
+            <div className="text-xl animate-bounce">↓</div>
           </div>
         </div>
       </section>
 
       {/* ─── MARQUEE ─── */}
-      <div className="overflow-hidden py-5 border-y" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-        <div className="flex gap-16 animate-marquee whitespace-nowrap">
+      <div className="overflow-hidden py-5 border-y relative" style={{ background: '#C9A84C', borderColor: '#C9A84C' }}>
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(10,10,10,0.1) 10px, rgba(10,10,10,0.1) 20px)',
+          pointerEvents: 'none',
+        }} />
+        <div className="flex gap-16 animate-marquee whitespace-nowrap relative z-10">
           {[...Array(2)].map((_, ri) =>
             ['Business Setup', 'Company Formation', 'Employment Visa', 'Golden Visa', 'Corporate Tax', 'Accounting', 'Trademark Registration', 'Bank Account Opening', 'HR Services', 'Legal Translation'].map((item, i) => (
-              <span key={`${ri}-${i}`} className="flex items-center gap-5 text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--ink-dim)' }}>
-                {item} <span style={{ color: 'var(--gold)' }}>✦</span>
+              <span key={`${ri}-${i}`} className="flex items-center gap-5 text-xs font-semibold tracking-widest uppercase" style={{ color: '#0A0A0A' }}>
+                {item} <span style={{ color: '#0A0A0A' }}>✦</span>
               </span>
             ))
           )}
@@ -134,12 +151,22 @@ export default async function HomePage() {
       </div>
 
       {/* ─── 3-STEP PROCESS ─── */}
-      <section className="section border-b theme-dark-gradient" style={{ borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+      <section className="section border-b relative section-corner-accent" style={{ background: '#F5F5F5', borderColor: '#E0E0E0' }}>
+        {/* Decorative corner accents */}
+        <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none opacity-20" style={{
+          background: 'linear-gradient(135deg, #C9A84C 0%, transparent 70%)',
+          borderRadius: '0 0 100% 0',
+        }} />
+        <div className="absolute bottom-0 right-0 w-40 h-40 pointer-events-none opacity-15" style={{
+          background: 'linear-gradient(315deg, #C9A84C 0%, transparent 70%)',
+          borderRadius: '100% 0 0 0',
+        }} />
+
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="tag justify-center">How It Works</div>
-            <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)' }}>
-              Your Journey to a <em style={{ color: 'var(--gold)' }}>Licensed Business</em>
+            <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+              Your Journey to a <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Licensed Business</em>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 process-grid">
@@ -150,12 +177,29 @@ export default async function HomePage() {
             ].map((step, i) => (
               <Reveal key={i} delay={i * 80}>
                 <div
-                  className="p-10 border-l hover-card transition-all duration-300"
-                  style={{ borderColor: 'var(--border)', borderLeftColor: i === 0 ? 'transparent' : 'var(--border)' }}
+                  className="frame-with-corners p-10 border-l hover-card transition-all duration-300 relative overflow-hidden timeline-step"
+                  style={{
+                    borderColor: '#E0E0E0',
+                    borderLeftColor: i === 0 ? 'transparent' : '#C9A84C',
+                    backgroundColor: '#FAFAFA',
+                    color: '#0A0A0A',
+                    borderLeftWidth: i === 0 ? '1px' : '3px',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+                  }}
                 >
-                  <div className="font-display text-7xl font-medium mb-4 select-none" style={{ fontFamily: 'var(--font-display)', color: 'var(--dark-5)', lineHeight: 1 }}>{step.n}</div>
-                  <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)' }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>{step.desc}</p>
+                  <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full" style={{ background: '#C9A84C', opacity: 0.7 }} />
+                  <div className="absolute top-9 right-3 w-1 h-1 rounded-full" style={{ background: '#C9A84C', opacity: 0.4 }} />
+                  <div className="absolute top-0 left-0 right-0 h-0.5" style={{
+                    background: 'linear-gradient(90deg, #C9A84C, transparent)',
+                    opacity: 0,
+                    transition: 'opacity 0.3s ease',
+                  }} />
+
+                  <div className="relative z-10">
+                    <div className="font-display text-7xl font-medium mb-4 select-none" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C', lineHeight: 1 }}>{step.n}</div>
+                    <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>{step.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>{step.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -164,101 +208,147 @@ export default async function HomePage() {
       </section>
 
       {/* ─── WHY STAR ONE ─── */}
-      <section className="section border-b theme-maroon" style={{ borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-0 items-stretch">
-            <div className="pr-0 lg:pr-20 pb-12 lg:pb-0">
-              <div className="tag">Why Choose Us</div>
-              <h2 className="font-display text-5xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1 }}>
-                Every step.<br />Every service.<br />One partner.
-              </h2>
-              <div className="gold-divider" />
-              <p className="text-base leading-relaxed mb-10" style={{ color: 'var(--ink-muted)', maxWidth: 440 }}>
-                Most entrepreneurs navigate UAE business setup alone. We change that. From your first consultation to your 100th employee, Star One stays with you.
-              </p>
-              <div className="flex flex-col gap-8">
-                {[
-                  { num: '01', title: 'Comprehensive Services', desc: 'Business setup, visas, compliance, banking, accounting, HR, branding — everything under one roof, no coordinator needed.' },
-                  { num: '02', title: 'UAE Regulatory Expertise', desc: 'Deep knowledge of mainland, free zone, and offshore structures. Always updated with the latest UAE laws and government requirements.' },
-                  { num: '03', title: 'International Founder Focus', desc: 'Specialists serving entrepreneurs from the UK, US, South Africa, and beyond setting up in Dubai. We speak your language, understand your markets.' },
-                  { num: '04', title: 'Speed & Reliability', desc: 'Most setups complete in 3–5 business days. You\'ll work with the same trusted advisor throughout, not a call center.' },
-                ].map(f => (
-                  <div key={f.num} className="flex gap-5 items-start">
-                    <span className="font-display text-5xl font-medium flex-shrink-0 w-14" style={{ fontFamily: 'var(--font-display)', color: 'var(--dark-5)', lineHeight: 1 }}>{f.num}</span>
-                    <div>
-                      <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--ink)' }}>{f.title}</h4>
-                      <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>{f.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <section className="section border-b relative section-corner-accent" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+        {/* Section decorative top divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-0.5" style={{
+          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent)',
+        }} />
+        
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
+          {/* Header */}
+          <div className="mb-12 max-w-2xl">
+            <div className="tag">Why Choose Us</div>
+            <h2 className="font-display text-4xl lg:text-5xl font-medium mb-4 relative" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1, color: '#0A0A0A' }}>
+              Every step.<br />Every service.<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>One partner.</em>
+            </h2>
+            <p className="text-base leading-relaxed" style={{ color: '#555555' }}>
+              Most entrepreneurs navigate UAE business setup alone. We change that. From your first consultation to your 100th employee, Star One stays with you.
+            </p>
+          </div>
 
-            <div className="border-t lg:border-t-0 lg:border-l pt-12 lg:pt-0 lg:pl-20 metrics-grid" style={{ borderColor: 'var(--border)' }}>
-              {[
-                { value: 500, suffix: '+', label: 'Companies Formed' },
-                { value: 98, suffix: '%', label: 'Client Satisfaction' },
-                { value: 30, suffix: '+', label: 'Countries Served' },
-                { value: 12, suffix: '+', label: 'Years in Dubai' },
-              ].map((s, i) => (
-                <div key={i} className="metric p-8 text-center">
-                  <div className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: 'var(--gold)', lineHeight: 1 }}>
-                    <AnimatedCounter target={s.value} suffix={s.suffix} />
-                  </div>
-                  <div className="text-xs mt-2 tracking-wide" style={{ color: 'var(--ink-muted)' }}>{s.label}</div>
+          {/* Features Grid - 2x2 on desktop, 1x4 on mobile */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+            {[
+              { icon: '🔧', num: '01', title: 'Comprehensive Services', desc: 'Business setup, visas, compliance, banking, accounting, HR, branding — everything under one roof, no coordinator needed.' },
+              { icon: '⚖️', num: '02', title: 'UAE Regulatory Expertise', desc: 'Deep knowledge of mainland, free zone, and offshore structures. Always updated with the latest UAE laws and government requirements.' },
+              { icon: '🌍', num: '03', title: 'International Founder Focus', desc: 'Specialists serving entrepreneurs from the UK, US, South Africa, and beyond setting up in Dubai. We speak your language, understand your markets.' },
+              { icon: '⚡', num: '04', title: 'Speed & Reliability', desc: 'Most setups complete in 3–5 business days. You\'ll work with the same trusted advisor throughout, not a call center.' },
+            ].map(f => (
+              <div key={f.num} className="feature-box-accent p-6 rounded transition-all duration-300 border" style={{ 
+                background: 'rgba(201, 168, 76, 0.05)',
+                borderColor: 'rgba(201, 168, 76, 0.2)',
+              }}>
+                {/* Icon and number row */}
+                <div className="flex items-center gap-4 mb-4">
+                  <span style={{ fontSize: '32px', color: '#C9A84C' }}>{f.icon}</span>
+                  <span className="font-display text-3xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C', lineHeight: 1 }}>{f.num}</span>
                 </div>
-              ))}
-            </div>
+                
+                {/* Content */}
+                <h4 className="text-base font-semibold mb-2" style={{ color: '#0A0A0A' }}>{f.title}</h4>
+                <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── SERVICES OVERVIEW ─── */}
-      <section className="section border-b theme-dark" style={{ borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="services-header services-header-centered">
+      <section className="section border-b relative overflow-hidden section-corner-accent-lg" style={{ background: '#0A0A0A', borderColor: '#555555' }}>
+        {/* Decorative grid background pattern */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `
+            linear-gradient(0deg, transparent 24%, rgba(201, 168, 76, 0.1) 25%, rgba(201, 168, 76, 0.1) 26%, transparent 27%, transparent 74%, rgba(201, 168, 76, 0.1) 75%, rgba(201, 168, 76, 0.1) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(201, 168, 76, 0.1) 25%, rgba(201, 168, 76, 0.1) 26%, transparent 27%, transparent 74%, rgba(201, 168, 76, 0.1) 75%, rgba(201, 168, 76, 0.1) 76%, transparent 77%, transparent)
+          `,
+          backgroundSize: '50px 50px',
+          pointerEvents: 'none',
+        }} />
+
+        {/* Corner accent */}
+        <div className="absolute top-0 right-0 w-48 h-48 pointer-events-none opacity-10" style={{
+          background: 'radial-gradient(circle at bottom-left, #C9A84C 0%, transparent 70%)',
+          borderRadius: '50%',
+        }} />
+        
+        {/* Decorative top divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5" style={{
+          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent)',
+        }} />
+
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
+          <div className="services-header services-header-centered mb-12">
             <div>
               <div className="tag">Our Services</div>
-              <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1 }}>
-                Everything to<br />launch & scale
+              <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1, color: '#FAFAFA' }}>
+                6 Core Services<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>to launch & scale</em>
               </h2>
+              <p className="text-base mt-6" style={{ color: '#AAAAAA', maxWidth: 560 }}>
+                Our six main categories keep the structure clear, while the sub-services are grouped on the full services page.
+              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 mt-8">
-            {services.slice(0, 6).map((service, idx) => (
-              <Reveal key={service.slug} delay={idx * 50}>
-                <Link href={`/services/${service.slug}`} className="card p-8" style={{ textDecoration: 'none' }}>
-                  <div className="text-5xl mb-4">{service.icon}</div>
-                  <h3 className="font-display text-xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>
-                    {service.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--ink-muted)' }}>
-                    {service.tagline}
-                  </p>
-                  <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--gold)' }}>
-                    Learn More →
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+            {coreServiceBlocks.map((service, idx) => (
+              <Reveal key={service.title} delay={idx * 50}>
+                <Link href={service.href} className="service-card p-8 relative overflow-hidden transition-all duration-300 hover:border-t-2 h-full flex flex-col" style={{ textDecoration: 'none', boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(201, 168, 76, 0.1)', borderTopColor: '#C9A84C', minHeight: 260 }}>
+                  <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent)' }} />
+                  <div className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: '#C9A84C', opacity: 0.6 }} />
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="text-5xl mb-4 transition-all duration-300">{service.icon}</div>
+                    <h3 className="font-display text-xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>
+                      {service.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed mb-3" style={{ color: '#AAAAAA' }}>
+                      {service.desc}
+                    </p>
+                    <div className="text-[11px] uppercase tracking-[0.18em] mb-4" style={{ color: '#C9A84C' }}>
+                      {service.details}
+                    </div>
+                    <div className="h-px mb-4 mt-auto" style={{
+                      background: 'linear-gradient(90deg, rgba(201, 168, 76, 0.3), transparent)',
+                    }} />
+                    <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#C9A84C' }}>
+                      Learn More →
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/services" className="btn btn-outline">View All 20 Services →</Link>
+          <div className="text-center mt-12 pt-8 border-t" style={{ borderColor: 'rgba(201, 168, 76, 0.2)' }}>
+            <HoverButton href="/services" className="btn btn-outline">View All Services →</HoverButton>
           </div>
         </div>
       </section>
 
       {/* ─── PACKAGES ─── */}
-      <section className="section border-b theme-maroon" style={{ borderColor: 'var(--border)' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+      <section className="section border-b relative section-corner-accent" style={{ background: '#F5F5F5', borderColor: '#E0E0E0' }}>
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 pointer-events-none opacity-10" style={{
+          background: 'radial-gradient(circle at center, #C9A84C 0%, transparent 70%)',
+          borderRadius: '50%',
+        }} />
+        <div className="absolute bottom-0 right-0 w-72 h-72 pointer-events-none opacity-8" style={{
+          background: 'radial-gradient(circle at center, #C9A84C 0%, transparent 70%)',
+          borderRadius: '50%',
+        }} />
+        
+        {/* Decorative top divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-0.5" style={{
+          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent)',
+        }} />
+
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="tag justify-center">Pricing Plans</div>
-            <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)' }}>
-              Plans for Every <em style={{ color: 'var(--gold)' }}>Stage</em>
+            <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+              Plans for Every <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Stage</em>
             </h2>
-            <p className="text-base mt-6" style={{ color: 'var(--ink-muted)', maxWidth: 500, margin: '0 auto' }}>
+            <p className="text-base mt-6" style={{ color: '#555555', maxWidth: 500, margin: '0 auto' }}>
               Whether you're starting solo or scaling fast, we have a package designed for your needs.
             </p>
           </div>
@@ -280,7 +370,7 @@ export default async function HomePage() {
                 ],
               },
               {
-                name: 'Growth Package',
+                name: 'Growth Setup',
                 price: 'AED 15,500',
                 billing: 'one-time',
                 desc: 'For growing teams and ambitious startups',
@@ -295,7 +385,7 @@ export default async function HomePage() {
                 highlighted: true,
               },
               {
-                name: 'Advanced Compliance',
+                name: 'Advanced Setup',
                 price: 'AED 24,000+',
                 billing: 'one-time',
                 desc: 'For established companies & complex structures',
@@ -311,41 +401,62 @@ export default async function HomePage() {
             ].map((pkg, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div
-                  className="p-8 rounded-lg border transition-all duration-300 hover:shadow-lg"
+                  className="p-8 rounded-lg border transition-all duration-300 hover:shadow-lg relative overflow-hidden h-full flex flex-col"
                   style={{
-                    background: pkg.highlighted ? 'var(--dark-3)' : 'var(--dark)',
-                    borderColor: pkg.highlighted ? 'var(--gold)' : 'var(--border)',
+                    background: '#FAFAFA',
+                    borderColor: pkg.highlighted ? '#C9A84C' : '#E0E0E0',
                     borderWidth: pkg.highlighted ? '2px' : '1px',
+                    color: '#0A0A0A',
+                    boxShadow: pkg.highlighted ? '0 0 20px rgba(201, 168, 76, 0.15)' : '0 2px 8px rgba(0, 0, 0, 0.04)',
                   }}
                 >
-                  {pkg.highlighted && (
-                    <div className="inline-block px-3 py-1 rounded text-xs font-semibold tracking-widest uppercase mb-4" style={{ background: 'var(--gold)', color: 'var(--dark)' }}>
-                      Most Popular
-                    </div>
-                  )}
-                  <h3 className="font-display text-2xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>
-                    {pkg.name}
-                  </h3>
-                  <p className="text-sm mb-4" style={{ color: 'var(--ink-muted)' }}>
-                    {pkg.desc}
-                  </p>
-                  <div className="mb-6 pb-6 border-b" style={{ borderColor: 'var(--border)' }}>
-                    <div className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: 'var(--gold)' }}>
+                  {/* Top border accent */}
+                  <div className="absolute top-0 left-0 right-0 h-0.5" style={{
+                    background: pkg.highlighted ? '#C9A84C' : 'linear-gradient(90deg, transparent, #E0E0E0, transparent)',
+                  }} />
+                  
+                  {/* Corner accent dots */}
+                  <div className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: '#C9A84C', opacity: pkg.highlighted ? 1 : 0.4 }} />
+                  <div className="absolute bottom-4 left-4 w-1.5 h-1.5 rounded-full" style={{ background: '#C9A84C', opacity: pkg.highlighted ? 0.7 : 0.2 }} />
+
+                  <div className="mb-4 min-h-[30px]">
+                    {pkg.highlighted ? (
+                      <div className="inline-block px-3 py-1 rounded text-xs font-semibold tracking-widest uppercase" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
+                        Most Popular
+                      </div>
+                    ) : (
+                      <div className="inline-block px-3 py-1 rounded text-xs font-semibold tracking-widest uppercase opacity-0 select-none" aria-hidden="true">
+                        Most Popular
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="min-h-[100px]">
+                    <h3 className="font-display text-2xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+                      {pkg.name}
+                    </h3>
+                    <p className="text-sm mb-4" style={{ color: '#555555' }}>
+                      {pkg.desc}
+                    </p>
+                  </div>
+
+                  <div className="mb-6 pb-6 border-b relative" style={{ borderColor: pkg.highlighted ? 'rgba(201, 168, 76, 0.3)' : '#E0E0E0' }}>
+                    <div className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C' }}>
                       {pkg.price}
                     </div>
-                    <div className="text-xs mt-2" style={{ color: 'var(--ink-muted)' }}>
+                    <div className="text-xs mt-2" style={{ color: '#555555' }}>
                       {pkg.billing === 'one-time' ? 'One-time setup' : 'Per month + setup'}
                     </div>
                   </div>
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-8 flex-1">
                     {pkg.features.map((feature, j) => (
-                      <li key={j} className="flex gap-3 items-start text-sm">
-                        <span style={{ color: 'var(--gold)' }}>✓</span>
-                        <span style={{ color: 'var(--ink-muted)' }}>{feature}</span>
+                      <li key={j} className="flex gap-3 items-start text-sm group">
+                        <span style={{ color: '#C9A84C' }} className="font-bold flex-shrink-0">✓</span>
+                        <span style={{ color: '#555555' }} className="group-hover:text-black transition-colors">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <Link href="/calculator" className={`button-full py-3 px-4 rounded font-medium transition ${
+                  <Link href="/calculator" className={`button-full py-3 px-4 rounded font-medium transition mt-auto ${
                     pkg.highlighted ? 'btn btn-gold' : 'btn btn-outline'
                   }`}>
                     Learn More & Calculate
@@ -355,8 +466,8 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-sm mb-4" style={{ color: 'var(--ink-muted)' }}>
+          <div className="text-center mt-12 pt-8 border-t" style={{ borderColor: 'rgba(201, 168, 76, 0.2)' }}>
+            <p className="text-sm mb-4" style={{ color: '#555555' }}>
               Not sure which plan is right for you?
             </p>
             <Link href="/contact" className="btn btn-gold">Get a Free Consultation →</Link>
@@ -366,43 +477,54 @@ export default async function HomePage() {
 
       {/* ─── ARTICLES ─── */}
       {(articles && articles.length > 0) && (
-        <section className="section border-t theme-warm" style={{ borderColor: 'var(--border)' }}>
-          <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+        <section className="section border-t relative section-corner-accent-subtle" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+          {/* Subtle decorative divider line */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-0.5" style={{
+            background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+          }} />
+          
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-3" style={{
+            backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201, 168, 76, 0.1) 40px, rgba(201, 168, 76, 0.1) 41px)',
+            pointerEvents: 'none',
+          }} />
+
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
             <div className="section-title-row mb-12 flex-wrap">
               <div>
                 <div className="tag">Insights & Guides</div>
-                <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)' }}>Business Setup<br />Knowledge Hub</h2>
+                <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Business Setup<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Knowledge Hub</em></h2>
               </div>
               <Link href="/insights" className="btn btn-outline">All Articles →</Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0.5 mt-0.5">
               {articles.map((article: Article) => (
-                <Link key={article.id} href={`/insights/${article.slug}`} className="card p-6" style={{ textDecoration: 'none' }}>
-                  <div className="h-48 flex items-center justify-center relative overflow-hidden" style={{ background: 'var(--dark-4)' }}>
-                    {article.cover_image ? (
-                      <>
-                        <img src={article.cover_image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
-                        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.18), rgba(0,0,0,0.33))' }} />
-                      </>
-                    ) : (
-                      <>
-                        <img src={getArticleFallbackImage(article.category)} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
-                        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, var(--dark-4), var(--dark-5))' }} />
-                      </>
-                    )}
-                    <div className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold tracking-wider" style={{ background: 'var(--gold)', color: '#000' }}>
+                <Link key={article.id} href={`/insights/${article.slug}`} className="card p-6 relative overflow-hidden transition-all duration-300 hover:shadow-lg group" style={{ textDecoration: 'none', background: '#FAFAFA', borderColor: '#E0E0E0', color: '#0A0A0A', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)' }}>
+                  {/* Subtle top border accent */}
+                  <div className="absolute top-0 left-0 right-0 h-0.5" style={{
+                    background: 'linear-gradient(90deg, #C9A84C, transparent)',
+                  }} />
+                  
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none" />
+
+                  <div className="h-48 flex items-center justify-center relative overflow-hidden rounded" style={{ background: '#F5F5F5' }}>
+                    <div className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold tracking-wider rounded" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
                       {article.category}
                     </div>
-                    <span className="relative z-10 text-4xl opacity-10">✦</span>
+                    <span className="relative z-10 text-4xl opacity-10 group-hover:opacity-20 transition-opacity">✦</span>
                   </div>
-                  <div className="p-6">
-                    <div className="text-xs uppercase tracking-widest mb-2" style={{ color: 'var(--ink-dim)' }}>
+                  <div className="p-6 pb-0">
+                    <div className="text-xs uppercase tracking-widest mb-2 font-semibold" style={{ color: '#C9A84C' }}>
                       {formatDate(article.created_at)} · {article.read_time} min
                     </div>
-                    <h3 className="font-display text-lg font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)', lineHeight: 1.3 }}>{article.title}</h3>
-                    <p className="text-xs leading-relaxed mb-4" style={{ color: 'var(--ink-muted)' }}>{article.excerpt}</p>
-                    <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--gold)' }}>Read More →</span>
+                    <h3 className="font-display text-lg font-medium mb-2 group-hover:text-yellow-600 transition-colors" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A', lineHeight: 1.3 }}>{article.title}</h3>
+                    <p className="text-xs leading-relaxed mb-4" style={{ color: '#555555' }}>{article.excerpt}</p>
+                    <div className="h-px mb-4" style={{
+                      background: 'linear-gradient(90deg, rgba(201, 168, 76, 0.2), transparent)',
+                    }} />
+                    <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#C9A84C' }}>Read More →</span>
                   </div>
                 </Link>
               ))}
@@ -412,19 +534,57 @@ export default async function HomePage() {
       )}
 
       {/* ─── CTA BANNER ─── */}
-      <section className="py-32 relative overflow-hidden border-t theme-maroon" style={{ borderColor: 'var(--border)' }}>
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(201,160,96,0.06) 0%, transparent 70%)' }} />
+      <section className="py-32 relative overflow-hidden border-t section-corner-accent-lg" style={{ background: '#0A0A0A', borderColor: '#555555' }}>
+        {/* Decorative grid pattern */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `
+            linear-gradient(0deg, transparent 24%, rgba(201, 168, 76, 0.1) 25%, rgba(201, 168, 76, 0.1) 26%, transparent 27%, transparent 74%, rgba(201, 168, 76, 0.1) 75%, rgba(201, 168, 76, 0.1) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(201, 168, 76, 0.1) 25%, rgba(201, 168, 76, 0.1) 26%, transparent 27%, transparent 74%, rgba(201, 168, 76, 0.1) 75%, rgba(201, 168, 76, 0.1) 76%, transparent 77%, transparent)
+          `,
+          backgroundSize: '60px 60px',
+          pointerEvents: 'none',
+        }} />
+
+        {/* Corner accents */}
+        <div className="absolute top-0 left-0 w-96 h-96 pointer-events-none opacity-8" style={{
+          background: 'radial-gradient(circle at bottom-right, #C9A84C 0%, transparent 70%)',
+          borderRadius: '50%',
+        }} />
+        <div className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none opacity-8" style={{
+          background: 'radial-gradient(circle at top-left, #C9A84C 0%, transparent 70%)',
+          borderRadius: '50%',
+        }} />
+
+        {/* Decorative top line */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5" style={{
+          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent)',
+        }} />
+        
+        {/* Decorative bottom line */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5" style={{
+          background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent)',
+        }} />
+
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="tag justify-center">Ready to Launch?</div>
-          <h2 className="font-display mb-6" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 500, lineHeight: 1.1 }}>
-            Let's Build Your UAE<br />Business Today
+          <h2 className="font-display mb-6" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 500, lineHeight: 1.1, color: '#FAFAFA' }}>
+            Let's Build Your UAE<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Business Today</em>
           </h2>
-          <p className="text-lg mb-10 max-w-lg mx-auto" style={{ color: 'var(--ink-muted)' }}>
+          <p className="text-lg mb-10 max-w-lg mx-auto" style={{ color: '#AAAAAA' }}>
             Book a free 30-minute consultation with our Dubai business setup experts. No obligation, no sales pitch — just expert guidance to get you started.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="btn btn-gold">Get Started →</Link>
-            <a href="https://wa.me/971502165471" className="btn btn-outline" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <Link href="/contact" className="btn btn-gold transition-all duration-300 hover:shadow-lg hover:shadow-yellow-600/50">Get Started →</Link>
+            <HoverButton href="https://wa.me/971502165471" className="btn btn-outline" isExternal target="_blank" rel="noopener noreferrer">WhatsApp Us</HoverButton>
+          </div>
+          
+          {/* Decorative divider below CTA */}
+          <div className="mt-12 pt-12 border-t" style={{ borderColor: 'rgba(201, 168, 76, 0.2)' }}>
+            <div className="flex items-center justify-center gap-3 text-xs" style={{ color: '#AAAAAA' }}>
+              <span style={{ color: '#C9A84C' }}>✦</span>
+              <span>Fast. Reliable. Professional.</span>
+              <span style={{ color: '#C9A84C' }}>✦</span>
+            </div>
           </div>
         </div>
       </section>

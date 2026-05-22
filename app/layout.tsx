@@ -3,7 +3,6 @@ import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
-import WhatsAppFloat from '@/components/WhatsAppFloat'
 import LeadCapturePopup from '@/components/LeadCapturePopup'
 
 const display = Playfair_Display({
@@ -47,7 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
-        <WhatsAppFloat />
         <LeadCapturePopup />
       </body>
     </html>

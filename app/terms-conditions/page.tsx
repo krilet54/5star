@@ -75,17 +75,21 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <div className="pt-40 pb-24">
-      <div className="max-w-[860px] mx-auto px-8">
+    <div className="relative pt-40 pb-24" style={{ background: '#FAFAFA' }}>
+      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{
+        backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
+        backgroundSize: '40px 40px',
+      }} />
+      <div className="max-w-[860px] mx-auto px-8 relative z-10">
         <div className="tag">Legal</div>
-        <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4vw, 52px)', fontWeight: 500 }}>
-          Terms & Conditions
+        <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4vw, 52px)', fontWeight: 500, color: '#0A0A0A' }}>
+          Terms &<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Conditions</em>
         </h1>
-        <p className="mb-10 text-sm" style={{ color: 'var(--ink-dim)' }}>Last updated: January 2025</p>
-        <div className="gold-divider" />
+        <p className="mb-4 text-sm" style={{ color: 'var(--ink-dim)' }}>Last updated: January 2025</p>
+        <div className="gold-divider mb-10" />
         <div className="prose-gold mt-10">
           {sections.map((s, i) => (
-            <div key={i} className="mb-10">
+            <div key={i} className="mb-10 decor-border-left-gold">
               <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)', fontSize: '1.5rem', fontWeight: 500, marginBottom: '1rem' }}>{s.title}</h2>
               {s.paragraphs.map((p, j) => (
                 <p key={j} className="text-base leading-relaxed mb-4" style={{ color: 'var(--ink-muted)' }}>{p}</p>

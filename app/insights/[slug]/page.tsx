@@ -101,12 +101,6 @@ export default async function ArticlePage({ params }: Props) {
               <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--ink-muted)' }}>{article.excerpt}</p>
             )}
 
-            {article.cover_image && (
-              <div className="mb-8">
-                <img src={article.cover_image} alt={article.title} className="w-full h-64 object-cover rounded-sm" />
-              </div>
-            )}
-
             <div className="flex items-center gap-6 text-xs pt-6 border-t" style={{ borderColor: 'var(--border)', color: 'var(--ink-dim)' }}>
               <span>By <span style={{ color: 'var(--ink-muted)' }}>Star One Team</span></span>
               <span>{formatDate(article.created_at)}</span>

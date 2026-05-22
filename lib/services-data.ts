@@ -12,10 +12,7 @@ export const services: ServiceData[] = [
     features: [
       { title: 'Mainland Company Setup', description: 'Full UAE market access, eligible for government contracts, 100% foreign ownership available for most activities.' },
       { title: 'Free Zone Company Setup', description: '100% foreign ownership, 0% import/export duties, flexible office options including flexi-desk.' },
-      { title: 'Offshore Company Setup', description: 'Asset protection, international holding structures, and privacy — ideal for international investors.' },
-      { title: 'Trade License Issuance', description: 'We handle your DED, free zone authority, or MOEC submissions and secure your trade license.' },
-      { title: 'Activity Code Selection', description: 'Expert guidance on choosing the correct business activity codes to avoid future restrictions.' },
-      { title: 'Government Approvals', description: 'We coordinate all authority submissions, NOCs, and approvals on your behalf.' },
+      { title: 'Offshore Company Setup', description: 'Ideal for international holding, asset protection, and cross-border operations with no local trading requirement.' },
     ],
     benefits: [
       '0% personal income tax in the UAE',

@@ -20,11 +20,15 @@ export default function Nav() {
 
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
-  // Check if current page has warm hero that needs dark navbar text
-  const isWarmHeroPage = pathname === '/contact'
-
   const isAdmin = pathname.startsWith('/admin')
   if (isAdmin) return null
+
+  const isHome = pathname === '/'
+  const useDarkOverlay = !isHome || (isHome && scrolled)
+  const useTransparentOverlay = isHome && !scrolled
+  const navTextColor = useDarkOverlay || useTransparentOverlay ? '#FAFAFA' : '#0A0A0A'
+  const navBackground = useTransparentOverlay ? 'transparent' : useDarkOverlay ? 'rgba(10, 10, 10, 0.86)' : 'rgba(250, 250, 250, 0.96)'
+  const navBorder = useTransparentOverlay ? 'none' : useDarkOverlay ? '1px solid rgba(201,168,76,0.24)' : '1px solid rgba(201,168,76,0.22)'
 
   // Group services by category
   const servicesByCategory = {
@@ -42,10 +46,11 @@ export default function Nav() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           height: 72,
-          background: scrolled ? 'rgba(8,8,8,0.97)' : isWarmHeroPage ? 'rgba(8,8,8,0.9)' : 'transparent',
-          borderBottom: scrolled ? '1px solid var(--border)' : isWarmHeroPage ? '1px solid var(--border)' : 'none',
-          backdropFilter: scrolled ? 'blur(12px)' : isWarmHeroPage ? 'blur(8px)' : 'none',
-          color: scrolled ? 'inherit' : isWarmHeroPage ? 'var(--ink)' : 'inherit',
+          background: navBackground,
+          backdropFilter: useTransparentOverlay ? 'none' : 'blur(14px)',
+          borderBottom: navBorder,
+          color: navTextColor,
+          boxShadow: useTransparentOverlay ? 'none' : '0 10px 30px rgba(10,10,10,0.06)',
         }}
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-full flex items-center justify-between">
@@ -53,29 +58,52 @@ export default function Nav() {
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-8">
-            <NavLink href="/services/business-setup" label="Setup Your Company" />
+            <NavLink href="/services/business-setup" label="Setup Your Company" color={navTextColor} />
             
             {/* Services dropdown */}
             <div className="relative group">
-              <button className="nav-link relative text-xs font-semibold tracking-wider uppercase transition-colors flex items-center gap-2" style={{ letterSpacing: '0.08em' }}>
+              <button className="nav-link relative text-xs font-semibold tracking-wider uppercase transition-colors flex items-center gap-2" style={{ letterSpacing: '0.08em', color: navTextColor }}>
                 Our Services
                 <ChevronDown size={14} />
               </button>
-              <div className="absolute left-0 top-full pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all z-50" style={{ minWidth: 500 }}>
-                <div style={{ background: 'var(--dark)', border: '1px solid var(--border)', borderRadius: 8, padding: 24 }}>
-                  <div className="grid grid-cols-2 gap-8">
+              <div className="absolute left-1/2 top-[calc(100%+6px)] -translate-x-1/2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all z-50 duration-200 w-[min(1100px,calc(100vw-24px))]">
+                <div style={{ 
+                  background: '#0A0A0A',
+                  border: '1px solid rgba(201,168,76,0.3)',
+                  borderRadius: 8,
+                  padding: 28,
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+                  backdropFilter: 'blur(10px)',
+                }}>
+                  {/* Gold top accent line */}
+                  <div className="absolute top-0 left-8 h-1 w-16" style={{ background: 'linear-gradient(90deg, #C9A84C, transparent)' }} />
+                  
+                  <div className="grid grid-cols-3 gap-10">
                     {Object.entries(servicesByCategory).map(([category, catServices]) => (
                       <div key={category}>
-                        <h4 className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: 'var(--ink-muted)' }}>
+                        <h4 className="text-xs font-semibold tracking-widest uppercase mb-5 pb-3 border-b" style={{ color: '#C9A84C', borderColor: 'rgba(201,168,76,0.2)' }}>
                           {category}
                         </h4>
-                        <ul className="flex flex-col gap-2">
+                        <ul className="flex flex-col gap-3">
                           {catServices.map(s => (
-                            <li key={s.slug}>
-                              <Link href={`/services/${s.slug}`} className="text-sm transition-colors" style={{ color: 'var(--ink-dim)' }}
-                                onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold)')}
-                                onMouseLeave={e => (e.currentTarget.style.color = 'var(--ink-dim)')}
-                              >
+                            <li key={s.slug}
+                              onMouseEnter={e => {
+                                const link = e.currentTarget.querySelector('a')
+                                if (link) {
+                                  link.style.color = '#C9A84C'
+                                  link.style.paddingLeft = '8px'
+                                }
+                              }}
+                              onMouseLeave={e => {
+                                const link = e.currentTarget.querySelector('a')
+                                if (link) {
+                                  link.style.color = '#AAAAAA'
+                                  link.style.paddingLeft = '0px'
+                                }
+                              }}
+                            >
+                              <Link href={`/services/${s.slug}`} className="text-sm transition-all duration-200 flex items-center gap-2" style={{ color: '#AAAAAA' }}>
+                                <span style={{ opacity: 0.5 }}>→</span>
                                 {s.title}
                               </Link>
                             </li>
@@ -88,15 +116,15 @@ export default function Nav() {
               </div>
             </div>
 
-            <NavLink href="/insights" label="Blogs" />
-            <NavLink href="/about" label="About Us" />
-            <NavLink href="/faqs" label="FAQs" />
-            <NavLink href="/contact" label="Contact Us" />
+            <NavLink href="/insights" label="Blogs" color={navTextColor} />
+            <NavLink href="/about" label="About Us" color={navTextColor} />
+            <NavLink href="/faqs" label="FAQs" color={navTextColor} />
+            <NavLink href="/contact" label="Contact Us" color={navTextColor} />
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
             <a href="tel:+971502165471" className="text-xs font-medium tracking-wider" style={{ 
-              color: 'var(--ink-muted)', 
+              color: navTextColor, 
               textTransform: 'uppercase', 
               letterSpacing: '0.06em',
               transition: 'color 0.3s'
@@ -112,7 +140,7 @@ export default function Nav() {
           <button
             className="lg:hidden p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ color: 'var(--ink)', background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: navTextColor, background: 'none', border: 'none', cursor: 'pointer' }}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -123,16 +151,16 @@ export default function Nav() {
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 flex flex-col overflow-y-auto pt-20 px-6 pb-8 gap-2"
-          style={{ background: 'var(--dark-2)', top: 76 }}
+          style={{ background: '#FAFAFA', top: 76 }}
         >
           <MobileLink href="/" label="Home" />
           <MobileLink href="/services/business-setup" label="Setup Your Company" />
           
-          <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: 8, marginBottom: 4 }}>
+          <div style={{ borderBottom: '1px solid #E0E0E0', paddingBottom: 8, marginBottom: 4 }}>
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
               className="text-xs font-semibold tracking-widest uppercase mb-2 w-full text-left flex items-center justify-between"
-              style={{ color: 'var(--ink-dim)' }}
+              style={{ color: '#555555' }}
             >
               Our Services
               <ChevronDown size={16} style={{ transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
@@ -141,13 +169,13 @@ export default function Nav() {
               <div className="flex flex-col gap-2 ml-4 mt-2">
                 {Object.entries(servicesByCategory).map(([category, catServices]) => (
                   <div key={category}>
-                    <div className="text-xs font-semibold mb-1" style={{ color: 'var(--ink-muted)' }}>{category}</div>
+                    <div className="text-xs font-semibold mb-1" style={{ color: '#555555' }}>{category}</div>
                     {catServices.map(s => (
                       <Link
                         key={s.slug}
                         href={`/services/${s.slug}`}
                         className="flex items-center gap-2 py-1 pl-2"
-                        style={{ color: 'var(--ink-muted)', fontSize: 13 }}
+                        style={{ color: '#888888', fontSize: 13 }}
                       >
                         <span>{s.icon}</span> {s.title}
                       </Link>
@@ -171,7 +199,7 @@ export default function Nav() {
   )
 }
 
-function NavLink({ href, label }: { href: string; label: string }) {
+function NavLink({ href, label, color }: { href: string; label: string; color: string }) {
   const pathname = usePathname()
   const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
   
@@ -180,7 +208,8 @@ function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       className={`nav-link relative text-xs font-semibold tracking-wider uppercase transition-colors ${active ? 'active' : ''}`}
       style={{ 
-        letterSpacing: '0.08em'
+        letterSpacing: '0.08em',
+        color: active ? '#C9A84C' : color
       }}
     >
       {label}
@@ -193,7 +222,7 @@ function MobileLink({ href, label }: { href: string; label: string }) {
     <Link
       href={href}
       className="py-3 border-b font-display text-2xl"
-      style={{ color: 'var(--ink-muted)', borderColor: 'var(--border)', fontFamily: 'var(--font-display)', fontWeight: 400 }}
+      style={{ color: '#555555', borderColor: '#E0E0E0', fontFamily: 'var(--font-display)', fontWeight: 400 }}
     >
       {label}
     </Link>

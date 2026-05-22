@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
+import GeometricCorners from '@/components/GeometricCorners'
 
 export const metadata: Metadata = {
   title: 'Contact Us — Book a Free Consultation',
@@ -11,29 +12,34 @@ export default function ContactPage() {
   return (
     <>
       {/* HERO */}
-      <section className="pt-24 pb-20 relative overflow-hidden theme-warm border-b" style={{ borderColor: 'var(--border)' }}>
+      <section className="pt-24 pb-20 relative overflow-hidden section-corner-accent" style={{ background: '#FAFAFA', borderColor: '#E0E0E0', color: '#0A0A0A' }}>
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
           backgroundSize: '40px 40px',
         }} />
+        <GeometricCorners />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
           <div className="tag">Contact</div>
-          <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1 }}>
-            Let's Build Your<br /><em style={{ color: 'var(--gold)' }}>Business Together</em>
+          <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1, color: '#0A0A0A' }}>
+            Let's Build Your<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Business Together</em>
           </h1>
-          <p className="text-lg max-w-lg" style={{ color: 'var(--ink-muted)', lineHeight: 1.8 }}>
+          <p className="text-lg max-w-lg" style={{ color: '#555555', lineHeight: 1.8 }}>
             Whether you're ready to launch or just exploring — our team is here to answer every question and guide you forward with clarity.
           </p>
         </div>
       </section>
 
       {/* MAIN */}
-      <section className="pb-24 theme-warm">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+      <section className="pb-24 relative section-corner-accent-subtle" style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
+        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.06) 1px, transparent 0)',
+          backgroundSize: '40px 40px',
+        }} />
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1fr_540px] gap-16 items-start">
-            {/* LEFT: Contact info */}
-            <div>
+            {/* LEFT: Contact info with decorative frame */}
+            <div className="content-frame">
               <div className="flex flex-col gap-6 mb-10">
                 {[
                   {
@@ -63,16 +69,16 @@ export default function ContactPage() {
                 ].map((item, i) => (
                   <Reveal key={i} delay={i * 60}>
                     <div className="flex gap-5 items-start">
-                      <div className="w-12 h-12 flex items-center justify-center text-xl flex-shrink-0 border rounded-sm" style={{ background: 'var(--gold-muted)', borderColor: 'var(--gold-border)' }}>
+                      <div className="w-12 h-12 flex items-center justify-center text-xl flex-shrink-0 border rounded-sm" style={{ background: 'rgba(201,168,76,0.1)', borderColor: '#E0E0E0', color: '#0A0A0A' }}>
                         {item.icon}
                       </div>
                       <div>
-                        <div className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--ink-muted)' }}>{item.title}</div>
+                        <div className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: '#555555' }}>{item.title}</div>
                         {item.lines.map((line, j) =>
                           item.action && j === 0 ? (
-                            <a key={j} href={item.action} className="block text-base" style={{ color: 'var(--ink)' }}>{line}</a>
+                            <a key={j} href={item.action} className="block text-base" style={{ color: '#0A0A0A' }}>{line}</a>
                           ) : (
-                            <div key={j} className="text-base" style={{ color: 'var(--ink)' }}>{line}</div>
+                            <div key={j} className="text-base" style={{ color: '#0A0A0A' }}>{line}</div>
                           )
                         )}
                       </div>
@@ -96,31 +102,30 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold text-sm mb-0.5" style={{ color: 'var(--ink)' }}>WhatsApp Us Directly</div>
-                    <div className="text-xs" style={{ color: 'var(--ink-muted)' }}>Typically replies within 1 hour · +971 50 216 5471</div>
+                    <div className="font-semibold text-sm mb-0.5" style={{ color: '#0A0A0A' }}>WhatsApp Us Directly</div>
+                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · +971 50 216 5471</div>
                   </div>
                 </a>
               </Reveal>
 
               {/* Quick facts */}
-              <div className="grid grid-cols-3 gap-0 border rounded-sm" style={{ borderColor: 'var(--border)' }}>
+              <div className="grid grid-cols-2 gap-0 border rounded-sm" style={{ borderColor: '#E0E0E0' }}>
                 {[
                   { val: '24hrs', label: 'Response Time' },
                   { val: 'Free', label: 'Consultation' },
-                  { val: '500+', label: 'Clients Served' },
                 ].map((s, i) => (
-                  <div key={i} className="p-6 text-center border-r last:border-r-0" style={{ borderColor: 'var(--border)', background: 'var(--dark-2)' }}>
-                    <div className="font-display text-2xl font-medium" style={{ fontFamily: 'var(--font-display)', color: 'var(--gold)' }}>{s.val}</div>
-                    <div className="text-xs mt-1 tracking-wide" style={{ color: 'var(--ink-muted)' }}>{s.label}</div>
+                  <div key={i} className="p-6 text-center border-r last:border-r-0" style={{ borderColor: '#E0E0E0', background: '#F5F5F5' }}>
+                    <div className="font-display text-2xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C' }}>{s.val}</div>
+                    <div className="text-xs mt-1 tracking-wide" style={{ color: '#555555' }}>{s.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* RIGHT: Form */}
-            <div className="border p-10 rounded-sm" style={{ background: 'var(--dark-3)', borderColor: 'var(--border)' }}>
-              <h2 className="font-display text-2xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>Request a Free Consultation</h2>
-              <p className="text-sm mb-8" style={{ color: 'var(--ink-muted)' }}>
+            {/* RIGHT: Form with decorative frame */}
+            <div className="frame-with-corners" style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
+              <h2 className="font-display text-2xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Request a Free Consultation</h2>
+              <p className="text-sm mb-8" style={{ color: '#555555' }}>
                 Fill in your details and our team will contact you within 24 hours to arrange a consultation.
               </p>
               <EnquiryForm />
@@ -130,12 +135,12 @@ export default function ContactPage() {
       </section>
 
       {/* MAP PLACEHOLDER */}
-      <div className="border-t theme-maroon" style={{ borderColor: 'var(--border)' }}>
-        <div className="h-64 flex items-center justify-center" style={{ background: 'var(--dark-3)' }}>
+      <div className="border-t" style={{ borderColor: '#E0E0E0' }}>
+        <div className="h-64 flex items-center justify-center" style={{ background: '#F5F5F5' }}>
           <div className="text-center">
             <div className="text-4xl mb-3">📍</div>
-            <div className="font-display text-xl" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>Dubai, UAE</div>
-            <div className="text-sm mt-1" style={{ color: 'var(--ink-muted)' }}>Business Bay / DIFC area</div>
+            <div className="font-display text-xl" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Dubai, UAE</div>
+            <div className="text-sm mt-1" style={{ color: '#555555' }}>Business Bay / DIFC area</div>
             <a
               href="https://maps.google.com/?q=Dubai+UAE"
               target="_blank"

@@ -5,10 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gold: { DEFAULT: '#C9A060', light: '#E8C87A', dark: '#A07840', muted: 'rgba(201,160,96,0.15)' },
+        gold: { DEFAULT: '#C9A84C', light: '#E8D5A3', dark: '#A07840', muted: 'rgba(201,168,76,0.15)' },
         dark: { DEFAULT: '#080808', 2: '#111111', 3: '#191919', 4: '#222222', 5: '#2A2A2A' },
-        border: { DEFAULT: '#2E2E2E', gold: 'rgba(201,160,96,0.3)' },
-        ink: { DEFAULT: '#F0EAE0', muted: '#9A9080', dim: '#5A5248' },
+        border: { DEFAULT: '#E0E0E0', gold: 'rgba(201,168,76,0.3)' },
+        ink: { DEFAULT: '#FAFAFA', muted: '#9A9080', dim: '#555555' },
       },
       fontFamily: {
         display: ['var(--font-display)', 'Georgia', 'serif'],

@@ -82,25 +82,35 @@ export default function LeadCapturePopup() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.5)' }}>
-      <div className="relative max-w-md w-full rounded-lg shadow-2xl p-8" style={{ background: 'var(--dark)', border: '1px solid var(--border)' }}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(10,10,10,0.52)', backdropFilter: 'blur(4px)' }}>
+      <div
+        className="relative w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden"
+        style={{ background: '#FAFAFA', border: '1px solid rgba(201, 168, 76, 0.28)' }}
+      >
+        <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)' }} />
+        <div className="absolute top-4 right-4 w-2 h-2 rounded-full" style={{ background: '#C9A84C', opacity: 0.6 }} />
+
+        <div className="p-6 md:p-8">
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 p-1"
-          style={{ color: 'var(--ink-muted)' }}
+          className="absolute top-4 right-4 p-2 rounded-full transition hover:bg-black/5"
+          style={{ color: '#555555' }}
         >
           <X size={24} />
         </button>
 
-        <h2 className="text-2xl font-semibold mb-2" style={{ color: 'var(--ink)' }}>
-          Planning to start a business?
-        </h2>
-        <p className="mb-6" style={{ color: 'var(--ink-muted)' }}>
-          Get a free consultation today
-        </p>
+        <div className="mb-6 pr-8">
+          <div className="tag mb-3">Free Consultation</div>
+          <h2 className="font-display text-3xl md:text-[2.15rem] font-medium leading-tight mb-2" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+            Planning to start a business?
+          </h2>
+          <p className="text-sm md:text-base" style={{ color: '#555555', lineHeight: 1.7 }}>
+            Share your details and we’ll get back to you with the right next step.
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input
               type="text"
               name="firstName"
@@ -108,8 +118,8 @@ export default function LeadCapturePopup() {
               value={formData.firstName}
               onChange={handleChange}
               required
-              className="px-4 py-2 rounded border text-sm bg-opacity-0"
-              style={{ borderColor: 'var(--border)', color: 'var(--ink)' }}
+              className="px-4 py-3 rounded-lg border text-sm transition focus:outline-none"
+              style={{ borderColor: 'rgba(201, 168, 76, 0.22)', color: '#0A0A0A', background: '#FFFFFF' }}
             />
             <input
               type="text"
@@ -118,8 +128,8 @@ export default function LeadCapturePopup() {
               value={formData.lastName}
               onChange={handleChange}
               required
-              className="px-4 py-2 rounded border text-sm bg-opacity-0"
-              style={{ borderColor: 'var(--border)', color: 'var(--ink)' }}
+              className="px-4 py-3 rounded-lg border text-sm transition focus:outline-none"
+              style={{ borderColor: 'rgba(201, 168, 76, 0.22)', color: '#0A0A0A', background: '#FFFFFF' }}
             />
           </div>
 
@@ -130,17 +140,17 @@ export default function LeadCapturePopup() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 rounded border text-sm bg-opacity-0"
-            style={{ borderColor: 'var(--border)', color: 'var(--ink)' }}
+            className="w-full px-4 py-3 rounded-lg border text-sm transition focus:outline-none"
+            style={{ borderColor: 'rgba(201, 168, 76, 0.22)', color: '#0A0A0A', background: '#FFFFFF' }}
           />
 
-          <div className="flex gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-3">
             <select
               name="countryCode"
               value={formData.countryCode}
               onChange={handleChange}
-              className="w-24 px-3 py-2 rounded border text-sm bg-opacity-0"
-              style={{ borderColor: 'var(--border)', color: 'var(--ink)' }}
+              className="w-full px-3 py-3 rounded-lg border text-sm transition focus:outline-none"
+              style={{ borderColor: 'rgba(201, 168, 76, 0.22)', color: '#0A0A0A', background: '#FFFFFF' }}
             >
               <option value="+971">+971 (UAE)</option>
               <option value="+44">+44 (UK)</option>
@@ -155,8 +165,8 @@ export default function LeadCapturePopup() {
               value={formData.mobile}
               onChange={handleChange}
               required
-              className="flex-1 px-4 py-2 rounded border text-sm bg-opacity-0"
-              style={{ borderColor: 'var(--border)', color: 'var(--ink)' }}
+              className="w-full px-4 py-3 rounded-lg border text-sm transition focus:outline-none"
+              style={{ borderColor: 'rgba(201, 168, 76, 0.22)', color: '#0A0A0A', background: '#FFFFFF' }}
             />
           </div>
 
@@ -166,28 +176,32 @@ export default function LeadCapturePopup() {
             value={formData.message}
             onChange={handleChange}
             rows={3}
-            className="w-full px-4 py-2 rounded border text-sm bg-opacity-0"
-            style={{ borderColor: 'var(--border)', color: 'var(--ink)' }}
+            className="w-full px-4 py-3 rounded-lg border text-sm transition focus:outline-none resize-none"
+            style={{ borderColor: 'rgba(201, 168, 76, 0.22)', color: '#0A0A0A', background: '#FFFFFF' }}
           />
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 rounded font-medium transition"
+            className="w-full py-3.5 rounded-lg font-semibold transition"
             style={{
               background: 'var(--gold)',
-              color: 'var(--dark)',
+              color: '#0A0A0A',
               opacity: isSubmitting ? 0.7 : 1,
               cursor: isSubmitting ? 'not-allowed' : 'pointer',
+              boxShadow: '0 10px 24px rgba(201, 168, 76, 0.18)',
             }}
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </form>
 
-        <p className="text-xs text-center mt-4" style={{ color: 'var(--ink-dim)' }}>
-          We'll get back to you within 24 hours
-        </p>
+        <div className="mt-5 pt-4 border-t text-center" style={{ borderColor: 'rgba(201, 168, 76, 0.18)' }}>
+          <p className="text-xs" style={{ color: '#777777' }}>
+            We’ll get back to you within 24 hours
+          </p>
+        </div>
+        </div>
       </div>
     </div>
   )

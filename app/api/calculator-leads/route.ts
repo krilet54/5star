@@ -4,7 +4,12 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, companyType, activity, visas, office, services, estimatedCost } = body
+    const { email, companyType, activity, visas, office, services, contactDetails, estimatedCost } = body
+
+    const serializedServices = JSON.stringify({
+      selectedServices: Array.isArray(services) ? services : [],
+      contactDetails: contactDetails ?? null,
+    })
 
     const supabase = await createClient()
     
@@ -17,7 +22,7 @@ export async function POST(request: NextRequest) {
           activity,
           visas: parseInt(visas) || 0,
           office,
-          services: JSON.stringify(services),
+          services: serializedServices,
           estimated_cost: estimatedCost,
           status: 'new',
         },

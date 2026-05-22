@@ -5,11 +5,9 @@ import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
 import InsightsFilter from '@/components/InsightsFilter'
 import GeometricCorners from '@/components/GeometricCorners'
+import ArticleCoverImage from '@/components/ArticleCoverImage'
+import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
-
-function getArticleImage(article: Pick<Article, 'cover_image' | 'category'>) {
-  return article.cover_image || getArticleFallbackImage(article.category)
-}
 
 export const metadata: Metadata = {
   title: 'Insights & Guides — UAE Business Setup Knowledge Hub',
@@ -77,13 +75,11 @@ export default async function InsightsPage() {
                 data-insight-cat={featured.category}
               >
                 <div className="min-h-[360px] relative overflow-hidden" style={{ background: '#F5F5F5' }}>
-                  <img
+                  <ArticleCoverImage
                     src={getArticleImage(featured)}
+                    fallbackSrc={getArticleFallbackImage(featured.category)}
                     alt={featured.title}
                     className="absolute inset-0 h-full w-full object-cover"
-                    onError={e => {
-                      (e.currentTarget as HTMLImageElement).src = getArticleFallbackImage(featured.category)
-                    }}
                   />
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,10,10,0.2), rgba(10,10,10,0.55))' }} />
                   <div className="absolute top-5 left-5 px-3 py-1.5 text-xs font-bold tracking-widest uppercase" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
@@ -116,13 +112,11 @@ export default async function InsightsPage() {
                   data-insight-cat={article.category}
                 >
                   <div className="h-52 relative overflow-hidden" style={{ background: '#F5F5F5' }}>
-                    <img
+                    <ArticleCoverImage
                       src={getArticleImage(article)}
+                      fallbackSrc={getArticleFallbackImage(article.category)}
                       alt={article.title}
                       className="absolute inset-0 h-full w-full object-cover"
-                      onError={e => {
-                        (e.currentTarget as HTMLImageElement).src = getArticleFallbackImage(article.category)
-                      }}
                     />
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,10,10,0.18), rgba(10,10,10,0.45))' }} />
                     <div className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold tracking-wider" style={{ background: '#C9A84C', color: '#0A0A0A' }}>

@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm'
 import { createClient } from '@/lib/supabase-server'
 import { formatDate } from '@/lib/utils'
 import EnquiryForm from '@/components/EnquiryForm'
+import ArticleCoverImage from '@/components/ArticleCoverImage'
+import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
 
 interface Props { params: Promise<{ slug: string }> }
@@ -103,13 +105,11 @@ export default async function ArticlePage({ params }: Props) {
             )}
 
             <div className="relative overflow-hidden rounded-2xl border border-[#E0E0E0] mb-8 min-h-[280px] bg-[#F5F5F5] shadow-[0_10px_30px_rgba(10,10,10,0.05)]">
-              <img
-                src={article.cover_image || getArticleFallbackImage(article.category)}
+              <ArticleCoverImage
+                src={getArticleImage(article)}
+                fallbackSrc={getArticleFallbackImage(article.category)}
                 alt={article.title}
                 className="absolute inset-0 h-full w-full object-cover"
-                onError={e => {
-                  (e.currentTarget as HTMLImageElement).src = getArticleFallbackImage(article.category)
-                }}
               />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,10,10,0.1), rgba(10,10,10,0.35))' }} />
               <div className="absolute top-5 left-5 px-3 py-1.5 text-xs font-bold tracking-widest uppercase" style={{ background: '#C9A84C', color: '#0A0A0A' }}>

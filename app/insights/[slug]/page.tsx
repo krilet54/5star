@@ -47,13 +47,11 @@ export default async function ArticlePage({ params }: Props) {
 
   const { data: related } = await supabase
     .from('articles')
-    .select('id, title, slug, excerpt, category, read_time, created_at, cover_image')
+    .select('id, title, slug, excerpt, category, read_time, created_at')
     .eq('published', true)
     .eq('category', article.category)
     .neq('id', article.id)
     .limit(3)
-
-  const headings = extractHeadings(article.content)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -78,7 +76,7 @@ export default async function ArticlePage({ params }: Props) {
       />
 
       {/* HERO */}
-      <section className="article-hero pt-40 pb-16 relative overflow-hidden" style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
+      <section className="pt-40 pb-16 relative overflow-hidden" style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,168,76,0.045) 1px, transparent 0)',
           backgroundSize: '40px 40px',
@@ -103,9 +101,7 @@ export default async function ArticlePage({ params }: Props) {
             </h1>
 
             {article.excerpt && (
-              <div className="article-intro-block mb-8">
-                <p className="text-lg leading-relaxed" style={{ color: '#333333' }}>{article.excerpt}</p>
-              </div>
+              <p className="text-lg leading-relaxed mb-8" style={{ color: '#555555' }}>{article.excerpt}</p>
             )}
 
             <div className="relative overflow-hidden rounded-2xl border border-[#E0E0E0] mb-8 min-h-[280px] bg-[#F5F5F5] shadow-[0_10px_30px_rgba(10,10,10,0.05)]">
@@ -133,17 +129,11 @@ export default async function ArticlePage({ params }: Props) {
       {/* CONTENT */}
       <section className="pb-24" style={{ background: '#F5F5F5' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-12">
-          <div className="grid lg:grid-cols-[1fr_340px] gap-16 items-start">
+          <div className="grid lg:grid-cols-[1fr_340px] gap-20 items-start">
             {/* Article content */}
-            <article className="article-body-card bg-[#FAFAFA] border border-[#E0E0E0] rounded-2xl p-8 sm:p-10 shadow-[0_12px_40px_rgba(10,10,10,0.04)]">
+            <div className="bg-[#FAFAFA] border border-[#E0E0E0] rounded-2xl p-8 sm:p-10 shadow-[0_12px_40px_rgba(10,10,10,0.04)]">
               <div className="prose-gold text-base">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h2: ({ children }) => <h2 id={slugifyHeading(String(children))}>{children}</h2>,
-                    h3: ({ children }) => <h3 id={slugifyHeading(String(children))}>{children}</h3>,
-                  }}
-                >
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {article.content}
                 </ReactMarkdown>
               </div>
@@ -181,25 +171,12 @@ export default async function ArticlePage({ params }: Props) {
                   </div>
                 </div>
               </div>
-            </article>
+            </div>
 
             {/* Sidebar */}
             <div className="flex flex-col gap-6 sticky top-24">
-              {headings.length > 0 && (
-                <div className="article-sidebar-card">
-                  <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>In This Guide</div>
-                  <div className="flex flex-col gap-3">
-                    {headings.map(h => (
-                      <a key={h.id} href={`#${h.id}`} className="article-toc-link">
-                        {h.text}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* CTA Card */}
-              <div className="article-sidebar-card">
+              <div className="border p-8 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9A84C' }}>Free Consultation</div>
                 <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Ready to Set Up Your UAE Business?</h3>
                 <p className="text-sm mb-6" style={{ color: '#555555' }}>Get personalised guidance from our Dubai business setup experts. 30 minutes, no obligation.</p>
@@ -208,20 +185,11 @@ export default async function ArticlePage({ params }: Props) {
 
               {/* Related */}
               {related && related.length > 0 && (
-                <div className="article-sidebar-card">
+                <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                   <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Articles</div>
-                  <div className="flex flex-col gap-5">
-                    {related.map((r: { id: string; title: string; slug: string; excerpt?: string | null; category: string; read_time: number; created_at: string; cover_image: string | null }) => (
-                      <Link key={r.id} href={`/insights/${r.slug}`} className="article-related-card group" style={{ textDecoration: 'none' }}>
-                        <div className="relative h-28 overflow-hidden rounded-md mb-3 bg-[#F5F5F5]">
-                          <ArticleCoverImage
-                            src={getArticleImage(r)}
-                            fallbackSrc={getArticleFallbackImage(r.category)}
-                            alt={r.title}
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-black/25" />
-                        </div>
+                  <div className="flex flex-col gap-4">
+                    {related.map((r: { id: string; title: string; slug: string; category: string; read_time: number; created_at: string }) => (
+                      <Link key={r.id} href={`/insights/${r.slug}`} className="block group" style={{ textDecoration: 'none' }}>
                         <div className="text-xs mb-1" style={{ color: '#C9A84C' }}>{r.category}</div>
                         <div className="text-sm font-medium leading-snug" style={{ color: '#0A0A0A' }}>{r.title}</div>
                         <div className="text-xs mt-1" style={{ color: '#777777' }}>{r.read_time} min read</div>
@@ -236,17 +204,4 @@ export default async function ArticlePage({ params }: Props) {
       </section>
     </>
   )
-}
-
-function slugifyHeading(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-}
-
-function extractHeadings(content: string) {
-  return content
-    .split('\n')
-    .map(line => line.match(/^#{2,3}\s+(.+)$/)?.[1])
-    .filter((text): text is string => Boolean(text))
-    .slice(0, 8)
-    .map(text => ({ text, id: slugifyHeading(text) }))
 }

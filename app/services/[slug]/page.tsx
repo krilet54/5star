@@ -27,9 +27,6 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound()
 
   const related = services.filter(s => s.slug !== slug).slice(0, 3)
-  const requiredDocuments = getRequiredDocuments(slug)
-  const audience = getAudience(slug)
-  const timeline = getTimeline(service.heroStat)
   const featureEmoji = ['🧩', '⚙️', '📌', '🛡️', '🚀', '✅']
   const processEmoji = ['📝', '🗂️', '🧠', '🎯']
 
@@ -83,76 +80,6 @@ export default async function ServicePage({ params }: Props) {
               <h3 className="text-sm font-semibold mb-3" style={{ color: '#0A0A0A' }}>Quick Enquiry</h3>
               <EnquiryForm preselectedService={service.title} />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICE OVERVIEW */}
-      <section className="service-template-section" style={{ background: '#F5F5F5' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[1fr_330px] gap-8 lg:gap-10 items-start">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="service-template-card service-template-card-wide">
-                <div className="tag">Outcome Summary</div>
-                <h2 className="font-display text-3xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>
-                  Clear execution, compliant delivery, and practical next steps.
-                </h2>
-                <p className="text-sm leading-relaxed service-justify" style={{ color: '#555555' }}>
-                  Star One coordinates advisory, documentation, authority submissions, and follow-through for {service.title.toLowerCase()} without fragmented vendors or unclear timelines.
-                </p>
-                <div className="grid grid-cols-3 gap-3 mt-6">
-                  {[
-                    { label: service.heroStatLabel, value: service.heroStat },
-                    { label: 'Key inclusions', value: service.features.length },
-                    { label: 'Process steps', value: service.process.length },
-                  ].map(item => (
-                    <div key={item.label} className="service-metric">
-                      <div className="font-display text-2xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C' }}>{item.value}</div>
-                      <div className="text-[11px] uppercase tracking-[0.14em]" style={{ color: '#777777' }}>{item.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="service-template-card">
-                <div className="tag">Who It Is For</div>
-                <ul className="service-check-list">
-                  {audience.map(item => <li key={item}>{item}</li>)}
-                </ul>
-              </div>
-
-              <div className="service-template-card">
-                <div className="tag">Required Documents</div>
-                <ul className="service-check-list">
-                  {requiredDocuments.map(item => <li key={item}>{item}</li>)}
-                </ul>
-              </div>
-
-              <div className="service-template-card">
-                <div className="tag">Timeline</div>
-                <div className="flex flex-col gap-3">
-                  {timeline.map((item, i) => (
-                    <div key={item.title} className="service-timeline-row">
-                      <span>{String(i + 1).padStart(2, '0')}</span>
-                      <div>
-                        <div className="font-semibold text-sm" style={{ color: '#0A0A0A' }}>{item.title}</div>
-                        <div className="text-xs leading-relaxed" style={{ color: '#666666' }}>{item.detail}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <aside className="service-sticky-cta">
-              <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9A84C' }}>Consultation</div>
-              <h3 className="font-display text-2xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>{service.cta}</h3>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: '#555555' }}>
-                Get a focused recommendation on documents, cost, authority route, and timing.
-              </p>
-              <Link href="/contact" className="btn btn-gold w-full">Book Consultation</Link>
-              <a href="https://wa.me/971502165471" className="btn btn-outline w-full mt-3" target="_blank" rel="noopener noreferrer">WhatsApp Advisor</a>
-            </aside>
           </div>
         </div>
       </section>
@@ -286,31 +213,4 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       <p className="pb-5 text-sm leading-relaxed service-justify" style={{ color: '#555555' }}>{a}</p>
     </details>
   )
-}
-
-function getRequiredDocuments(slug: string) {
-  const base = ['Passport copy', 'UAE visa or entry stamp if available', 'Emirates ID if available', 'Contact details and residential address']
-  if (slug.includes('visa')) return [...base, 'Passport-size photo', 'Sponsor documents', 'Medical or insurance documents if required']
-  if (slug.includes('tax') || slug === 'vat' || slug === 'audit' || slug === 'accounting-bookkeeping') return ['Trade license', 'MOA or incorporation documents', 'Owner passport and Emirates ID', 'Financial records or invoices', 'Tax registration details if available']
-  if (slug.includes('banking')) return ['Trade license', 'MOA and share certificate', 'Office lease or Ejari if available', 'Business profile', 'Shareholder KYC documents']
-  if (slug === 'trademark-strategy') return ['Brand name or logo', 'Applicant passport or trade license', 'Goods or services category', 'Power of attorney if required']
-  if (slug === 'document-attestation') return ['Original document', 'Passport copy', 'Previous attestations if any', 'Destination country or authority requirement']
-  return [...base, 'Proposed business activities', 'Shareholder details', 'Company name options']
-}
-
-function getAudience(slug: string) {
-  if (slug.includes('visa')) return ['Founders relocating to the UAE', 'Companies sponsoring employees or family', 'Residents who need compliant visa processing']
-  if (slug.includes('tax') || slug === 'vat' || slug === 'audit') return ['Licensed UAE businesses', 'Free zone and mainland companies', 'Owners who need penalty-safe compliance']
-  if (slug.includes('banking')) return ['New UAE companies opening accounts', 'Founders preparing bank KYC', 'Businesses needing banking guidance']
-  if (slug === 'accounting-bookkeeping') return ['Growing businesses needing clean books', 'Companies preparing for tax or audit', 'Owners who want monthly reporting']
-  return ['New founders entering the UAE market', 'Existing companies expanding services', 'International entrepreneurs needing local guidance']
-}
-
-function getTimeline(heroStat: string) {
-  return [
-    { title: 'Consultation', detail: 'We confirm goals, eligibility, documents, and the best route.' },
-    { title: 'Preparation', detail: 'Documents are checked, structured, and readied for submission.' },
-    { title: 'Submission', detail: 'Applications are filed with the relevant authority or partner.' },
-    { title: 'Completion', detail: `Typical benchmark: ${heroStat}. Final timing depends on authority review.` },
-  ]
 }

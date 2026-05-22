@@ -286,9 +286,6 @@ export default async function HomePage() {
               <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1, color: '#FAFAFA' }}>
                 6 Core Services<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>to launch & scale</em>
               </h2>
-              <p className="text-base mt-6" style={{ color: '#AAAAAA', maxWidth: 560 }}>
-                Our six main categories keep the structure clear, while the sub-services are grouped on the full services page.
-              </p>
             </div>
           </div>
 

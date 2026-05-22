@@ -166,6 +166,7 @@ export const services: ServiceData[] = [
     icon: '✈️',
     heroStat: '30-90 Days',
     heroStatLabel: 'Typical visit duration',
+    description: 'A Visit Visa allows individuals to enter the UAE for short stays for purposes such as tourism, visiting family and friends, or exploring business opportunities. Depending on the type of visa issued, visitors can stay in the country for a specific period while enjoying the UAE\'s vibrant lifestyle, attractions, and business environment.',
     features: [
       { title: 'Tourist Visit Visa', description: 'For individuals exploring the UAE for leisure, sightseeing, and tourism purposes.' },
       { title: 'Business Visit Visa', description: 'For professionals attending meetings, conferences, or exploring investment opportunities in the UAE.' },

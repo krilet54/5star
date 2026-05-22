@@ -67,7 +67,7 @@ export default function EnquiryForm({ preselectedService }: { preselectedService
           We've received your enquiry and will be in touch within 24 hours.
         </p>
         <a
-          href="https://wa.me/971502165471"
+          href="https://wa.me/971507735378"
           className="btn btn-outline"
           target="_blank"
           rel="noopener noreferrer"

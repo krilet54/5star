@@ -26,8 +26,10 @@ export default async function ServicePage({ params }: Props) {
   const service = getServiceBySlug(slug)
   if (!service) notFound()
 
+  const isGoldenVisa = slug === 'golden-visa'
   const related = services.filter(s => s.slug !== slug).slice(0, 3)
   const featureEmoji = ['🧩', '⚙️', '📌', '🛡️', '🚀', '✅']
+  const categoryEmoji = ['👔', '🏠', '🎓']
   const processEmoji = ['📝', '🗂️', '🧠', '🎯']
 
   return (
@@ -62,13 +64,18 @@ export default async function ServicePage({ params }: Props) {
                 <span className="service-pill">🤝 End-to-End Support</span>
               </div>
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="btn btn-gold">Get Started →</Link>
+                <Link href="/contact" className="btn btn-gold">{isGoldenVisa ? 'Apply for Golden Visa' : service.cta} →</Link>
+                {isGoldenVisa && (
+                  <Link href="/contact" className="btn btn-outline">
+                    Book a Consultation →
+                  </Link>
+                )}
                 {slug === 'business-setup' && (
                   <Link href="/calculator" className="btn btn-outline">
                     Use Calculator →
                   </Link>
                 )}
-                <a href="https://wa.me/971502165471" className="btn btn-outline" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+                <a href="https://wa.me/971507735378" className="btn btn-outline" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
               </div>
             </div>
 
@@ -87,23 +94,54 @@ export default async function ServicePage({ params }: Props) {
       {/* FEATURES */}
       <section className="section service-detail-section service-pattern-dark border-y" style={{ background: '#0A0A0A', borderColor: '#555555' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="tag">What's Included</div>
-          <h2 className="font-display text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>Service Features <span style={{ color: '#C9A84C' }}>✦</span></h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
-            {service.features.map((f, i) => (
-              <Reveal key={i} delay={i * 60}>
-                <div className="service-card service-feature-card p-6 border"
-                  style={{ background: '#111111', borderColor: '#333333', color: '#FAFAFA' }}
-                >
-                  <div className="mb-4" style={{ fontSize: '26px', color: '#C9A84C' }}>
-                    {featureEmoji[i % featureEmoji.length]}
+          <div className="tag">{isGoldenVisa ? 'Golden Visa Pathways' : "What's Included"}</div>
+          <h2 className="font-display text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>
+            {isGoldenVisa ? 'Golden Visa Categories' : 'Service Features'} <span style={{ color: '#C9A84C' }}>✦</span>
+          </h2>
+
+          {isGoldenVisa ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+              {(service.goldenVisaCategories || []).map((category, i) => (
+                <Reveal key={category.title} delay={i * 60}>
+                  <div
+                    className="service-card service-feature-card p-6 border"
+                    style={{ background: '#111111', borderColor: '#333333', color: '#FAFAFA' }}
+                  >
+                    <div className="mb-4" style={{ fontSize: '26px', color: '#C9A84C' }}>
+                      {categoryEmoji[i % categoryEmoji.length]}
+                    </div>
+                    <h3 className="font-display text-base font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>
+                      {category.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed service-justify" style={{ color: '#AAAAAA' }}>
+                      {category.description}
+                    </p>
                   </div>
-                  <h3 className="font-display text-base font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>{f.title}</h3>
-                  <p className="text-sm leading-relaxed service-justify" style={{ color: '#AAAAAA' }}>{f.description}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                </Reveal>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+              {service.features.map((f, i) => (
+                <Reveal key={i} delay={i * 60}>
+                  <div
+                    className="service-card service-feature-card p-6 border"
+                    style={{ background: '#111111', borderColor: '#333333', color: '#FAFAFA' }}
+                  >
+                    <div className="mb-4" style={{ fontSize: '26px', color: '#C9A84C' }}>
+                      {featureEmoji[i % featureEmoji.length]}
+                    </div>
+                    <h3 className="font-display text-base font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>
+                      {f.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed service-justify" style={{ color: '#AAAAAA' }}>
+                      {f.description}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -113,10 +151,12 @@ export default async function ServicePage({ params }: Props) {
           <Reveal>
             <div className="tag">Benefits</div>
             <h2 className="font-display text-3xl sm:text-4xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
-              Why This Matters for Your Business
+              {isGoldenVisa ? 'Key Benefits' : 'Why This Matters'}
             </h2>
             <p className="text-sm sm:text-base leading-relaxed mb-6 service-justify" style={{ color: '#555555', maxWidth: 780 }}>
-              We design every service to help you move faster, stay compliant, and reduce operational friction.
+              {isGoldenVisa
+                ? 'These benefits give you flexibility, stability, and long-term residency in the UAE.'
+                : 'We design every service to help you move faster, stay compliant, and reduce friction.'}
             </p>
           </Reveal>
 
@@ -143,8 +183,10 @@ export default async function ServicePage({ params }: Props) {
       <section className="section service-detail-section service-pattern-dark border-y" style={{ background: '#0A0A0A', borderColor: '#555555' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-10">
-            <div className="tag justify-center">Process</div>
-            <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>How We Work</h2>
+            <div className="tag justify-center">{isGoldenVisa ? 'Simple Application Process' : 'Process'}</div>
+            <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#FAFAFA' }}>
+              {isGoldenVisa ? 'Simple Application Process' : 'How We Work'}
+            </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6 items-stretch auto-rows-fr">
             {service.process.map((step, i) => (
@@ -163,24 +205,105 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section service-detail-section service-pattern-light" style={{ background: '#FAFAFA' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[320px_1fr] gap-12 lg:gap-14">
-            <div>
-              <div className="tag">FAQ</div>
-              <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Common Questions</h2>
-              <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>Have a question not answered here? Get in touch — we're happy to help.</p>
-              <Link href="/contact" className="btn btn-outline mt-6">Ask Us Anything →</Link>
-            </div>
-            <div className="flex flex-col gap-0">
-              {service.faq.map((item, i) => (
-                <FaqItem key={i} q={item.q} a={item.a} />
-              ))}
+      {isGoldenVisa && (
+        <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
+            <div className="tag justify-center">Call to Action</div>
+            <h2 className="font-display text-3xl sm:text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+              Start Your Golden Visa Journey Today
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto text-center" style={{ color: '#555555' }}>
+              Speak with our experts to explore your eligibility and secure long-term residency in the UAE.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/contact" className="btn btn-gold">Apply Now →</Link>
+              <Link href="/contact" className="btn btn-outline">Speak to an Expert →</Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {slug === 'business-setup' && (
+        <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div className="tag">Comparison</div>
+            <h2 className="font-display text-3xl sm:text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+              Business Setup Comparison
+            </h2>
+
+            <div className="overflow-x-auto mb-6">
+              <table className="prose-gold" style={{ minWidth: 900 }}>
+                <thead>
+                  <tr>
+                    <th>Mainland Company</th>
+                    <th>Free Zone Company</th>
+                    <th>Offshore Company</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <ul>
+                        <li><strong>Market Access:</strong> Freedom to operate anywhere in the UAE and internationally</li>
+                        <li><strong>Ownership:</strong> 100% foreign ownership available for most activities</li>
+                        <li><strong>Office Requirement:</strong> Physical office space usually required</li>
+                        <li><strong>Government Contracts:</strong> Eligible to work with UAE government entities</li>
+                        <li><strong>Business Scope:</strong> Ideal for companies targeting the local UAE market</li>
+                        <li><strong>Visa Eligibility:</strong> Can apply for multiple UAE residency visas depending on office size</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li><strong>Market Access:</strong> Operate within the Free Zone and globally</li>
+                        <li><strong>Ownership:</strong> 100% foreign ownership</li>
+                        <li><strong>Office Requirement:</strong> Flexible options such as flexi-desk or shared offices</li>
+                        <li><strong>Government Contracts:</strong> Generally not permitted</li>
+                        <li><strong>Business Scope:</strong> Ideal for international trade, services, and startups</li>
+                        <li><strong>Visa Eligibility:</strong> Visa packages available depending on Free Zone company rules</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li><strong>Market Access:</strong> Designed for international business outside the UAE</li>
+                        <li><strong>Ownership:</strong> 100% foreign ownership</li>
+                        <li><strong>Office Requirement:</strong> No physical office required</li>
+                        <li><strong>Government Contracts:</strong> Not permitted</li>
+                        <li><strong>Business Scope:</strong> Best for asset holding, international trade, and tax planning</li>
+                        <li><strong>Visa Eligibility:</strong> No UAE residency visas</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="text-center">
+              <Link href="/calculator" className="btn btn-gold">Compare & Calculate →</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      {!isGoldenVisa && (
+        <section className="section service-detail-section service-pattern-light" style={{ background: '#FAFAFA' }}>
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-[320px_1fr] gap-12 lg:gap-14">
+              <div>
+                <div className="tag">FAQ</div>
+                <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Common Questions</h2>
+                <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>Have a question not answered here? Get in touch — we're happy to help.</p>
+                <Link href="/contact" className="btn btn-outline mt-6">Ask Us Anything →</Link>
+              </div>
+              <div className="flex flex-col gap-0">
+                {service.faq.map((item, i) => (
+                  <FaqItem key={i} q={item.q} a={item.a} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* RELATED SERVICES */}
       <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#F5F5F5', borderColor: '#E0E0E0' }}>

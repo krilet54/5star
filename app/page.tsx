@@ -79,7 +79,7 @@ export default async function HomePage() {
       <section className="home-hero-clean relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-32" style={{ width: '100%' }}>
         {/* Background image placed behind hero content. */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: "url('/images/hero-bg.png')",
+          backgroundImage: "url('/hero-bg.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           zIndex: 0,
@@ -169,14 +169,15 @@ export default async function HomePage() {
           <div className="text-center mb-16">
             <div className="tag justify-center">How It Works</div>
             <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
-              Your Journey to a <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Licensed Business</em>
+              Your business set up in 3 easy steps
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 process-grid">
+          <div className="process-rectangle">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 process-grid">
             {[
-              { n: '01', title: 'Free Strategy Session', desc: 'Book a 30-minute consultation with our Dubai experts. We\'ll understand your vision, recommend the right business structure, and outline your path forward.' },
-              { n: '02', title: 'Document Preparation & Submission', desc: 'We handle every detail — business plans, MOA, shareholder docs, government forms, and visa applications. Sit back while we manage the paperwork.' },
-              { n: '03', title: 'Company Registration & Banking', desc: 'Your trade license, bank account, visa processing, and ongoing compliance. We stay with you from day one through launch and beyond.' },
+              { n: '1', title: 'Tell Us Your Plan', desc: 'Explain your business concept and goals. We help you choose the right setup for success.' },
+              { n: '2', title: 'Leave the Process to Us', desc: 'From approvals to licensing, we take care of the paperwork and coordination.' },
+              { n: '3', title: 'Get Ready to Operate', desc: 'Your company is ready to launch, and you can start running your business confidently.' },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 80}>
                 <div
@@ -197,6 +198,12 @@ export default async function HomePage() {
                     opacity: 0,
                     transition: 'opacity 0.3s ease',
                   }} />
+                  {i < 2 && (
+                    <div
+                      className="hidden lg:block absolute top-8 bottom-8 -right-px w-px"
+                      style={{ background: 'linear-gradient(180deg, transparent, #C9A84C, transparent)' }}
+                    />
+                  )}
 
                   <div className="relative z-10">
                     <div className="font-display text-7xl font-medium mb-4 select-none" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C', lineHeight: 1 }}>{step.n}</div>
@@ -206,12 +213,13 @@ export default async function HomePage() {
                 </div>
               </Reveal>
             ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── WHY STAR ONE ─── */}
-      <section className="section border-b relative section-corner-accent" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+      <section className="section border-b relative section-corner-accent" style={{ background: '#FAFAFA', borderColor: '#E0E0E0', zIndex: 30 }}>
         {/* Section decorative top divider */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-0.5" style={{
           background: 'linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent)',
@@ -220,22 +228,19 @@ export default async function HomePage() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           {/* Header */}
           <div className="mb-12 max-w-2xl">
-            <div className="tag">Why Choose Us</div>
+            <div className="tag">Why Star One?</div>
             <h2 className="font-display text-4xl lg:text-5xl font-medium mb-4 relative" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1, color: '#0A0A0A' }}>
-              Every step.<br />Every service.<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>One partner.</em>
+              Why Star One?
             </h2>
-            <p className="text-base leading-relaxed" style={{ color: '#555555' }}>
-              Most entrepreneurs navigate UAE business setup alone. We change that. From your first consultation to your 100th employee, Star One stays with you.
-            </p>
           </div>
 
           {/* Features Grid - 2x2 on desktop, 1x4 on mobile */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8" style={{ zIndex: 40 }}>
             {[
-              { icon: '🔧', num: '01', title: 'Comprehensive Services', desc: 'Business setup, visas, compliance, banking, accounting, HR, branding — everything under one roof, no coordinator needed.' },
-              { icon: '⚖️', num: '02', title: 'UAE Regulatory Expertise', desc: 'Deep knowledge of mainland, free zone, and offshore structures. Always updated with the latest UAE laws and government requirements.' },
-              { icon: '🌍', num: '03', title: 'International Founder Focus', desc: 'Specialists serving entrepreneurs from the UK, US, South Africa, and beyond setting up in Dubai. We speak your language, understand your markets.' },
-              { icon: '⚡', num: '04', title: 'Speed & Reliability', desc: 'Most setups complete in 3–5 business days. You\'ll work with the same trusted advisor throughout, not a call center.' },
+              { icon: '01', num: '01', title: 'Trusted Expertise', desc: 'Professional guidance backed by industry experience.' },
+              { icon: '02', num: '02', title: 'Hassle-Free Setup', desc: 'We manage the process while you focus on your business.' },
+              { icon: '03', num: '03', title: 'Fast Approvals', desc: 'Efficient coordination with authorities to save you time.' },
+              { icon: '04', num: '04', title: 'Long-Term Support', desc: 'Continuous assistance after your business is launched.' },
             ].map(f => (
               <div key={f.num} className="feature-box-accent p-6 rounded transition-all duration-300 border" style={{ 
                 background: 'rgba(201, 168, 76, 0.05)',
@@ -243,8 +248,7 @@ export default async function HomePage() {
               }}>
                 {/* Icon and number row */}
                 <div className="flex items-center gap-4 mb-4">
-                  <span style={{ fontSize: '32px', color: '#C9A84C' }}>{f.icon}</span>
-                  <span className="font-display text-3xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C', lineHeight: 1 }}>{f.num}</span>
+                  <span className="font-display text-3xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#C9A84C', lineHeight: 1 }}>{f.icon}</span>
                 </div>
                 
                 {/* Content */}
@@ -359,45 +363,44 @@ export default async function HomePage() {
             {[
               {
                 name: 'Basic Setup',
-                price: 'AED 8,000',
+                price: 'AED 5,750',
                 billing: 'one-time',
                 desc: 'Perfect for solopreneurs and freelancers',
                 features: [
-                  'Business consultancy',
-                  'Company formation (mainland)',
                   'Trade license',
-                  'Bank account opening',
-                  'Basic accounting setup',
-                  'Email support',
+                  'Combine up to 10 media related activities',
+                  '50 shareholders permitted',
+                  'Formation Certificate',
+                  'Share Certificate',
+                  'MOA',
+                  'Lease agreement',
                 ],
               },
               {
                 name: 'Growth Setup',
-                price: 'AED 15,500',
+                price: 'AED 10,800',
                 billing: 'one-time',
                 desc: 'For growing teams and ambitious startups',
                 features: [
-                  'All Basic Setup services',
-                  'Employment visa (1 sponsored)',
-                  'VAT registration & setup',
-                  'Monthly bookkeeping',
-                  'HR & payroll consulting',
-                  'Priority support',
+                  '1 Residency VISA FREE for Life',
+                  '1 shareholder',
+                  'E-channel registration',
+                  'Certificate of formation',
+                  'General trading and E-commerce activities',
+                  'Status change',
                 ],
                 highlighted: true,
               },
               {
                 name: 'Advanced Setup',
-                price: 'AED 24,000+',
+                price: 'AED 17,000',
                 billing: 'one-time',
                 desc: 'For established companies & complex structures',
                 features: [
-                  'All Growth services',
-                  'Multiple employment visas',
-                  'Full audit & assurance',
-                  'Corporate tax planning',
-                  'Compliance audits (AML, ESR, KYC, UBO)',
-                  'Dedicated account manager',
+                  'Up to 3 activities (Dubai-based)',
+                  'Dedicated Desk (Premium Location)',
+                  'Free Assistance',
+                  'Long-Term Business Support, Advisory, and Setup Planning',
                 ],
               },
             ].map((pkg, i) => (
@@ -564,7 +567,7 @@ export default async function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn btn-gold transition-all duration-300 hover:shadow-lg hover:shadow-yellow-600/50">Get Started →</Link>
-            <HoverButton href="https://wa.me/971502165471" className="btn btn-outline" isExternal target="_blank" rel="noopener noreferrer">WhatsApp Us</HoverButton>
+            <HoverButton href="https://wa.me/971507735378" className="btn btn-outline" isExternal target="_blank" rel="noopener noreferrer">WhatsApp Us</HoverButton>
           </div>
           
           {/* Decorative divider below CTA */}

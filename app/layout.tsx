@@ -7,8 +7,7 @@ import LeadCapturePopup from '@/components/LeadCapturePopup'
 
 const display = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400', '700'],
   variable: '--font-display',
 })
 

@@ -71,7 +71,7 @@ const sections = [
   {
     title: '10. Contact Us',
     paragraphs: [
-      'If you have questions about this Privacy Policy or how we handle your data, please contact us at info@starone.ae or call +971 50 216 5471.',
+      'If you have questions about this Privacy Policy or how we handle your data, please contact us at info@starone.ae or call 050 773 5378.',
     ],
   },
 ]

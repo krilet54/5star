@@ -145,6 +145,15 @@ main {
 
 .font-display { font-family: var(--font-display); }
 
+/* Keep heading style standard (no cursive/handwritten italic treatment). */
+h1 em,
+h2 em,
+h3 em,
+h4 em,
+.font-display em {
+  font-style: normal !important;
+}
+
 /* ─── GOLD TAG ─── */
 .tag {
   display: inline-flex;
@@ -357,6 +366,100 @@ main {
   background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
   margin-top: 40px;
   animation: slideInUp 0.8s ease-out;
+}
+
+/* ─── ABOUT PAGE LUXURY TREATMENTS ─── */
+.about-orbit {
+  position: absolute;
+  border: 1px solid rgba(212,175,55,0.16);
+  border-radius: 999px;
+  pointer-events: none;
+}
+.about-orbit.one { width: 160px; height: 160px; right: -42px; top: -42px; opacity: 0.55; }
+.about-orbit.two { width: 260px; height: 260px; right: -70px; top: 28px; opacity: 0.32; }
+.about-orbit::before,
+.about-orbit::after {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: #D4AF37;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(212,175,55,0.45);
+}
+.about-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: linear-gradient(rgba(212,175,55,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.16) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+.about-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 40%, rgba(231,200,115,0.14) 0%, rgba(231,200,115,0.06) 18%, transparent 52%);
+}
+.about-luxury-panel {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(232,224,208,0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+}
+.about-hero-panel {
+  background: #FFFFFF;
+  border: 1px solid rgba(232,224,208,0.95);
+  border-radius: 40px;
+  overflow: hidden;
+}
+.about-quote-panel {
+  position: relative;
+  border: 1px solid rgba(212,175,55,0.15);
+  background: rgba(255,255,255,0.02);
+  border-radius: 28px;
+  overflow: hidden;
+}
+.about-quote-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(231,200,115,0.12), transparent 55%);
+  pointer-events: none;
+}
+.about-frame {
+  position: relative;
+  border: 1px solid rgba(232,224,208,0.95);
+  border-radius: 30px;
+  overflow: hidden;
+}
+.about-frame::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(212,175,55,0.12);
+  border-radius: 22px;
+  pointer-events: none;
+}
+.about-silhouette {
+  background:
+    radial-gradient(circle at 50% 28%, rgba(212,175,55,0.08), transparent 28%),
+    radial-gradient(circle at 50% 78%, rgba(212,175,55,0.05), transparent 44%),
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9));
+}
+.about-cta-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.9)),
+    url('/images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
 }
 
 /* ─── SECTION ─── */
@@ -729,6 +832,96 @@ main {
 .process-grid > .reveal { display: flex; }
 .process-grid .hover-card { display: flex; flex-direction: column; flex: 1; }
 .process-grid .hover-card .font-display { color: var(--dark-5); }
+
+/* Decorative vertical separators between the 3-step process columns on large screens */
+.process-grid { position: relative; }
+@media (min-width: 1024px) {
+  .process-grid::before,
+  .process-grid::after {
+    content: '';
+    position: absolute;
+    top: 3.5rem; /* align with card top spacing */
+    bottom: 3.5rem; /* align with card bottom spacing */
+    width: 2px;
+    background: linear-gradient(180deg, rgba(201,168,76,0.28), rgba(201,168,76,0.08));
+    pointer-events: none;
+    z-index: 2;
+  }
+  .process-grid::before { left: calc(33.333333%); }
+  .process-grid::after { left: calc(66.666666%); }
+}
+
+/* Rectangle wrapper for the 3-step block */
+.process-rectangle {
+  background: #FAFAFA;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px;
+  position: relative;
+}
+
+/* When inside the rectangle, make individual cards appear part of the same block */
+.process-rectangle .frame-with-corners {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 2.5rem !important;
+}
+
+/* Hide the decorative pseudo separators (we'll use real borders) */
+.process-rectangle .process-grid::before,
+.process-rectangle .process-grid::after { display: none; }
+
+/* Add vertical borders between columns using adjacent selectors */
+@media (min-width: 768px) {
+  .process-rectangle .process-grid > .reveal + .reveal > .frame-with-corners {
+    border-left: 2px solid rgba(201,168,76,0.12) !important;
+  }
+  .process-rectangle .process-grid > .reveal + .reveal + .reveal > .frame-with-corners {
+    border-left: 2px solid rgba(201,168,76,0.12) !important;
+  }
+}
+
+/* Mission quote styling */
+.mission-quote {
+  border-left: 4px solid var(--gold);
+  padding-left: 18px;
+  margin: 0 auto;
+  font-style: italic;
+  background: linear-gradient(90deg, rgba(201,168,76,0.02), transparent);
+  border-radius: 4px;
+}
+
+/* Small geometric decorative accents for About sections */
+/* about-decor removed per user request */
+
+/* Hero stripes behind large headings */
+/* hero-stripes removed per user request */
+
+/* Feature quote styling (for "What Makes Us Different?") */
+.feature-quote {
+  border-left: 4px solid rgba(201,168,76,0.95);
+  padding: 20px 24px 20px 28px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(201,168,76,0.02), transparent);
+  border-radius: 8px;
+  max-width: 920px;
+  position: relative;
+  font-style: normal;
+}
+.feature-quote p { margin: 0 0 0.75rem 0; color: #d1c9b0; font-size: 1.05rem; }
+.feature-quote p strong { color: #FAFAFA; display: block; font-size: 1.06rem; margin-bottom: 6px; }
+.feature-quote::before {
+  content: '“';
+  position: absolute;
+  left: 8px;
+  top: -18px;
+  font-size: 72px;
+  color: rgba(201,168,76,0.14);
+  line-height: 1;
+}
+
+
 
 .service-process-card {
   width: 100%;

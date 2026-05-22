@@ -37,6 +37,7 @@ export interface ServiceData {
   heroStat: string
   heroStatLabel: string
   features: { title: string; description: string }[]
+  goldenVisaCategories?: { title: string; description: string }[]
   benefits: string[]
   process: { step: string; title: string; description: string }[]
   faq: { q: string; a: string }[]

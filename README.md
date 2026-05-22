@@ -211,7 +211,7 @@ The current logo is text-based (`S1` mark + "Star One"). For a professional cust
 ## WhatsApp Integration
 
 The floating WhatsApp button and all WhatsApp links point to:
-`https://wa.me/971502165471`
+`https://wa.me/971507735378`
 
 Update the phone number in:
 - `components/WhatsAppFloat.tsx`

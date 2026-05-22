@@ -123,13 +123,13 @@ export default function Nav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+971502165471" className="text-xs font-medium tracking-wider" style={{ 
+            <a href="tel:+971507735378" className="text-xs font-medium tracking-wider" style={{ 
               color: navTextColor, 
               textTransform: 'uppercase', 
               letterSpacing: '0.06em',
               transition: 'color 0.3s'
             }}>
-              +971 50 216 5471
+              050 773 5378
             </a>
             <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 22px' }}>
               Get Started

@@ -25,8 +25,7 @@ export const services: ServiceData[] = [
     process: [
       { step: '01', title: 'Free Consultation', description: 'We understand your goals, budget, and activity to recommend the right structure.' },
       { step: '02', title: 'Documentation', description: 'We prepare all required documents: passport copies, business plan, MoA, and application forms.' },
-      { step: '03', title: 'License Submission', description: 'We submit to the relevant authority and manage all government correspondence.' },
-      { step: '04', title: 'License Issuance', description: 'Your trade license is issued and we guide you through the next steps: visa, banking, and compliance.' },
+      { step: '03', title: 'License Issuance', description: 'Your trade license is issued and we guide you through the next steps: visa, banking, and compliance.' },
     ],
     faq: [
       { q: 'What is the difference between mainland and free zone?', a: 'Mainland companies can trade freely anywhere in the UAE and with government entities. Free zone companies operate within their zone and internationally but cannot directly trade on the UAE mainland without a distributor.' },
@@ -38,7 +37,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'golden-visa',
-    title: 'Golden Visa UAE',
+    title: 'Golden Visa',
     tagline: 'Long-Term Residency in the UAE — Live, Work, and Thrive',
     icon: '⭐',
     heroStat: '10 Years',
@@ -59,6 +58,20 @@ export const services: ServiceData[] = [
       'No need for a local sponsor',
       'Opportunity to invest and grow your business',
       'Access to the UAE\'s world-class lifestyle and opportunities',
+    ],
+    goldenVisaCategories: [
+      {
+        title: 'Executive Director Golden Visa',
+        description: 'Designed for experienced executives and senior professionals who hold leadership roles within UAE companies. This category provides long-term residency and stability for people guiding business growth and strategic decision-making.',
+      },
+      {
+        title: 'Property Investor Golden Visa',
+        description: 'For real estate investors who own eligible property in the UAE. This category combines property ownership with long-term residency, giving investors more flexibility to live and invest in the country.',
+      },
+      {
+        title: 'Student Golden Visa',
+        description: 'For outstanding students with exceptional academic performance. This category supports talented individuals by helping them continue education and build their future in the UAE.',
+      },
     ],
     process: [
       { step: '01', title: 'Consultation', description: 'We assess your eligibility and recommend the most suitable Golden Visa category.' },
@@ -153,7 +166,6 @@ export const services: ServiceData[] = [
     icon: '✈️',
     heroStat: '30-90 Days',
     heroStatLabel: 'Typical visit duration',
-    description: 'A Visit Visa allows individuals to enter the UAE for short stays for purposes such as tourism, visiting family and friends, or exploring business opportunities. Depending on the type of visa issued, visitors can stay in the country for a specific period while enjoying the UAE\'s vibrant lifestyle, attractions, and business environment. Visit visas can be sponsored by relatives, companies, or authorized travel agencies.',
     features: [
       { title: 'Tourist Visit Visa', description: 'For individuals exploring the UAE for leisure, sightseeing, and tourism purposes.' },
       { title: 'Business Visit Visa', description: 'For professionals attending meetings, conferences, or exploring investment opportunities in the UAE.' },

@@ -180,7 +180,7 @@ export default function CalculatorPage() {
                   >
                     {['Trading', 'Services', 'Consulting', 'E-commerce', 'Manufacturing', 'Media & Creative', 'Education', 'Technology', 'Other'].map(
                       act => (
-                        <option key={act} value={act} style={{ background: 'var(--dark)' }}>
+                        <option key={act} value={act} style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
                           {act}
                         </option>
                       ),
@@ -347,7 +347,7 @@ export default function CalculatorPage() {
                 </button>
 
                 <a
-                  href="https://wa.me/971502165471"
+                  href="https://wa.me/971507735378"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-full py-3 rounded font-semibold transition border"

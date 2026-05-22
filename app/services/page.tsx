@@ -9,12 +9,25 @@ export const metadata: Metadata = {
   description: 'Complete UAE business services: company formation, visas, compliance, banking, accounting, HR, trademark, and more. All under one roof.',
 }
 
+const categoryIds: Record<string, string> = {
+  'Business Setup': 'business-setup',
+  'Visa & Residency': 'visa-residency',
+  'Tax Compliance': 'tax-compliance',
+  'Legal Compliance': 'legal-compliance',
+  'Banking': 'banking',
+  'Accounting': 'accounting',
+  'HR & Operations': 'hr-operations',
+  'IP & Ancillary': 'ip-ancillary',
+}
+
 // Group services by category
 const servicesByCategory = {
   'Business Setup': services.filter(s => s.slug === 'business-setup'),
   'Visa & Residency': services.filter(s => s.slug.includes('visa')),
-  'Compliance & Tax': services.filter(s => ['corporate-tax', 'vat', 'audit', 'esr', 'aml', 'kyc', 'ubo'].includes(s.slug)),
-  'Banking & Finance': services.filter(s => ['personal-banking', 'corporate-banking', 'accounting-bookkeeping'].includes(s.slug)),
+  'Tax Compliance': services.filter(s => ['corporate-tax', 'vat', 'audit'].includes(s.slug)),
+  'Legal Compliance': services.filter(s => ['esr', 'aml', 'kyc', 'ubo'].includes(s.slug)),
+  'Banking': services.filter(s => ['personal-banking', 'corporate-banking'].includes(s.slug)),
+  'Accounting': services.filter(s => ['accounting-bookkeeping'].includes(s.slug)),
   'HR & Operations': services.filter(s => ['hr-payroll'].includes(s.slug)),
   'IP & Ancillary': services.filter(s => ['marketing-branding', 'trademark-strategy', 'will-services', 'document-attestation'].includes(s.slug)),
 }
@@ -32,7 +45,7 @@ export default function ServicesPage() {
             All Services<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Under One Roof</em>
           </h1>
           <p className="text-lg max-w-xl" style={{ color: '#555555', lineHeight: 1.8 }}>
-            Our six core service categories keep the structure clear, while the sub-services below show the full breadth of what we offer.
+            Our service categories keep the structure clear, while the sub-services below show the full breadth of what we offer.
           </p>
         </div>
       </section>
@@ -56,7 +69,7 @@ export default function ServicesPage() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           {Object.entries(servicesByCategory).map(([ category, categoryServices ], catIdx) => (
             categoryServices.length > 0 && (
-              <div key={category} id={category === 'Business Setup' ? 'business-setup' : category === 'Visa & Residency' ? 'visa-residency' : category === 'Compliance & Tax' ? 'compliance-tax' : category === 'Banking & Finance' ? 'banking-finance' : category === 'HR & Operations' ? 'hr-operations' : 'ip-ancillary'} className={catIdx > 0 ? 'mt-24 pt-12' : 'pt-8'}>
+              <div key={category} id={categoryIds[category] || 'services'} className={catIdx > 0 ? 'mt-24 pt-12' : 'pt-8'}>
                 {/* Category header with decorations */}
                 <div className="mb-8 pb-8 border-b relative" style={{ borderColor: '#333333' }}>
                   {/* Top divider line before category */}

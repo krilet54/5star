@@ -51,8 +51,8 @@ export default function ContactPage() {
                   {
                     icon: '📞',
                     title: 'Phone',
-                    lines: ['+971 50 216 5471', '+971 50 850 1608'],
-                    action: 'tel:+971502165471',
+                    lines: ['050 773 5378'],
+                    action: 'tel:+971507735378',
                   },
                   {
                     icon: '✉️',
@@ -90,7 +90,7 @@ export default function ContactPage() {
               {/* WhatsApp block */}
               <Reveal delay={250}>
                 <a
-                    href="https://wa.me/971502165471?text=Hello%20Star%20One%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
+                    href="https://wa.me/971507735378?text=Hello%20Star%20One%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-5 p-6 border rounded-sm transition-all mb-10 wa-block"
@@ -103,7 +103,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="font-semibold text-sm mb-0.5" style={{ color: '#0A0A0A' }}>WhatsApp Us Directly</div>
-                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · +971 50 216 5471</div>
+                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · 050 773 5378</div>
                   </div>
                 </a>
               </Reveal>

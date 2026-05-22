@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import { createClient } from '@/lib/supabase-server'
 import { formatDate } from '@/lib/utils'
 import EnquiryForm from '@/components/EnquiryForm'
+import { getArticleFallbackImage } from '@/lib/site-images'
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -73,36 +74,51 @@ export default async function ArticlePage({ params }: Props) {
       />
 
       {/* HERO */}
-      <section className="pt-40 pb-16 relative overflow-hidden" style={{ background: 'var(--dark)' }}>
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,160,96,0.05) 1px, transparent 0)',
+      <section className="pt-40 pb-16 relative overflow-hidden" style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,168,76,0.045) 1px, transparent 0)',
           backgroundSize: '40px 40px',
         }} />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10 max-w-4xl">
           <div className="max-w-4xl">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-xs mb-8" style={{ color: 'var(--ink-dim)' }}>
-              <Link href="/" style={{ color: 'var(--ink-dim)' }}>Home</Link>
+            <div className="flex items-center gap-2 text-xs mb-8" style={{ color: '#555555' }}>
+              <Link href="/" style={{ color: '#555555' }}>Home</Link>
               <span>/</span>
-              <Link href="/insights" style={{ color: 'var(--ink-dim)' }}>Insights</Link>
+              <Link href="/insights" style={{ color: '#555555' }}>Insights</Link>
               <span>/</span>
-              <span style={{ color: 'var(--gold)' }}>{article.category}</span>
+              <span style={{ color: '#C9A84C' }}>{article.category}</span>
             </div>
 
-            <div className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase mb-6" style={{ background: 'var(--gold)', color: '#000' }}>
+            <div className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase mb-6" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
               {article.category}
             </div>
 
-            <h1 className="font-display mb-6" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 500, lineHeight: 1.15 }}>
+            <h1 className="font-display mb-6" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 500, lineHeight: 1.15, color: '#0A0A0A' }}>
               {article.title}
             </h1>
 
             {article.excerpt && (
-              <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--ink-muted)' }}>{article.excerpt}</p>
+              <p className="text-lg leading-relaxed mb-8" style={{ color: '#555555' }}>{article.excerpt}</p>
             )}
 
-            <div className="flex items-center gap-6 text-xs pt-6 border-t" style={{ borderColor: 'var(--border)', color: 'var(--ink-dim)' }}>
-              <span>By <span style={{ color: 'var(--ink-muted)' }}>Star One Team</span></span>
+            <div className="relative overflow-hidden rounded-2xl border border-[#E0E0E0] mb-8 min-h-[280px] bg-[#F5F5F5] shadow-[0_10px_30px_rgba(10,10,10,0.05)]">
+              <img
+                src={article.cover_image || getArticleFallbackImage(article.category)}
+                alt={article.title}
+                className="absolute inset-0 h-full w-full object-cover"
+                onError={e => {
+                  (e.currentTarget as HTMLImageElement).src = getArticleFallbackImage(article.category)
+                }}
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,10,10,0.1), rgba(10,10,10,0.35))' }} />
+              <div className="absolute top-5 left-5 px-3 py-1.5 text-xs font-bold tracking-widest uppercase" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
+                {article.category}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-6 text-xs pt-6 border-t" style={{ borderColor: '#E0E0E0', color: '#666666' }}>
+              <span>By <span style={{ color: '#0A0A0A' }}>Star One Team</span></span>
               <span>{formatDate(article.created_at)}</span>
               <span>{article.read_time} min read</span>
             </div>
@@ -111,11 +127,11 @@ export default async function ArticlePage({ params }: Props) {
       </section>
 
       {/* CONTENT */}
-      <section className="pb-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+      <section className="pb-24" style={{ background: '#F5F5F5' }}>
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-12">
           <div className="grid lg:grid-cols-[1fr_340px] gap-20 items-start">
             {/* Article content */}
-            <div>
+            <div className="bg-[#FAFAFA] border border-[#E0E0E0] rounded-2xl p-8 sm:p-10 shadow-[0_12px_40px_rgba(10,10,10,0.04)]">
               <div className="prose-gold text-base">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {article.content}
@@ -123,16 +139,16 @@ export default async function ArticlePage({ params }: Props) {
               </div>
 
               {/* Share / tags */}
-              <div className="mt-14 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
+              <div className="mt-14 pt-8 border-t" style={{ borderColor: '#E0E0E0' }}>
                 <div className="flex items-center gap-4 flex-wrap">
-                  <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--ink-muted)' }}>Share:</span>
+                  <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#777777' }}>Share:</span>
                   {[
                     { label: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=https://starone.ae/insights/${article.slug}` },
                     { label: 'Twitter / X', href: `https://twitter.com/intent/tweet?url=https://starone.ae/insights/${article.slug}&text=${encodeURIComponent(article.title)}` },
                     { label: 'WhatsApp', href: `https://wa.me/?text=${encodeURIComponent(article.title + ' https://starone.ae/insights/' + article.slug)}` },
                   ].map(s => (
                     <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                      className="btn btn-dark" style={{ padding: '8px 16px', fontSize: 11 }}>
+                      className="btn btn-outline" style={{ padding: '8px 16px', fontSize: 11, borderColor: '#0A0A0A', color: '#0A0A0A' }}>
                       {s.label}
                     </a>
                   ))}
@@ -140,15 +156,15 @@ export default async function ArticlePage({ params }: Props) {
               </div>
 
               {/* Author box */}
-              <div className="mt-10 p-8 border rounded-sm" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
+              <div className="mt-10 p-8 border rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="flex gap-5 items-start">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center font-bold flex-shrink-0"
-                    style={{ background: 'var(--gold-muted)', border: '1px solid var(--gold-border)', color: 'var(--gold)', fontFamily: 'var(--font-display)', fontSize: 18 }}>
+                    style={{ background: 'rgba(201, 168, 76, 0.12)', border: '1px solid rgba(201, 168, 76, 0.24)', color: '#C9A84C', fontFamily: 'var(--font-display)', fontSize: 18 }}>
                     S1
                   </div>
                   <div>
-                    <div className="font-semibold mb-1" style={{ color: 'var(--ink)' }}>Star One Team</div>
-                    <div className="text-xs mb-2" style={{ color: 'var(--gold)' }}>Business Setup Experts, Dubai UAE</div>
+                    <div className="font-semibold mb-1" style={{ color: '#0A0A0A' }}>Star One Team</div>
+                    <div className="text-xs mb-2" style={{ color: '#C9A84C' }}>Business Setup Experts, Dubai UAE</div>
                     <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
                       Star One's advisory team brings together over 12 years of UAE business formation experience, helping entrepreneurs from the UK, US, South Africa and beyond establish successful companies in Dubai.
                     </p>
@@ -160,23 +176,23 @@ export default async function ArticlePage({ params }: Props) {
             {/* Sidebar */}
             <div className="flex flex-col gap-6 sticky top-24">
               {/* CTA Card */}
-              <div className="border p-8 rounded-sm" style={{ background: 'var(--dark-3)', borderColor: 'var(--gold-border)' }}>
-                <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: 'var(--gold)' }}>Free Consultation</div>
-                <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)' }}>Ready to Set Up Your UAE Business?</h3>
-                <p className="text-sm mb-6" style={{ color: 'var(--ink-muted)' }}>Get personalised guidance from our Dubai business setup experts. 30 minutes, no obligation.</p>
+              <div className="border p-8 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+                <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9A84C' }}>Free Consultation</div>
+                <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Ready to Set Up Your UAE Business?</h3>
+                <p className="text-sm mb-6" style={{ color: '#555555' }}>Get personalised guidance from our Dubai business setup experts. 30 minutes, no obligation.</p>
                 <EnquiryForm />
               </div>
 
               {/* Related */}
               {related && related.length > 0 && (
-                <div className="border p-6 rounded-sm" style={{ background: 'var(--dark-2)', borderColor: 'var(--border)' }}>
-                  <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--ink-muted)' }}>Related Articles</div>
+                <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+                  <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Articles</div>
                   <div className="flex flex-col gap-4">
                     {related.map((r: { id: string; title: string; slug: string; category: string; read_time: number; created_at: string }) => (
                       <Link key={r.id} href={`/insights/${r.slug}`} className="block group" style={{ textDecoration: 'none' }}>
-                        <div className="text-xs mb-1" style={{ color: 'var(--gold)' }}>{r.category}</div>
-                        <div className="text-sm font-medium leading-snug" style={{ color: 'var(--ink)' }}>{r.title}</div>
-                        <div className="text-xs mt-1" style={{ color: 'var(--ink-dim)' }}>{r.read_time} min read</div>
+                        <div className="text-xs mb-1" style={{ color: '#C9A84C' }}>{r.category}</div>
+                        <div className="text-sm font-medium leading-snug" style={{ color: '#0A0A0A' }}>{r.title}</div>
+                        <div className="text-xs mt-1" style={{ color: '#777777' }}>{r.read_time} min read</div>
                       </Link>
                     ))}
                   </div>

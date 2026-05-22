@@ -5,6 +5,11 @@ import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
 import InsightsFilter from '@/components/InsightsFilter'
 import GeometricCorners from '@/components/GeometricCorners'
+import { getArticleFallbackImage } from '@/lib/site-images'
+
+function getArticleImage(article: Pick<Article, 'cover_image' | 'category'>) {
+  return article.cover_image || getArticleFallbackImage(article.category)
+}
 
 export const metadata: Metadata = {
   title: 'Insights & Guides — UAE Business Setup Knowledge Hub',
@@ -71,7 +76,16 @@ export default async function InsightsPage() {
                 style={{ textDecoration: 'none', borderColor: '#C9A84C' }}
                 data-insight-cat={featured.category}
               >
-                <div className="min-h-[360px] flex items-center justify-center relative overflow-hidden p-12" style={{ background: '#F5F5F5' }}>
+                <div className="min-h-[360px] relative overflow-hidden" style={{ background: '#F5F5F5' }}>
+                  <img
+                    src={getArticleImage(featured)}
+                    alt={featured.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    onError={e => {
+                      (e.currentTarget as HTMLImageElement).src = getArticleFallbackImage(featured.category)
+                    }}
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,10,10,0.2), rgba(10,10,10,0.55))' }} />
                   <div className="absolute top-5 left-5 px-3 py-1.5 text-xs font-bold tracking-widest uppercase" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
                     Featured Guide
                   </div>
@@ -101,11 +115,19 @@ export default async function InsightsPage() {
                   style={{ textDecoration: 'none', background: '#FAFAFA', borderColor: '#E0E0E0', color: '#0A0A0A' }}
                   data-insight-cat={article.category}
                 >
-                  <div className="h-52 flex items-center justify-center relative overflow-hidden p-7" style={{ background: '#F5F5F5' }}>
+                  <div className="h-52 relative overflow-hidden" style={{ background: '#F5F5F5' }}>
+                    <img
+                      src={getArticleImage(article)}
+                      alt={article.title}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      onError={e => {
+                        (e.currentTarget as HTMLImageElement).src = getArticleFallbackImage(article.category)
+                      }}
+                    />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,10,10,0.18), rgba(10,10,10,0.45))' }} />
                     <div className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold tracking-wider" style={{ background: '#C9A84C', color: '#0A0A0A' }}>
                       {article.category}
                     </div>
-                    <span className="relative z-10 text-4xl opacity-10">✦</span>
                   </div>
                   <div className="p-7">
                     <div className="text-xs uppercase tracking-widest mb-3" style={{ color: '#555555' }}>

@@ -349,7 +349,6 @@ export default async function HomePage() {
               Plans for Every <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Stage</em>
             </h2>
             <p className="text-base mt-6" style={{ color: '#555555', maxWidth: 500, margin: '0 auto' }}>
-              Whether you're starting solo or scaling fast, we have a package designed for your needs.
             </p>
           </div>
 

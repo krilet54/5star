@@ -51,7 +51,7 @@ export default function ContactPage() {
                   {
                     icon: '📞',
                     title: 'Phone',
-                    lines: ['050 773 5378'],
+                    lines: ['+971 50 773 5378'],
                     action: 'tel:+971507735378',
                   },
                   {
@@ -103,7 +103,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="font-semibold text-sm mb-0.5" style={{ color: '#0A0A0A' }}>WhatsApp Us Directly</div>
-                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · 050 773 5378</div>
+                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · +971 50 773 5378</div>
                   </div>
                 </a>
               </Reveal>

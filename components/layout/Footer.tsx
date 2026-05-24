@@ -127,7 +127,7 @@ export default function Footer() {
               <div className="mt-8">
                 <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Need help now?</div>
                 <a href="tel:+971507735378" className="mt-2 block text-lg font-semibold tracking-wide text-[#FAFAFA]">
-                  050 773 5378
+                  +971 50 773 5378
                 </a>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function Footer() {
             <div className="relative pl-0 md:px-12">
               <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Phone</div>
               <div className="mt-2 flex flex-col gap-1 text-sm font-medium text-[#FAFAFA]">
-                <a href="tel:+971507735378">050 773 5378</a>
+                <a href="tel:+971507735378">+971 50 773 5378</a>
               </div>
             </div>
 

@@ -129,7 +129,7 @@ export default function Nav() {
               letterSpacing: '0.06em',
               transition: 'color 0.3s'
             }}>
-              050 773 5378
+              +971 50 773 5378
             </a>
             <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 22px' }}>
               Get Started

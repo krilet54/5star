@@ -67,6 +67,16 @@ const coreServiceBlocks = [
   },
 ]
 
+const partnerLogos = [
+  { name: 'Ajman Free Zone', src: '/ajmanfreezone.png', width: 220, height: 96 },
+  { name: 'DMCC', src: '/dmcc-seeklogo.png', width: 200, height: 96 },
+  { name: 'Dubai Economy', src: '/dubai-economy-new-seeklogo.png', width: 220, height: 96 },
+  { name: 'IFZA', src: '/IFZA logo long - Edited_Transparent.png', width: 240, height: 96 },
+  { name: 'JAFZA', src: '/jafza-logo.png', width: 220, height: 96 },
+  { name: 'RAKEZ', src: '/RAKEZ_Logo_-_English_-_Standard_(Web)_Small.png', width: 240, height: 96 },
+  { name: 'Sharjah Publishing City', src: '/spc logo png.webp', width: 220, height: 96 },
+]
+
 export default async function HomePage() {
   const supabase = await createClient()
   const { data: articles } = await supabase
@@ -586,6 +596,45 @@ export default async function HomePage() {
               <span>Fast. Reliable. Professional.</span>
               <span style={{ color: '#C9A84C' }}>✦</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── OUR PARTNERS ─── */}
+      <section className="section border-t border-b relative overflow-hidden" style={{ background: '#F5F5F5', borderColor: '#E0E0E0' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,168,76,0.04) 1px, transparent 0)',
+          backgroundSize: '36px 36px',
+        }} />
+
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <div className="tag justify-center">Our Partners</div>
+            <h2 className="font-display text-4xl lg:text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+              Trusted by Leading UAE Free Zones
+            </h2>
+            <p className="mt-4 text-base leading-8" style={{ color: '#555555' }}>
+              We work with respected authorities and partners across the UAE to keep your setup process smooth, compliant, and efficient.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+            {partnerLogos.map(partner => (
+              <div
+                key={partner.name}
+                className="group flex min-h-28 items-center justify-center rounded-2xl border bg-white px-4 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,10,10,0.08)]"
+                style={{ borderColor: 'rgba(201,168,76,0.18)' }}
+              >
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  width={partner.width}
+                  height={partner.height}
+                  className="h-auto w-full max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 28vw, 14vw"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

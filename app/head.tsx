@@ -12,10 +12,11 @@ export default function Head() {
           `,
         }}
       />
-      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      <link rel="shortcut icon" href="/favicon.svg" />
-      <link rel="apple-touch-icon" href="/favicon.svg" />
-      <meta name="msapplication-TileImage" content="/favicon.svg" />
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/favicon-192x192.png" />
+      <meta name="msapplication-TileImage" content="/favicon-192x192.png" />
     </>
   )
 }

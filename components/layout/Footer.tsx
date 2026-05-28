@@ -110,7 +110,7 @@ export default function Footer() {
               </p>
 
               <div className="mt-8 flex gap-3">
-                [
+                {[
                   { key: 'li', label: 'LinkedIn', href: SITE_INFO.social?.linkedin ?? '#', icon: <Linkedin size={16} /> },
                   { key: 'ig', label: 'Instagram', href: SITE_INFO.social?.instagram ?? '#', icon: <Instagram size={16} /> },
                   { key: 'wa', label: 'WhatsApp', href: SITE_INFO.whatsappHref, icon: null },

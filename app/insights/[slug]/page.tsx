@@ -29,11 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: article.created_at,
       modifiedTime: article.updated_at,
       url: `/insights/${slug}`,
+      images: [
+        {
+          url: article.cover_image || getArticleImage(article) || getArticleFallbackImage(article.category),
+          alt: article.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.meta_title || article.title,
       description: article.meta_description || article.excerpt || undefined,
+      images: [article.cover_image || getArticleImage(article) || getArticleFallbackImage(article.category)],
     },
   }
 }

@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     siteName: 'Star One',
     title: 'Star One — Business Setup & Advisory Dubai, UAE',
     description: 'Your trusted partner for UAE business setup, visas, compliance, and corporate services.',
+    images: [
+      {
+        url: `${SITE_INFO.url}/images/heroes/insights.jpg`,
+        alt: SITE_INFO.name,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -39,6 +45,7 @@ export const metadata: Metadata = {
     description: 'Your trusted partner for UAE business setup, visas, compliance, and corporate services.',
     site: '@staronedxb',
     creator: '@staronedxb',
+    images: [`${SITE_INFO.url}/images/heroes/insights.jpg`],
   },
   robots: { index: true, follow: true },
   icons: {

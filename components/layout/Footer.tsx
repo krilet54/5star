@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Logo from '@/components/Logo'
 import { SITE_INFO } from '@/lib/site-info'
 import { getServiceCanonicalPath } from '@/lib/seo'
+import { Linkedin, Instagram } from 'lucide-react'
 
 export default function Footer() {
   const footerGroups = [
@@ -110,18 +111,19 @@ export default function Footer() {
 
               <div className="mt-8 flex gap-3">
                 [
-                  { label: 'LI', href: SITE_INFO.social?.linkedin ?? '#' },
-                  { label: 'IG', href: SITE_INFO.social?.instagram ?? '#' },
-                  { label: 'WA', href: SITE_INFO.whatsappHref },
+                  { key: 'li', label: 'LinkedIn', href: SITE_INFO.social?.linkedin ?? '#', icon: <Linkedin size={16} /> },
+                  { key: 'ig', label: 'Instagram', href: SITE_INFO.social?.instagram ?? '#', icon: <Instagram size={16} /> },
+                  { key: 'wa', label: 'WhatsApp', href: SITE_INFO.whatsappHref, icon: null },
                 ].map(s => (
                   <a
-                    key={s.label}
+                    key={s.key}
                     href={s.href}
+                    aria-label={s.label}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/35 text-[11px] font-semibold tracking-[0.18em] text-[#E6E6E6] transition-colors hover:border-[#C9A84C] hover:text-[#C9A84C]"
                     target={s.href && s.href.startsWith('http') ? '_blank' : undefined}
                     rel={s.href && s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
-                    {s.label}
+                    {s.icon ?? (s.key === 'wa' ? 'WA' : s.label[0])}
                   </a>
                 ))}
               </div>

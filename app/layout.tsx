@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: '/starone-icon-mark.svg',
-    apple: '/starone-icon-mark.svg',
-    shortcut: '/starone-icon-mark.svg',
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+    shortcut: '/favicon.svg',
   },
 }
 

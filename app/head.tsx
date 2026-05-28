@@ -12,10 +12,10 @@ export default function Head() {
           `,
         }}
       />
-      <link rel="icon" href="/starone-icon-mark.svg" type="image/svg+xml" />
-      <link rel="shortcut icon" href="/starone-icon-mark.svg" />
-      <link rel="apple-touch-icon" href="/starone-icon-mark.svg" />
-      <meta name="msapplication-TileImage" content="/starone-icon-mark.svg" />
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <link rel="shortcut icon" href="/favicon.svg" />
+      <link rel="apple-touch-icon" href="/favicon.svg" />
+      <meta name="msapplication-TileImage" content="/favicon.svg" />
     </>
   )
 }

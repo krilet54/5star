@@ -109,17 +109,17 @@ export default function Footer() {
               </p>
 
               <div className="mt-8 flex gap-3">
-                {[
-                  { label: 'LI', href: '#' },
-                  { label: 'IG', href: '#' },
+                [
+                  { label: 'LI', href: SITE_INFO.social?.linkedin ?? '#' },
+                  { label: 'IG', href: SITE_INFO.social?.instagram ?? '#' },
                   { label: 'WA', href: SITE_INFO.whatsappHref },
                 ].map(s => (
                   <a
                     key={s.label}
                     href={s.href}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/35 text-[11px] font-semibold tracking-[0.18em] text-[#E6E6E6] transition-colors hover:border-[#C9A84C] hover:text-[#C9A84C]"
-                    target={s.href.startsWith('http') ? '_blank' : undefined}
-                    rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    target={s.href && s.href.startsWith('http') ? '_blank' : undefined}
+                    rel={s.href && s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
                     {s.label}
                   </a>

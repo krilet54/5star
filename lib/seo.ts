@@ -214,6 +214,10 @@ export function buildLocalBusinessJsonLd() {
     },
     areaServed: SITE_INFO.areaServed,
     priceRange: 'AED 5,450+',
+    sameAs: [
+      SITE_INFO.social?.instagram,
+      SITE_INFO.social?.linkedin,
+    ].filter(Boolean),
   }
 }
 

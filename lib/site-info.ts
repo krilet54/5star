@@ -14,4 +14,8 @@ export const SITE_INFO = {
     addressCountry: 'AE',
   },
   areaServed: ['Dubai', 'Abu Dhabi', 'Sharjah', 'UAE'],
+  social: {
+    instagram: 'https://instagram.com/staronedxb',
+    linkedin: 'https://www.linkedin.com/company/lion-corp-business-consultant-llc/posts/?feedView=all',
+  },
 }

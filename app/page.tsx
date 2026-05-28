@@ -620,11 +620,7 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
             {partnerLogos.map(partner => (
-              <div
-                key={partner.name}
-                className="group flex min-h-28 items-center justify-center rounded-2xl border bg-white px-4 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,10,10,0.08)]"
-                style={{ borderColor: 'rgba(201,168,76,0.18)' }}
-              >
+              <div key={partner.name} className="group flex min-h-24 items-center justify-center px-2 py-3 sm:px-3 sm:py-4">
                 <Image
                   src={partner.src}
                   alt={partner.name}

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { getServiceBySlug, services } from '@/lib/services-data'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
+import { SITE_INFO } from '@/lib/site-info'
 import { buildFaqJsonLd, buildServiceJsonLd, getServiceCanonicalPath, getServiceSeo } from '@/lib/seo'
 
 interface Props { params: Promise<{ slug: string }> }

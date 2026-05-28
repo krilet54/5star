@@ -608,6 +608,9 @@ export default async function HomePage() {
         }} />
 
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
+          <div className="mb-10 text-center">
+            <div className="tag justify-center">Our Partners</div>
+          </div>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
             {partnerLogos.map(partner => (

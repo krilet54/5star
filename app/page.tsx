@@ -12,6 +12,7 @@ import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
 import type { Article } from '@/types'
 import { getServiceCanonicalPath } from '@/lib/seo'
+import { SITE_INFO } from '@/lib/site-info'
 
 export const metadata: Metadata = {
   title: 'Business Setup Dubai | Company Formation UAE | Star One',

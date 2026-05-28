@@ -5,6 +5,7 @@ import Reveal from '@/components/Reveal'
 import CalculatorQuoteModal from '@/components/CalculatorQuoteModal'
 import GeometricCorners from '@/components/GeometricCorners'
 import { pageHeroImages } from '@/lib/site-images'
+import { SITE_INFO } from '@/lib/site-info'
 
 export default function CalculatorPage() {
   const [companyType, setCompanyType] = useState<'mainland' | 'freezone' | 'offshore'>('freezone')
@@ -347,7 +348,7 @@ export default function CalculatorPage() {
                 </button>
 
                 <a
-                  href="https://wa.me/971507735378"
+                  href={SITE_INFO.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-full py-3 rounded font-semibold transition border"

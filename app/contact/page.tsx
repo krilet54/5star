@@ -2,10 +2,13 @@ import type { Metadata } from 'next'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
 import GeometricCorners from '@/components/GeometricCorners'
+import { SITE_INFO } from '@/lib/site-info'
 
 export const metadata: Metadata = {
   title: 'Contact Us — Book a Free Consultation',
   description: 'Get in touch with Star One. Book a free 30-minute consultation with our Dubai business setup experts. WhatsApp, phone, email — we\'re here to help.',
+  alternates: { canonical: '/contact' },
+  twitter: { card: 'summary_large_image', title: 'Contact Us — Book a Free Consultation', description: 'Get in touch with Star One. Book a free 30-minute consultation with our Dubai business setup experts. WhatsApp, phone, email — we\'re here to help.' },
 }
 
 export default function ContactPage() {
@@ -45,20 +48,20 @@ export default function ContactPage() {
                   {
                     icon: '📍',
                     title: 'Our Location',
-                    lines: ['Dubai, United Arab Emirates'],
+                    lines: [SITE_INFO.address.streetAddress],
                     action: null,
                   },
                   {
                     icon: '📞',
                     title: 'Phone',
-                    lines: ['+971 50 773 5378'],
-                    action: 'tel:+971507735378',
+                    lines: [SITE_INFO.phoneDisplay],
+                    action: `tel:${SITE_INFO.phoneHref}`,
                   },
                   {
                     icon: '✉️',
                     title: 'Email',
-                    lines: ['info@starone.ae'],
-                    action: 'mailto:info@starone.ae',
+                    lines: [SITE_INFO.email],
+                    action: `mailto:${SITE_INFO.email}`,
                   },
                   {
                     icon: '🕐',
@@ -90,7 +93,7 @@ export default function ContactPage() {
               {/* WhatsApp block */}
               <Reveal delay={250}>
                 <a
-                    href="https://wa.me/971507735378?text=Hello%20Star%20One%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
+                  href={`${SITE_INFO.whatsappHref}?text=Hello%20Star%20One%2C%20I%20would%20like%20to%20enquire%20about%20your%20services.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-5 p-6 border rounded-sm transition-all mb-10 wa-block"
@@ -103,7 +106,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="font-semibold text-sm mb-0.5" style={{ color: '#0A0A0A' }}>WhatsApp Us Directly</div>
-                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · +971 50 773 5378</div>
+                    <div className="text-xs" style={{ color: '#555555' }}>Typically replies within 1 hour · {SITE_INFO.phoneDisplay}</div>
                   </div>
                 </a>
               </Reveal>

@@ -9,6 +9,7 @@ import EnquiryForm from '@/components/EnquiryForm'
 import ArticleCoverImage from '@/components/ArticleCoverImage'
 import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
+import { getArticleServiceLinks } from '@/lib/seo'
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -20,12 +21,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.meta_title || article.title,
     description: article.meta_description || article.excerpt || undefined,
+    alternates: { canonical: `/insights/${slug}` },
     openGraph: {
       title: article.title,
       description: article.excerpt || undefined,
       type: 'article',
       publishedTime: article.created_at,
       modifiedTime: article.updated_at,
+      url: `/insights/${slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.meta_title || article.title,
+      description: article.meta_description || article.excerpt || undefined,
     },
   }
 }
@@ -52,6 +60,8 @@ export default async function ArticlePage({ params }: Props) {
     .eq('category', article.category)
     .neq('id', article.id)
     .limit(3)
+
+  const relatedServices = getArticleServiceLinks(article.category)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -198,6 +208,18 @@ export default async function ArticlePage({ params }: Props) {
                   </div>
                 </div>
               )}
+
+              <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+                <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Services</div>
+                <div className="flex flex-col gap-4">
+                  {relatedServices.slice(0, 2).map(service => (
+                    <Link key={service.href} href={service.href} className="block group" style={{ textDecoration: 'none' }}>
+                      <div className="text-sm font-medium leading-snug" style={{ color: '#0A0A0A' }}>{service.label}</div>
+                      <div className="text-xs mt-1" style={{ color: '#777777' }}>Learn more about this service</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

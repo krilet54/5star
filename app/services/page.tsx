@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { services } from '@/lib/services-data'
+import { getServiceCanonicalPath } from '@/lib/seo'
 import Reveal from '@/components/Reveal'
 import GeometricCorners from '@/components/GeometricCorners'
 
 export const metadata: Metadata = {
-  title: 'All Services — Business Setup to Compliance & Beyond',
+  title: 'All Services | Star One Dubai',
   description: 'Complete UAE business services: company formation, visas, compliance, banking, accounting, HR, trademark, and more. All under one roof.',
+  alternates: { canonical: '/services' },
+  twitter: { card: 'summary_large_image', title: 'All Services | Star One Dubai', description: 'Complete UAE business services: company formation, visas, compliance, banking, accounting, HR, trademark, and more. All under one roof.' },
 }
 
 const categoryIds: Record<string, string> = {
@@ -96,7 +99,7 @@ export default function ServicesPage() {
                   {categoryServices.map((service, idx) => (
                     <Reveal key={service.slug} delay={idx * 50}>
                       <Link
-                        href={`/services/${service.slug}`}
+                          href={getServiceCanonicalPath(service.slug)}
                         className="card p-8 h-full hover:shadow-lg transition-all duration-300 relative overflow-hidden group"
                         style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', background: '#111111', borderColor: '#C9A84C', color: '#FAFAFA' }}
                       >
@@ -163,7 +166,7 @@ export default function ServicesPage() {
               {services.map((service, idx) => (
                 <Link
                   key={service.slug}
-                  href={`/services/${service.slug}`}
+                  href={getServiceCanonicalPath(service.slug)}
                   className="flex items-center gap-3 px-6 py-4 rounded border transition-all duration-300 group hover:border-gold hover:bg-yellow-900/10"
                   style={{ borderColor: '#333333', textDecoration: 'none', color: '#FAFAFA' }}
                 >

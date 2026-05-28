@@ -12,9 +12,13 @@ import { getArticleFallbackImage } from '@/lib/site-images'
 export const metadata: Metadata = {
   title: 'Insights & Guides — UAE Business Setup Knowledge Hub',
   description: 'Expert articles, guides, and insights on UAE business setup, company formation, visa requirements, tax compliance, and more from Star One.',
+  alternates: { canonical: '/insights' },
+  twitter: { card: 'summary_large_image', title: 'Insights & Guides — UAE Business Setup Knowledge Hub', description: 'Expert articles, guides, and insights on UAE business setup, company formation, visa requirements, tax compliance, and more from Star One.' },
 }
 
 export const revalidate = 3600
+
+const canonicalCategories = ['Business Setup', 'Visa', 'Tax', 'Banking']
 
 export default async function InsightsPage() {
   const supabase = await createClient()
@@ -28,7 +32,8 @@ export default async function InsightsPage() {
   const featured = articles?.find(a => a.featured)
   const rest = articles?.filter(a => !a.featured) ?? []
 
-  const categories = ['All', ...Array.from(new Set(articles?.map((a: Article) => a.category) ?? []))]
+  const articleCategories = Array.from(new Set(articles?.map((a: Article) => a.category) ?? []))
+  const categories = ['All', ...canonicalCategories, ...articleCategories.filter(cat => !canonicalCategories.includes(cat))]
 
   return (
     <>

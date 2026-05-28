@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from '@/components/Logo'
 import { services } from '@/lib/services-data'
+import { SITE_INFO } from '@/lib/site-info'
+import { getServiceCanonicalPath } from '@/lib/seo'
 import { X, Menu, ChevronDown } from 'lucide-react'
 
 export default function Nav() {
@@ -102,7 +104,7 @@ export default function Nav() {
                                 }
                               }}
                             >
-                              <Link href={`/services/${s.slug}`} className="text-sm transition-all duration-200 flex items-center gap-2" style={{ color: '#AAAAAA' }}>
+                              <Link href={getServiceCanonicalPath(s.slug)} className="text-sm transition-all duration-200 flex items-center gap-2" style={{ color: '#AAAAAA' }}>
                                 <span style={{ opacity: 0.5 }}>→</span>
                                 {s.title}
                               </Link>
@@ -123,13 +125,13 @@ export default function Nav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+971507735378" className="text-xs font-medium tracking-wider" style={{ 
+            <a href={`tel:${SITE_INFO.phoneHref}`} className="text-xs font-medium tracking-wider" style={{ 
               color: navTextColor, 
               textTransform: 'uppercase', 
               letterSpacing: '0.06em',
               transition: 'color 0.3s'
             }}>
-              +971 50 773 5378
+              {SITE_INFO.phoneDisplay}
             </a>
             <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 22px' }}>
               Get Started
@@ -173,7 +175,7 @@ export default function Nav() {
                     {catServices.map(s => (
                       <Link
                         key={s.slug}
-                        href={`/services/${s.slug}`}
+                        href={getServiceCanonicalPath(s.slug)}
                         className="flex items-center gap-2 py-1 pl-2"
                         style={{ color: '#888888', fontSize: 13 }}
                       >

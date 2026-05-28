@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
+import { SITE_INFO } from '@/lib/site-info'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Star One Privacy Policy — how we collect, use, and protect your personal data.',
+  alternates: { canonical: '/privacy-policy' },
+  twitter: { card: 'summary_large_image', title: 'Privacy Policy', description: 'Star One Privacy Policy — how we collect, use, and protect your personal data.' },
 }
 
 const sections = [
@@ -53,7 +56,7 @@ const sections = [
   {
     title: '7. Your Rights',
     paragraphs: [
-      'You have the right to request access to, correction of, or deletion of your personal information. You may also withdraw consent to marketing communications at any time. To exercise these rights, please contact us at info@starone.ae.',
+      `You have the right to request access to, correction of, or deletion of your personal information. You may also withdraw consent to marketing communications at any time. To exercise these rights, please contact us at ${SITE_INFO.email}.`,
     ],
   },
   {
@@ -71,7 +74,7 @@ const sections = [
   {
     title: '10. Contact Us',
     paragraphs: [
-      'If you have questions about this Privacy Policy or how we handle your data, please contact us at info@starone.ae or call +971 50 773 5378.',
+      `If you have questions about this Privacy Policy or how we handle your data, please contact us at ${SITE_INFO.email} or call ${SITE_INFO.phoneDisplay}.`,
     ],
   },
 ]

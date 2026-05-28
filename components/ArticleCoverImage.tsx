@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 
 interface ArticleCoverImageProps {
@@ -18,10 +19,13 @@ export default function ArticleCoverImage({
   const [currentSrc, setCurrentSrc] = useState(src)
 
   return (
-    <img
+    <Image
       src={currentSrc}
       alt={alt}
       className={className}
+      fill
+      sizes="(max-width: 768px) 100vw, 33vw"
+      quality={72}
       onError={() => {
         if (currentSrc !== fallbackSrc) setCurrentSrc(fallbackSrc)
       }}

@@ -1,52 +1,54 @@
 import Link from 'next/link'
 import Logo from '@/components/Logo'
+import { SITE_INFO } from '@/lib/site-info'
+import { getServiceCanonicalPath } from '@/lib/seo'
 
 export default function Footer() {
   const footerGroups = [
     {
       title: 'Setup',
       links: [
-        { label: 'Business Setup', href: '/services/business-setup' },
-        { label: 'Free Zone Setup', href: '/services/business-setup' },
-        { label: 'Offshore Setup', href: '/services/business-setup' },
+        { label: 'Business Setup', href: '/business-setup-dubai' },
+        { label: 'Free Zone Setup', href: '/free-zone-dubai' },
+        { label: 'Offshore Setup', href: '/business-setup-dubai' },
       ],
     },
     {
       title: 'Visa',
       links: [
-        { label: 'Golden Visa', href: '/services/golden-visa' },
-        { label: 'Employment Visa', href: '/services/employment-visa' },
-        { label: 'Dependent Visa', href: '/services/dependent-visa' },
-        { label: 'Visit Visa', href: '/services/visit-visa' },
+        { label: 'Golden Visa', href: '/golden-visa-uae' },
+        { label: 'Employment Visa', href: '/visa-services-dubai' },
+        { label: 'Dependent Visa', href: '/dependent-visa-uae' },
+        { label: 'Visit Visa', href: '/visit-visa-dubai' },
       ],
     },
     {
       title: 'Compliance',
       links: [
-        { label: 'Corporate Tax', href: '/services/corporate-tax' },
-        { label: 'VAT', href: '/services/vat' },
-        { label: 'Audit', href: '/services/audit' },
-        { label: 'ESR', href: '/services/esr' },
-        { label: 'AML', href: '/services/aml' },
-        { label: 'KYC', href: '/services/kyc' },
-        { label: 'UBO', href: '/services/ubo' },
+        { label: 'Corporate Tax', href: '/corporate-tax-uae' },
+        { label: 'VAT', href: '/vat-registration-uae' },
+        { label: 'Audit', href: '/audit-report-uae' },
+        { label: 'ESR', href: '/esr-uae' },
+        { label: 'AML', href: '/aml-kyc-compliance-uae' },
+        { label: 'KYC', href: '/aml-kyc-compliance-uae' },
+        { label: 'UBO', href: '/ubo-registration-uae' },
       ],
     },
     {
       title: 'Banking',
       links: [
-        { label: 'Personal Banking', href: '/services/personal-banking' },
-        { label: 'Corporate Banking', href: '/services/corporate-banking' },
+        { label: 'Personal Banking', href: '/corporate-banking-dubai' },
+        { label: 'Corporate Banking', href: '/corporate-banking-dubai' },
       ],
     },
     {
       title: 'Ancillary',
       links: [
-        { label: 'HR & Payroll', href: '/services/hr-payroll' },
-        { label: 'Marketing & Branding', href: '/services/marketing-branding' },
-        { label: 'Trademark', href: '/services/trademark-strategy' },
-        { label: 'Will Services', href: '/services/will-services' },
-        { label: 'Document Attestation', href: '/services/document-attestation' },
+        { label: 'HR & Payroll', href: '/hr-payroll-uae' },
+        { label: 'Marketing & Branding', href: '/marketing-branding-uae' },
+        { label: 'Trademark', href: '/trademark-registration-uae' },
+        { label: 'Will Services', href: '/will-services-uae' },
+        { label: 'Document Attestation', href: '/document-attestation-uae' },
       ],
     },
     {
@@ -100,7 +102,7 @@ export default function Footer() {
               <Logo className="mb-6" />
               <div className="tag mb-4">Star One Business Consultancy</div>
               <p className="max-w-md text-sm leading-7 text-[#CFCFCF]">
-                Dubai, UAE. Built for founders who want clarity, speed, and trusted execution.
+                {SITE_INFO.address.streetAddress}. Built for founders who want clarity, speed, and trusted execution.
               </p>
               <p className="mt-4 text-sm font-semibold tracking-[0.12em] uppercase text-[#C9A84C]">
                 Build. Launch. Grow.
@@ -110,7 +112,7 @@ export default function Footer() {
                 {[
                   { label: 'LI', href: '#' },
                   { label: 'IG', href: '#' },
-                  { label: 'WA', href: 'https://wa.me/971507735378' },
+                  { label: 'WA', href: SITE_INFO.whatsappHref },
                 ].map(s => (
                   <a
                     key={s.label}
@@ -126,8 +128,8 @@ export default function Footer() {
 
               <div className="mt-8">
                 <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Need help now?</div>
-                <a href="tel:+971507735378" className="mt-2 block text-lg font-semibold tracking-wide text-[#FAFAFA]">
-                  +971 50 773 5378
+                  <a href={`tel:${SITE_INFO.phoneHref}`} className="mt-2 block text-lg font-semibold tracking-wide text-[#FAFAFA]">
+                    {SITE_INFO.phoneDisplay}
                 </a>
               </div>
             </div>
@@ -151,8 +153,8 @@ export default function Footer() {
                     <ul className="flex flex-col gap-3">
                       {group.links.map((link, idx) => (
                         <li key={`${group.title}-${link.href}-${idx}`}>
-                          <Link
-                            href={link.href}
+                            <Link
+                              href={link.href}
                             className="text-sm leading-6 text-[#BFBFBF] transition-colors hover:text-[#E6D29A]"
                           >
                             {link.label}
@@ -169,21 +171,21 @@ export default function Footer() {
           <div className="relative mt-10 grid gap-6 py-7 md:grid-cols-3">
             <div className="relative pl-0 md:pl-12">
               <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Email</div>
-              <a href="mailto:info@starone.ae" className="mt-2 block text-sm font-medium text-[#FAFAFA]">
-                info@starone.ae
+              <a href={`mailto:${SITE_INFO.email}`} className="mt-2 block text-sm font-medium text-[#FAFAFA]">
+                {SITE_INFO.email}
               </a>
             </div>
 
             <div className="relative pl-0 md:px-12">
               <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Phone</div>
               <div className="mt-2 flex flex-col gap-1 text-sm font-medium text-[#FAFAFA]">
-                <a href="tel:+971507735378">+971 50 773 5378</a>
+                <a href={`tel:${SITE_INFO.phoneHref}`}>{SITE_INFO.phoneDisplay}</a>
               </div>
             </div>
 
             <div className="relative pl-0 md:pl-12">
               <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Location</div>
-              <div className="mt-2 text-sm font-medium text-[#FAFAFA]">Dubai, United Arab Emirates</div>
+              <div className="mt-2 text-sm font-medium text-[#FAFAFA]">{SITE_INFO.address.streetAddress}</div>
             </div>
           </div>
 

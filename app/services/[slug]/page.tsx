@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { getServiceBySlug, services } from '@/lib/services-data'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
+import { buildFaqJsonLd, buildServiceJsonLd, getServiceCanonicalPath, getServiceSeo } from '@/lib/seo'
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -15,9 +16,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const service = getServiceBySlug(slug)
   if (!service) return {}
+  const seo = getServiceSeo(slug, service)
   return {
-    title: service.title,
-    description: service.description,
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: { canonical: getServiceCanonicalPath(slug) },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      type: 'article',
+      url: getServiceCanonicalPath(slug),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+    },
   }
 }
 
@@ -31,9 +46,13 @@ export default async function ServicePage({ params }: Props) {
   const featureEmoji = ['🧩', '⚙️', '📌', '🛡️', '🚀', '✅']
   const categoryEmoji = ['👔', '🏠', '🎓']
   const processEmoji = ['📝', '🗂️', '🧠', '🎯']
+  const serviceJsonLd = buildServiceJsonLd(service)
+  const faqJsonLd = buildFaqJsonLd(service.faq)
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* HERO */}
       <section className="pt-36 pb-16 relative overflow-hidden service-detail-hero" style={{ background: '#FAFAFA' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
@@ -75,7 +94,7 @@ export default async function ServicePage({ params }: Props) {
                     Use Calculator →
                   </Link>
                 )}
-                <a href="https://wa.me/971507735378" className="btn btn-outline" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+                <a href={SITE_INFO.whatsappHref} className="btn btn-outline" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
               </div>
             </div>
 
@@ -86,6 +105,44 @@ export default async function ServicePage({ params }: Props) {
               </div>
               <h3 className="text-sm font-semibold mb-3" style={{ color: '#0A0A0A' }}>Quick Enquiry</h3>
               <EnquiryForm preselectedService={service.title} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section service-detail-section border-t" style={{ background: '#F5F5F5', borderColor: '#E0E0E0' }}>
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="rounded-md border p-6" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+              <div className="tag mb-3">Related Services</div>
+              <h2 className="font-display text-2xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+                Helpful links for this service
+              </h2>
+              <p className="text-sm mb-5" style={{ color: '#555555' }}>
+                These service pages are the most relevant next steps for clients researching {service.title.toLowerCase()}.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {services.filter(s => s.slug !== slug).slice(0, 2).map(item => (
+                  <Link key={item.slug} href={getServiceCanonicalPath(item.slug)} className="btn btn-outline">
+                    {item.title} →
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-md border p-6" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+              <div className="tag mb-3">FAQ Highlights</div>
+              <h2 className="font-display text-2xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+                Common questions
+              </h2>
+              <div className="space-y-4">
+                {service.faq.slice(0, 3).map((faq, idx) => (
+                  <div key={idx}>
+                    <div className="text-sm font-semibold mb-1" style={{ color: '#0A0A0A' }}>{faq.q}</div>
+                    <div className="text-sm" style={{ color: '#555555' }}>{faq.a}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

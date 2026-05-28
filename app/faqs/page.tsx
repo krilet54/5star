@@ -3,15 +3,22 @@ import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import FAQsContent from '@/components/FAQsContent'
 import GeometricCorners from '@/components/GeometricCorners'
+import { buildFaqJsonLd } from '@/lib/seo'
+import { faqData } from '@/lib/faq-data'
 
 export const metadata: Metadata = {
   title: 'FAQs — Star One Business Consultancy',
   description: 'Frequently asked questions about starting a business in the UAE — company setup, visas, compliance, banking, and more.',
+  alternates: { canonical: '/faqs' },
+  twitter: { card: 'summary_large_image', title: 'FAQs — Star One Business Consultancy', description: 'Frequently asked questions about starting a business in the UAE — company setup, visas, compliance, banking, and more.' },
 }
+
+const faqJsonLd = buildFaqJsonLd(faqData.flatMap(category => category.faqs))
 
 export default function FAQsPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Hero */}
       <section className="relative min-h-96 flex items-center overflow-hidden pt-20" style={{ background: '#FAFAFA' }}>
         <div className="absolute inset-0" style={{

@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { createClient } from '@/lib/supabase-server'
 import { services } from '@/lib/services-data'
+import { getServiceCanonicalPath } from '@/lib/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://starone.ae'
@@ -24,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   const servicePages: MetadataRoute.Sitemap = services.map(s => ({
-    url: `${baseUrl}/services/${s.slug}`,
+    url: `${baseUrl}${getServiceCanonicalPath(s.slug)}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.85,

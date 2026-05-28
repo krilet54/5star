@@ -14,6 +14,8 @@ import {
 export const metadata: Metadata = {
   title: 'About Star One — Dubai Business Setup Experts',
   description: 'Star One helps entrepreneurs start and grow in the UAE with clear, affordable business setup and ongoing support.',
+  alternates: { canonical: '/about' },
+  twitter: { card: 'summary_large_image', title: 'About Star One — Dubai Business Setup Experts', description: 'Star One helps entrepreneurs start and grow in the UAE with clear, affordable business setup and ongoing support.' },
 }
 
 type ValueItem = {

@@ -1,11 +1,12 @@
 'use client'
 import { useState } from 'react'
+import { SITE_INFO } from '@/lib/site-info'
 
 export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)
   return (
     <a
-      href="https://wa.me/971507735378?text=Hello%20Star%20One%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
+      href={`${SITE_INFO.whatsappHref}?text=Hello%20Star%20One%2C%20I%20would%20like%20to%20enquire%20about%20your%20services.`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-8 right-8 z-50 flex items-center gap-3"

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase-server'
 import AnimatedCounter from '@/components/AnimatedCounter'
@@ -10,10 +11,12 @@ import { formatDate } from '@/lib/utils'
 import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
 import type { Article } from '@/types'
+import { getServiceCanonicalPath } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Star One — Business Setup & Advisory Dubai, UAE',
-  description: 'Build. Launch. Grow. Your business in the UAE — set up simply, properly, and built to last. From company formation to visas, compliance, and banking.',
+  title: 'Business Setup Dubai | Company Formation UAE | Star One',
+  description: "Star One is Dubai's trusted business setup consultancy. We help entrepreneurs set up companies, get visas, handle tax, and stay compliant. Book a free consultation.",
+  alternates: { canonical: '/' },
 }
 
 export const revalidate = 3600
@@ -24,7 +27,7 @@ const coreServiceBlocks = [
     icon: '🏢',
     desc: 'Mainland, Free Zone, and Offshore structures built for the right launch path.',
     details: 'Mainland · Free Zone · Offshore',
-    href: '/services/business-setup',
+    href: getServiceCanonicalPath('business-setup'),
   },
   {
     title: 'Visa & Residency',
@@ -79,11 +82,18 @@ export default async function HomePage() {
       <section className="home-hero-clean relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-32" style={{ width: '100%' }}>
         {/* Background image placed behind hero content. */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          backgroundImage: "url('/hero-bg.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           zIndex: 0,
         }} />
+
+        <Image
+          src="/hero-bg.png"
+          alt="Dubai business setup hero background"
+          fill
+          priority
+          sizes="100vw"
+          quality={72}
+          className="object-cover object-center"
+        />
 
         {/* Optional subtle dark overlay for text contrast */}
         <div className="absolute inset-0 pointer-events-none" style={{
@@ -565,7 +575,7 @@ export default async function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn btn-gold transition-all duration-300 hover:shadow-lg hover:shadow-yellow-600/50">Get Started →</Link>
-            <HoverButton href="https://wa.me/971507735378" className="btn btn-outline" isExternal target="_blank" rel="noopener noreferrer">WhatsApp Us</HoverButton>
+            <HoverButton href={SITE_INFO.whatsappHref} className="btn btn-outline" isExternal target="_blank" rel="noopener noreferrer">WhatsApp Us</HoverButton>
           </div>
           
           {/* Decorative divider below CTA */}

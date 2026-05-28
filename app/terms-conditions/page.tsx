@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
+import { SITE_INFO } from '@/lib/site-info'
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
   description: 'Star One Terms and Conditions of service.',
+  alternates: { canonical: '/terms-conditions' },
+  twitter: { card: 'summary_large_image', title: 'Terms & Conditions', description: 'Star One Terms and Conditions of service.' },
 }
 
 const sections = [
@@ -68,7 +71,7 @@ const sections = [
   {
     title: '10. Contact',
     paragraphs: [
-      'For any questions about these Terms and Conditions, please contact us at info@starone.ae.',
+      `For any questions about these Terms and Conditions, please contact us at ${SITE_INFO.email}.`,
     ],
   },
 ]

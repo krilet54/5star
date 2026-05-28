@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { SITE_INFO } from '@/lib/site-info'
 
 const schema = z.object({
   first_name: z.string().min(2, 'Required'),
@@ -67,7 +68,7 @@ export default function EnquiryForm({ preselectedService }: { preselectedService
           We've received your enquiry and will be in touch within 24 hours.
         </p>
         <a
-          href="https://wa.me/971507735378"
+          href={SITE_INFO.whatsappHref}
           className="btn btn-outline"
           target="_blank"
           rel="noopener noreferrer"

@@ -626,7 +626,7 @@ export default async function HomePage() {
                   alt={partner.name}
                   width={partner.width}
                   height={partner.height}
-                  className="h-auto w-full max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  className="h-auto w-full max-w-[150px] object-contain opacity-100 transition-all duration-300 group-hover:scale-[1.02]"
                   sizes="(max-width: 640px) 45vw, (max-width: 1024px) 28vw, 14vw"
                 />
               </div>

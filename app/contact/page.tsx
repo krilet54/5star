@@ -111,6 +111,27 @@ export default function ContactPage() {
                 </a>
               </Reveal>
 
+              {/* LinkedIn block */}
+              <Reveal delay={310}>
+                <a
+                  href={SITE_INFO.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-5 p-6 border rounded-sm transition-all mb-10"
+                  style={{ background: 'rgba(10,102,194,0.04)', borderColor: 'rgba(10,102,194,0.2)' }}
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#0A66C2' }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.351V9h3.414v1.561h.046c.476-.9 1.637-1.85 3.369-1.85 3.601 0 4.267 2.369 4.267 5.452v6.289zM5.337 7.433c-1.144 0-2.069-.925-2.069-2.065 0-1.14.925-2.065 2.069-2.065 1.143 0 2.068.925 2.068 2.065 0 1.14-.925 2.065-2.068 2.065zM7.119 20.452H3.553V9h3.566v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.207 24 24 23.226 24 22.271V1.729C24 .774 23.207 0 22.225 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-sm mb-0.5" style={{ color: '#0A0A0A' }}>Follow Us on LinkedIn</div>
+                    <div className="text-xs" style={{ color: '#555555' }}>See company updates, insights, and announcements</div>
+                  </div>
+                </a>
+              </Reveal>
+
               {/* Quick facts */}
               <div className="grid grid-cols-2 gap-0 border rounded-sm" style={{ borderColor: '#E0E0E0' }}>
                 {[

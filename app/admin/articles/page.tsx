@@ -5,6 +5,8 @@ import ArticleActions from './ArticleActions'
 
 export const metadata = { title: 'Articles' }
 
+export const dynamic = 'force-dynamic'
+
 export default async function AdminArticlesPage() {
   const supabase = createAdminClient()
   const { data: articles } = await supabase

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 import { createAdminClient } from '@/lib/supabase-server'
 import slugify from 'slugify'
@@ -52,6 +53,9 @@ export async function POST(request: Request) {
       .select()
       .single()
     if (error) throw error
+    revalidatePath('/admin')
+    revalidatePath('/admin/articles')
+    revalidatePath('/insights')
     return NextResponse.json(article, { status: 201 })
   } catch (err) {
     if (err instanceof z.ZodError) {

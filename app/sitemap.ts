@@ -41,13 +41,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const articlePages: MetadataRoute.Sitemap = [
-    ...(articles ?? []).map(a => ({
+    ...(articles ?? []).map((a): MetadataRoute.Sitemap[number] => ({
       url: `${baseUrl}/insights/${a.slug}`,
       lastModified: new Date(a.updated_at),
       changeFrequency: 'monthly',
       priority: 0.7,
     })),
-    ...localBlogPosts.map(a => ({
+    ...localBlogPosts.map((a): MetadataRoute.Sitemap[number] => ({
       url: `${baseUrl}/insights/${a.slug}`,
       lastModified: new Date(a.updated_at),
       changeFrequency: 'monthly',

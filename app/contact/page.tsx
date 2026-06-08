@@ -3,17 +3,27 @@ import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
 import GeometricCorners from '@/components/GeometricCorners'
 import { SITE_INFO } from '@/lib/site-info'
+import { buildLocalBusinessJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Book a Free Consultation',
-  description: 'Get in touch with Star One. Book a free 30-minute consultation with our Dubai business setup experts. WhatsApp, phone, email — we\'re here to help.',
+  title: 'Contact Us - Book a Free Consultation',
+  description: 'Get in touch with Star One for UAE business setup help. Call, WhatsApp, or email our team to book a free consultation today.',
   alternates: { canonical: '/contact' },
-  twitter: { card: 'summary_large_image', title: 'Contact Us — Book a Free Consultation', description: 'Get in touch with Star One. Book a free 30-minute consultation with our Dubai business setup experts. WhatsApp, phone, email — we\'re here to help.' },
+  openGraph: {
+    title: 'Contact Us - Book a Free Consultation',
+    description: 'Get in touch with Star One for UAE business setup help. Call, WhatsApp, or email our team to book a free consultation today.',
+    url: '/contact',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Contact Us - Book a Free Consultation', description: 'Get in touch with Star One for UAE business setup help. Call, WhatsApp, or email our team to book a free consultation today.' },
 }
 
 export default function ContactPage() {
+  const localBusinessJsonLd = buildLocalBusinessJsonLd()
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       {/* HERO */}
       <section className="pt-24 pb-20 relative overflow-hidden section-corner-accent" style={{ background: '#FAFAFA', borderColor: '#E0E0E0', color: '#0A0A0A' }}>
         <div className="absolute inset-0" style={{
@@ -48,7 +58,7 @@ export default function ContactPage() {
                   {
                     icon: '📍',
                     title: 'Our Location',
-                    lines: [SITE_INFO.address.streetAddress],
+                    lines: [SITE_INFO.address.streetAddress, `${SITE_INFO.address.addressLocality}, ${SITE_INFO.address.addressRegion}, UAE`],
                     action: null,
                   },
                   {
@@ -66,7 +76,7 @@ export default function ContactPage() {
                   {
                     icon: '🕐',
                     title: 'Business Hours',
-                    lines: ['Mon – Fri: 9:00 AM – 6:00 PM GST', 'Sat: 10:00 AM – 2:00 PM GST'],
+                    lines: ['Sunday - Thursday: 9:00 AM - 6:00 PM GST', 'Friday: 9:00 AM - 1:00 PM GST', 'Saturday: Closed'],
                     action: null,
                   },
                 ].map((item, i) => (
@@ -111,8 +121,20 @@ export default function ContactPage() {
                 </a>
               </Reveal>
 
+              <Reveal delay={280}>
+                <a
+                  href={SITE_INFO.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-sm border px-5 py-3 text-sm font-semibold transition-all mb-10"
+                  style={{ background: '#25D366', borderColor: '#25D366', color: '#FFFFFF' }}
+                >
+                  WhatsApp Chat
+                </a>
+              </Reveal>
+
               {/* LinkedIn block */}
-              <Reveal delay={310}>
+              <Reveal delay={340}>
                 <a
                   href={SITE_INFO.social.linkedin}
                   target="_blank"
@@ -158,24 +180,17 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* MAP PLACEHOLDER */}
+      {/* MAP */}
       <div className="border-t" style={{ borderColor: '#E0E0E0' }}>
-        <div className="h-64 flex items-center justify-center" style={{ background: '#F5F5F5' }}>
-          <div className="text-center">
-            <div className="text-4xl mb-3">📍</div>
-            <div className="font-display text-xl" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Dubai, UAE</div>
-            <div className="text-sm mt-1" style={{ color: '#555555' }}>Business Bay / DIFC area</div>
-            <a
-              href="https://maps.google.com/?q=Dubai+UAE"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline mt-4"
-              style={{ display: 'inline-flex' }}
-            >
-              Open in Google Maps →
-            </a>
-          </div>
-        </div>
+        <iframe
+          title="Star One office location map"
+          src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE_INFO.address.streetAddress}, ${SITE_INFO.address.addressLocality}, UAE`)}&output=embed`}
+          width="100%"
+          height="360"
+          style={{ border: 0 }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </div>
     </>
   )

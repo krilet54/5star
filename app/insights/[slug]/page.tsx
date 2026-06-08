@@ -9,14 +9,21 @@ import EnquiryForm from '@/components/EnquiryForm'
 import ArticleCoverImage from '@/components/ArticleCoverImage'
 import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
-import { getArticleServiceLinks } from '@/lib/seo'
+import { buildFaqJsonLd, getArticleServiceLinks } from '@/lib/seo'
+import { SITE_INFO } from '@/lib/site-info'
+import { getArticleEnrichedMarkdown, getLocalBlogPost } from '@/lib/blog-posts'
 
 interface Props { params: Promise<{ slug: string }> }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+async function getArticleRecord(slug: string) {
   const supabase = await createClient()
   const { data: article } = await supabase.from('articles').select('*').eq('slug', slug).single()
+  return article ?? getLocalBlogPost(slug) ?? null
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const article = await getArticleRecord(slug)
   if (!article) return {}
   return {
     title: article.meta_title || article.title,
@@ -28,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: article.created_at,
       modifiedTime: article.updated_at,
-      url: `/insights/${slug}`,
+      url: `${SITE_INFO.url}/insights/${slug}`,
       images: [
         {
           url: article.cover_image || getArticleImage(article) || getArticleFallbackImage(article.category),
@@ -51,13 +58,14 @@ export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
   const supabase = await createClient()
 
-  const { data: article } = await supabase
+  const { data: dbArticle } = await supabase
     .from('articles')
     .select('*')
     .eq('slug', slug)
     .eq('published', true)
     .single()
 
+  const article = dbArticle ?? getLocalBlogPost(slug)
   if (!article) notFound()
 
   const { data: related } = await supabase
@@ -65,10 +73,12 @@ export default async function ArticlePage({ params }: Props) {
     .select('id, title, slug, excerpt, category, read_time, created_at')
     .eq('published', true)
     .eq('category', article.category)
-    .neq('id', article.id)
+    .neq('slug', article.slug)
     .limit(3)
 
   const relatedServices = getArticleServiceLinks(article.category)
+  const enrichedContent = getArticleEnrichedMarkdown(article)
+  const faqJsonLd = 'faq' in article && article.faq.length > 0 ? buildFaqJsonLd(article.faq) : null
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -77,22 +87,19 @@ export default async function ArticlePage({ params }: Props) {
     description: article.excerpt,
     datePublished: article.created_at,
     dateModified: article.updated_at,
-    author: { '@type': 'Organization', name: 'Star One' },
+    author: { '@type': 'Organization', name: 'Star One Team' },
     publisher: {
       '@type': 'Organization',
       name: 'Star One Business Consultancy',
-      url: 'https://starone.ae',
+      url: SITE_INFO.url,
     },
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
 
-      {/* HERO */}
       <section className="pt-40 pb-16 relative overflow-hidden" style={{ background: '#FAFAFA', color: '#0A0A0A' }}>
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,168,76,0.045) 1px, transparent 0)',
@@ -100,7 +107,6 @@ export default async function ArticlePage({ params }: Props) {
         }} />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10 max-w-4xl">
           <div className="max-w-4xl">
-            {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs mb-8" style={{ color: '#555555' }}>
               <Link href="/" style={{ color: '#555555' }}>Home</Link>
               <span>/</span>
@@ -121,6 +127,12 @@ export default async function ArticlePage({ params }: Props) {
               <p className="text-lg leading-relaxed mb-8" style={{ color: '#555555' }}>{article.excerpt}</p>
             )}
 
+            {'updated_label' in article && article.updated_label && (
+              <div className="mb-6 text-xs font-semibold uppercase tracking-widest" style={{ color: '#C9A84C' }}>
+                {article.updated_label}
+              </div>
+            )}
+
             <div className="relative overflow-hidden rounded-2xl border border-[#E0E0E0] mb-8 min-h-[280px] bg-[#F5F5F5] shadow-[0_10px_30px_rgba(10,10,10,0.05)]">
               <ArticleCoverImage
                 src={getArticleImage(article)}
@@ -135,7 +147,7 @@ export default async function ArticlePage({ params }: Props) {
             </div>
 
             <div className="flex items-center gap-6 text-xs pt-6 border-t" style={{ borderColor: '#E0E0E0', color: '#666666' }}>
-              <span>By <span style={{ color: '#0A0A0A' }}>Star One Team</span></span>
+              <span>By <span style={{ color: '#0A0A0A' }}>{'author' in article ? article.author : 'Star One Team'}</span></span>
               <span>{formatDate(article.created_at)}</span>
               <span>{article.read_time} min read</span>
             </div>
@@ -143,26 +155,44 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </section>
 
-      {/* CONTENT */}
       <section className="pb-24" style={{ background: '#F5F5F5' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-12">
           <div className="grid lg:grid-cols-[1fr_340px] gap-20 items-start">
-            {/* Article content */}
             <div className="bg-[#FAFAFA] border border-[#E0E0E0] rounded-2xl p-8 sm:p-10 shadow-[0_12px_40px_rgba(10,10,10,0.04)]">
               <div className="prose-gold text-base">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {article.content}
+                  {enrichedContent}
                 </ReactMarkdown>
               </div>
 
-              {/* Share / tags */}
+              {'faq' in article && article.faq.length > 0 && (
+                <div className="mt-12 pt-8 border-t" style={{ borderColor: '#E0E0E0' }}>
+                  <div className="tag mb-4">FAQ</div>
+                  <h2 className="font-display text-2xl font-medium mb-6" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+                    Common questions
+                  </h2>
+                  <div className="grid gap-4">
+                    {article.faq.map((faq: { q: string; a: string }) => (
+                      <details key={faq.q} className="rounded-xl border border-[#E0E0E0] bg-[#FAFAFA]">
+                        <summary className="cursor-pointer list-none px-5 py-4 font-medium" style={{ color: '#0A0A0A' }}>
+                          {faq.q}
+                        </summary>
+                        <div className="px-5 pb-5 text-sm leading-7" style={{ color: '#555555' }}>
+                          {faq.a}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="mt-14 pt-8 border-t" style={{ borderColor: '#E0E0E0' }}>
                 <div className="flex items-center gap-4 flex-wrap">
                   <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#777777' }}>Share:</span>
                   {[
-                    { label: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=https://starone.ae/insights/${article.slug}` },
-                    { label: 'Twitter / X', href: `https://twitter.com/intent/tweet?url=https://starone.ae/insights/${article.slug}&text=${encodeURIComponent(article.title)}` },
-                    { label: 'WhatsApp', href: `https://wa.me/?text=${encodeURIComponent(article.title + ' https://starone.ae/insights/' + article.slug)}` },
+                    { label: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${SITE_INFO.url}/insights/${article.slug}` },
+                    { label: 'Twitter / X', href: `https://twitter.com/intent/tweet?url=${SITE_INFO.url}/insights/${article.slug}&text=${encodeURIComponent(article.title)}` },
+                    { label: 'WhatsApp', href: `https://wa.me/?text=${encodeURIComponent(article.title + ' ' + SITE_INFO.url + '/insights/' + article.slug)}` },
                   ].map(s => (
                     <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                       className="btn btn-outline" style={{ padding: '8px 16px', fontSize: 11, borderColor: '#0A0A0A', color: '#0A0A0A' }}>
@@ -172,7 +202,6 @@ export default async function ArticlePage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Author box */}
               <div className="mt-10 p-8 border rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="flex gap-5 items-start">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center font-bold flex-shrink-0"
@@ -190,9 +219,7 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             </div>
 
-            {/* Sidebar */}
             <div className="flex flex-col gap-6 sticky top-24">
-              {/* CTA Card */}
               <div className="border p-8 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9A84C' }}>Free Consultation</div>
                 <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Ready to Set Up Your UAE Business?</h3>
@@ -200,7 +227,6 @@ export default async function ArticlePage({ params }: Props) {
                 <EnquiryForm />
               </div>
 
-              {/* Related */}
               {related && related.length > 0 && (
                 <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                   <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Articles</div>
@@ -219,7 +245,7 @@ export default async function ArticlePage({ params }: Props) {
               <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Services</div>
                 <div className="flex flex-col gap-4">
-                  {relatedServices.slice(0, 2).map(service => (
+                  {relatedServices.slice(0, 3).map(service => (
                     <Link key={service.href} href={service.href} className="block group" style={{ textDecoration: 'none' }}>
                       <div className="text-sm font-medium leading-snug" style={{ color: '#0A0A0A' }}>{service.label}</div>
                       <div className="text-xs mt-1" style={{ color: '#777777' }}>Learn more about this service</div>

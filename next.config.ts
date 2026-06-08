@@ -6,10 +6,17 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: '*.supabase.co' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'images.pexels.com' },
     ],
   },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'starone.ae' }],
+        destination: 'https://www.starone.ae/:path*',
+        permanent: true,
+      },
       {
         source: '/hero-image.png',
         destination: '/hero-image.jpg',
@@ -37,7 +44,6 @@ const nextConfig: NextConfig = {
       { source: '/trademark-registration-uae', destination: '/services/trademark-strategy' },
       { source: '/will-services-uae', destination: '/services/will-services' },
       { source: '/document-attestation-uae', destination: '/services/document-attestation' },
-      { source: '/free-zone-dubai', destination: '/business-setup-dubai' },
       { source: '/mainland-company-dubai', destination: '/business-setup-dubai' },
     ]
   },

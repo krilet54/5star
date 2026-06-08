@@ -16,7 +16,7 @@ import { SITE_INFO } from '@/lib/site-info'
 
 export const metadata: Metadata = {
   title: 'Business Setup Dubai | Company Formation UAE | Star One',
-  description: "Star One is Dubai's trusted business setup consultancy. We help entrepreneurs set up companies, get visas, handle tax, and stay compliant. Book a free consultation.",
+  description: 'Business setup Dubai, company formation, visas, tax, banking, and compliance support in the UAE from AED 5,750. Book a free consultation today.',
   alternates: { canonical: '/' },
 }
 
@@ -68,13 +68,13 @@ const coreServiceBlocks = [
 ]
 
 const partnerLogos = [
-  { name: 'Ajman Free Zone', src: '/ajmanfreezone.png', width: 220, height: 96 },
-  { name: 'DMCC', src: '/dmcc-seeklogo.png', width: 200, height: 96 },
-  { name: 'Dubai Economy', src: '/dubai-economy-new-seeklogo.png', width: 220, height: 96 },
-  { name: 'IFZA', src: '/IFZA logo long - Edited_Transparent.png', width: 240, height: 96 },
-  { name: 'JAFZA', src: '/jafza-logo.png', width: 220, height: 96 },
-  { name: 'RAKEZ', src: '/RAKEZ_Logo_-_English_-_Standard_(Web)_Small.png', width: 240, height: 96 },
-  { name: 'Sharjah Publishing City', src: '/spc logo png.webp', width: 220, height: 96 },
+  { name: 'Star One is an approved formation partner with Ajman Free Zone', src: '/ajmanfreezone.png', width: 220, height: 96 },
+  { name: 'Star One is an approved formation partner with DMCC', src: '/dmcc-seeklogo.png', width: 200, height: 96 },
+  { name: 'Star One is an approved formation partner with Dubai Economy', src: '/dubai-economy-new-seeklogo.png', width: 220, height: 96 },
+  { name: 'Star One is an approved formation partner with IFZA', src: '/IFZA logo long - Edited_Transparent.png', width: 240, height: 96 },
+  { name: 'Star One is an approved formation partner with JAFZA', src: '/jafza-logo.png', width: 220, height: 96 },
+  { name: 'Star One is an approved formation partner with RAKEZ', src: '/RAKEZ_Logo_-_English_-_Standard_(Web)_Small.png', width: 240, height: 96 },
+  { name: 'Star One is an approved formation partner with Sharjah Publishing City', src: '/spc logo png.webp', width: 220, height: 96 },
 ]
 
 export default async function HomePage() {

@@ -5,7 +5,7 @@ import { getServiceBySlug, services } from '@/lib/services-data'
 import EnquiryForm from '@/components/EnquiryForm'
 import Reveal from '@/components/Reveal'
 import { SITE_INFO } from '@/lib/site-info'
-import { buildFaqJsonLd, buildServiceJsonLd, getServiceCanonicalPath, getServiceSeo } from '@/lib/seo'
+import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildServiceJsonLd, getServiceCanonicalPath, getServiceSeo } from '@/lib/seo'
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -47,13 +47,19 @@ export default async function ServicePage({ params }: Props) {
   const featureEmoji = ['🧩', '⚙️', '📌', '🛡️', '🚀', '✅']
   const categoryEmoji = ['👔', '🏠', '🎓']
   const processEmoji = ['📝', '🗂️', '🧠', '🎯']
-  const serviceJsonLd = buildServiceJsonLd(service)
+  const serviceJsonLd = buildServiceJsonLd(service, getServiceCanonicalPath(slug))
   const faqJsonLd = buildFaqJsonLd(service.faq)
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Home', item: `${SITE_INFO.url}/` },
+    { name: 'Services', item: `${SITE_INFO.url}/services` },
+    { name: service.title, item: `${SITE_INFO.url}${getServiceCanonicalPath(slug)}` },
+  ])
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {/* HERO */}
       <section className="pt-36 pb-16 relative overflow-hidden service-detail-hero" style={{ background: '#FAFAFA' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
@@ -342,6 +348,38 @@ export default async function ServicePage({ params }: Props) {
         </section>
       )}
 
+      {slug === 'business-setup' && (
+        <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div className="tag">Next Steps</div>
+            <h2 className="font-display text-3xl sm:text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
+              Explore the services most founders need next
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: '#555555', maxWidth: 840 }}>
+              Once you choose your setup route, these pages help with residency, tax, banking, and cost planning.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/free-zone-dubai" className="btn btn-outline">Compare Free Zones</Link>
+              <Link href="/ifza-business-setup" className="btn btn-outline">IFZA Business Setup</Link>
+              <Link href="/dmcc-company-formation" className="btn btn-outline">DMCC Company Formation</Link>
+              <Link href="/rakez-business-setup" className="btn btn-outline">RAKEZ Business Setup</Link>
+              <Link href="/shams-business-setup" className="btn btn-outline">SHAMS Business Setup</Link>
+              <Link href="/meydan-free-zone" className="btn btn-outline">Meydan Free Zone</Link>
+              <Link href="/freelance-license-dubai" className="btn btn-outline">Freelance License Dubai</Link>
+              <Link href="/ecommerce-company-setup-dubai" className="btn btn-outline">Ecommerce Company Setup</Link>
+              <Link href="/business-setup-dubai-for-indians" className="btn btn-outline">Business Setup for Indians</Link>
+              <Link href="/offshore-company-formation-uae" className="btn btn-outline">Offshore Company Formation</Link>
+              <Link href="/golden-visa-uae" className="btn btn-outline">Apply for a UAE Golden Visa</Link>
+              <Link href="/corporate-tax-uae" className="btn btn-outline">Register for Corporate Tax</Link>
+              <Link href="/vat-registration-uae" className="btn btn-outline">VAT Registration</Link>
+              <Link href="/corporate-banking-dubai" className="btn btn-outline">Open a Corporate Bank Account in Dubai</Link>
+              <Link href="/calculator" className="btn btn-gold">Calculate Your Business Setup Cost</Link>
+              <Link href="/insights/business-setup-dubai-guide" className="btn btn-outline">Read the Complete Business Setup Guide</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
       {!isGoldenVisa && (
         <section className="section service-detail-section service-pattern-light" style={{ background: '#FAFAFA' }}>
@@ -370,7 +408,7 @@ export default async function ServicePage({ params }: Props) {
           <h2 className="font-display text-4xl font-medium mb-8" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Other Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {related.map(r => (
-              <Link key={r.slug} href={`/services/${r.slug}`} className="card p-7 service-related-card" style={{ background: '#FAFAFA', borderColor: '#E0E0E0', textDecoration: 'none', color: '#0A0A0A' }}>
+              <Link key={r.slug} href={getServiceCanonicalPath(r.slug)} className="card p-7 service-related-card" style={{ background: '#FAFAFA', borderColor: '#E0E0E0', textDecoration: 'none', color: '#0A0A0A' }}>
                 <div className="text-2xl mb-3">{r.icon}</div>
                 <h3 className="font-display text-lg font-medium mb-2" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>{r.title}</h3>
                 <p className="text-xs mb-4 service-justify" style={{ color: '#555555' }}>{r.tagline}</p>

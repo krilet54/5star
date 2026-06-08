@@ -12,10 +12,16 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Star One — Dubai Business Setup Experts',
-  description: 'Star One helps entrepreneurs start and grow in the UAE with clear, affordable business setup and ongoing support.',
+  title: 'About Star One | Dubai Business Setup Experts | Star One',
+  description: 'About Star One and our Dubai business setup team. Clear UAE company formation support from AED 5,750. Book a free consultation today.',
   alternates: { canonical: '/about' },
-  twitter: { card: 'summary_large_image', title: 'About Star One — Dubai Business Setup Experts', description: 'Star One helps entrepreneurs start and grow in the UAE with clear, affordable business setup and ongoing support.' },
+  openGraph: {
+    title: 'About Star One | Dubai Business Setup Experts | Star One',
+    description: 'About Star One and our Dubai business setup team. Clear UAE company formation support from AED 5,750. Book a free consultation today.',
+    url: '/about',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'About Star One | Dubai Business Setup Experts | Star One', description: 'About Star One and our Dubai business setup team. Clear UAE company formation support from AED 5,750. Book a free consultation today.' },
 }
 
 type ValueItem = {
@@ -63,7 +69,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-[#FAFAFA] py-24">
         <Image
           src="/who we are.png"
-          alt="Star One team and workspace"
+          alt="Star One business consultancy team and workspace in the UAE"
           fill
           priority
           sizes="100vw"

@@ -7,10 +7,16 @@ import { buildFaqJsonLd } from '@/lib/seo'
 import { faqData } from '@/lib/faq-data'
 
 export const metadata: Metadata = {
-  title: 'FAQs — Star One Business Consultancy',
-  description: 'Frequently asked questions about starting a business in the UAE — company setup, visas, compliance, banking, and more.',
+  title: 'FAQs | UAE Business Setup Questions Answered | Star One',
+  description: 'UAE business setup FAQs on company formation, visas, tax, and banking, with support from AED 5,750. Book a free consultation today.',
   alternates: { canonical: '/faqs' },
-  twitter: { card: 'summary_large_image', title: 'FAQs — Star One Business Consultancy', description: 'Frequently asked questions about starting a business in the UAE — company setup, visas, compliance, banking, and more.' },
+  openGraph: {
+    title: 'FAQs | UAE Business Setup Questions Answered | Star One',
+    description: 'UAE business setup FAQs on company formation, visas, tax, and banking, with support from AED 5,750. Book a free consultation today.',
+    url: '/faqs',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'FAQs | UAE Business Setup Questions Answered | Star One', description: 'UAE business setup FAQs on company formation, visas, tax, and banking, with support from AED 5,750. Book a free consultation today.' },
 }
 
 const faqJsonLd = buildFaqJsonLd(faqData.flatMap(category => category.faqs))

@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer'
 import LeadCapturePopup from '@/components/LeadCapturePopup'
 import { buildLocalBusinessJsonLd } from '@/lib/seo'
 import { SITE_INFO } from '@/lib/site-info'
+import Script from 'next/script'
 
 const display = Playfair_Display({
   subsets: ['latin'],
@@ -21,16 +22,16 @@ const body = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
-  title: { default: 'Star One — Business Setup & Advisory Dubai, UAE', template: '%s | Star One' },
+  title: { default: 'Business Setup Dubai | Company Formation UAE | Star One', template: '%s | Star One' },
   description: 'Star One helps entrepreneurs and business owners set up companies in the UAE legally. From company formation to visas, compliance, accounting, and golden visa services.',
   keywords: ['UAE business setup', 'Dubai company formation', 'golden visa UAE', 'business setup Dubai', 'UAE visa services'],
   authors: [{ name: 'Star One Business Consultancy' }],
   openGraph: {
     type: 'website',
     locale: 'en_AE',
-    url: 'https://starone.ae',
+    url: SITE_INFO.url,
     siteName: 'Star One',
-    title: 'Star One — Business Setup & Advisory Dubai, UAE',
+    title: 'Star One - Business Setup & Advisory Dubai, UAE',
     description: 'Your trusted partner for UAE business setup, visas, compliance, and corporate services.',
     images: [
       {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Star One — Business Setup & Advisory Dubai, UAE',
+    title: 'Star One - Business Setup & Advisory Dubai, UAE',
     description: 'Your trusted partner for UAE business setup, visas, compliance, and corporate services.',
     site: '@staronedxb',
     creator: '@staronedxb',
@@ -61,6 +62,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-66MENQ5QG1" strategy="afterInteractive" />
+        <Script id="ga4-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-66MENQ5QG1');
+          `}
+        </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
         <Nav />
         <main>{children}</main>

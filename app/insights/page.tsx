@@ -8,12 +8,19 @@ import GeometricCorners from '@/components/GeometricCorners'
 import ArticleCoverImage from '@/components/ArticleCoverImage'
 import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
+import { mergeBlogPosts } from '@/lib/blog-posts'
 
 export const metadata: Metadata = {
-  title: 'Insights & Guides — UAE Business Setup Knowledge Hub',
-  description: 'Expert articles, guides, and insights on UAE business setup, company formation, visa requirements, tax compliance, and more from Star One.',
+  title: 'Blog | UAE Business Setup Guides & Insights | Star One',
+  description: 'UAE business setup blog with free zone, visa, tax, and banking guides from AED 5,750. Learn from expert posts and book today.',
   alternates: { canonical: '/insights' },
-  twitter: { card: 'summary_large_image', title: 'Insights & Guides — UAE Business Setup Knowledge Hub', description: 'Expert articles, guides, and insights on UAE business setup, company formation, visa requirements, tax compliance, and more from Star One.' },
+  openGraph: {
+    title: 'Blog | UAE Business Setup Guides & Insights | Star One',
+    description: 'UAE business setup blog with free zone, visa, tax, and banking guides from AED 5,750. Learn from expert posts and book today.',
+    url: '/insights',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Blog | UAE Business Setup Guides & Insights | Star One', description: 'UAE business setup blog with free zone, visa, tax, and banking guides from AED 5,750. Learn from expert posts and book today.' },
 }
 
 export const revalidate = 3600
@@ -29,10 +36,11 @@ export default async function InsightsPage() {
     .order('featured', { ascending: false })
     .order('created_at', { ascending: false })
 
-  const featured = articles?.find(a => a.featured)
-  const rest = articles?.filter(a => !a.featured) ?? []
+  const mergedArticles = mergeBlogPosts(articles ?? [])
+  const featured = mergedArticles.find(a => 'featured' in a ? a.featured : false)
+  const rest = mergedArticles.filter(a => a !== featured)
 
-  const articleCategories = Array.from(new Set(articles?.map((a: Article) => a.category) ?? []))
+  const articleCategories = Array.from(new Set(mergedArticles.map((a: Article) => a.category) ?? []))
   const categories = ['All', ...canonicalCategories, ...articleCategories.filter(cat => !canonicalCategories.includes(cat))]
 
   return (

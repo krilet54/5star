@@ -11,7 +11,7 @@ export default function Footer() {
       links: [
         { label: 'Business Setup', href: '/business-setup-dubai' },
         { label: 'Free Zone Setup', href: '/free-zone-dubai' },
-        { label: 'Offshore Setup', href: '/business-setup-dubai' },
+        { label: 'Offshore Setup', href: '/offshore-company-formation-uae' },
       ],
     },
     {

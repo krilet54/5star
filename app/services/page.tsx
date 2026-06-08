@@ -6,10 +6,16 @@ import Reveal from '@/components/Reveal'
 import GeometricCorners from '@/components/GeometricCorners'
 
 export const metadata: Metadata = {
-  title: 'All Services | Star One Dubai',
-  description: 'Complete UAE business services: company formation, visas, compliance, banking, accounting, HR, trademark, and more. All under one roof.',
+  title: 'All Services | UAE Business Setup & Advisory | Star One',
+  description: 'All UAE business setup services in one place, from company formation to visas, tax, banking, and compliance from AED 5,750. Book today.',
   alternates: { canonical: '/services' },
-  twitter: { card: 'summary_large_image', title: 'All Services | Star One Dubai', description: 'Complete UAE business services: company formation, visas, compliance, banking, accounting, HR, trademark, and more. All under one roof.' },
+  openGraph: {
+    title: 'All Services | UAE Business Setup & Advisory | Star One',
+    description: 'All UAE business setup services in one place, from company formation to visas, tax, banking, and compliance from AED 5,750. Book today.',
+    url: '/services',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'All Services | UAE Business Setup & Advisory | Star One', description: 'All UAE business setup services in one place, from company formation to visas, tax, banking, and compliance from AED 5,750. Book today.' },
 }
 
 const categoryIds: Record<string, string> = {

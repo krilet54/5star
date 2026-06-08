@@ -16,122 +16,122 @@ function desc(base: string) {
 
 const serviceSeoBySlug: Record<string, ServiceSeo> = {
   'business-setup': {
-    title: 'Business Setup Dubai | Star One Dubai',
-    description: desc('Business setup Dubai with mainland, free zone, and offshore company formation, licensing, visas, and compliance support.'),
+    title: 'Business Setup Dubai | Mainland, Free Zone & Offshore | Star One',
+    description: desc('Business setup Dubai for mainland, free zone, and offshore company formation from AED 5,750 with visas and banking support.'),
     keywords: ['Business Setup Dubai', 'UAE company formation', 'mainland setup', 'free zone setup'],
     canonicalPath: '/business-setup-dubai',
   },
   'golden-visa': {
-    title: 'Golden Visa UAE | Star One Dubai',
-    description: desc('Golden Visa UAE support for investors, executives, and students. We assess eligibility, prepare documents, and manage approval.'),
+    title: 'Golden Visa UAE | 5 & 10-Year Residency | Star One',
+    description: desc('Golden Visa UAE support for investors, executives, and students. Check eligibility, prepare documents, and secure residency.'),
     keywords: ['Golden Visa UAE', 'Dubai Golden Visa', 'UAE residency visa'],
     canonicalPath: '/golden-visa-uae',
   },
   'employment-visa': {
-    title: 'Visa Services Dubai | Star One Dubai',
-    description: desc('Visa Services Dubai for companies and professionals, including entry permits, medicals, Emirates ID, and visa stamping.'),
+    title: 'Employment Visa UAE | Work & Live in Dubai | Star One',
+    description: desc('Employment visa UAE services for entry permits, medicals, Emirates ID, and residency stamping for companies and professionals.'),
     keywords: ['Employment Visa UAE', 'Dubai work visa', 'UAE residency visa'],
     canonicalPath: '/visa-services-dubai',
   },
   'dependent-visa': {
-    title: 'Dependent Visa UAE | Star One Dubai',
-    description: desc('Dependent Visa UAE services for spouses, children, and eligible parents with documents, medicals, and residency processing.'),
+    title: 'Dependent Visa UAE | Sponsor Your Family | Star One',
+    description: desc('Dependent Visa UAE services for spouses, children, and eligible parents with document support and residency processing.'),
     keywords: ['Dependent Visa UAE', 'family visa UAE', 'Dubai dependent visa'],
     canonicalPath: '/dependent-visa-uae',
   },
   'visit-visa': {
-    title: 'Visit Visa Dubai | Star One Dubai',
-    description: desc('Visit Visa Dubai assistance for tourism, business, and family visits with fast processing, extensions, and document guidance.'),
+    title: 'Visit Visa Dubai | Tourist Visa UAE 2026 | Star One',
+    description: desc('Visit Visa Dubai assistance for tourism, business, and family trips with extensions, document checks, and fast processing.'),
     keywords: ['Visit Visa UAE', 'Dubai visit visa', 'UAE tourist visa'],
     canonicalPath: '/visit-visa-dubai',
   },
   'corporate-tax': {
-    title: 'Corporate Tax UAE | Star One Dubai',
-    description: desc('Corporate Tax UAE registration, planning, and filing support to keep your business compliant with FTA requirements and deadlines.'),
+    title: 'Corporate Tax UAE | FTA Registration & Filing | Star One',
+    description: desc('Corporate Tax UAE registration and filing support from AED 1,250 to keep your company compliant with FTA deadlines and reporting.'),
     keywords: ['Corporate Tax UAE', 'Dubai corporate tax', 'UAE tax registration'],
     canonicalPath: '/corporate-tax-uae',
   },
   vat: {
-    title: 'VAT Registration UAE | Star One Dubai',
-    description: desc('VAT Registration UAE for quarterly filing, input tax recovery, and compliance support across the UAE with clear FTA guidance.'),
+    title: 'VAT Registration UAE | FTA VAT Compliance | Star One',
+    description: desc('VAT Registration UAE support from AED 950 for mandatory and voluntary registration, filing, and ongoing FTA compliance.'),
     keywords: ['VAT UAE', 'Dubai VAT registration', 'UAE VAT filing'],
     canonicalPath: '/vat-registration-uae',
   },
   audit: {
-    title: 'Audit Report UAE | Star One Dubai',
-    description: desc('Audit Report UAE support with financial review, compliance checks, and coordination for mainland and free zone companies.'),
+    title: 'Audit Report UAE | Statutory Audit Services Dubai | Star One',
+    description: desc('Audit Report UAE support from AED 3,500 for mainland and free zone companies, with review, compliance checks, and filing support.'),
     keywords: ['Audit Report UAE', 'Dubai audit report', 'UAE company audit'],
     canonicalPath: '/audit-report-uae',
   },
   esr: {
-    title: 'ESR UAE | Star One Dubai',
-    description: desc('ESR UAE compliance support to help your company meet Economic Substance Regulations with accurate documentation and reporting.'),
+    title: 'ESR UAE | Economic Substance Regulations | Star One',
+    description: desc('ESR UAE compliance support for relevant businesses needing substance checks, reporting, and accurate filing under current rules.'),
     keywords: ['ESR UAE', 'Dubai ESR filing', 'economic substance regulations'],
     canonicalPath: '/esr-uae',
   },
   aml: {
-    title: 'AML KYC Compliance UAE | Star One Dubai',
-    description: desc('AML KYC Compliance UAE advisory and support to strengthen your anti-money laundering controls, policies, and reporting.'),
+    title: 'AML & KYC Compliance UAE | Regulatory Services | Star One',
+    description: desc('AML & KYC Compliance UAE support for policies, controls, reporting, and onboarding processes that reduce regulatory risk.'),
     keywords: ['AML UAE', 'Dubai AML compliance', 'anti-money laundering'],
     canonicalPath: '/aml-kyc-compliance-uae',
   },
   kyc: {
-    title: 'KYC UAE | Star One Dubai',
-    description: desc('KYC UAE support to improve customer due diligence, onboarding controls, and compliance readiness for regulated businesses.'),
+    title: 'KYC UAE | Customer Due Diligence | Star One',
+    description: desc('KYC UAE support for customer due diligence, onboarding checks, and ongoing monitoring for regulated and high-risk businesses.'),
     keywords: ['KYC UAE', 'Dubai KYC compliance', 'customer due diligence'],
     canonicalPath: '/aml-kyc-compliance-uae',
   },
   ubo: {
-    title: 'UBO UAE | Star One Dubai',
-    description: desc('UBO UAE guidance for beneficial ownership reporting, registers, and compliance documentation across your company structure.'),
+    title: 'UBO Registration UAE | Beneficial Owner Filing | Star One',
+    description: desc('UBO UAE guidance for beneficial ownership registers, updates, and documentation across your company structure.'),
     keywords: ['UBO UAE', 'Dubai UBO filing', 'beneficial ownership'],
     canonicalPath: '/ubo-registration-uae',
   },
   'personal-banking': {
-    title: 'Personal Banking UAE | Star One Dubai',
-    description: desc('Corporate Banking Dubai support to help residents and newcomers open bank accounts with clear document preparation and guidance.'),
+    title: 'Personal Banking UAE | Non-Resident Accounts | Star One',
+    description: desc('Personal banking UAE support for residents and eligible non-residents opening accounts with the right documents and guidance.'),
     keywords: ['Personal Banking UAE', 'Dubai bank account', 'UAE banking'],
     canonicalPath: '/corporate-banking-dubai',
   },
   'corporate-banking': {
-    title: 'Corporate Banking Dubai | Star One Dubai',
-    description: desc('Corporate Banking Dubai assistance for new and established companies, from applications, documentation, and bank coordination.'),
+    title: 'Corporate Bank Account Dubai | Business Banking UAE | Star One',
+    description: desc('Corporate bank account Dubai support for new and established companies from AED 1,500, with clear business and compliance guidance.'),
     keywords: ['Corporate Banking UAE', 'Dubai corporate bank account', 'UAE banking'],
     canonicalPath: '/corporate-banking-dubai',
   },
   'accounting-bookkeeping': {
-    title: 'Accounting UAE | Star One Dubai',
-    description: desc('Accounting services Dubai and bookkeeping UAE support to keep records clean, accurate, and ready for tax, audit, and compliance.'),
+    title: 'Accounting & Bookkeeping UAE | CFO Services Dubai | Star One',
+    description: desc('Accounting & Bookkeeping UAE support from AED 750 per month to keep records accurate, ready for tax filings and audits.'),
     keywords: ['Accounting UAE', 'Bookkeeping UAE', 'Dubai accounting services'],
     canonicalPath: '/accounting-bookkeeping-uae',
   },
   'hr-payroll': {
-    title: 'HR Payroll UAE | Star One Dubai',
-    description: desc('HR services Dubai and payroll UAE support for compliant staffing processes, payroll administration, and documentation support.'),
+    title: 'HR & Payroll Services UAE | Dubai Payroll Management | Star One',
+    description: desc('HR & Payroll Services UAE from AED 500 per employee for WPS support, payroll administration, and workforce management.'),
     keywords: ['HR UAE', 'Payroll UAE', 'Dubai HR services'],
     canonicalPath: '/hr-payroll-uae',
   },
   'marketing-branding': {
-    title: 'Marketing UAE | Star One Dubai',
-    description: desc('Marketing and branding UAE support for launches, positioning, and visual identity that helps your business stand out in Dubai.'),
+    title: 'Marketing UAE | Brand Strategy & Growth | Star One',
+    description: desc('Marketing UAE support for brand positioning, launches, and growth strategies that help your business stand out.'),
     keywords: ['Marketing UAE', 'Branding UAE', 'Dubai brand strategy'],
     canonicalPath: '/marketing-branding-uae',
   },
   'trademark-strategy': {
-    title: 'Trademark Registration UAE | Star One Dubai',
-    description: desc('Trademark registration UAE guidance for brand protection, search checks, filing support, and positioning your business name.'),
+    title: 'Trademark Registration UAE | IP Protection Dubai | Star One',
+    description: desc('Trademark registration UAE guidance for searches, filings, and brand protection across your core commercial assets.'),
     keywords: ['Trademark UAE', 'Dubai trademark filing', 'brand protection'],
     canonicalPath: '/trademark-registration-uae',
   },
   'will-services': {
-    title: 'Will Services UAE | Star One Dubai',
-    description: desc('Will services UAE support for straightforward estate planning, document preparation, and guidance for residents in Dubai.'),
+    title: 'Will Services UAE | Legal Wills for Expats Dubai | Star One',
+    description: desc('Will Services UAE support from AED 2,750 for estate planning, document preparation, and practical guidance for Dubai residents.'),
     keywords: ['Will Services UAE', 'Dubai will registration', 'estate planning UAE'],
     canonicalPath: '/will-services-uae',
   },
   'document-attestation': {
-    title: 'Document Attestation UAE | Star One Dubai',
-    description: desc('Document attestation UAE services for certificates, powers of attorney, and legal paperwork used in the UAE and abroad.'),
+    title: 'Document Attestation UAE | MOE & MOFA Attestation | Star One',
+    description: desc('Document Attestation UAE support from AED 250 for certificates, powers of attorney, and legal paperwork used in the UAE and abroad.'),
     keywords: ['Document Attestation UAE', 'Dubai attestation', 'certificate attestation'],
     canonicalPath: '/document-attestation-uae',
   },
@@ -213,7 +213,7 @@ export function buildLocalBusinessJsonLd() {
       addressCountry: SITE_INFO.address.addressCountry,
     },
     areaServed: SITE_INFO.areaServed,
-    priceRange: 'AED 5,450+',
+    priceRange: 'AED 5,750 - AED 17,000',
     sameAs: [
       SITE_INFO.social?.instagram,
       SITE_INFO.social?.linkedin,
@@ -221,14 +221,16 @@ export function buildLocalBusinessJsonLd() {
   }
 }
 
-export function buildServiceJsonLd(service: ServiceData) {
+export function buildServiceJsonLd(service: ServiceData, path?: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: service.title,
     serviceType: service.title,
+    url: `${SITE_INFO.url}${path ?? ''}`,
     provider: {
       '@type': 'Organization',
+      '@id': `${SITE_INFO.url}/#business`,
       name: SITE_INFO.name,
       url: SITE_INFO.url,
       telephone: SITE_INFO.phoneDisplay,
@@ -241,6 +243,19 @@ export function buildServiceJsonLd(service: ServiceData) {
       price: '5450',
       availability: 'https://schema.org/InStock',
     },
+  }
+}
+
+export function buildBreadcrumbJsonLd(items: Array<{ name: string; item: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.item,
+    })),
   }
 }
 

@@ -40,19 +40,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }))
 
+  const dbArticles = (articles ?? []) as Array<{ slug: string; updated_at: string }>
+  const dbSlugs = new Set(dbArticles.map(a => a.slug))
+
   const articlePages: MetadataRoute.Sitemap = [
-    ...(articles ?? []).map((a): MetadataRoute.Sitemap[number] => ({
+    ...dbArticles.map((a): MetadataRoute.Sitemap[number] => ({
       url: `${baseUrl}/insights/${a.slug}`,
       lastModified: new Date(a.updated_at),
       changeFrequency: 'monthly',
       priority: 0.7,
     })),
-    ...localBlogPosts.map((a): MetadataRoute.Sitemap[number] => ({
-      url: `${baseUrl}/insights/${a.slug}`,
-      lastModified: new Date(a.updated_at),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    })),
+    ...localBlogPosts
+      .filter(post => !dbSlugs.has(post.slug))
+      .map((a): MetadataRoute.Sitemap[number] => ({
+        url: `${baseUrl}/insights/${a.slug}`,
+        lastModified: new Date(a.updated_at),
+        changeFrequency: 'monthly',
+        priority: 0.75,
+      })),
   ]
 
   return [...staticPages, ...servicePages, ...articlePages]

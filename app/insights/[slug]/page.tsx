@@ -17,8 +17,9 @@ interface Props { params: Promise<{ slug: string }> }
 
 async function getArticleRecord(slug: string) {
   const supabase = await createClient()
-  const { data: article } = await supabase.from('articles').select('*').eq('slug', slug).single()
-  return article ?? getLocalBlogPost(slug) ?? null
+  const { data: article } = await supabase.from('articles').select('*').eq('slug', slug).maybeSingle()
+  if (article) return article.published ? article : null
+  return getLocalBlogPost(slug) ?? null
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -62,10 +63,11 @@ export default async function ArticlePage({ params }: Props) {
     .from('articles')
     .select('*')
     .eq('slug', slug)
-    .eq('published', true)
-    .single()
+    .maybeSingle()
 
-  const article = dbArticle ?? getLocalBlogPost(slug)
+  const article = dbArticle
+    ? (dbArticle.published ? dbArticle : null)
+    : getLocalBlogPost(slug)
   if (!article) notFound()
 
   const { data: related } = await supabase

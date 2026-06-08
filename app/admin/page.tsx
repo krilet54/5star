@@ -2,6 +2,7 @@ import { createAdminClient } from '@/lib/supabase-server'
 import Link from 'next/link'
 import { FileText, Inbox, Plus, TrendingUp, Calculator } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
+import { mergeBlogPosts } from '@/lib/blog-posts'
 
 export const metadata = { title: 'Dashboard' }
 
@@ -10,15 +11,24 @@ export const dynamic = 'force-dynamic'
 export default async function AdminDashboardPage() {
   const supabase = createAdminClient()
 
-  const [{ count: articleCount }, { count: enquiryCount }, { count: calcLeadsCount }, { data: recentEnquiries }, { data: recentArticles }] = await Promise.all([
-    supabase.from('articles').select('*', { count: 'exact', head: true }),
+  const [
+    { data: articles },
+    { count: enquiryCount },
+    { count: calcLeadsCount },
+    { data: recentEnquiries },
+  ] = await Promise.all([
+    supabase.from('articles').select('id, title, slug, published, featured, created_at'),
     supabase.from('enquiries').select('*', { count: 'exact', head: true }),
     supabase.from('calculator_leads').select('*', { count: 'exact', head: true }),
     supabase.from('enquiries').select('*').order('created_at', { ascending: false }).limit(5),
-    supabase.from('articles').select('id, title, slug, published, featured, created_at').order('created_at', { ascending: false }).limit(5),
   ])
 
   const { count: newEnquiries } = await supabase.from('enquiries').select('*', { count: 'exact', head: true }).eq('status', 'new')
+  const mergedArticles = mergeBlogPosts(articles ?? [])
+    .slice()
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+  const articleCount = mergedArticles.length
+  const recentArticles = mergedArticles.slice(0, 5)
 
   return (
     <div className="p-8">
@@ -30,7 +40,7 @@ export default async function AdminDashboardPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
         {[
-          { label: 'Total Articles', value: articleCount ?? 0, icon: FileText, color: '#C9A060', href: '/admin/articles' },
+          { label: 'Total Articles', value: articleCount, icon: FileText, color: '#C9A060', href: '/admin/articles' },
           { label: 'Total Enquiries', value: enquiryCount ?? 0, icon: Inbox, color: '#3b82f6', href: '/admin/enquiries' },
           { label: 'Calculator Leads', value: calcLeadsCount ?? 0, icon: Calculator, color: '#8b5cf6', href: '/admin/calculator-leads' },
           { label: 'New Enquiries', value: newEnquiries ?? 0, icon: TrendingUp, color: '#22c55e', href: '/admin/enquiries' },
@@ -93,11 +103,18 @@ export default async function AdminDashboardPage() {
                     <div className="text-xs text-gray-400">{formatDate(art.created_at)}</div>
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
+                    {art.id.startsWith('local-') && <span className="badge badge-gray">Local</span>}
                     {art.featured && <span className="badge badge-yellow">Featured</span>}
                     <span className={`badge ${art.published ? 'badge-green' : 'badge-gray'}`}>
                       {art.published ? 'Live' : 'Draft'}
                     </span>
-                    <Link href={`/admin/articles/${art.id}/edit`} className="text-xs text-blue-600 hover:underline">Edit</Link>
+                    {art.id.startsWith('local-') ? (
+                      <Link href={`/insights/${art.slug}`} target="_blank" className="text-xs text-blue-600 hover:underline">
+                        View
+                      </Link>
+                    ) : (
+                      <Link href={`/admin/articles/${art.id}/edit`} className="text-xs text-blue-600 hover:underline">Edit</Link>
+                    )}
                   </div>
                 </div>
               ))}

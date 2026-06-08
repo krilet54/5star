@@ -932,6 +932,10 @@ export function getLocalBlogPost(slug: string) {
   return localBlogPosts.find(post => post.slug === slug)
 }
 
+export function getLocalBlogPostById(id: string) {
+  return localBlogPosts.find(post => post.id === id)
+}
+
 export function mergeBlogPosts(existing: Article[] = []) {
   const map = new Map<string, Article | LocalBlogPost>()
   for (const item of existing) map.set(item.slug, item)
@@ -1003,4 +1007,3 @@ export function getArticleEnrichedMarkdown(article: Pick<Article, 'slug' | 'cate
 function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
-

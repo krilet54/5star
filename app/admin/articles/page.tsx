@@ -2,6 +2,7 @@ import { createAdminClient } from '@/lib/supabase-server'
 import Link from 'next/link'
 import { formatDate } from '@/lib/utils'
 import ArticleActions from './ArticleActions'
+import { mergeBlogPosts } from '@/lib/blog-posts'
 
 export const metadata = { title: 'Articles' }
 
@@ -14,12 +15,16 @@ export default async function AdminArticlesPage() {
     .select('*')
     .order('created_at', { ascending: false })
 
+  const mergedArticles = mergeBlogPosts(articles ?? [])
+    .slice()
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Articles</h1>
-          <p className="text-sm text-gray-500 mt-1">{articles?.length ?? 0} articles total</p>
+          <p className="text-sm text-gray-500 mt-1">{mergedArticles.length} articles total</p>
         </div>
         <Link href="/admin/articles/new" className="admin-btn admin-btn-gold">+ New Article</Link>
       </div>
@@ -37,7 +42,7 @@ export default async function AdminArticlesPage() {
             </tr>
           </thead>
           <tbody className="divide-y" style={{ borderColor: '#f0f0ec' }}>
-            {articles && articles.length > 0 ? articles.map((article: {
+            {mergedArticles.length > 0 ? mergedArticles.map((article: {
               id: string; title: string; slug: string; category: string;
               published: boolean; featured: boolean; created_at: string
             }) => (
@@ -47,7 +52,10 @@ export default async function AdminArticlesPage() {
                   <div className="text-xs text-gray-400 mt-0.5">/insights/{article.slug}</div>
                 </td>
                 <td className="px-4 py-4 hidden md:table-cell">
-                  <span className="badge badge-gray">{article.category}</span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="badge badge-gray">{article.category}</span>
+                    {article.id.startsWith('local-') && <span className="badge badge-gray">Local</span>}
+                  </div>
                 </td>
                 <td className="px-4 py-4 text-gray-500 hidden lg:table-cell">
                   {formatDate(article.created_at)}

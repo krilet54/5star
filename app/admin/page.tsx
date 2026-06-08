@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { FileText, Inbox, Plus, TrendingUp, Calculator } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { mergeBlogPosts } from '@/lib/blog-posts'
+import { getDeletedArticleSlugs } from '@/lib/article-tombstones'
 
 export const metadata = { title: 'Dashboard' }
 
@@ -24,7 +25,8 @@ export default async function AdminDashboardPage() {
   ])
 
   const { count: newEnquiries } = await supabase.from('enquiries').select('*', { count: 'exact', head: true }).eq('status', 'new')
-  const mergedArticles = mergeBlogPosts(articles ?? [])
+  const deletedSlugs = await getDeletedArticleSlugs()
+  const mergedArticles = mergeBlogPosts(articles ?? [], deletedSlugs)
     .slice()
     .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
   const articleCount = mergedArticles.length

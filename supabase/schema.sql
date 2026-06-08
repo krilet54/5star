@@ -21,6 +21,12 @@ create table if not exists articles (
   updated_at timestamp with time zone default now()
 );
 
+create table if not exists article_tombstones (
+  slug text primary key,
+  title text,
+  deleted_at timestamp with time zone default now()
+);
+
 -- ENQUIRIES TABLE
 create table if not exists enquiries (
   id uuid default gen_random_uuid() primary key,
@@ -64,12 +70,17 @@ create trigger articles_updated_at
 
 -- ROW LEVEL SECURITY
 alter table articles enable row level security;
+alter table article_tombstones enable row level security;
 alter table enquiries enable row level security;
 alter table calculator_leads enable row level security;
 
 -- PUBLIC: anyone can read published articles
 create policy "published articles are public" on articles
   for select using (published = true);
+
+create policy "service role manages article tombstones" on article_tombstones
+  for all using (auth.role() = 'service_role')
+  with check (auth.role() = 'service_role');
 
 -- PUBLIC: anyone can submit enquiry
 create policy "anyone can insert enquiry" on enquiries

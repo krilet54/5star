@@ -1283,11 +1283,14 @@ export function getLocalBlogPostById(id: string) {
   return localBlogPosts.find(post => post.id === id)
 }
 
-export function mergeBlogPosts(existing: Article[] = []) {
+export function mergeBlogPosts(existing: Article[] = [], excludedSlugs: string[] = []) {
+  const excluded = new Set(excludedSlugs)
   const map = new Map<string, Article | LocalBlogPost>()
-  for (const item of existing) map.set(item.slug, item)
+  for (const item of existing) {
+    if (!excluded.has(item.slug)) map.set(item.slug, item)
+  }
   for (const post of localBlogPosts) {
-    if (!map.has(post.slug)) map.set(post.slug, post)
+    if (!excluded.has(post.slug) && !map.has(post.slug)) map.set(post.slug, post)
   }
   return Array.from(map.values()).sort((a, b) => {
     const featuredA = 'featured' in a ? (a.featured ? 1 : 0) : 0

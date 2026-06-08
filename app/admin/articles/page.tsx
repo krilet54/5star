@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { formatDate } from '@/lib/utils'
 import ArticleActions from './ArticleActions'
 import { mergeBlogPosts } from '@/lib/blog-posts'
+import { getDeletedArticleSlugs } from '@/lib/article-tombstones'
 
 export const metadata = { title: 'Articles' }
 
@@ -15,7 +16,8 @@ export default async function AdminArticlesPage() {
     .select('*')
     .order('created_at', { ascending: false })
 
-  const mergedArticles = mergeBlogPosts(articles ?? [])
+  const deletedSlugs = await getDeletedArticleSlugs()
+  const mergedArticles = mergeBlogPosts(articles ?? [], deletedSlugs)
     .slice()
     .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
 

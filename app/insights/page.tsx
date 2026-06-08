@@ -9,6 +9,7 @@ import ArticleCoverImage from '@/components/ArticleCoverImage'
 import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
 import { mergeBlogPosts } from '@/lib/blog-posts'
+import { getDeletedArticleSlugs } from '@/lib/article-tombstones'
 
 export const metadata: Metadata = {
   title: 'Blog | UAE Business Setup Guides & Insights | Star One',
@@ -32,11 +33,12 @@ export default async function InsightsPage() {
   const { data: articles } = await supabase
     .from('articles')
     .select('*')
-    .eq('published', true)
     .order('featured', { ascending: false })
     .order('created_at', { ascending: false })
 
-  const mergedArticles = mergeBlogPosts(articles ?? [])
+  const deletedSlugs = await getDeletedArticleSlugs()
+  const mergedArticles = mergeBlogPosts(articles ?? [], deletedSlugs)
+    .filter(article => ('published' in article ? article.published : true))
   const featured = mergedArticles.find(a => 'featured' in a ? a.featured : false)
   const rest = mergedArticles.filter(a => a !== featured)
 
@@ -151,7 +153,7 @@ export default async function InsightsPage() {
             </div>
           )}
 
-          {(!articles || articles.length === 0) && (
+          {mergedArticles.length === 0 && (
             <div className="text-center py-24">
               <div className="text-4xl mb-4 opacity-30">✦</div>
               <h3 className="font-display text-2xl mb-2" style={{ fontFamily: 'var(--font-display)', color: '#555555' }}>Articles Coming Soon</h3>

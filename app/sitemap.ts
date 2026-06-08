@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase-server'
 import { services } from '@/lib/services-data'
 import { getServiceCanonicalPath } from '@/lib/seo'
 import { localBlogPosts } from '@/lib/blog-posts'
+import { getDeletedArticleSlugs } from '@/lib/article-tombstones'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.starone.ae'
@@ -10,8 +11,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = await createClient()
   const { data: articles } = await supabase
     .from('articles')
-    .select('slug, updated_at')
-    .eq('published', true)
+    .select('slug, updated_at, published')
+
+  const deletedSlugs = new Set(await getDeletedArticleSlugs())
+  const dbArticles = ((articles ?? []) as Array<{ slug: string; updated_at: string; published: boolean }>)
+    .filter(article => !deletedSlugs.has(article.slug))
+  const publishedDbArticles = dbArticles.filter(article => article.published)
+  const dbSlugs = new Set(dbArticles.map(article => article.slug))
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
@@ -40,18 +46,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }))
 
-  const dbArticles = (articles ?? []) as Array<{ slug: string; updated_at: string }>
-  const dbSlugs = new Set(dbArticles.map(a => a.slug))
-
   const articlePages: MetadataRoute.Sitemap = [
-    ...dbArticles.map((a): MetadataRoute.Sitemap[number] => ({
+    ...publishedDbArticles.map((a): MetadataRoute.Sitemap[number] => ({
       url: `${baseUrl}/insights/${a.slug}`,
       lastModified: new Date(a.updated_at),
       changeFrequency: 'monthly',
       priority: 0.7,
     })),
     ...localBlogPosts
-      .filter(post => !dbSlugs.has(post.slug))
+      .filter(post => !dbSlugs.has(post.slug) && !deletedSlugs.has(post.slug))
       .map((a): MetadataRoute.Sitemap[number] => ({
         url: `${baseUrl}/insights/${a.slug}`,
         lastModified: new Date(a.updated_at),

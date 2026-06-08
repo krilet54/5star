@@ -12,10 +12,12 @@ import { getArticleFallbackImage } from '@/lib/site-images'
 import { buildFaqJsonLd, getArticleServiceLinks } from '@/lib/seo'
 import { SITE_INFO } from '@/lib/site-info'
 import { getArticleEnrichedMarkdown, getLocalBlogPost } from '@/lib/blog-posts'
+import { isArticleDeleted } from '@/lib/article-tombstones'
 
 interface Props { params: Promise<{ slug: string }> }
 
 async function getArticleRecord(slug: string) {
+  if (await isArticleDeleted(slug)) return null
   const supabase = await createClient()
   const { data: article } = await supabase.from('articles').select('*').eq('slug', slug).maybeSingle()
   if (article) return article.published ? article : null
@@ -64,6 +66,8 @@ export default async function ArticlePage({ params }: Props) {
     .select('*')
     .eq('slug', slug)
     .maybeSingle()
+
+  if (await isArticleDeleted(slug)) notFound()
 
   const article = dbArticle
     ? (dbArticle.published ? dbArticle : null)

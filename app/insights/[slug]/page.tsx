@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { createClient } from '@/lib/supabase-server'
+import { createAdminClient } from '@/lib/supabase-server'
 import { formatDate } from '@/lib/utils'
 import EnquiryForm from '@/components/EnquiryForm'
 import ArticleCoverImage from '@/components/ArticleCoverImage'
@@ -11,14 +11,14 @@ import { getArticleImage } from '@/lib/article-images'
 import { getArticleFallbackImage } from '@/lib/site-images'
 import { buildFaqJsonLd, getArticleServiceLinks } from '@/lib/seo'
 import { SITE_INFO } from '@/lib/site-info'
-import { getArticleEnrichedMarkdown, getLocalBlogPost } from '@/lib/blog-posts'
-import { isArticleDeleted } from '@/lib/article-tombstones'
+import { getArticleEnrichedMarkdown, getLocalBlogPost, mergeBlogPosts } from '@/lib/blog-posts'
+import { isArticleDeleted, getDeletedArticleSlugs } from '@/lib/article-tombstones'
 
 interface Props { params: Promise<{ slug: string }> }
 
 async function getArticleRecord(slug: string) {
   if (await isArticleDeleted(slug)) return null
-  const supabase = await createClient()
+  const supabase = createAdminClient()
   const { data: article } = await supabase.from('articles').select('*').eq('slug', slug).maybeSingle()
   if (article) return article.published ? article : null
   return getLocalBlogPost(slug) ?? null
@@ -59,7 +59,7 @@ export const revalidate = 3600
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params
-  const supabase = await createClient()
+  const supabase = createAdminClient()
 
   const { data: dbArticle } = await supabase
     .from('articles')
@@ -74,13 +74,15 @@ export default async function ArticlePage({ params }: Props) {
     : getLocalBlogPost(slug)
   if (!article) notFound()
 
-  const { data: related } = await supabase
+  const { data: dbArticles } = await supabase
     .from('articles')
-    .select('id, title, slug, excerpt, category, read_time, created_at')
-    .eq('published', true)
-    .eq('category', article.category)
-    .neq('slug', article.slug)
-    .limit(3)
+    .select('id, title, slug, excerpt, category, read_time, created_at, published')
+
+  const deletedSlugs = await getDeletedArticleSlugs()
+  const related = mergeBlogPosts(dbArticles ?? [], deletedSlugs)
+    .filter(a => ('published' in a ? a.published : true))
+    .filter(a => a.category === article.category && a.slug !== article.slug)
+    .slice(0, 3)
 
   const relatedServices = getArticleServiceLinks(article.category)
   const enrichedContent = getArticleEnrichedMarkdown(article)

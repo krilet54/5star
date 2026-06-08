@@ -117,7 +117,7 @@ export async function DELETE(request: Request, { params }: Params) {
   if (article?.id) {
     const { error } = await supabase
       .from('articles')
-      .update({ published: false, featured: false })
+      .delete()
       .eq('id', article.id)
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   }

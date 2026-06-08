@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase-server'
+import { createAdminClient } from '@/lib/supabase-server'
+import { mergeBlogPosts } from '@/lib/blog-posts'
+import { getDeletedArticleSlugs } from '@/lib/article-tombstones'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import Reveal from '@/components/Reveal'
 import ServicesFilter from '@/components/ServicesFilter'
@@ -78,14 +80,17 @@ const partnerLogos = [
 ]
 
 export default async function HomePage() {
-  const supabase = await createClient()
-  const { data: articles } = await supabase
+  const supabase = createAdminClient()
+  const { data: dbArticles } = await supabase
     .from('articles')
     .select('*')
-    .eq('published', true)
     .order('featured', { ascending: false })
     .order('created_at', { ascending: false })
-    .limit(3)
+
+  const deletedSlugs = await getDeletedArticleSlugs()
+  const articles = mergeBlogPosts(dbArticles ?? [], deletedSlugs)
+    .filter(article => ('published' in article ? article.published : true))
+    .slice(0, 3)
 
   return (
     <>

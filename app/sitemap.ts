@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { createClient } from '@/lib/supabase-server'
+import { createAdminClient } from '@/lib/supabase-server'
 import { services } from '@/lib/services-data'
 import { getServiceCanonicalPath } from '@/lib/seo'
 import { localBlogPosts } from '@/lib/blog-posts'
@@ -8,7 +8,7 @@ import { getDeletedArticleSlugs } from '@/lib/article-tombstones'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.starone.ae'
 
-  const supabase = await createClient()
+  const supabase = createAdminClient()
   const { data: articles } = await supabase
     .from('articles')
     .select('slug, updated_at, published')

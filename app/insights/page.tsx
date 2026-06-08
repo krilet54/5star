@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase-server'
+import { createAdminClient } from '@/lib/supabase-server'
 import { formatDate } from '@/lib/utils'
 import type { Article } from '@/types'
 import InsightsFilter from '@/components/InsightsFilter'
@@ -29,7 +29,7 @@ export const revalidate = 3600
 const canonicalCategories = ['Business Setup', 'Visa', 'Tax', 'Banking']
 
 export default async function InsightsPage() {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
   const { data: articles } = await supabase
     .from('articles')
     .select('*')

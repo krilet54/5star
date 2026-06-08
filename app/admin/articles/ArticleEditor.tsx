@@ -25,6 +25,7 @@ export default function ArticleEditor({ article, mode }: Props) {
     title: article?.title ?? '',
     excerpt: article?.excerpt ?? '',
     content: article?.content ?? '',
+    slug: article?.slug ?? '',
     category: article?.category ?? 'General',
     featured: article?.featured ?? false,
     published: article?.published ?? true,
@@ -109,7 +110,10 @@ export default function ArticleEditor({ article, mode }: Props) {
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          slug: form.slug.trim(),
+        }),
       })
       if (!res.ok) {
         const data = await res.json()
@@ -325,11 +329,11 @@ export default function ArticleEditor({ article, mode }: Props) {
           </div>
 
           {/* Slug preview */}
-          {form.title && (
+          {(form.title || form.slug) && (
             <div className="admin-card">
               <h3 className="font-semibold text-sm mb-2 text-gray-700">URL Preview</h3>
               <div className="text-xs text-gray-500 break-all">
-                /insights/{form.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}
+                /insights/{form.slug || form.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}
               </div>
             </div>
           )}

@@ -15,10 +15,8 @@ interface Article {
 export default function ArticleActions({ article }: { article: Article }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const isLocalArticle = article.id.startsWith('local-')
 
   async function togglePublished() {
-    if (isLocalArticle) return
     setLoading(true)
     await fetch(`/api/articles/${article.id}`, {
       method: 'PATCH',
@@ -30,7 +28,6 @@ export default function ArticleActions({ article }: { article: Article }) {
   }
 
   async function toggleFeatured() {
-    if (isLocalArticle) return
     setLoading(true)
     await fetch(`/api/articles/${article.id}`, {
       method: 'PATCH',
@@ -42,7 +39,6 @@ export default function ArticleActions({ article }: { article: Article }) {
   }
 
   async function deleteArticle() {
-    if (isLocalArticle) return
     if (!confirm(`Delete "${article.title}"? This cannot be undone.`)) return
     setLoading(true)
     await fetch(`/api/articles/${article.id}`, { method: 'DELETE' })
@@ -52,33 +48,27 @@ export default function ArticleActions({ article }: { article: Article }) {
 
   return (
     <div className="flex items-center gap-2 justify-end flex-wrap">
-      {isLocalArticle ? (
-        <span className="badge badge-gray">Managed in code</span>
-      ) : (
-        <>
-          <button
-            onClick={toggleFeatured}
-            disabled={loading}
-            className="admin-btn admin-btn-gray text-xs px-2 py-1"
-            title={article.featured ? 'Unfeature' : 'Feature'}
-          >
-            {article.featured ? '★' : '☆'}
-          </button>
-          <button
-            onClick={togglePublished}
-            disabled={loading}
-            className="admin-btn admin-btn-gray text-xs px-2 py-1"
-          >
-            {article.published ? 'Unpublish' : 'Publish'}
-          </button>
-          <Link
-            href={`/admin/articles/${article.id}/edit`}
-            className="admin-btn admin-btn-gray text-xs px-2 py-1"
-          >
-            Edit
-          </Link>
-        </>
-      )}
+      <button
+        onClick={toggleFeatured}
+        disabled={loading}
+        className="admin-btn admin-btn-gray text-xs px-2 py-1"
+        title={article.featured ? 'Unfeature' : 'Feature'}
+      >
+        {article.featured ? '★' : '☆'}
+      </button>
+      <button
+        onClick={togglePublished}
+        disabled={loading}
+        className="admin-btn admin-btn-gray text-xs px-2 py-1"
+      >
+        {article.published ? 'Unpublish' : 'Publish'}
+      </button>
+      <Link
+        href={`/admin/articles/${article.id}/edit`}
+        className="admin-btn admin-btn-gray text-xs px-2 py-1"
+      >
+        Edit
+      </Link>
       <Link
         href={`/insights/${article.slug}`}
         target="_blank"
@@ -87,15 +77,13 @@ export default function ArticleActions({ article }: { article: Article }) {
       >
         <ExternalLink size={12} />
       </Link>
-      {!isLocalArticle && (
-        <button
-          onClick={deleteArticle}
-          disabled={loading}
-          className="admin-btn admin-btn-red text-xs px-2 py-1"
-        >
-          Delete
-        </button>
-      )}
+      <button
+        onClick={deleteArticle}
+        disabled={loading}
+        className="admin-btn admin-btn-red text-xs px-2 py-1"
+      >
+        Delete
+      </button>
     </div>
   )
 }

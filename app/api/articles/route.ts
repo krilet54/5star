@@ -13,6 +13,7 @@ const schema = z.object({
   title: z.string().min(3),
   excerpt: z.string().optional(),
   content: z.string().min(1),
+  slug: z.string().optional(),
   category: z.string().default('General'),
   featured: z.boolean().default(false),
   published: z.boolean().default(true),
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json()
     const data = schema.parse(body)
-    const slug = slugify(data.title, { lower: true, strict: true })
+    const slug = data.slug?.trim() || slugify(data.title, { lower: true, strict: true })
     const supabase = createAdminClient()
     const { data: article, error } = await supabase
       .from('articles')

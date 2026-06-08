@@ -108,13 +108,9 @@ export default async function AdminDashboardPage() {
                     <span className={`badge ${art.published ? 'badge-green' : 'badge-gray'}`}>
                       {art.published ? 'Live' : 'Draft'}
                     </span>
-                    {art.id.startsWith('local-') ? (
-                      <Link href={`/insights/${art.slug}`} target="_blank" className="text-xs text-blue-600 hover:underline">
-                        View
-                      </Link>
-                    ) : (
-                      <Link href={`/admin/articles/${art.id}/edit`} className="text-xs text-blue-600 hover:underline">Edit</Link>
-                    )}
+                    <Link href={`/admin/articles/${art.id}/edit`} className="text-xs text-blue-600 hover:underline">
+                      Edit
+                    </Link>
                   </div>
                 </div>
               ))}

@@ -68,6 +68,7 @@ export async function PATCH(request: Request, { params }: Params) {
     }
 
     const {
+      id: ignoredId,
       author,
       internalLinks,
       faq,

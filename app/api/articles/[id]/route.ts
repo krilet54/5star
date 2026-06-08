@@ -67,6 +67,14 @@ export async function PATCH(request: Request, { params }: Params) {
       id: undefined,
     }
 
+    const {
+      author,
+      internalLinks,
+      faq,
+      updated_label,
+      ...dbCleanPayload
+    } = seedPayload as any
+
     const { data: existingLocal } = await supabase
       .from('articles')
       .select('id')
@@ -74,8 +82,8 @@ export async function PATCH(request: Request, { params }: Params) {
       .maybeSingle()
 
     const query = existingLocal?.id
-      ? supabase.from('articles').update(seedPayload).eq('id', existingLocal.id)
-      : supabase.from('articles').insert([seedPayload])
+      ? supabase.from('articles').update(dbCleanPayload).eq('id', existingLocal.id)
+      : supabase.from('articles').insert([dbCleanPayload])
 
     const { data, error } = await query.select().single()
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })

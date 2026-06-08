@@ -128,6 +128,26 @@ export default function ArticleEditor({ article, mode }: Props) {
     }
   }
 
+  async function handleDelete() {
+    if (mode !== 'edit' || !article?.id) return
+    if (!confirm(`Delete "${form.title || 'this article'}"? This cannot be undone.`)) return
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch(`/api/articles/${article.id}`, { method: 'DELETE' })
+      if (!res.ok) {
+        const data = await res.json().catch(() => null)
+        throw new Error(data?.error || 'Failed to delete')
+      }
+      router.push('/admin/articles')
+      router.refresh()
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex items-center justify-between mb-6">
@@ -135,6 +155,16 @@ export default function ArticleEditor({ article, mode }: Props) {
           {mode === 'create' ? 'New Article' : 'Edit Article'}
         </h1>
         <div className="flex items-center gap-3">
+          {mode === 'edit' && (
+            <button
+              type="button"
+              onClick={handleDelete}
+              disabled={loading || uploading}
+              className="admin-btn admin-btn-red"
+            >
+              Delete Article
+            </button>
+          )}
           <button type="button" onClick={() => setPreview(!preview)} className="admin-btn admin-btn-gray">
             {preview ? 'Edit Mode' : 'Preview'}
           </button>

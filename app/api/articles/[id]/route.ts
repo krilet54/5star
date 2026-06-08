@@ -41,6 +41,13 @@ export async function PATCH(request: Request, { params }: Params) {
   }
 
   if (localArticle) {
+    const seedPayload = {
+      ...localArticle,
+      ...payload,
+      slug: resolvedSlug,
+      id: undefined,
+    }
+
     const { data: existingLocal } = await supabase
       .from('articles')
       .select('id')
@@ -48,8 +55,8 @@ export async function PATCH(request: Request, { params }: Params) {
       .maybeSingle()
 
     const query = existingLocal?.id
-      ? supabase.from('articles').update(payload).eq('id', existingLocal.id)
-      : supabase.from('articles').insert([payload])
+      ? supabase.from('articles').update(seedPayload).eq('id', existingLocal.id)
+      : supabase.from('articles').insert([seedPayload])
 
     const { data, error } = await query.select().single()
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
@@ -87,6 +94,12 @@ export async function DELETE(request: Request, { params }: Params) {
 
   if (article?.id) {
     const { error } = await supabase.from('articles').delete().eq('id', article.id)
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  } else if (localArticle) {
+    const { error } = await supabase
+      .from('articles')
+      .delete()
+      .eq('slug', localArticle.slug)
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   }
 

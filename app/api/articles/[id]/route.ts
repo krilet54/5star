@@ -53,6 +53,7 @@ export async function PATCH(request: Request, { params }: Params) {
   const resolvedSlug =
     suppliedSlug ||
     localArticle?.slug ||
+    existingArticle?.slug ||
     (body.title ? slugify(body.title, { lower: true, strict: true }) : '')
   const payload = {
     ...body,

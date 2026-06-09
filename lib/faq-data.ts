@@ -68,10 +68,7 @@ export const faqData: FAQCategory[] = [
         q: 'Can I work for multiple employers on one UAE visa?',
         a: 'Not usually on a standard single-employer visa. Multiple-employer or part-time arrangements need the right permits and approvals from the relevant authority.',
       },
-      {
-        q: 'What is the UAE Green Visa?',
-        a: 'The Green Visa is a self-sponsored residency route for certain skilled professionals, freelancers, and investors. Eligibility rules can change, so the category must be checked case by case.',
-      },
+
       {
         q: 'How do I cancel a UAE residency visa?',
         a: 'Cancellation is normally initiated by the sponsor or company through the relevant immigration authority, followed by final status updates, labour clearance if needed, and any dependent cancellations.',

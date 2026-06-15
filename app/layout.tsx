@@ -22,6 +22,9 @@ const body = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
+  alternates: {
+    canonical: '/',
+  },
   title: { default: 'Business Setup Dubai | Company Formation UAE | Star One', template: '%s | Star One' },
   description: 'Star One helps entrepreneurs and business owners set up companies in the UAE legally. From company formation to visas, compliance, accounting, and golden visa services.',
   keywords: ['UAE business setup', 'Dubai company formation', 'golden visa UAE', 'business setup Dubai', 'UAE visa services'],

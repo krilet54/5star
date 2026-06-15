@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { SITE_INFO } from '@/lib/site-info'
+import { trackFormSubmission } from '@/lib/ga4-events'
 
 const schema = z.object({
   first_name: z.string().min(2, 'Required'),
@@ -51,6 +52,7 @@ export default function EnquiryForm({ preselectedService }: { preselectedService
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error('Failed to submit')
+      trackFormSubmission('enquiry_form', data.service || undefined)
       setSubmitted(true)
     } catch {
       setError('Something went wrong. Please try again or contact us directly.')

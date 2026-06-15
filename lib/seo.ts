@@ -46,9 +46,9 @@ const serviceSeoBySlug: Record<string, ServiceSeo> = {
     canonicalPath: '/visit-visa-dubai',
   },
   'corporate-tax': {
-    title: 'Corporate Tax UAE | FTA Registration & Filing | Star One',
-    description: desc('Corporate Tax UAE registration and filing support from AED 1,250 to keep your company compliant with FTA deadlines and reporting.'),
-    keywords: ['Corporate Tax UAE', 'Dubai corporate tax', 'UAE tax registration'],
+    title: 'UAE Corporate Tax 2026: 9% Rate & Filing | Star One',
+    description: desc('UAE corporate tax at 9% above AED 375,000. Get FTA registration, filing deadlines, and free zone exemption guidance.'),
+    keywords: ['Corporate Tax UAE', 'Dubai corporate tax', 'UAE tax registration', 'FTA filing', 'corporate tax rate UAE'],
     canonicalPath: '/corporate-tax-uae',
   },
   vat: {
@@ -70,9 +70,9 @@ const serviceSeoBySlug: Record<string, ServiceSeo> = {
     canonicalPath: '/esr-uae',
   },
   aml: {
-    title: 'AML & KYC Compliance UAE | Regulatory Services | Star One',
-    description: desc('AML & KYC Compliance UAE support for policies, controls, reporting, and onboarding processes that reduce regulatory risk.'),
-    keywords: ['AML UAE', 'Dubai AML compliance', 'anti-money laundering'],
+    title: 'AML & KYC Compliance UAE 2026 | Star One',
+    description: desc('UAE AML compliance: policies, KYC verification, goAML reporting, and DNFBP obligations. Reduce regulatory risk.'),
+    keywords: ['AML UAE', 'Dubai AML compliance', 'anti-money laundering', 'KYC UAE', 'DNFBP compliance'],
     canonicalPath: '/aml-kyc-compliance-uae',
   },
   kyc: {
@@ -94,9 +94,9 @@ const serviceSeoBySlug: Record<string, ServiceSeo> = {
     canonicalPath: '/corporate-banking-dubai',
   },
   'corporate-banking': {
-    title: 'Corporate Bank Account Dubai | Business Banking UAE | Star One',
-    description: desc('Corporate bank account Dubai support for new and established companies from AED 1,500, with clear business and compliance guidance.'),
-    keywords: ['Corporate Banking UAE', 'Dubai corporate bank account', 'UAE banking'],
+    title: 'Corporate Bank Account Dubai 2026 | Star One',
+    description: desc('Open a corporate bank account in Dubai. See which banks accept new companies, required documents, and how to avoid rejection.'),
+    keywords: ['Corporate Banking UAE', 'Dubai corporate bank account', 'UAE banking', 'business bank account Dubai'],
     canonicalPath: '/corporate-banking-dubai',
   },
   'accounting-bookkeeping': {

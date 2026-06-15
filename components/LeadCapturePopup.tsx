@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { X } from 'lucide-react'
+import { trackFormSubmission } from '@/lib/ga4-events'
 
 const COUNTRY_CODES = [
   { code: '+93', label: 'Afghanistan' },
@@ -271,6 +272,7 @@ export default function LeadCapturePopup() {
       })
 
       if (response.ok) {
+        trackFormSubmission('lead_capture_popup')
         setIsOpen(false)
         setFormData({ firstName: '', lastName: '', email: '', countryCode: '+971', mobile: '', message: '' })
       }

@@ -1,5 +1,6 @@
 import type { Article } from '@/types'
 import { getArticleServiceLinks } from '@/lib/seo'
+import { seoBlogPosts } from './seo-blog-posts'
 
 export type LocalFaq = { q: string; a: string }
 
@@ -213,6 +214,7 @@ If you want to keep the process smooth, combine your planning with [Business Set
 }
 
 export const localBlogPosts: LocalBlogPost[] = [
+  ...seoBlogPosts,
   {
     id: 'local-cheapest-free-zone-uae',
     title: 'Cheapest Free Zone in UAE - Cost Comparison',

@@ -3,6 +3,7 @@ import Logo from '@/components/Logo'
 import { SITE_INFO } from '@/lib/site-info'
 import { getServiceCanonicalPath } from '@/lib/seo'
 import { Linkedin, Instagram } from 'lucide-react'
+import FooterPhoneLink from './FooterPhoneLink'
 
 export default function Footer() {
   const footerGroups = [
@@ -130,9 +131,9 @@ export default function Footer() {
 
               <div className="mt-8">
                 <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Need help now?</div>
-                  <a href={`tel:${SITE_INFO.phoneHref}`} className="mt-2 block text-lg font-semibold tracking-wide text-[#FAFAFA]">
+                  <FooterPhoneLink href={`tel:${SITE_INFO.phoneHref}`} className="mt-2 block text-lg font-semibold tracking-wide text-[#FAFAFA]">
                     {SITE_INFO.phoneDisplay}
-                </a>
+                </FooterPhoneLink>
               </div>
             </div>
 
@@ -181,7 +182,7 @@ export default function Footer() {
             <div className="relative pl-0 md:px-12">
               <div className="text-xs uppercase tracking-[0.22em] text-[#A8A8A8]">Phone</div>
               <div className="mt-2 flex flex-col gap-1 text-sm font-medium text-[#FAFAFA]">
-                <a href={`tel:${SITE_INFO.phoneHref}`}>{SITE_INFO.phoneDisplay}</a>
+                <FooterPhoneLink href={`tel:${SITE_INFO.phoneHref}`}>{SITE_INFO.phoneDisplay}</FooterPhoneLink>
               </div>
             </div>
 

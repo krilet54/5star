@@ -7,6 +7,7 @@ import { services } from '@/lib/services-data'
 import { SITE_INFO } from '@/lib/site-info'
 import { getServiceCanonicalPath } from '@/lib/seo'
 import { X, Menu, ChevronDown } from 'lucide-react'
+import { trackPhoneClick } from '@/lib/ga4-events'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -125,7 +126,7 @@ export default function Nav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href={`tel:${SITE_INFO.phoneHref}`} className="text-xs font-medium tracking-wider" style={{ 
+            <a href={`tel:${SITE_INFO.phoneHref}`} onClick={() => trackPhoneClick('nav')} className="text-xs font-medium tracking-wider" style={{ 
               color: navTextColor, 
               textTransform: 'uppercase', 
               letterSpacing: '0.06em',

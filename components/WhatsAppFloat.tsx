@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { SITE_INFO } from '@/lib/site-info'
+import { trackWhatsAppClick } from '@/lib/ga4-events'
 
 export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)
@@ -12,6 +13,7 @@ export default function WhatsAppFloat() {
       className="fixed bottom-8 right-8 z-50 flex items-center gap-3"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => trackWhatsAppClick('floating_button')}
     >
       {hovered && (
         <span className="text-sm px-4 py-2 rounded-sm border whitespace-nowrap hidden md:block"

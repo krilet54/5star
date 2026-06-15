@@ -193,7 +193,7 @@ export default async function HomePage() {
 
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <div className="tag justify-center">How It Works</div>
+            <div className="tag tag-dark justify-center">How It Works</div>
             <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
               Your business set up in 3 easy steps
             </h2>
@@ -254,7 +254,7 @@ export default async function HomePage() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           {/* Header */}
           <div className="mb-12 max-w-2xl">
-            <div className="tag">Why Star One?</div>
+            <div className="tag tag-dark">Why Star One?</div>
             <h2 className="font-display text-4xl lg:text-5xl font-medium mb-4 relative" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1, color: '#0A0A0A' }}>
               Why Star One?
             </h2>
@@ -278,7 +278,7 @@ export default async function HomePage() {
                 </div>
                 
                 {/* Content */}
-                <h4 className="text-base font-semibold mb-2" style={{ color: '#0A0A0A' }}>{f.title}</h4>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#0A0A0A' }}>{f.title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>{f.desc}</p>
               </div>
             ))}
@@ -375,7 +375,7 @@ export default async function HomePage() {
 
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <div className="tag justify-center">Pricing Plans</div>
+            <div className="tag tag-dark justify-center">Pricing Plans</div>
             <h2 className="font-display text-5xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
               Plans for Every <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Stage</em>
             </h2>
@@ -521,7 +521,7 @@ export default async function HomePage() {
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
             <div className="section-title-row mb-12 flex-wrap">
               <div>
-                <div className="tag">Insights & Guides</div>
+                <div className="tag tag-dark">Insights & Guides</div>
                 <h2 className="font-display text-4xl font-medium" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Business Setup<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Knowledge Hub</em></h2>
               </div>
               <Link href="/insights" className="btn btn-outline">All Articles →</Link>
@@ -614,7 +614,7 @@ export default async function HomePage() {
 
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="mb-10 text-center">
-            <div className="tag justify-center">Our Partners</div>
+            <div className="tag tag-dark justify-center">Our Partners</div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">

@@ -84,7 +84,7 @@ export default function TermsPage() {
         backgroundSize: '40px 40px',
       }} />
       <div className="max-w-[860px] mx-auto px-8 relative z-10">
-        <div className="tag">Legal</div>
+        <div className="tag tag-dark">Legal</div>
         <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4vw, 52px)', fontWeight: 500, color: '#0A0A0A' }}>
           Terms &<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Conditions</em>
         </h1>

@@ -64,9 +64,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+      </head>
       <body>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-66MENQ5QG1" strategy="afterInteractive" />
-        <Script id="ga4-gtag" strategy="afterInteractive">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-66MENQ5QG1" strategy="lazyOnload" />
+        <Script id="ga4-gtag" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}

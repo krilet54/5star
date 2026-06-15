@@ -74,7 +74,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-14 items-start">
             <div>
               <div className="text-4xl mb-6">{service.icon}</div>
-              <div className="tag">Service</div>
+              <div className="tag tag-dark">Service</div>
               <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4.5vw, 62px)', fontWeight: 500, lineHeight: 1.1, color: '#0A0A0A' }}>
                 {service.title}
               </h1>
@@ -121,7 +121,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="rounded-md border p-6" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
-              <div className="tag mb-3">Related Services</div>
+              <div className="tag tag-dark mb-3">Related Services</div>
               <h2 className="font-display text-2xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
                 Helpful links for this service
               </h2>
@@ -138,7 +138,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
 
             <div className="rounded-md border p-6" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
-              <div className="tag mb-3">FAQ Highlights</div>
+              <div className="tag tag-dark mb-3">FAQ Highlights</div>
               <h2 className="font-display text-2xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
                 Common questions
               </h2>
@@ -213,7 +213,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="section service-detail-section service-benefits-section service-pattern-light" style={{ background: '#FAFAFA' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <Reveal>
-            <div className="tag">Benefits</div>
+            <div className="tag tag-dark">Benefits</div>
             <h2 className="font-display text-3xl sm:text-4xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
               {isGoldenVisa ? 'Key Benefits' : 'Why This Matters'}
             </h2>
@@ -272,7 +272,7 @@ export default async function ServicePage({ params }: Props) {
       {isGoldenVisa && (
         <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
-            <div className="tag justify-center">Call to Action</div>
+            <div className="tag tag-dark justify-center">Call to Action</div>
             <h2 className="font-display text-3xl sm:text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
               Start Your Golden Visa Journey Today
             </h2>
@@ -290,7 +290,7 @@ export default async function ServicePage({ params }: Props) {
       {slug === 'business-setup' && (
         <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-            <div className="tag">Comparison</div>
+            <div className="tag tag-dark">Comparison</div>
             <h2 className="font-display text-3xl sm:text-4xl font-medium mb-10" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
               Business Setup Comparison
             </h2>
@@ -351,7 +351,7 @@ export default async function ServicePage({ params }: Props) {
       {slug === 'business-setup' && (
         <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-            <div className="tag">Next Steps</div>
+            <div className="tag tag-dark">Next Steps</div>
             <h2 className="font-display text-3xl sm:text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
               Explore the services most founders need next
             </h2>
@@ -386,7 +386,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-[320px_1fr] gap-12 lg:gap-14">
               <div>
-                <div className="tag">FAQ</div>
+                <div className="tag tag-dark">FAQ</div>
                 <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Common Questions</h2>
                 <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>Have a question not answered here? Get in touch — we're happy to help.</p>
                 <Link href="/contact" className="btn btn-outline mt-6">Ask Us Anything →</Link>
@@ -404,7 +404,7 @@ export default async function ServicePage({ params }: Props) {
       {/* RELATED SERVICES */}
       <section className="section service-detail-section service-pattern-light border-t" style={{ background: '#F5F5F5', borderColor: '#E0E0E0' }}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="tag">Related</div>
+          <div className="tag tag-dark">Related</div>
           <h2 className="font-display text-4xl font-medium mb-8" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Other Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {related.map(r => (

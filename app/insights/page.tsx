@@ -52,7 +52,7 @@ export default async function InsightsPage() {
         <GeometricCorners />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
-          <div className="tag">Insights</div>
+          <div className="tag tag-dark">Insights</div>
           <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1, color: '#0A0A0A' }}>
             UAE Business<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Knowledge Hub</em>
           </h1>

@@ -138,12 +138,12 @@ export default function Nav() {
               Get Started
             </Link>
           </div>
-
           {/* Mobile hamburger */}
           <button
             className="lg:hidden p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{ color: navTextColor, background: 'none', border: 'none', cursor: 'pointer' }}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

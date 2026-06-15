@@ -49,7 +49,7 @@ export default function ServicesPage() {
         <GeometricCorners />
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
-          <div className="tag">Services</div>
+          <div className="tag tag-dark">Services</div>
           <h1 className="font-display mb-6" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: 500, lineHeight: 1.1, color: '#0A0A0A' }}>
             All Services<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Under One Roof</em>
           </h1>
@@ -209,7 +209,7 @@ export default function ServicesPage() {
         }} />
         
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="tag justify-center mb-4">Next Steps</div>
+          <div className="tag tag-dark justify-center mb-4">Next Steps</div>
           <h2 className="font-display text-4xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>
             Not Sure Where to <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Start?</em>
           </h2>

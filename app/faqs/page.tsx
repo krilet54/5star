@@ -35,7 +35,7 @@ export default function FAQsPage() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 w-full relative z-10 py-20">
           <div className="max-w-2xl">
             <Reveal>
-              <div className="tag">Help & Support</div>
+              <div className="tag tag-dark">Help & Support</div>
               <h1 className="text-5xl sm:text-6xl font-display font-bold mb-6" style={{ color: '#0A0A0A' }}>
                 Frequently Asked<br /><em style={{ color: '#C9A84C', fontStyle: 'italic' }}>Questions</em>
               </h1>

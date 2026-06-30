@@ -77,6 +77,8 @@ const partnerLogos = [
   { name: 'Star One is an approved formation partner with JAFZA', src: '/jafza-logo.png', width: 220, height: 96 },
   { name: 'Star One is an approved formation partner with RAKEZ', src: '/RAKEZ_Logo_-_English_-_Standard_(Web)_Small.png', width: 240, height: 96 },
   { name: 'Star One is an approved formation partner with Sharjah Publishing City', src: '/spc logo png.webp', width: 220, height: 96 },
+  { name: 'Star One is an approved formation partner with Sharjah Media City (SHAMS)', src: '/shams-logo.svg', width: 220, height: 96 },
+  { name: 'Star One is an approved formation partner with Ajman NuVentures Centre Free Zone (ANCFZ)', src: '/ancfz-logo.webp', width: 220, height: 96 },
 ]
 
 export default async function HomePage() {
@@ -617,7 +619,7 @@ export default async function HomePage() {
             <div className="tag tag-dark justify-center">Our Partners</div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-9">
             {partnerLogos.map(partner => (
               <div key={partner.name} className="group flex min-h-24 items-center justify-center px-2 py-3 sm:px-3 sm:py-4">
                 <Image

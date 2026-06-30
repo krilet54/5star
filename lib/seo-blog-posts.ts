@@ -8,6 +8,7 @@
 import type { LocalBlogPost } from './blog-posts'
 
 const publishedAt = '2026-06-15T00:00:00.000Z'
+const todayPublishedAt = '2026-06-30T11:20:00.000Z'
 
 export const seoBlogPosts: LocalBlogPost[] = [
   // ──────────────────────────────────────────────
@@ -1857,8 +1858,8 @@ Understanding these targets is crucial whether you are sponsoring staff on an em
     meta_title: 'Emiratisation Deadline 30th June UAE Compliance Guide 2026 | Star One',
     meta_description: 'The 30th June Emiratisation deadline is here. Learn the MoHRE compliance rules, skilled hiring targets, penalties, and Nafis updates for UAE businesses.',
     read_time: 6,
-    created_at: '2026-06-23T11:19:16.808Z',
-    updated_at: '2026-06-23T11:20:06.931Z',
+    created_at: todayPublishedAt,
+    updated_at: todayPublishedAt,
     author: 'Star One Team',
     internalLinks: [
       { label: 'Golden Visa UAE', href: '/golden-visa-uae' },
@@ -2027,8 +2028,8 @@ If you are ready to secure your long-term future in the UAE, explore our [Golden
     meta_title: 'UAE Golden Visa 2026: The Ultimate Eligibility & Requirements Guide',
     meta_description: 'Looking to apply for the UAE Golden Visa in 2026? Learn about property investment paths, executive/professional requirements, costs, and family sponsorship rules.',
     read_time: 12,
-    created_at: publishedAt,
-    updated_at: publishedAt,
+    created_at: todayPublishedAt,
+    updated_at: todayPublishedAt,
     author: 'Star One Team',
     internalLinks: [
       { label: 'Golden Visa UAE', href: '/golden-visa-uae' },
@@ -2195,8 +2196,8 @@ To ensure your free zone entity qualifies for the 0% rate, visit our [Corporate 
     meta_title: 'Free Zone Corporate Tax Compliance & Audit Guide UAE 2026',
     meta_description: 'Complete guide to UAE corporate tax compliance and audit requirements for free zones in 2026. Understand QFZP conditions, substance checks, and audit preparation.',
     read_time: 12,
-    created_at: publishedAt,
-    updated_at: publishedAt,
+    created_at: todayPublishedAt,
+    updated_at: todayPublishedAt,
     author: 'Star One Team',
     internalLinks: [
       { label: 'Corporate Tax UAE', href: '/corporate-tax-uae' },
@@ -2359,8 +2360,8 @@ If you are ready to expand your business with a mainland license, visit our [Bus
     meta_title: 'Mainland Company Formation Dubai: Complete DED 2026 Setup Guide',
     meta_description: 'All you need to know about starting a mainland company in Dubai in 2026. Review 100% ownership rules, step-by-step DET steps, Ejari requirements, and setup costs.',
     read_time: 12,
-    created_at: publishedAt,
-    updated_at: publishedAt,
+    created_at: todayPublishedAt,
+    updated_at: todayPublishedAt,
     author: 'Star One Team',
     internalLinks: [
       { label: 'Business Setup Dubai', href: '/business-setup-dubai' },

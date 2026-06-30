@@ -2376,4 +2376,113 @@ If you are ready to expand your business with a mainland license, visit our [Bus
       { q: 'Are mainland companies subject to corporate tax?', a: 'Yes, mainland companies must register and pay 9% corporate tax on net profits exceeding AED 375,000.' },
     ],
   },
+  {
+    id: 'local-tax-residency-certificate-trc-uae-guide',
+    title: 'Tax Residency Certificate (TRC) in the UAE: Everything You Need to Know',
+    slug: 'tax-residency-certificate-trc-uae-guide',
+    excerpt: 'A complete guide to obtaining a Tax Residency Certificate (TRC) in the UAE in 2026. Learn about eligibility criteria, document requirements, and costs for individuals and companies.',
+    content: `The introduction of Corporate Tax in the UAE has made establishing tax residency a top priority for international founders and expatriates. A **Tax Residency Certificate (TRC)**, also known as a Tax Domicile Certificate, is an official document issued by the Federal Tax Authority (FTA) confirming that an individual or company is a resident of the United Arab Emirates for tax purposes.
+
+The primary purpose of a TRC is to allow individuals and corporate entities to leverage the UAE’s extensive network of **Double Taxation Avoidance Agreements (DTAAs)**. By proving tax residency in the UAE, you can prevent your home country or other foreign jurisdictions from double-taxing your global income.
+
+## Why is a Tax Residency Certificate (TRC) Important?
+
+Securing a TRC is highly beneficial for both personal tax planning and corporate compliance. Key advantages include:
+* **Avoidance of Double Taxation:** Safely claim tax treaty relief on cross-border business transactions, dividends, royalties, and international income.
+* **Corporate Credibility:** Proves to foreign tax authorities, global banks, and business partners that your UAE entity has real operational substance.
+* **Compliance Alignment:** Ensures full alignment with local regulations, particularly after the implementation of the new UAE Corporate Tax regime.
+* **Wealth Protection:** Helps high-net-worth individuals protect their global assets through legal tax residency structures (such as holding a Golden Visa and a TRC).
+
+## Who Can Apply for a TRC in the UAE?
+
+The FTA has established clear guidelines for both individual and corporate applicants:
+
+### For Individuals
+An individual can apply for a UAE Tax Residency Certificate if they meet the following criteria:
+- **Residency Period:** You must have legally resided in the UAE for at least **180 days** within a 12-month period.
+- **Valid Residency:** You must possess a valid UAE residence visa (such as an employment visa, investor visa, or Golden Visa).
+- **Physical Accommodation:** You must have a physical residential address in the UAE, backed by a registered Ejari lease agreement or proof of property ownership.
+
+### For Companies
+A corporate entity can apply for a TRC under these conditions:
+- **Operational Duration:** The company must have been established and actively operating in the UAE for at least **one year**.
+- **Trade License:** Holds a valid trade license from a mainland DED or a UAE free zone authority.
+- **Financial Compliance:** Must maintain proper accounting records and prepare audited financial statements.
+- **Physical Office:** Must have a physical office or commercial space registered in the UAE.
+
+## Documents Required for the Application
+
+Having a complete document package is essential to prevent delays or rejection by the FTA.
+
+### Individual Checklist:
+- [ ] Clear copy of your passport and UAE residence visa
+- [ ] Copy of your valid Emirates ID (front and back)
+- [ ] Official entry and exit report from the General Directorate of Residency and Foreigners Affairs (GDRFA) proving 180+ days of physical presence
+- [ ] Copy of a registered Ejari lease agreement or title deed
+- [ ] Certified personal bank statements for the previous six months
+- [ ] Certified proof of source of income (salary certificate or trade license details)
+
+### Corporate Checklist:
+- [ ] Valid trade license copy
+- [ ] Certificate of Incorporation and Memorandum of Association (MoA)
+- [ ] Passports, visas, and Emirates IDs of all shareholders and directors
+- [ ] Copy of a registered commercial Ejari tenancy contract
+- [ ] Audited financial statements prepared by a licensed UAE auditor
+- [ ] Corporate bank statements for the previous six months
+
+## The Application Process Step-by-Step
+
+The application is submitted electronically through the FTA’s EmaraTax portal:
+
+### Step 1: Pre-Assessment & Document Review
+Verify that you satisfy the residency timelines and gather all required documents. Star One handles this pre-audit phase to ensure no files are missing.
+
+### Step 2: Portal Submission
+We register your profile on the EmaraTax portal, fill in the required tax residency forms, and upload the supporting documents.
+
+### Step 3: FTA Review
+The FTA officers review the application. If they find any inconsistencies or require clarifications (such as explaining specific transactions in your bank statements), they will issue a query.
+
+### Step 4: Fee Payment and Issuance
+Once the application is approved, the government fee must be paid. The FTA then issues the digital Tax Residency Certificate, which can be downloaded instantly.
+
+### Processing Timelines
+The standard processing time is **5 to 10 working days** from portal submission. If the FTA requests additional documents, the timeline will be extended.
+
+## Common Reasons for Application Rejection
+
+* **Insufficient Days:** Individuals applying before meeting the 180-day physical residency count.
+* **No Substance Proof:** Companies utilizing flexi-desks or virtual addresses without demonstrating actual local operations.
+* **Mismatched Financials:** Inconsistencies between your bank statements and your audited financial statements.
+* **Expired Licenses or Visas:** Submitting documents that are close to or past their expiry dates.
+
+## How Star One Can Help
+
+Navigating international tax treaties and government portals requires expert guidance. The Star One compliance team manages the entire TRC lifecycle:
+1. **Eligibility Assessment:** We review your profile to confirm you meet the 180-day or 1-year corporate timelines.
+2. **Document Preparation:** We assist with compiling personal files, certifying bank statements, and preparing audited accounts.
+3. **Application Management:** We handle portal submission, manage correspondence with the FTA, and address queries.
+
+To secure your tax benefits and establish tax residency, explore our [Corporate Tax UAE](/corporate-tax-uae) services, consult our [accounting and bookkeeping](/accounting-bookkeeping-uae) guidelines, or [contact Star One today](/contact) for professional support.`,
+    category: 'Tax',
+    featured: true,
+    published: true,
+    cover_image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80',
+    meta_title: 'UAE Tax Residency Certificate (TRC) Guide 2026 | Star One',
+    meta_description: 'Looking to obtain a Tax Residency Certificate (TRC) in the UAE in 2026? Learn the eligibility criteria, required documents, and process details for individuals and companies.',
+    read_time: 8,
+    created_at: todayPublishedAt,
+    updated_at: todayPublishedAt,
+    author: 'Star One Team',
+    internalLinks: [
+      { label: 'Corporate Tax UAE', href: '/corporate-tax-uae' },
+      { label: 'Accounting & Bookkeeping UAE', href: '/accounting-bookkeeping-uae' },
+      { label: 'Contact', href: '/contact' },
+    ],
+    faq: [
+      { q: 'What is a Tax Residency Certificate (TRC) in the UAE?', a: 'A Tax Residency Certificate is an official document issued by the Federal Tax Authority (FTA) confirming that an individual or company is a tax resident of the UAE, enabling them to benefit from Double Taxation Avoidance Agreements (DTAAs).' },
+      { q: 'How many days must an individual reside in the UAE to apply for a TRC?', a: 'An individual must legally reside in the UAE for at least 180 days within a 12-month period to be eligible to apply.' },
+      { q: 'Do free zone companies need audited financials for a TRC?', a: 'Yes, corporate applicants generally need to submit audited financial statements and bank statements to prove operational substance.' },
+    ],
+  },
 ]

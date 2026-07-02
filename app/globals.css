@@ -724,6 +724,9 @@ h4 em,
 .prose-gold {
   color: #666666;
   line-height: 1.8;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .prose-gold h1,
 .prose-gold h2,
@@ -781,6 +784,8 @@ h4 em,
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.95em;
+  display: block;
+  overflow-x: auto;
 }
 .prose-gold th,
 .prose-gold td {

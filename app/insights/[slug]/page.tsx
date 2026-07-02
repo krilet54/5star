@@ -113,8 +113,8 @@ export default async function ArticlePage({ params }: Props) {
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(201,168,76,0.045) 1px, transparent 0)',
           backgroundSize: '40px 40px',
         }} />
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10 max-w-4xl">
-          <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div>
             <div className="flex items-center gap-2 text-xs mb-8" style={{ color: '#555555' }}>
               <Link href="/" style={{ color: '#555555' }}>Home</Link>
               <span>/</span>
@@ -164,9 +164,9 @@ export default async function ArticlePage({ params }: Props) {
       </section>
 
       <section className="pb-24" style={{ background: '#F5F5F5' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-12">
-          <div className="grid lg:grid-cols-[1fr_340px] gap-20 items-start">
-            <div className="bg-[#FAFAFA] border border-[#E0E0E0] rounded-2xl p-8 sm:p-10 shadow-[0_12px_40px_rgba(10,10,10,0.04)]">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+          <div className="grid lg:grid-cols-[1fr_340px] gap-8 lg:gap-20 items-start">
+            <div className="bg-[#FAFAFA] border border-[#E0E0E0] rounded-2xl p-4 sm:p-8 md:p-10 shadow-[0_12px_40px_rgba(10,10,10,0.04)]">
               <div className="prose-gold text-base">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {enrichedContent}
@@ -210,8 +210,8 @@ export default async function ArticlePage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="mt-10 p-8 border rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
-                <div className="flex gap-5 items-start">
+              <div className="mt-10 p-4 sm:p-8 border rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
                   <div className="w-14 h-14 rounded-full flex items-center justify-center font-bold flex-shrink-0"
                     style={{ background: 'rgba(201, 168, 76, 0.12)', border: '1px solid rgba(201, 168, 76, 0.24)', color: '#C9A84C', fontFamily: 'var(--font-display)', fontSize: 18 }}>
                     S1
@@ -228,7 +228,7 @@ export default async function ArticlePage({ params }: Props) {
             </div>
 
             <div className="flex flex-col gap-6 sticky top-24">
-              <div className="border p-8 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+              <div className="border p-4 sm:p-8 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9A84C' }}>Free Consultation</div>
                 <h3 className="font-display text-xl font-medium mb-3" style={{ fontFamily: 'var(--font-display)', color: '#0A0A0A' }}>Ready to Set Up Your UAE Business?</h3>
                 <p className="text-sm mb-6" style={{ color: '#555555' }}>Get personalised guidance from our Dubai business setup experts. 30 minutes, no obligation.</p>
@@ -236,7 +236,7 @@ export default async function ArticlePage({ params }: Props) {
               </div>
 
               {related && related.length > 0 && (
-                <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+                <div className="border p-4 sm:p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                   <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Articles</div>
                   <div className="flex flex-col gap-4">
                     {related.map((r: { id: string; title: string; slug: string; category: string; read_time: number; created_at: string }) => (
@@ -250,7 +250,7 @@ export default async function ArticlePage({ params }: Props) {
                 </div>
               )}
 
-              <div className="border p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
+              <div className="border p-4 sm:p-6 rounded-2xl" style={{ background: '#FAFAFA', borderColor: '#E0E0E0' }}>
                 <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: '#777777' }}>Related Services</div>
                 <div className="flex flex-col gap-4">
                   {relatedServices.slice(0, 3).map(service => (

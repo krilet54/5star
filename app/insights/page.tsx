@@ -50,7 +50,7 @@ export default async function InsightsPage() {
       {/* HERO */}
       <section className="pt-40 pb-20 relative overflow-hidden" style={{ background: '#FAFAFA' }}>
         <GeometricCorners />
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="decor-vertical" />
           <div className="tag tag-dark">Insights</div>
           <h1 className="font-display mb-4" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 500, lineHeight: 1.1, color: '#0A0A0A' }}>
@@ -79,7 +79,7 @@ export default async function InsightsPage() {
 
       {/* ARTICLES */}
       <section className="pb-24" style={{ background: '#F5F5F5' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Featured */}
           {featured && (
             <div className="mb-1 frame-with-corners" style={{ padding: 0 }}>
@@ -101,7 +101,7 @@ export default async function InsightsPage() {
                     Featured Guide
                   </div>
                 </div>
-                <div className="p-12" style={{ background: '#FAFAFA' }}>
+                <div className="p-6 sm:p-12" style={{ background: '#FAFAFA' }}>
                   <div className="text-xs uppercase tracking-widest mb-4" style={{ color: '#555555' }}>
                     {featured.category} · {formatDate(featured.created_at)} · {featured.read_time} min read
                   </div>
@@ -122,7 +122,7 @@ export default async function InsightsPage() {
                 <Link
                   key={article.id}
                   href={`/insights/${article.slug}`}
-                  className="card p-7"
+                  className="card p-4 sm:p-7"
                   style={{ textDecoration: 'none', background: '#FAFAFA', borderColor: '#E0E0E0', color: '#0A0A0A' }}
                   data-insight-cat={article.category}
                 >
@@ -138,7 +138,7 @@ export default async function InsightsPage() {
                       {article.category}
                     </div>
                   </div>
-                  <div className="p-7">
+                  <div className="pt-4 sm:pt-6">
                     <div className="text-xs uppercase tracking-widest mb-3" style={{ color: '#555555' }}>
                       {formatDate(article.created_at)} · {article.read_time} min
                     </div>

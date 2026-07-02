@@ -83,7 +83,7 @@ export default function EnquiryForm({ preselectedService }: { preselectedService
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="form-label">First Name *</label>
           <input {...register('first_name')} className="form-input" placeholder="John" />
@@ -106,7 +106,7 @@ export default function EnquiryForm({ preselectedService }: { preselectedService
         <input {...register('phone')} type="tel" className="form-input" placeholder="+44 7700 900000" />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="form-label">Country</label>
           <select {...register('country')} className="form-select form-input">

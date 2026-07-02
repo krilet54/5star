@@ -213,7 +213,7 @@ RAK Bank and Mashreq tend to be more flexible for startups and new companies, bu
 Yes. Many businesses maintain accounts at two or more banks for different purposes (e.g., one for operations, one for international payments).
 
 ### Do I need a minimum balance?
-Most banks require a minimum balance, typically ranging from AED 5,000 to AED 50,000 depending on the bank and account type.`,
+Most banks require a minimum balance, which varies depending on the bank and the account package you choose.`,
     category: 'Corporate',
     featured: false,
     published: true,
@@ -232,7 +232,7 @@ Most banks require a minimum balance, typically ranging from AED 5,000 to AED 50
     faq: [
       { q: 'Which bank is easiest to open a corporate account with in Dubai?', a: 'RAK Bank and Mashreq tend to be more flexible for startups, but it depends on your business profile.' },
       { q: 'Can I have accounts at multiple banks?', a: 'Yes. Many businesses maintain accounts at two or more banks for different purposes.' },
-      { q: 'Do I need a minimum balance?', a: 'Most banks require a minimum balance, typically AED 5,000 to AED 50,000 depending on the account type.' },
+      { q: 'Do I need a minimum balance?', a: 'Most banks require a minimum balance, which varies depending on the chosen bank and package.' },
     ],
   },
 
@@ -394,16 +394,11 @@ Even if you claim Small Business Relief, you must still:
 - Natural persons conducting business above AED 1 million
 - Foreign companies with a permanent establishment in the UAE
 
-## How to Register on EmaraTax
+## The Importance of Accurate FTA Registration
 
-1. Visit the EmaraTax portal
-2. Create an account or log in with UAE Pass
-3. Select "Corporate Tax Registration"
-4. Complete required fields (trade licence details, financial year, contact information)
-5. Upload supporting documents
-6. Submit the application
+Corporate tax registration is completed digitally through the FTA's EmaraTax portal. It requires setting up a taxable person profile, entering specific entity parameters (such as the correct financial year cycle), declaring all beneficial ownership percentages, and uploading legal company records (MoA, trade licence, and signatory credentials). 
 
-The FTA typically processes registrations within 20 business days.
+Because any discrepancies or errors can lead to registration delays or immediate rejection (resulting in late fees), working with a certified compliance consultant is highly recommended. The FTA typically reviews and processes registration submissions within 20 business days.
 
 ## Penalties for Non-Compliance
 
@@ -580,38 +575,14 @@ Make sure you have the following information ready:
 - Contact information (email, phone, address)
 - Emirates ID of the authorised signatory
 
-## Step-by-Step Registration Process
+## Key Components of the Registration Review
 
-### Step 1: Access EmaraTax
-Visit the FTA's EmaraTax portal. You can log in using UAE Pass or create a new EmaraTax account.
+The FTA evaluates registration files based on a specific set of corporate parameters. Ensuring these details are structured correctly is crucial for approval:
 
-### Step 2: Create a Taxable Person Profile
-If this is your first time, you will need to create a profile for your business entity. Enter your trade licence details, legal name, and business address.
-
-### Step 3: Select Corporate Tax Registration
-From your dashboard, select "Register" and choose "Corporate Tax" as the tax type.
-
-### Step 4: Complete the Application Form
-Fill in all required fields:
-- **Entity details:** Legal name, trade licence number, date of incorporation
-- **Financial year:** Specify your financial year (e.g., January to December)
-- **Business activities:** Describe your company's primary activities
-- **Ownership structure:** List all shareholders with ownership percentages
-- **UBO details:** Identify all individuals with 25%+ ownership or control
-- **Contact details:** Provide a contact person for FTA correspondence
-
-### Step 5: Upload Supporting Documents
-Attach required documents:
-- Trade licence copy
-- Memorandum of Association
-- Emirates ID of the authorised signatory
-- Any additional documents requested
-
-### Step 6: Review and Submit
-Double-check all information for accuracy. Errors or inconsistencies can cause delays. Submit the application.
-
-### Step 7: Receive Your TRN
-The FTA typically processes registrations within 20 business days. Once approved, you will receive your Tax Registration Number (TRN) via the portal and email.
+- **Entity Profile Setup:** Your registered profile must match the legal name, trade licence details, and date of incorporation exactly as they appear in the official DED or free zone registries.
+- **Financial Year Alignment:** Defining your tax period correctly (e.g., January to December) is critical. Setting this incorrectly can create massive accounting issues and lead to non-compliance penalties at year-end.
+- **Ownership & Control Disclosures:** You must disclose all major shareholders and document any Ultimate Beneficial Owners (UBOs) holding 25% or more of the company's shares or voting rights.
+- **Document Integrity:** The FTA reviews scanned uploads of your valid trade licence, notarized Memorandum of Association (MoA), and the Emirates ID of the authorized signatory. Any low-quality or expired documents will trigger immediate compliance requests, extending the timeline.
 
 ## Important Notes
 
@@ -2302,15 +2273,14 @@ Submit your Ejari certificate and MoA to the DET. The authority will issue a pay
 
 ## Cost Breakdown of Dubai Mainland Company Formation
 
-While mainland licenses offer massive commercial benefits, they require budget planning for government fees, office lease, and corporate setup support:
+Establishing a mainland business in Dubai involves several key fee categories that depend entirely on your specific activities, office space choices, and visa requirements:
 
-- **Trade Name Reservation:** AED 620
-- **Initial Approval Fee:** AED 120
-- **DED License Fee & Municipality Fees:** AED 8,000 – AED 15,000 (varies based on activities and municipality market fees, which are calculated as 2.5% to 5% of the annual office rent).
-- **Establishment Card (Immigration):** AED 2,000 (valid for 2 years)
-- **Ejari Registration / Office Lease:** AED 15,000 – AED 50,000+ per year (highly dependent on location and size).
-- **Virtual Office Package (Year 1 Option):** AED 6,000 – AED 10,000
-- **Total Startup Capital needed (Approx):** AED 20,000 – AED 35,000 (excluding office rent and visa charges).
+- **Trade Name & Initial Approvals:** Initial government processing fees for registering your company name and obtaining DED initial approval.
+- **License & Municipal Market Fees:** The DED licensing fee itself, which is packaged with local municipality charges (typically calculated as a percentage of your annual commercial lease).
+- **Immigration Setup & Visas:** Fees for issuing your company's establishment card and processing residence visas for partners and employees.
+- **Commercial Premises Rent:** The lease costs for a physical office space, shop, or warehouse, which must be registered under the Ejari system. Virtual office packages may also be available as a starting option for certain service activities.
+
+Because the total investment depends heavily on your specific business scope and location, our advisors provide a fully customized, consolidated cost outline. [Get in touch with S1](/contact) for a detailed quote.
 
 ---
 
@@ -2430,21 +2400,14 @@ Having a complete document package is essential to prevent delays or rejection b
 - [ ] Audited financial statements prepared by a licensed UAE auditor
 - [ ] Corporate bank statements for the previous six months
 
-## The Application Process Step-by-Step
+## The Application Process Lifecycle
 
-The application is submitted electronically through the FTA’s EmaraTax portal:
+Obtaining a Tax Residency Certificate involves navigating the FTA's digital review gates. Star One coordinates the entire lifecycle on your behalf:
 
-### Step 1: Pre-Assessment & Document Review
-Verify that you satisfy the residency timelines and gather all required documents. Star One handles this pre-audit phase to ensure no files are missing.
-
-### Step 2: Portal Submission
-We register your profile on the EmaraTax portal, fill in the required tax residency forms, and upload the supporting documents.
-
-### Step 3: FTA Review
-The FTA officers review the application. If they find any inconsistencies or require clarifications (such as explaining specific transactions in your bank statements), they will issue a query.
-
-### Step 4: Fee Payment and Issuance
-Once the application is approved, the government fee must be paid. The FTA then issues the digital Tax Residency Certificate, which can be downloaded instantly.
+- **Pre-Audit & Verification:** We conduct a full audit of your GDRFA reports, Ejari leases, and financial statements to verify eligibility and ensure zero document discrepancies before submission.
+- **Portal Management & Filing:** We manage the setup of your taxable person profile, compile all required declarations, and handle the formal upload of your dossier to the FTA.
+- **Compliance Clarifications:** FTA officers regularly request transaction breakdowns or clarifications on bank statements. We handle all direct correspondence and respond to compliance queries to keep the application moving forward.
+- **Government Fee & Certificate Issuance:** Once the FTA approves the file, we handle the final payment processing and deliver the certified digital Tax Residency Certificate to you.
 
 ### Processing Timelines
 The standard processing time is **5 to 10 working days** from portal submission. If the FTA requests additional documents, the timeline will be extended.

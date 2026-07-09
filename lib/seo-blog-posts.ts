@@ -1880,11 +1880,6 @@ The UAE Golden Visa is designed to attract top talent, high-net-worth investors,
 
 ### 1. Real Estate Investors
 The property investment pathway remains the most popular route to securing a UAE Golden Visa. The criteria have been simplified over the years, making it highly attractive for international buyers.
-- **Investment Threshold:** You must own one or more properties in the UAE with a total purchase value of at least **AED 2,000,000** (approximately USD 545,000).
-- **Mortgage Property:** If the property is mortgaged, banks must be local and authorized by the Central Bank of the UAE. S1 Business Consultancy can assist with preparing bank declarations showing the equity paid meets or exceeds the required threshold.
-- **Off-Plan Properties:** Off-plan properties qualify, provided the developer is registered and approved, and the total value on the contract (SPA) is at least AED 2 million.
-- **No Minimum Downpayment:** The previous requirement of a minimum AED 200,000 downpayment has been removed in recent updates, meaning as long as the total property value is AED 2 million or more, you are eligible to apply even if the equity paid is less (subject to approval on your payment history and contract structure).
-- **Joint Ownership:** Spouses can jointly own a property worth AED 2 million. If the property is owned by multiple non-spousal partners, each partner's share must be worth at least AED 2 million to qualify.
 
 ### 2. Public Investments (General Investors)
 For individuals looking to make financial investments outside of real estate, the public investment path offers a robust route.
